@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/22 18:37:38 by yhwang            #+#    #+#              #
-#    Updated: 2022/06/24 23:16:30 by yhwang           ###   ########.fr        #
+#    Updated: 2022/09/27 01:59:09 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
-LIBFT = ft_atoi \
+LIBFT = ft_atod \
+		ft_atoi \
 		ft_bzero \
 		ft_calloc \
 		ft_isalnum \

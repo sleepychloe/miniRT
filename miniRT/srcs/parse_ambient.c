@@ -12,8 +12,6 @@
 
 #include "../incs/miniRT.h"
 
-
-
 int parse_ambient_ratio(t_scene *scene, char *s)
 {
 	scene->ambient->ratio = s;
