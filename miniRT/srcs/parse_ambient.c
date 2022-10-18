@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_ambient.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sucho <sucho@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 14:35:58 by sucho             #+#    #+#             */
-/*   Updated: 2022/09/15 16:37:07 by sucho            ###   ########.fr       */
+/*   Created: 2022/10/18 19:34:46 by yhwang            #+#    #+#             */
+/*   Updated: 2022/10/18 20:40:30 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int parse_ambient_ratio(t_scene *scene, char *s)
 {
-	scene->ambient->ratio = s;
-    return (1);
+    if (!(0.0 <= ft_atod(s) && ft_atod(s) <= 1.0))
+        return (1);
+    scene->ambient->ratio = ft_atod(s);
+    return (0);
 }
 
 int	parse_ambient_rgb(t_scene *scene, char *s)
@@ -26,27 +28,30 @@ int	parse_ambient_rgb(t_scene *scene, char *s)
 	if (!(0 <= ft_atoi(c[0]) && ft_atoi(c[0]) <= 255)
 			|| !(0 <= ft_atoi(c[1]) && ft_atoi(c[1]) <= 255)
 			|| !(0 <= ft_atoi(c[2]) && ft_atoi(c[2]) <= 255))
-		return (0);
+    {
+        ft_free_2d(c);
+		return (1);
+    }
 	scene->ambient->r = ft_atoi(c[0]);
 	scene->ambient->g = ft_atoi(c[1]);
 	scene->ambient->b = ft_atoi(c[2]);
-	return (1);
+    ft_free_2d(c);
+	return (0);
 }
 
-void parse_ambient(t_scene *scene, char *s)
+void parse_ambient(t_scene *scene, char **line)
 {
-    char    **str;
+    char **s;
 
-	if (check_identifier(s, "A"))
-		print_error_and_exit("Ambient identifier error");
-	if (!check_token_counter(s, ' ', 3))
-		print_error_and_exit("Ambient token error");
-   	str = ft_split(s, ' ');
-	if (!check_token_counter(str[2], ',', 3))
-    	print_error_and_exit("Ambient token error (rgb)");
-	scene->ambient = (t_ambient *)malloc(sizeof(t_ambient));
-	if (!parse_ambient_ratio(scene, str[1]))
-		print_error_and_exit("Ambient value error (ratio)");
-	if (!parse_ambient_rgb(scene, str[2]))
-		print_error_and_exit("Ambient value error (rgb)");
+    if (check_line_token(line, 3))
+        scene->ambient->err = 1;
+    s = ft_split(*line, ' ');
+    if (check_small_token(s[2]))
+        scene->ambient->err = 1;
+    if (parse_ambient_ratio(scene, s[1]))
+        scene->ambient->err = 1;
+    if (parse_ambient_rgb(scene, s[2]))
+        scene->ambient->err = 1;
+    ft_free_2d(s);
+    scene->ambient->cnt++;
 }

@@ -3,30 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sucho <sucho@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 15:29:37 by sucho             #+#    #+#             */
-/*   Updated: 2022/09/15 16:26:45 by sucho            ###   ########.fr       */
+/*   Created: 2022/10/18 17:14:59 by yhwang            #+#    #+#             */
+/*   Updated: 2022/10/18 19:26:33 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-void print_error_and_exit(char *str)
+void    err_msg(char *str)
 {
-	printf("Error\n");
-	printf("%s\n", str);
-	exit(1);
+    printf("Error\n");
+    printf("%s\n", str);
 }
 
-int	check_file_extention(char *str)
+void    ft_free_2d(char **str)
 {
-	int	len;
+    int i;
 
-	len = ft_strlen(str);
-	if (len <= 3)
-		return (0);
-	if (!(str[len - 3] == '.' && str[len - 2] == 'r' && str[len - 1] == 't'))
-		return (0);
-	return (1);
+    i = 0;
+    while (str[i])
+        free(str[i++]);
+    free(str);
+}
+
+void    ft_free_struct(t_scene *scene)
+{
+    int i;
+
+    free(scene->ambient);
+    free(scene->camera);
+    free(scene->light);
+    i = 0;
+    //while (scene->sphere[i])
+        free(scene->sphere[i++]);
+    free(scene->sphere);
+    i = 0;
+    //while (scene->plane[i])
+        free(scene->plane[i++]);
+    free(scene->plane);
+    i = 0;
+   // while (scene->cylinder[i])
+        free(scene->cylinder[i++]);
+    free(scene->cylinder);
+    free(scene);
 }

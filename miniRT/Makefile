@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/09/19 15:35:11 by yhwang           ###   ########.fr        #
+#    Updated: 2022/10/18 20:38:33 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,14 +25,14 @@ MLX_FLAGS = -lX11 -lXext -lm -lz
 MLX = $(addprefix $(MLX_DIR)/, libmlx.a)
 
 FILES = main \
-	parse_ambient \
-	parse_camera \
-	parse_light \
-	parse_sphere \
-	parse_plane \
-	parse_cylinder \
-	parse_utils \
-	utils
+		parse_arg \
+		parse_map \
+		init_struct_1 \
+		init_struct_2 \
+		parse_ambient \
+		parse_camera \
+		parse_utils \
+		utils
 
 INCS_DIR = ./incs
 SRCS_DIR = ./srcs

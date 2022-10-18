@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sucho <sucho@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 08:13:03 by sucho             #+#    #+#             */
-/*   Updated: 2022/09/15 16:36:31 by sucho            ###   ########.fr       */
+/*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
+/*   Updated: 2022/10/18 20:43:54 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,54 +19,71 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-
-
-typedef struct s_ambient
+typedef struct  s_ambient
 {
-	char	*ratio;
-	int		r;
-	int		g;
-	int		b;
-}	t_ambient;
+    int     cnt;
+    int     err;
+    double  ratio;
+    int     r;
+    int     g;
+    int     b;
+}   t_ambient;
 
+//x,y,z_pos should be double
+//x,y,z_vec range [-1.0,1.0]
+//fov range[0,180]
 typedef struct s_camera
 {
-	char	*x_coord;
-	char	*y_coord;
-	char	*z_coord;
+    int     cnt;
+    int     err;
+	double  x_pos;
+	double  y_pos;
+    double  z_pos;
 	int		x_vec;
 	int		y_vec;
 	int		z_vec;
 	int		fov;
 }	t_camera;
 
+//x,y,z_pos should be double
+//ratio range [0.0,1.0]
+//rgb range [0-255]
 typedef struct s_light
 {
-	char	*x_coord;
-	char	*y_coord;
-	char	*z_coord;
-	char	*ratio;
+    int     cnt;
+	double  x_pos;
+	double  y_pos;
+    double  z_pos;
+	double  ratio;
 	int		r;
 	int		g;
 	int		b;
 }	t_light;
 
+//x,y,z_pos should be double
+//diameter should be double
+//rgb range [0-255]
 typedef struct s_sphere
 {
-	char	*x_coord;
-	char	*y_coord;
-	char	*z_coord;
-	char	*diameter;
+    int     cnt;
+	double  x_pos;
+	double  y_pos;
+    double  z_pos;
+	double  diameter;
 	int		r;
 	int		g;
 	int		b;
 }	t_sphere;
 
+//x,y,z_pos should be double
+//x,y,z_vec range [-1.0,1.0]
+//rgb range [0-255]
 typedef struct s_plane
 {
-	char	*x_coord;
-	char	*y_coord;
-	char	*z_coord;
+    int     cnt;
+	double  x_pos;
+	double  y_pos;
+    double  z_pos;
 	int		x_vec;
 	int		y_vec;
 	int		z_vec;
@@ -75,16 +92,22 @@ typedef struct s_plane
 	int		b;
 }	t_plane;
 
+//x,y,z_pos should be double
+//x,y,z_vec range [-1.0,1.0]
+//diameter should be double
+//height should be double
+//rgb range [0-255]
 typedef struct s_cylinder
 {
-	char	*x_coord;
-	char	*y_coord;
-	char	*z_coord;
+    int     cnt;
+	double  x_pos;
+	double  y_pos;
+    double  z_pos;
 	int		x_vec;
 	int		y_vec;
 	int		z_vec;
-	char	*diameter;
-	char	*height;
+	double  diameter;
+	double  height;
 	int		r;
 	int		g;
 	int		b;
@@ -100,84 +123,50 @@ typedef struct s_scene
 	t_cylinder	**cylinder;
 }	t_scene;
 
+//parse_arg
+int     check_extention(char *str);
+void    parse_arg(char *argv);
 
-/*
-**	main.c
-*/
+//parse_map
+int     check_id(t_scene *scene, char **line);
+void    parse_map(t_scene *scene, char *argv);
+
+//init_struct_1
+void    init_struct_ambient(t_scene *scene);
+void    init_struct_camera(t_scene *scene);
+void    init_struct_light(t_scene *scene);
+void    init_struct(t_scene *scene);
+
+//init_struct_2
+void    init_struct_sphere(t_scene *scene);
+void    init_struct_plane(t_scene *scene);
+void    init_struct_cylinder(t_scene *scene);
+
+//parse_ambient
+int     parse_ambient_ratio(t_scene *scene, char *s);
+int     parse_ambient_rgb(t_scene *scene, char *s);
+void    parse_ambient(t_scene *scene, char **line);
+
+//parse_camera
+int     parse_camera_xyz(t_scene *scene, char *s);
+int     parse_camera_norm_vec(t_scene *scene, char *s);
+int     parse_camera_fov(t_scene *scene, char *s);
+void    parse_camera(t_scene *scene, char **line);
+
+//parse_utils
+int     check_line_token(char **line, int cnt);
+int     check_small_token(char *token);
+
+//utils
+void    err_msg(char *str);
+void    ft_free_2d(char **str);
+void    ft_free_struct(t_scene *scene);
 
 
-/*
-**	scene_parse.c
-*/
-
-/*
-**	utils.c
-*/
-
-void	print_error_and_exit(char *str);
-int		check_file_extention(char *str);
-int	check_identifier(char *str, char *head);
-
-/*
-**	parse_utils.c
-*/
-
-int	check_token_counter(char *str, char delim, int count);
-void	free_2d(char **str);
-
-/*
-**	parse_ambient.c
-*/
-
-int parse_ambient_ratio(t_scene *scene, char *s);
-int	parse_ambient_rgb(t_scene *scene, char *s);
-void	parse_ambient(t_scene *scene, char *s);
-
-/*
-**	parse_camera.c
-*/
-
-int parse_camera_norm_vec(t_scene *scene, char *s);
-int parse_camera_xyz(t_scene *scene, char *s);
-int parse_camera_fov(t_scene *scene, char *s);
-void    parse_camera(t_scene *scene, char *s);
-
-/*
-**	parse_light.c
-*/
-
-int parse_light_xyz(t_scene *scene, char *s);
-int parse_light_ratio(t_scene *scene, char *s);
-int	parse_light_rgb(t_scene *scene, char *s);
-void    parse_light(t_scene *scene, char *s);
-
-/*
-**	parse_sphere.c
-*/
-
-int parse_sphere_xyz(t_scene *scene, char *s, int i);
-int parse_sphere_diameter(t_scene *scene, char *s, int i);
-int	parse_sphere_rgb(t_scene *scene, char *s, int i);
-void    parse_sphere(t_scene *scene, char *s);
-
-/*
-**	parse_plane.c
-*/
-
-int parse_plane_xyz(t_scene *scene, char *s, int i);
-int parse_plane_norm_vec(t_scene *scene, char *s, int i);
-int	parse_plane_rgb(t_scene *scene, char *s, int i);
-void    parse_plane(t_scene *scene, char *s);
-
-/*
-**	parse_cylinder.c
-*/
-
-int parse_cylinder_xyz(t_scene *scene, char *s, int i);
-int parse_cylinder_norm_vec(t_scene *scene, char *s, int i);
-int parse_cylinder_diameter(t_scene *scene, char *s, int i);
-int parse_cylinder_height(t_scene *scene, char *s, int i);
-int	parse_cylinder_rgb(t_scene *scene, char *s, int i);
-void    parse_cylinder(t_scene *scene, char *s);
+//main
+/**/
+int     check_err_in_struct(t_scene *scene);
+int     minirt_main(char **argv);
+int     main(int argc, char **argv);
 
 #endif

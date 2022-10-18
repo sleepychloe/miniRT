@@ -3,50 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sucho <sucho@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/14 21:49:44 by sucho             #+#    #+#             */
-/*   Updated: 2022/09/15 16:30:29 by sucho            ###   ########.fr       */
+/*   Created: 2022/10/18 20:17:22 by yhwang            #+#    #+#             */
+/*   Updated: 2022/10/18 20:23:58 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	check_token_counter(char *str, char delim, int count)
+int check_line_token(char **line, int cnt)
 {
-	int		i;
-	char	**tokens;
-	
-	i = 0;
-    tokens = ft_split(str, delim);
-	while (tokens + i)
-	{
-		if (! *(tokens + i))
-			break ;
-		i++;
-	}
-	if (i != count)
-		return (0);
-	return (1);
+    int     i;
+    char    **s;
+
+    i = 0;
+    s = ft_split(*line, ' ');
+    while (s[i])
+    {
+        i++;
+    }
+    ft_free_2d(s);
+    if (i != cnt)
+        return (1);
+    return (0);
 }
 
-int	check_identifier(char *str, char *head)
+int check_small_token(char *token)
 {
-	char	**tokens;
-	
-    tokens = ft_split(str, ' ');
-	if (ft_strncmp(tokens[0], head, ft_strlen(head)) == 0 && 
-			(ft_strlen(tokens[0]) == ft_strlen(head)))
-		return (0);
-	return (1);
-}
+    int     i;
+    char    **s;
 
-void	free_2d(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		free(str[i++]);
-	free(str);
+    i = 0;
+    s = ft_split(token, ',');
+    while (s[i])
+    {
+        i++;
+    }
+    ft_free_2d(s);
+    if (i != 3)
+        return (1);
+    return (0);
 }
