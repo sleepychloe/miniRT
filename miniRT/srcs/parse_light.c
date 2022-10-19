@@ -6,12 +6,12 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 01:29:32 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 06:51:11 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/19 20:48:15 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
-
+/*
 int	parse_light_xyz(t_scene *scene, char *s)
 {
 	char	**c;
@@ -58,7 +58,7 @@ void	parse_light(t_scene *scene, char **line)
 	s = ft_split(*line, ' ');
 	if (ft_strlen(s[0]) != 1)
 		scene->light->err = 1;
-	if (check_line_token(line, 4))
+	if (token_count(s, 4))
 		scene->light->err = 2;
 	if (check_small_token(s[1]))
 		scene->light->err = 3;
@@ -73,3 +73,4 @@ void	parse_light(t_scene *scene, char **line)
 	ft_free_2d(s);
 	scene->light->cnt++;
 }
+*/

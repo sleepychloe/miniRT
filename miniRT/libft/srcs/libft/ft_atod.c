@@ -6,11 +6,44 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:38:42 by yhwang            #+#    #+#             */
-/*   Updated: 2022/09/19 18:27:12 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/19 22:41:32 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
+
+int	check_valid_atod(int c)
+{
+	return (c == '.' || c == '-' || ('0' <= c && c <= '9'));
+}
+
+int	check_valid_str_atod(const char *str)
+{
+	int	i;
+	int	point;
+
+	i = 0;
+	while (i < (int)ft_strlen(str))
+	{
+		if (!check_valid_atod(str[i++]))
+			return (1);
+	}
+	if (str[0] == '.')
+		return (1);
+	if (str[ft_strlen(str) - 1] == '.')
+		return (1);
+	i = 0;
+	point = 0;
+	while (i < (int)ft_strlen(str))
+	{
+		if (str[i] == '.')
+			point++;
+		i++;
+	}
+	if (point > 1)
+		return (1);
+	return (0);
+}
 
 void	ft_init(int *sign, int *nbr, int *cnt_zero, double *decimal_point)
 {
@@ -20,7 +53,7 @@ void	ft_init(int *sign, int *nbr, int *cnt_zero, double *decimal_point)
 	*decimal_point = 0.0;
 }
 
-double	ft_atod(const char *str)
+double	ft_atod_start(const char *str)
 {
 	int		sign;
 	int		nbr;
@@ -45,4 +78,12 @@ double	ft_atod(const char *str)
 	while (cnt_zero-- || decimal_point >= 1)
 		decimal_point /= 10;
 	return (sign * (nbr + decimal_point));
+}
+
+double	ft_atod(const char *str)
+{
+	if (check_valid_str_atod(str))
+		return (-9999);
+	else
+		return (ft_atod_start(str));
 }

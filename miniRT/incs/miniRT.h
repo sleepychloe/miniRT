@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 07:07:57 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/19 23:13:22 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ lighting range [0.0,1.0]
 rgb range [0-255]
 err code	1: identifier error
 		2: line token error
-		3: rbg token error
-		4: lighting value error
+		3: lighting value error
+		4: rbg token error
 		5: rgb value error
 */
 typedef struct s_ambient
@@ -45,8 +45,8 @@ fov range[0,180]
 err code	1: identifier error
 		2: line token error
 		3: xyz position token error
-		4: xyz normalized vector token error
-		5: xyz position value error
+		4: xyz position value error
+		5: xyz normalized vector token error
 		6: xyz normalized vector value error
 		7: fov value error
 */
@@ -70,9 +70,9 @@ rgb range [0-255]
 err code	1: identifier error
 		2: line token error
 		3: xyz position token error
-		4: rbg token error
-		5: xyz position value error
-		6: brightness value error
+		4: xyz position value error
+		5: brightness value error
+		6: rbg token error
 		7: rgb value error
 */
 typedef struct s_light
@@ -119,6 +119,8 @@ rgb range [0-255]
 */
 typedef struct s_plane
 {
+	int		check;
+	int		err;
 	double	x_pos;
 	double	y_pos;
 	double	z_pos;
@@ -139,6 +141,8 @@ rgb range [0-255]
 */
 typedef struct s_cylinder
 {
+	int		check;
+	int		err;
 	double	x_pos;
 	double	y_pos;
 	double	z_pos;
@@ -162,14 +166,6 @@ typedef struct s_scene
 	t_cylinder	**cylinder;
 }	t_scene;
 
-// parse_arg
-int		check_extention(char *str);
-void	parse_arg(char *argv);
-
-// parse_map
-void	check_id(t_scene *scene, char **line, int fd);
-void	parse_map(t_scene *scene, char *argv);
-
 // init_struct_1
 void	init_struct_ambient(t_scene *scene);
 void	init_struct_camera(t_scene *scene);
@@ -177,26 +173,44 @@ void	init_struct_light(t_scene *scene);
 void	init_struct(t_scene *scene);
 
 // init_struct_2
-void	init_struct_sphere(t_scene *scene);
-void	init_struct_plane(t_scene *scene);
-void	init_struct_cylinder(t_scene *scene);
+void	init_struct_sphere(t_scene *scene, int i);
+void	init_struct_plane(t_scene *scene, int i);
+void	init_struct_cylinder(t_scene *scene, int i);
+
+// parse_arg
+int		check_extention(char *str);
+void	parse_arg(t_scene *scene, char *argv);
+
+// parse_map
+void	finish_gnl(t_scene *scene, char **line, int fd, int err);
+void	check_id(t_scene *scene, char **line, int fd);
+void	parse_map(t_scene *scene, char *argv);
 
 // parse_ambient
-int		parse_ambient_lighting(t_scene *scene, char *s);
-int		parse_ambient_rgb(t_scene *scene, char *s);
+int	parse_ambient_token(t_scene *scene, char **token);
+int	parse_ambient_lighting(t_scene *scene, char **token);
+int	put_ambient_rgb(t_scene *scene, char **rgb);
+int	parse_ambient_rgb(t_scene *scene, char **token, char **rgb);
 void	parse_ambient(t_scene *scene, char **line);
 
 // parse_camera
-int		parse_camera_xyz(t_scene *scene, char *s);
-int		parse_camera_norm_vec(t_scene *scene, char *s);
-int		parse_camera_fov(t_scene *scene, char *s);
+int	parse_camera_token(t_scene *scene, char **token);
+int	put_camera_xyz_pos(t_scene *scene, char **xyz_pos);
+int	parse_camera_xyz_pos(t_scene *scene, char **token, char **xyz_pos);
+int	put_camera_xyz_vec(t_scene *scene, char **xyz_vec);
+int	parse_camera_xyz_vec(t_scene *scene, char **token, char **xyz_pos,
+		char **xyz_vec);
+int	parse_camera_fov(t_scene *scene, char **token, char **xyz_pos,
+		char **xyz_vec);
 void	parse_camera(t_scene *scene, char **line);
 
+/*
 // parse_light
 int		parse_light_xyz(t_scene *scene, char *s);
 int		parse_light_brightness(t_scene *scene, char *s);
 int		parse_light_rgb(t_scene *scene, char *s);
 void	parse_light(t_scene *scene, char **line);
+*/
 
 // parse_err_1
 int		err_check_ambient(t_scene *scene);
@@ -204,11 +218,8 @@ int		err_check_camera(t_scene *scene);
 int		err_check_light(t_scene *scene);
 int		check_parse_error(t_scene *scene);
 
-// parse_utils
-int		check_line_token(char **line, int cnt);
-int		check_small_token(char *token);
-
 // utils
+int		token_count(char **token, int cnt);
 void	err_msg(char *str);
 void	ft_free_2d(char **str);
 void	ft_free_struct(t_scene *scene);

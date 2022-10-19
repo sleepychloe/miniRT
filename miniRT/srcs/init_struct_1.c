@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:51:02 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 06:59:08 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/19 17:20:01 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_struct_ambient(t_scene *scene)
 	if (!(scene->ambient))
 	{
 		err_msg("Malloc error\n");
+		free(scene);
 		exit(1);
 	}
 	scene->ambient->cnt = 0;
@@ -34,6 +35,8 @@ void	init_struct_camera(t_scene *scene)
 	if (!(scene->camera))
 	{
 		err_msg("Malloc error\n");
+		free(scene->ambient);
+		free(scene);
 		exit(1);
 	}
 	scene->camera->cnt = 0;
@@ -53,6 +56,9 @@ void	init_struct_light(t_scene *scene)
 	if (!(scene->light))
 	{
 		err_msg("Malloc error\n");
+		free(scene->ambient);
+		free(scene->camera);
+		free(scene);
 		exit(1);
 	}
 	scene->light->cnt = 0;
@@ -71,7 +77,7 @@ void	init_struct(t_scene *scene)
 	init_struct_ambient(scene);
 	init_struct_camera(scene);
 	init_struct_light(scene);
-	init_struct_sphere(scene);
-	init_struct_plane(scene);
-	init_struct_cylinder(scene);
+	init_struct_sphere(scene, 0);
+	init_struct_plane(scene, 0);
+	init_struct_cylinder(scene, 0);
 }

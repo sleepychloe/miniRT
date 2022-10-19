@@ -6,26 +6,15 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:14:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 06:58:06 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/19 22:44:14 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	minirt_main(char **argv)
+void	print_struct(t_scene *scene)
 {
-	t_scene	*scene;
-
-	scene = (t_scene *)malloc(sizeof(t_scene));
-	if (!scene)
-	{
-		err_msg("Malloc error");
-		exit(1);
-	}
-	init_struct(scene);
-	parse_arg(argv[1]);
-	parse_map(scene, argv[1]);
-	/*
+/*	
 	printf("\n");
 	printf("-----struct ambient--------\n");
 	printf("cnt\t\t: %d\n", scene->ambient->cnt);
@@ -35,6 +24,7 @@ int	minirt_main(char **argv)
 	printf("g\t\t: %d\n", scene->ambient->g);
 	printf("b\t\t: %d\n", scene->ambient->b);
 	printf("\n");
+*/
 
 	printf("-----struct camera---------\n");
 	printf("cnt\t\t: %d\n", scene->camera->cnt);
@@ -47,6 +37,7 @@ int	minirt_main(char **argv)
 	printf("z_vec\t\t: %d\n", scene->camera->z_vec);
 	printf("fov\t\t: %d\n", scene->camera->fov);
 	printf("\n");
+/*
 	printf("-----struct light----------\n");
 	printf("cnt\t\t: %d\n", scene->light->cnt);
 	printf("err\t\t: %d\n", scene->light->err);
@@ -58,8 +49,10 @@ int	minirt_main(char **argv)
 	printf("g\t\t: %d\n", scene->light->g);
 	printf("b\t\t: %d\n", scene->light->b);
 	printf("\n");
+
 	printf("-----struct sphere1--------\n");
-	printf("cnt\t\t: %d\n", scene->sphere[0]->cnt);
+	printf("check\t\t: %d\n", scene->sphere[0]->check);
+	printf("err\t\t: %d\n", scene->sphere[0]->err);
 	printf("x_pos\t\t: %.1f\n", scene->sphere[0]->x_pos);
 	printf("y_pos\t\t: %.1f\n", scene->sphere[0]->y_pos);
 	printf("z_pos\t\t: %.1f\n", scene->sphere[0]->z_pos);
@@ -68,8 +61,10 @@ int	minirt_main(char **argv)
 	printf("g\t\t: %d\n", scene->sphere[0]->g);
 	printf("b\t\t: %d\n", scene->sphere[0]->b);
 	printf("\n");
+
 	printf("-----struct plane1---------\n");
-	printf("cnt\t\t: %d\n", scene->plane[0]->cnt);
+	printf("check\t\t: %d\n", scene->plane[0]->check);
+	printf("err\t\t: %d\n", scene->plane[0]->err);
 	printf("x_pos\t\t: %.1f\n", scene->plane[0]->x_pos);
 	printf("y_pos\t\t: %.1f\n", scene->plane[0]->y_pos);
 	printf("z_pos\t\t: %.1f\n", scene->plane[0]->z_pos);
@@ -80,8 +75,10 @@ int	minirt_main(char **argv)
 	printf("g\t\t: %d\n", scene->plane[0]->g);
 	printf("b\t\t: %d\n", scene->plane[0]->b);
 	printf("\n");
+
 	printf("-----struct cylinder1-----\n");
-	printf("cnt\t\t: %d\n", scene->cylinder[0]->cnt);
+	printf("check\t\t: %d\n", scene->cylinder[0]->check);
+	printf("err\t\t: %d\n", scene->cylinder[0]->err);
 	printf("x_pos\t\t: %.1f\n", scene->cylinder[0]->x_pos);
 	printf("y_pos\t\t: %.1f\n", scene->cylinder[0]->y_pos);
 	printf("z_pos\t\t: %.1f\n", scene->cylinder[0]->z_pos);
@@ -95,6 +92,22 @@ int	minirt_main(char **argv)
 	printf("b\t\t: %d\n", scene->cylinder[0]->b);
 	printf("\n");
 	*/
+}
+
+int	minirt_main(char **argv)
+{
+	t_scene	*scene;
+
+	scene = (t_scene *)malloc(sizeof(t_scene));
+	if (!scene)
+	{
+		err_msg("Malloc error");
+		exit(1);
+	}
+	init_struct(scene);
+	parse_arg(scene, argv[1]);
+	parse_map(scene, argv[1]);
+	print_struct(scene);//erase later
 	if (check_parse_error(scene))
 	{
 		ft_free_struct(scene);
@@ -112,9 +125,6 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	else
-	{
 		minirt_main(argv);
-		printf("\n\nOK\n\n");
-	}
 	return (0);
 }
