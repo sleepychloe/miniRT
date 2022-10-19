@@ -1,46 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_arg.c                                        :+:      :+:    :+:   */
+/*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 17:12:07 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 06:54:46 by yhwang           ###   ########.fr       */
+/*   Created: 2022/10/19 02:42:21 by yhwang            #+#    #+#             */
+/*   Updated: 2022/10/19 06:47:54 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	check_extention(char *str)
+void	parse_sphere(t_scene *scene, char **line, char ***s)
 {
-	int	len;
+	int	i;
 
-	len = ft_strlen(str);
-	if (len <= 3)
+	i = 0;
+	while (1)
 	{
-		err_msg("File extention error");
-		return (1);
+		if (scene->sphere[i]->check)
+			i++;
+		else
+		{
+			if (i > 0)
+			{
+				scene->sphere[i] = (t_sphere *)malloc(sizeof(t_sphere));
+			}
+			break ;
+		}
 	}
-	if (!(str[len - 3] == '.' && str[len - 2] == 'r' && str[len - 1] == 't'))
+	if (!(scene->sphere[i]))
 	{
-		err_msg("File extention error");
-		return (1);
+		ft_free_struct(scene);
+		ft_free_2d(***s);
 	}
-	return (0);
 }
 
-void	parse_arg(char *argv)
+int	parse_sphere(t_scene *scene, char **line)
 {
-	int	fd;
-
-	fd = open(argv, O_RDONLY);
-	if (!fd || fd < 0)
-	{
-		err_msg("File open error");
-		exit(1);
-	}
-	if (check_extention(argv))
-		exit(1);
-	close(fd);
 }

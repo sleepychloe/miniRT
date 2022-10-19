@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/10/18 20:38:33 by yhwang           ###   ########.fr        #
+#    Updated: 2022/10/19 02:32:21 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ FILES = main \
 		init_struct_2 \
 		parse_ambient \
 		parse_camera \
+		parse_light \
+		parse_err_1 \
 		parse_utils \
 		utils
 
