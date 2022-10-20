@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 20:28:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 23:15:59 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/20 15:35:04 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,53 @@
 int	parse_camera_token(t_scene *scene, char **token)
 {
 	if (!token)
+	{
+		scene->camera->err = ERR_MALLOC;
 		return (1);
+	}
 	if (ft_strlen(token[0]) != 1)
-		scene->ambient->err = 1;
+	{
+		scene->camera->err = ERR_IDENTIFIER;
+		ft_free_all_2d(token, NULL, NULL, NULL);
+		return (1);
+	}
 	if (token_count(token, 4))
 	{
-		scene->camera->err = 2;
-		ft_free_2d(token);
+		scene->camera->err = ERR_LINE_TOKEN;
+		ft_free_all_2d(token, NULL, NULL, NULL);
 		return (1);
 	}
 	return (0);
 }
 
-int	put_camera_xyz_pos(t_scene *scene, char **xyz_pos)
+int	check_value_camera_xyz_pos(t_scene *scene, char **xyz_pos)
 {
-	if (ft_atod(xyz_pos[0]) == -9999.0 || ft_atod(xyz_pos[1]) == -9999.0
-		|| ft_atod(xyz_pos[2]) == -9999.0)
+	if (ft_atod(xyz_pos[0]) == ERR_ATOD || ft_atod(xyz_pos[1]) == ERR_ATOD
+		|| ft_atod(xyz_pos[2]) == ERR_ATOD)
 	{
-		scene->camera->err = 4;
+		scene->camera->err = ERR_XYZ_POS_VALUE;
+		return (1);
+	}
+	return (0);
+}
+
+int	parse_camera_xyz_pos(t_scene *scene, char **token, char **xyz_pos)
+{
+	if (!xyz_pos)
+	{
+		scene->camera->err = ERR_MALLOC;
+		ft_free_all_2d(token, NULL, NULL, NULL);
+		return (1);
+	}
+	if (token_count(xyz_pos, 3))
+	{
+		scene->camera->err = ERR_XYZ_POS_TOKEN;
+		ft_free_all_2d(token, xyz_pos, NULL, NULL);
+		return (1);
+	}
+	if (check_value_camera_xyz_pos(scene, xyz_pos))
+	{
+		ft_free_all_2d(token, xyz_pos, NULL, NULL);
 		return (1);
 	}
 	scene->camera->x_pos = ft_atod(xyz_pos[0]);
@@ -41,44 +70,21 @@ int	put_camera_xyz_pos(t_scene *scene, char **xyz_pos)
 	return (0);
 }
 
-
-int	parse_camera_xyz_pos(t_scene *scene, char **token, char **xyz_pos)
+int	check_value_camera_xyz_vec(t_scene *scene, char **xyz_vec)
 {
-	if (!xyz_pos)
+	if (ft_atoi(xyz_vec[0]) == ERR_ATOI || ft_atoi(xyz_vec[1]) == ERR_ATOI
+		|| ft_atoi(xyz_vec[2]) == ERR_ATOI)
 	{
-		ft_free_2d(token);
+		scene->camera->err = ERR_XYZ_VEC_VALUE;
 		return (1);
 	}
-	if (token_count(xyz_pos, 3))
-	{
-		scene->camera->err = 3;
-		ft_free_2d(token);
-		ft_free_2d(xyz_pos);
-		return (1);
-	}
-	if (put_camera_xyz_pos(scene, xyz_pos))
-	{
-		ft_free_2d(token);
-		ft_free_2d(xyz_pos);
-		return (1);
-	}
-	return (0);
-}
-
-int	put_camera_xyz_vec(t_scene *scene, char **xyz_vec)
-{
-	if (ft_atoi(xyz_vec[0]) == -9999 || ft_atoi(xyz_vec[1]) == -9999
-		|| ft_atoi(xyz_vec[2]) == -9999
-		|| !(-1 <= ft_atoi(xyz_vec[0]) && ft_atoi(xyz_vec[0]) <= 1)
+	if ( !(-1 <= ft_atoi(xyz_vec[0]) && ft_atoi(xyz_vec[0]) <= 1)
 		|| !(-1 <= ft_atoi(xyz_vec[1]) && ft_atoi(xyz_vec[1]) <= 1)
 		|| !(-1 <= ft_atoi(xyz_vec[2]) && ft_atoi(xyz_vec[2]) <= 1))
 	{
-		scene->camera->err = 6;
+		scene->camera->err = ERR_XYZ_VEC_VALUE;
 		return (1);
 	}
-	scene->camera->x_vec = ft_atoi(xyz_vec[0]);
-	scene->camera->y_vec = ft_atoi(xyz_vec[1]);
-	scene->camera->z_vec = ft_atoi(xyz_vec[2]);
 	return (0);
 }
 
@@ -87,38 +93,40 @@ int	parse_camera_xyz_vec(t_scene *scene, char **token, char **xyz_pos,
 {
 	if (!xyz_vec)
 	{
-		ft_free_2d(token);
-		ft_free_2d(xyz_pos);
+		scene->camera->err = ERR_MALLOC;
+		ft_free_all_2d(token, xyz_pos, NULL, NULL);
 		return (1);
 	}
 	if (token_count(xyz_vec, 3))
 	{
-		scene->camera->err = 5;
-		ft_free_2d(token);
-		ft_free_2d(xyz_pos);
-		ft_free_2d(xyz_vec);
+		scene->camera->err = ERR_XYZ_VEC_TOKEN;
+		ft_free_all_2d(token, xyz_pos, xyz_vec, NULL);
 		return (1);
 	}
-	if (put_camera_xyz_vec(scene, xyz_vec))
+	if (check_value_camera_xyz_vec(scene, xyz_vec))
 	{
-		ft_free_2d(token);
-		ft_free_2d(xyz_pos);
-		ft_free_2d(xyz_vec);
+		ft_free_all_2d(token, xyz_pos, xyz_vec, NULL);
 		return (1);
 	}
+	scene->camera->x_vec = ft_atoi(xyz_vec[0]);
+	scene->camera->y_vec = ft_atoi(xyz_vec[1]);
+	scene->camera->z_vec = ft_atoi(xyz_vec[2]);
 	return (0);
 }
 
 int	parse_camera_fov(t_scene *scene, char **token, char **xyz_pos,
 		char **xyz_vec)
 {
-	if (ft_atoi(token[3]) == -9999
-		|| !(0 <= ft_atoi(token[3]) && ft_atoi(token[3]) <= 180))
+	if (ft_atoi(token[3]) == ERR_ATOI)
 	{
-		scene->camera->err = 7;
-		ft_free_2d(token);
-		ft_free_2d(xyz_pos);
-		ft_free_2d(xyz_vec);
+		scene->camera->err = ERR_FOV_VALUE;
+		ft_free_all_2d(token, xyz_pos, xyz_vec, NULL);
+		return (1);
+	}
+	if (!(0 <= ft_atoi(token[3]) && ft_atoi(token[3]) <= 180))
+	{
+		scene->camera->err = ERR_FOV_VALUE;
+		ft_free_all_2d(token, xyz_pos, xyz_vec, NULL);
 		return (1);
 	}
 	scene->camera->fov = ft_atoi(token[3]);
@@ -142,8 +150,6 @@ void	parse_camera(t_scene *scene, char **line)
 		return ;
 	if (parse_camera_fov(scene, token, xyz_pos, xyz_vec))
 		return ;
-	ft_free_2d(token);
-	ft_free_2d(xyz_pos);
-	ft_free_2d(xyz_vec);
+	ft_free_all_2d(token, xyz_pos, xyz_vec, NULL);
 	scene->camera->cnt++;
 }

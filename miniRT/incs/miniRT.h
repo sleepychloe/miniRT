@@ -6,12 +6,32 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 23:13:22 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/20 15:38:26 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
+
+# define ERR_ATOI	-9999
+# define ERR_ATOD	-9999.0
+
+# define ERR_MALLOC		69
+# define ERR_IDENTIFIER		70
+# define ERR_LINE_TOKEN		71
+
+# define ERR_LIGHTING_VALUE	72
+# define ERR_FOV_VALUE		73
+# define ERR_BRIGHTNESS_VALUE	74
+# define ERR_DIAMETER_VALUE	75
+# define ERR_HEIGHT_VALUE	76
+
+# define ERR_RGB_TOKEN		77
+# define ERR_RGB_VALUE		78
+# define ERR_XYZ_POS_TOKEN	79
+# define ERR_XYZ_POS_VALUE	80
+# define ERR_XYZ_VEC_TOKEN	81
+# define ERR_XYZ_VEC_VALUE	82
 
 # include "../libft/incs/libft.h"
 # include "../libft/incs/get_next_line.h"
@@ -22,11 +42,6 @@
 /*
 lighting range [0.0,1.0]
 rgb range [0-255]
-err code	1: identifier error
-		2: line token error
-		3: lighting value error
-		4: rbg token error
-		5: rgb value error
 */
 typedef struct s_ambient
 {
@@ -42,13 +57,6 @@ typedef struct s_ambient
 x,y,z_pos should be double
 x,y,z_vec range [-1.0,1.0]
 fov range[0,180]
-err code	1: identifier error
-		2: line token error
-		3: xyz position token error
-		4: xyz position value error
-		5: xyz normalized vector token error
-		6: xyz normalized vector value error
-		7: fov value error
 */
 typedef struct s_camera
 {
@@ -67,13 +75,6 @@ typedef struct s_camera
 x,y,z_pos should be double
 brightness range [0.0,1.0]
 rgb range [0-255]
-err code	1: identifier error
-		2: line token error
-		3: xyz position token error
-		4: xyz position value error
-		5: brightness value error
-		6: rbg token error
-		7: rgb value error
 */
 typedef struct s_light
 {
@@ -92,12 +93,6 @@ typedef struct s_light
 x,y,z_pos should be double
 diameter should be double
 rgb range [0-255]
-err code	1:
-		2:
-		3:
-		4:
-		5:
-		6:
 */
 typedef struct s_sphere
 {
@@ -189,15 +184,15 @@ void	parse_map(t_scene *scene, char *argv);
 // parse_ambient
 int	parse_ambient_token(t_scene *scene, char **token);
 int	parse_ambient_lighting(t_scene *scene, char **token);
-int	put_ambient_rgb(t_scene *scene, char **rgb);
+int	check_value_ambient_rgb(t_scene *scene, char **rgb);
 int	parse_ambient_rgb(t_scene *scene, char **token, char **rgb);
 void	parse_ambient(t_scene *scene, char **line);
 
 // parse_camera
 int	parse_camera_token(t_scene *scene, char **token);
-int	put_camera_xyz_pos(t_scene *scene, char **xyz_pos);
+int	check_value_camera_xyz_pos(t_scene *scene, char **xyz_pos);
 int	parse_camera_xyz_pos(t_scene *scene, char **token, char **xyz_pos);
-int	put_camera_xyz_vec(t_scene *scene, char **xyz_vec);
+int	check_value_camera_xyz_vec(t_scene *scene, char **xyz_vec);
 int	parse_camera_xyz_vec(t_scene *scene, char **token, char **xyz_pos,
 		char **xyz_vec);
 int	parse_camera_fov(t_scene *scene, char **token, char **xyz_pos,
@@ -222,6 +217,7 @@ int		check_parse_error(t_scene *scene);
 int		token_count(char **token, int cnt);
 void	err_msg(char *str);
 void	ft_free_2d(char **str);
+void	ft_free_all_2d(char **token, char **xyz_pos, char **xyz_vec, char **rgb);
 void	ft_free_struct(t_scene *scene);
 
 // main
