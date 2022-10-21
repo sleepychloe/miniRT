@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 22:03:37 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/21 00:55:01 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ void	check_id(t_scene *scene, char **line, int fd)
 	else if (ft_strncmp(*line, "C", 1) == 0)
 		parse_camera(scene, line);
 	else if (ft_strncmp(*line, "L", 1) == 0)
-		//parse_light(scene, line);
-		printf("L\n");
+		parse_light(scene, line);
 	else if (ft_strncmp(*line, "sp", 2) == 0)
-		printf("sp\n");
+		parse_sphere(scene, line);
 	else if (ft_strncmp(*line, "pl", 2) == 0)
 		printf("pl\n");
 	else if (ft_strncmp(*line, "cy", 2) == 0)
@@ -67,7 +66,7 @@ void	parse_map(t_scene *scene, char *argv)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		if (*line == '\n')
+		if (*line == '\n' || *line == '#')
 		{
 			free(line);
 			continue ;

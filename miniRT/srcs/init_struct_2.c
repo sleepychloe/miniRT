@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0002/01/18 19:05:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 17:19:44 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/21 04:03:52 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,71 +15,47 @@
 void	init_struct_sphere(t_scene *scene, int i)
 {
 	if (i == 0)
-		scene->sphere = (t_sphere **)malloc(sizeof(t_sphere *));
-	scene->sphere[i] = (t_sphere *)malloc(sizeof(t_sphere));
+		scene->sphere = (t_sphere **)ft_calloc(sizeof(t_sphere *), 2);
+	if (i > 0)
+		scene->sphere = (t_sphere **)ft_realloc(scene->sphere,
+			sizeof(t_sphere *) * (i + 1), sizeof(t_sphere *) * (i + 2));
+	scene->sphere[i] = (t_sphere *)ft_calloc(sizeof(t_sphere), 2);
 	if (!(scene->sphere[i]))
 	{
-		ft_free_struct(scene);
 		err_msg("Malloc error\n");
+		ft_free_struct(scene);
 		exit(1);
 	}
-	scene->sphere[i]->check = 0;
-	scene->sphere[i]->err = 0;
-	scene->sphere[i]->x_pos = 0.0;
-	scene->sphere[i]->y_pos = 0.0;
-	scene->sphere[i]->z_pos = 0.0;
-	scene->sphere[i]->diameter = 0.0;
-	scene->sphere[i]->r = 0;
-	scene->sphere[i]->g = 0;
-	scene->sphere[i]->b = 0;
 }
 
 void	init_struct_plane(t_scene *scene, int i)
 {
 	if (i == 0)
-		scene->plane = (t_plane **)malloc(sizeof(t_plane *));
-	scene->plane[i] = (t_plane *)malloc(sizeof(t_plane));
+		scene->plane = (t_plane **)ft_calloc(sizeof(t_plane *), 2);
+	if (i > 0)
+		scene->plane = (t_plane **)ft_realloc(scene->plane,
+			sizeof(t_plane *) * (i + 1), sizeof(t_plane *) * (i + 2));
+	scene->plane[i] = (t_plane *)ft_calloc(sizeof(t_plane), 2);
 	if (!(scene->plane[i]))
 	{
-		ft_free_struct(scene);
 		err_msg("Malloc error\n");
+		ft_free_struct(scene);
 		exit(1);
 	}
-	scene->plane[i]->check = 0;
-	scene->plane[i]->err = 0;
-	scene->plane[i]->x_pos = 0.0;
-	scene->plane[i]->y_pos = 0.0;
-	scene->plane[i]->z_pos = 0.0;
-	scene->plane[i]->x_vec = 0;
-	scene->plane[i]->y_vec = 0;
-	scene->plane[i]->z_vec = 0;
-	scene->sphere[i]->r = 0;
-	scene->sphere[i]->g = 0;
-	scene->sphere[i]->b = 0;
 }
 
 void	init_struct_cylinder(t_scene *scene, int i)
 {
 	if (i == 0)
-		scene->cylinder = (t_cylinder **)malloc(sizeof(t_cylinder *));
-	scene->cylinder[i] = (t_cylinder *)malloc(sizeof(t_cylinder));
+		scene->cylinder = (t_cylinder **)ft_calloc(sizeof(t_cylinder *), 2);
+	if (i > 0)
+		scene->cylinder = (t_cylinder **)ft_realloc(scene->cylinder,
+			sizeof(t_cylinder *) * (i + 1), sizeof(t_cylinder *) * (i + 2));
+	scene->cylinder[i] = (t_cylinder *)ft_calloc(sizeof(t_cylinder), 2);
 	if (!(scene->cylinder[i]))
 	{
-		ft_free_struct(scene);
 		err_msg("Malloc error\n");
+		ft_free_struct(scene);
 		exit(1);
 	}
-	scene->cylinder[i]->check = 0;
-	scene->cylinder[i]->err = 0;
-	scene->cylinder[i]->x_pos = 0.0;
-	scene->cylinder[i]->y_pos = 0.0;
-	scene->cylinder[i]->z_pos = 0.0;
-	scene->cylinder[i]->x_vec = 0;
-	scene->cylinder[i]->y_vec = 0;
-	scene->cylinder[i]->z_vec = 0;
-	scene->cylinder[i]->diameter = 0.0;
-	scene->cylinder[i]->height = 0.0;
-	scene->cylinder[i]->r = 0;
-	scene->cylinder[i]->g = 0;
-	scene->cylinder[i]->b = 0;
 }

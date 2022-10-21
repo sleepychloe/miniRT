@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:51:02 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 17:20:01 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/21 03:14:42 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,18 @@
 
 void	init_struct_ambient(t_scene *scene)
 {
-	scene->ambient = (t_ambient *)malloc(sizeof(t_ambient));
+	scene->ambient = (t_ambient *)ft_calloc(sizeof(t_ambient), 2);
 	if (!(scene->ambient))
 	{
 		err_msg("Malloc error\n");
 		free(scene);
 		exit(1);
 	}
-	scene->ambient->cnt = 0;
-	scene->ambient->err = 0;
-	scene->ambient->lighting = 0.0;
-	scene->ambient->r = 0;
-	scene->ambient->g = 0;
-	scene->ambient->b = 0;
 }
 
 void	init_struct_camera(t_scene *scene)
 {
-	scene->camera = (t_camera *)malloc(sizeof(t_camera));
+	scene->camera = (t_camera *)ft_calloc(sizeof(t_camera), 2);
 	if (!(scene->camera))
 	{
 		err_msg("Malloc error\n");
@@ -39,20 +33,11 @@ void	init_struct_camera(t_scene *scene)
 		free(scene);
 		exit(1);
 	}
-	scene->camera->cnt = 0;
-	scene->camera->err = 0;
-	scene->camera->x_pos = 0.0;
-	scene->camera->y_pos = 0.0;
-	scene->camera->z_pos = 0.0;
-	scene->camera->x_vec = 0;
-	scene->camera->y_vec = 0;
-	scene->camera->z_vec = 0;
-	scene->camera->fov = 0.0;
 }
 
 void	init_struct_light(t_scene *scene)
 {
-	scene->light = (t_light *)malloc(sizeof(t_light));
+	scene->light = (t_light *)ft_calloc(sizeof(t_light), 2);
 	if (!(scene->light))
 	{
 		err_msg("Malloc error\n");
@@ -61,15 +46,6 @@ void	init_struct_light(t_scene *scene)
 		free(scene);
 		exit(1);
 	}
-	scene->light->cnt = 0;
-	scene->light->err = 0;
-	scene->light->x_pos = 0.0;
-	scene->light->y_pos = 0.0;
-	scene->light->z_pos = 0.0;
-	scene->light->brightness = 0.0;
-	scene->light->r = 0;
-	scene->light->g = 0;
-	scene->light->b = 0;
 }
 
 void	init_struct(t_scene *scene)

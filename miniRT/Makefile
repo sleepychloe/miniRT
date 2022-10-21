@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/10/19 20:47:32 by yhwang           ###   ########.fr        #
+#    Updated: 2022/10/21 01:15:35 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,15 @@ FILES = main \
 		parse_arg \
 		parse_map \
 		parse_ambient \
-		parse_camera \
-		parse_light \
+		parse_camera_1 \
+		parse_camera_2 \
+		parse_light_1 \
+		parse_light_2 \
+		parse_sphere \
 		parse_err_1 \
-		utils
+		parse_err_2 \
+		utils \
+		utils_free
 
 INCS_DIR = ./incs
 SRCS_DIR = ./srcs

@@ -6,15 +6,15 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:14:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 22:44:14 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/21 03:58:23 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-void	print_struct(t_scene *scene)
-{
-/*	
+//void	print_struct(t_scene *scene)
+//{
+/*
 	printf("\n");
 	printf("-----struct ambient--------\n");
 	printf("cnt\t\t: %d\n", scene->ambient->cnt);
@@ -24,7 +24,7 @@ void	print_struct(t_scene *scene)
 	printf("g\t\t: %d\n", scene->ambient->g);
 	printf("b\t\t: %d\n", scene->ambient->b);
 	printf("\n");
-*/
+
 
 	printf("-----struct camera---------\n");
 	printf("cnt\t\t: %d\n", scene->camera->cnt);
@@ -37,7 +37,7 @@ void	print_struct(t_scene *scene)
 	printf("z_vec\t\t: %d\n", scene->camera->z_vec);
 	printf("fov\t\t: %d\n", scene->camera->fov);
 	printf("\n");
-/*
+
 	printf("-----struct light----------\n");
 	printf("cnt\t\t: %d\n", scene->light->cnt);
 	printf("err\t\t: %d\n", scene->light->err);
@@ -49,7 +49,8 @@ void	print_struct(t_scene *scene)
 	printf("g\t\t: %d\n", scene->light->g);
 	printf("b\t\t: %d\n", scene->light->b);
 	printf("\n");
-
+*/
+/*
 	printf("-----struct sphere1--------\n");
 	printf("check\t\t: %d\n", scene->sphere[0]->check);
 	printf("err\t\t: %d\n", scene->sphere[0]->err);
@@ -62,6 +63,31 @@ void	print_struct(t_scene *scene)
 	printf("b\t\t: %d\n", scene->sphere[0]->b);
 	printf("\n");
 
+	printf("-----struct sphere2--------\n");
+	printf("check\t\t: %d\n", scene->sphere[1]->check);
+	printf("err\t\t: %d\n", scene->sphere[1]->err);
+	printf("x_pos\t\t: %.1f\n", scene->sphere[1]->x_pos);
+	printf("y_pos\t\t: %.1f\n", scene->sphere[1]->y_pos);
+	printf("z_pos\t\t: %.1f\n", scene->sphere[1]->z_pos);
+	printf("diameter\t: %1.f\n", scene->sphere[1]->diameter);
+	printf("r\t\t: %d\n", scene->sphere[1]->r);
+	printf("g\t\t: %d\n", scene->sphere[1]->g);
+	printf("b\t\t: %d\n", scene->sphere[1]->b);
+	printf("\n");
+
+	printf("-----struct sphere3--------\n");
+	printf("check\t\t: %d\n", scene->sphere[2]->check);
+	printf("err\t\t: %d\n", scene->sphere[2]->err);
+	printf("x_pos\t\t: %.1f\n", scene->sphere[2]->x_pos);
+	printf("y_pos\t\t: %.1f\n", scene->sphere[2]->y_pos);
+	printf("z_pos\t\t: %.1f\n", scene->sphere[2]->z_pos);
+	printf("diameter\t: %1.f\n", scene->sphere[2]->diameter);
+	printf("r\t\t: %d\n", scene->sphere[2]->r);
+	printf("g\t\t: %d\n", scene->sphere[2]->g);
+	printf("b\t\t: %d\n", scene->sphere[2]->b);
+	printf("\n");
+*/
+/*
 	printf("-----struct plane1---------\n");
 	printf("check\t\t: %d\n", scene->plane[0]->check);
 	printf("err\t\t: %d\n", scene->plane[0]->err);
@@ -92,13 +118,13 @@ void	print_struct(t_scene *scene)
 	printf("b\t\t: %d\n", scene->cylinder[0]->b);
 	printf("\n");
 	*/
-}
+//}
 
 int	minirt_main(char **argv)
 {
 	t_scene	*scene;
 
-	scene = (t_scene *)malloc(sizeof(t_scene));
+	scene = (t_scene *)ft_calloc(sizeof(t_scene), 2);
 	if (!scene)
 	{
 		err_msg("Malloc error");
@@ -107,7 +133,7 @@ int	minirt_main(char **argv)
 	init_struct(scene);
 	parse_arg(scene, argv[1]);
 	parse_map(scene, argv[1]);
-	print_struct(scene);//erase later
+	//print_struct(scene);//erase later
 	if (check_parse_error(scene))
 	{
 		ft_free_struct(scene);
