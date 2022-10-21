@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:44:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/20 20:44:46 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/21 06:49:44 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,47 +30,45 @@ int	check_value_camera_xyz_vec(t_scene *scene, char **xyz_vec)
 	return (0);
 }
 
-int	parse_camera_xyz_vec(t_scene *scene, char **token, char **xyz_pos,
-		char **xyz_vec)
+int	parse_camera_xyz_vec(t_scene *scene, char ***s)
 {
-	if (!xyz_vec)
+	if (!s[2])
 	{
 		scene->camera->err = ERR_MALLOC;
-		ft_free_all_2d(token, xyz_pos, NULL, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	if (token_count(xyz_vec, 3))
+	if (token_count(s[2], 3))
 	{
 		scene->camera->err = ERR_XYZ_VEC_TOKEN;
-		ft_free_all_2d(token, xyz_pos, xyz_vec, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_camera_xyz_vec(scene, xyz_vec))
+	if (check_value_camera_xyz_vec(scene, s[2]))
 	{
-		ft_free_all_2d(token, xyz_pos, xyz_vec, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	scene->camera->x_vec = ft_atoi(xyz_vec[0]);
-	scene->camera->y_vec = ft_atoi(xyz_vec[1]);
-	scene->camera->z_vec = ft_atoi(xyz_vec[2]);
+	scene->camera->x_vec = ft_atoi(s[2][0]);
+	scene->camera->y_vec = ft_atoi(s[2][1]);
+	scene->camera->z_vec = ft_atoi(s[2][2]);
 	return (0);
 }
 
-int	parse_camera_fov(t_scene *scene, char **token, char **xyz_pos,
-		char **xyz_vec)
+int	parse_camera_fov(t_scene *scene, char ***s)
 {
-	if (ft_atoi(token[3]) == ERR_ATOI)
+	if (ft_atoi(s[0][3]) == ERR_ATOI)
 	{
 		scene->camera->err = ERR_FOV_VALUE;
-		ft_free_all_2d(token, xyz_pos, xyz_vec, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	if (!(0 <= ft_atoi(token[3]) && ft_atoi(token[3]) <= 180))
+	if (!(0 <= ft_atoi(s[0][3]) && ft_atoi(s[0][3]) <= 180))
 	{
 		scene->camera->err = ERR_FOV_VALUE;
-		ft_free_all_2d(token, xyz_pos, xyz_vec, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	scene->camera->fov = ft_atoi(token[3]);
+	scene->camera->fov = ft_atoi(s[0][3]);
 	return (0);
 }

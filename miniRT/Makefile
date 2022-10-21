@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/10/21 01:15:35 by yhwang           ###   ########.fr        #
+#    Updated: 2022/10/21 07:58:49 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,12 @@ FILES = main \
 		parse_camera_2 \
 		parse_light_1 \
 		parse_light_2 \
-		parse_sphere \
+		parse_sphere_1 \
+		parse_sphere_2 \
+		parse_plane_1 \
+		parse_plane_2 \
+		parse_cylinder_1 \
+		parse_cylinder_2 \
 		parse_err_1 \
 		parse_err_2 \
 		utils \

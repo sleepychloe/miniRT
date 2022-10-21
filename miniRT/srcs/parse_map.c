@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 00:55:01 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/21 07:58:15 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	check_id(t_scene *scene, char **line, int fd)
 	else if (ft_strncmp(*line, "sp", 2) == 0)
 		parse_sphere(scene, line);
 	else if (ft_strncmp(*line, "pl", 2) == 0)
-		printf("pl\n");
+		parse_plane(scene, line);
 	else if (ft_strncmp(*line, "cy", 2) == 0)
-		printf("cy\n");
+		parse_cylinder(scene, line);
 	else
 		err = 1;
 	if (err)

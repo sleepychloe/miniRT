@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 02:18:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 03:58:35 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/21 07:36:29 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,10 @@ int	check_parse_error(t_scene *scene)
 	if (err_check_light(scene))
 		return (1);
 	if (err_check_sphere(scene))
+		return (1);
+	if (err_check_plane(scene))
+		return (1);
+	if (err_check_cylinder(scene))
 		return (1);
 	return (0);
 }

@@ -6,29 +6,29 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:46:18 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/20 23:21:03 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/21 06:55:39 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	parse_light_token(t_scene *scene, char **token)
+int	parse_light_token(t_scene *scene, char ***s)
 {
-	if (!token)
+	if (!s[0])
 	{
 		scene->light->err = ERR_MALLOC;
 		return (1);
 	}
-	if (ft_strlen(token[0]) != 1)
+	if (ft_strlen(s[0][0]) != 1)
 	{
 		scene->light->err = ERR_IDENTIFIER;
-		ft_free_all_2d(token, NULL, NULL, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	if (token_count(token, 4))
+	if (token_count(s[0], 4))
 	{
 		scene->light->err = ERR_LINE_TOKEN;
-		ft_free_all_2d(token, NULL, NULL, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
 	return (0);
@@ -45,66 +45,70 @@ int	check_value_light_xyz_pos(t_scene *scene, char **xyz_pos)
 	return (0);
 }
 
-int	parse_light_xyz_pos(t_scene *scene, char **token, char **xyz_pos)
+int	parse_light_xyz_pos(t_scene *scene, char ***s)
 {
-	if (!xyz_pos)
+	if (!s[1])
 	{
 		scene->light->err = ERR_MALLOC;
-		ft_free_all_2d(token, NULL, NULL, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	if (token_count(xyz_pos, 3))
+	if (token_count(s[1], 3))
 	{
 		scene->light->err = ERR_XYZ_POS_TOKEN;
-		ft_free_all_2d(token, xyz_pos, NULL, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_light_xyz_pos(scene, xyz_pos))
+	if (check_value_light_xyz_pos(scene, s[1]))
 	{
-		ft_free_all_2d(token, xyz_pos, NULL, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	scene->light->x_pos = ft_atod(xyz_pos[0]);
-	scene->light->y_pos = ft_atod(xyz_pos[1]);
-	scene->light->z_pos = ft_atod(xyz_pos[2]);
+	scene->light->x_pos = ft_atod(s[1][0]);
+	scene->light->y_pos = ft_atod(s[1][1]);
+	scene->light->z_pos = ft_atod(s[1][2]);
 	return (0);
 }
 
-int	parse_light_brightness(t_scene *scene, char **token, char **xyz_pos)
+int	parse_light_brightness(t_scene *scene, char ***s)
 {
-	if (ft_atod(token[2]) == ERR_ATOD)
+	if (ft_atod(s[0][2]) == ERR_ATOD)
 	{
 		scene->light->err = ERR_BRIGHTNESS_VALUE;
-		ft_free_all_2d(token, xyz_pos, NULL, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	if ( !(0.0 <= ft_atod(token[2]) && ft_atod(token[2]) <= 1.0))
+	if ( !(0.0 <= ft_atod(s[0][2]) && ft_atod(s[0][2]) <= 1.0))
 	{
 		scene->light->err = ERR_BRIGHTNESS_VALUE;
-		ft_free_all_2d(token, xyz_pos, NULL, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	scene->light->brightness = ft_atod(token[2]);
+	scene->light->brightness = ft_atod(s[0][2]);
 	return (0);
 }
 
 void	parse_light(t_scene *scene, char **line)
 {
-	char	**token;
-	char	**xyz_pos;
-	char	**rgb;
+	char ***s;
 
-	token = ft_split(*line, ' ');
-	if (parse_light_token(scene, token))
+	s = (char ***)ft_calloc(sizeof(char **), 4);
+	if (!s)
+	{
+		err_msg("Malloc error");
 		return ;
-	xyz_pos = ft_split(token[1], ',');
-	if (parse_light_xyz_pos(scene, token, xyz_pos))
+	}
+	s[0] = ft_split(*line, ' ');
+	if (parse_light_token(scene, s))
 		return ;
-	if (parse_light_brightness(scene, token, xyz_pos))
+	s[1] = ft_split(s[0][1], ',');
+	if (parse_light_xyz_pos(scene, s))
 		return ;
-	rgb = ft_split(token[3], ',');
-	if (parse_light_rgb(scene, token, xyz_pos, rgb))
+	if (parse_light_brightness(scene, s))
 		return ;
-	ft_free_all_2d(token, xyz_pos, NULL, rgb);
+	s[2] = ft_split(s[0][3], ',');
+	if (parse_light_rgb(scene, s))
+		return ;
+	ft_free_3d(s);
 	scene->camera->cnt++;
 }

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:58:07 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 04:03:26 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/21 06:50:14 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,6 @@ void	ft_free_2d(char **str)
 	while (str[i])
 		free(str[i++]);
 	free(str);
-}
-
-void	ft_free_all_2d(char **token, char **xyz_pos, char **xyz_vec, char **rgb)
-{
-	if (token != NULL)
-		ft_free_2d(token);
-	if (xyz_pos != NULL)
-		ft_free_2d(xyz_pos);
-	if (xyz_vec != NULL)
-		ft_free_2d(xyz_vec);
-	if (rgb != NULL)
-		ft_free_2d(rgb);
 }
 
 void	ft_free_struct(t_scene *scene)

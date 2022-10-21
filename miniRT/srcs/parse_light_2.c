@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:47:48 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/20 20:48:02 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/21 06:57:07 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,27 @@ int	check_value_light_rgb(t_scene *scene, char **rgb)
 	return (0);
 }
 
-int	parse_light_rgb(t_scene *scene, char **token, char **xyz_pos, char **rgb)
+int	parse_light_rgb(t_scene *scene, char ***s)
 {
-	if (!rgb)
+	if (!s[2])
 	{
 		scene->light->err = ERR_MALLOC;
-		ft_free_all_2d(token, xyz_pos, NULL, NULL);
+		ft_free_3d(s);
 		return (1);
 	}
-	if (token_count(rgb, 3))
+	if (token_count(s[2], 3))
 	{
 		scene->light->err = ERR_RGB_TOKEN;
-		ft_free_all_2d(token, xyz_pos, NULL, rgb);
+		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_light_rgb(scene, rgb))
+	if (check_value_light_rgb(scene, s[2]))
 	{
-		ft_free_all_2d(token, xyz_pos, NULL, rgb);
+		ft_free_3d(s);
 		return (1);
 	}
-	scene->light->r = ft_atoi(rgb[0]);
-	scene->light->g = ft_atoi(rgb[1]);
-	scene->light->b = ft_atoi(rgb[2]);
+	scene->light->r = ft_atoi(s[2][0]);
+	scene->light->g = ft_atoi(s[2][1]);
+	scene->light->b = ft_atoi(s[2][2]);
 	return (0);
 }
