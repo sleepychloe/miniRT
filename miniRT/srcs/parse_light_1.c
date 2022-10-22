@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:46:18 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 00:49:05 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 01:20:53 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,27 +88,28 @@ int	parse_l_brightness(t_scene *scene, char ***s)
 	return (0);
 }
 
-void	parse_l(t_scene *scene, char **line)
+int	parse_l(t_scene *scene, char **line)
 {
 	char	***s;
 
 	if (scene->light->check)
 	{
 		err_msg("Map error: L: already exists");
-		return ;
+		return (1);
 	}
 	s = (char ***)ft_calloc(sizeof(char **), 4);
 	if (!s)
 	{
 		err_msg("Malloc error");
-		return ;
+		return (1);
 	}
 	s[0] = ft_split(*line, ' ');
 	s[1] = ft_split(s[0][1], ',');
 	s[2] = ft_split(s[0][3], ',');
 	if (parse_l_token(scene, s) || parse_l_xyz_pos(scene, s)
 		|| parse_l_brightness(scene, s) || parse_l_rgb(scene, s))
-		return ;
+		return (1);
 	ft_free_3d(s);
 	scene->light->check++;
+	return (0);
 }

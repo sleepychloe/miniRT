@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 00:55:09 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 01:34:50 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,15 @@ int	parse_cy_xyz_pos(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-int	parse_cy_diameter(t_scene *scene, int i, char ***s)
+void	apply_split(char ***s, char **line)
 {
-	if (ft_atod(s[0][3]) == ERR_ATOD)
-	{
-		scene->cylinder[i]->err = ERR_DIAMETER_VALUE;
-		ft_free_3d(s);
-		return (1);
-	}
-	scene->cylinder[i]->diameter = ft_atod(s[0][3]);
-	return (0);
+	s[0] = ft_split(*line, ' ');
+	s[1] = ft_split(s[0][1], ',');
+	s[2] = ft_split(s[0][2], ',');
+	s[3] = ft_split(s[0][5], ',');
 }
 
-void	parse_cy(t_scene *scene, char **line)
+int	parse_cy(t_scene *scene, char **line)
 {
 	int		i;
 	char	***s;
@@ -94,20 +90,17 @@ void	parse_cy(t_scene *scene, char **line)
 	if (!s)
 	{
 		err_msg("Malloc error");
-		return ;
+		return (1);
 	}
-	s[0] = ft_split(*line, ' ');
-	s[1] = ft_split(s[0][1], ',');
-	s[2] = ft_split(s[0][2], ',');
-	s[3] = ft_split(s[0][5], ',');
+	apply_split(s, line);
 	if (parse_cy_token(scene, i, s) || parse_cy_xyz_pos(scene, i, s)
 		|| parse_cy_xyz_vec(scene, i, s) || parse_cy_diameter(scene, i, s)
 		|| parse_cy_height(scene, i, s) || parse_cy_rgb(scene, i, s))
 	{
 		err_check_cy(scene, i);
-		return ;
+		return (1);
 	}
 	ft_free_3d(s);
-	scene->cylinder[i]->check++;
 	scene->n_cylinder++;
+	return (0);
 }

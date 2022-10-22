@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 02:18:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 00:50:43 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 01:13:55 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,22 @@ void	err_check_l(t_scene *scene)
 
 int	check_parse_error(t_scene *scene)
 {
-	if (!(scene->n_sphere))
+	if (!(scene->ambient->check) || !(scene->camera->check)
+		|| !(scene->light->check) || !(scene->n_sphere)
+		|| !(scene->n_plane) || !(scene->n_cylinder))
 	{
-		err_msg("Map error: sp should exist at least once");
-		return (1);
-	}
-	if (!(scene->n_plane))
-	{
-		err_msg("Map error: pl should exist at least once");
-		return (1);
-	}
-	if (!(scene->n_cylinder))
-	{
-		err_msg("Map error: cy should exist at least once");
+		if (!(scene->ambient->check))
+			err_msg("Map error: A should exist at least once");
+		if (!(scene->camera->check))
+			err_msg("Map error: C should exist at least once");
+		if (!(scene->light->check))
+			err_msg("Map error: L should exist at least once");
+		if (!(scene->n_sphere))
+			err_msg("Map error: sp should exist at least once");
+		if (!(scene->n_plane))
+			err_msg("Map error: pl should exist at least once");
+		if (!(scene->n_cylinder))
+			err_msg("Map error: cy should exist at least once");
 		return (1);
 	}
 	return (0);

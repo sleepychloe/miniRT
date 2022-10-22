@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 00:53:17 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 01:26:27 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,19 @@
 
 void	finish_gnl(t_scene *scene, char **line, int fd, int err)
 {
-	if (err == 1)
-	{
+	if (err == 9)
 		err_msg("Map error: invalid character or string exists");
+	free(*line);
+	ft_free_struct(scene);
+	while (1)
+	{
+		*line = get_next_line(fd);
+		if (*line == NULL)
+			break ;
 		free(*line);
-		ft_free_struct(scene);
-		while (1)
-		{
-			*line = get_next_line(fd);
-			if (*line == NULL)
-				break ;
-			free(*line);
-		}
-		close(fd);
-		exit(1);
 	}
+	close(fd);
+	exit(1);
 }
 
 void	check_id(t_scene *scene, char **line, int fd)
@@ -37,19 +35,19 @@ void	check_id(t_scene *scene, char **line, int fd)
 
 	err = 0;
 	if (ft_strncmp(*line, "A", 1) == 0)
-		parse_a(scene, line);
+		err = parse_a(scene, line);
 	else if (ft_strncmp(*line, "C", 1) == 0)
-		parse_c(scene, line);
+		err = parse_c(scene, line);
 	else if (ft_strncmp(*line, "L", 1) == 0)
-		parse_l(scene, line);
+		err = parse_l(scene, line);
 	else if (ft_strncmp(*line, "sp", 2) == 0)
-		parse_sp(scene, line);
+		err = parse_sp(scene, line);
 	else if (ft_strncmp(*line, "pl", 2) == 0)
-		parse_pl(scene, line);
+		err = parse_pl(scene, line);
 	else if (ft_strncmp(*line, "cy", 2) == 0)
-		parse_cy(scene, line);
+		err = parse_cy(scene, line);
 	else
-		err = 1;
+		finish_gnl(scene, line, fd, 9);
 	if (err)
 		finish_gnl(scene, line, fd, err);
 }

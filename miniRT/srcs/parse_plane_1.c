@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:08 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 00:45:57 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 01:21:49 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	parse_pl_xyz_pos(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-void	parse_pl(t_scene *scene, char **line)
+int	parse_pl(t_scene *scene, char **line)
 {
 	int		i;
 	char	***s;
@@ -83,7 +83,7 @@ void	parse_pl(t_scene *scene, char **line)
 	if (!s)
 	{
 		err_msg("Malloc error");
-		return ;
+		return (1);
 	}
 	s[0] = ft_split(*line, ' ');
 	s[1] = ft_split(s[0][1], ',');
@@ -93,9 +93,9 @@ void	parse_pl(t_scene *scene, char **line)
 		|| parse_pl_xyz_vec(scene, i, s) || parse_pl_rgb(scene, i, s))
 	{
 		err_check_pl(scene, i);
-		return ;
+		return (1);
 	}
 	ft_free_3d(s);
-	scene->plane[i]->check++;
 	scene->n_plane++;
+	return (0);
 }

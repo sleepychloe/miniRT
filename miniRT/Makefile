@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/10/21 07:58:49 by yhwang           ###   ########.fr        #
+#    Updated: 2022/10/23 01:36:16 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ FILES = main \
 		parse_plane_2 \
 		parse_cylinder_1 \
 		parse_cylinder_2 \
+		parse_cylinder_3 \
 		parse_err_1 \
 		parse_err_2 \
 		utils \

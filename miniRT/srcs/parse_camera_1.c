@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:42:46 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 00:35:57 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 01:20:35 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,27 +70,28 @@ int	parse_c_xyz_pos(t_scene *scene, char ***s)
 	return (0);
 }
 
-void	parse_c(t_scene *scene, char **line)
+int	parse_c(t_scene *scene, char **line)
 {
 	char	***s;
 
 	if (scene->camera->check)
 	{
 		err_msg("Map error: C: already exists");
-		return ;
+		return (1);
 	}
 	s = (char ***)ft_calloc(sizeof(char **), 4);
 	if (!s)
 	{
 		err_msg("Malloc error");
-		return ;
+		return (1);
 	}
 	s[0] = ft_split(*line, ' ');
 	s[1] = ft_split(s[0][1], ',');
 	s[2] = ft_split(s[0][2], ',');
 	if (parse_c_token(scene, s) || parse_c_xyz_pos(scene, s)
 		|| parse_c_xyz_vec(scene, s) || parse_c_fov(scene, s))
-		return ;
+		return (1);
 	ft_free_3d(s);
 	scene->camera->check++;
+	return (0);
 }

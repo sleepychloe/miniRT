@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:29 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 00:46:03 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 01:21:27 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	parse_sp_diameter(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-void	parse_sp(t_scene *scene, char **line)
+int	parse_sp(t_scene *scene, char **line)
 {
 	int		i;
 	char	***s;
@@ -94,7 +94,7 @@ void	parse_sp(t_scene *scene, char **line)
 	if (!s)
 	{
 		err_msg("Malloc error");
-		return ;
+		return (1);
 	}
 	s[0] = ft_split(*line, ' ');
 	s[1] = ft_split(s[0][1], ',');
@@ -103,9 +103,9 @@ void	parse_sp(t_scene *scene, char **line)
 		|| parse_sp_diameter(scene, i, s) || parse_sp_rgb(scene, i, s))
 	{
 		err_check_sp(scene, i);
-		return ;
+		return (1);
 	}
 	ft_free_3d(s);
-	scene->sphere[i]->check++;
 	scene->n_sphere++;
+	return (0);
 }
