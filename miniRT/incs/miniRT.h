@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 07:56:54 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 20:53:17 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,8 +237,8 @@ void	err_msg(char *str);
 // utils_free
 void	*ft_realloc(void *old_ptr, size_t old_len, size_t new_len);
 void	ft_free_2d(char **str);
-void	ft_free_struct(t_scene *scene);
 void	ft_free_3d(char ***str);
+void	ft_free_struct(t_scene *scene);
 
 // main
 int		check_err_in_struct(t_scene *scene);

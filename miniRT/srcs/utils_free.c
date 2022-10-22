@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:58:07 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 06:50:14 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 20:52:58 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ void	ft_free_2d(char **str)
 	free(str);
 }
 
+void	ft_free_3d(char ***str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (*str[i])
+			ft_free_2d(str[i++]);
+	}
+	free(str);
+}
+
 void	ft_free_struct(t_scene *scene)
 {
 	int	i;
@@ -55,17 +68,4 @@ void	ft_free_struct(t_scene *scene)
 		free(scene->cylinder[i++]);
 	free(scene->cylinder);
 	free(scene);
-}
-
-void	ft_free_3d(char ***str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (*str[i])
-			ft_free_2d(str[i++]);
-	}
-	free(str);
 }
