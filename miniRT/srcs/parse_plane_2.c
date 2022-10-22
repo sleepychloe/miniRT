@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:30 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 22:00:57 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:39:49 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	check_value_plane_xyz_vec(t_scene *scene, int i, char **xyz_vec)
+int	check_value_pl_xyz_vec(t_scene *scene, int i, char **xyz_vec)
 {
 	if (ft_atoi(xyz_vec[0]) == ERR_ATOI || ft_atoi(xyz_vec[1]) == ERR_ATOI
 		|| ft_atoi(xyz_vec[2]) == ERR_ATOI)
@@ -30,7 +30,7 @@ int	check_value_plane_xyz_vec(t_scene *scene, int i, char **xyz_vec)
 	return (0);
 }
 
-int	parse_plane_xyz_vec(t_scene *scene, int i, char ***s)
+int	parse_pl_xyz_vec(t_scene *scene, int i, char ***s)
 {
 	if (!s[2])
 	{
@@ -44,7 +44,7 @@ int	parse_plane_xyz_vec(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_plane_xyz_vec(scene, i, s[2]))
+	if (check_value_pl_xyz_vec(scene, i, s[2]))
 	{
 		ft_free_3d(s);
 		return (1);
@@ -55,7 +55,7 @@ int	parse_plane_xyz_vec(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-int	check_value_plane_rgb(t_scene *scene, int i, char **rgb)
+int	check_value_pl_rgb(t_scene *scene, int i, char **rgb)
 {
 	if (ft_atoi(rgb[0]) == ERR_ATOI || ft_atoi(rgb[1]) == ERR_ATOI
 		|| ft_atoi(rgb[2]) == ERR_ATOI)
@@ -73,7 +73,7 @@ int	check_value_plane_rgb(t_scene *scene, int i, char **rgb)
 	return (0);
 }
 
-int	parse_plane_rgb(t_scene *scene, int i, char ***s)
+int	parse_pl_rgb(t_scene *scene, int i, char ***s)
 {
 	if (!s[3])
 	{
@@ -87,7 +87,7 @@ int	parse_plane_rgb(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_plane_rgb(scene, i, s[3]))
+	if (check_value_pl_rgb(scene, i, s[3]))
 	{
 		ft_free_3d(s);
 		return (1);

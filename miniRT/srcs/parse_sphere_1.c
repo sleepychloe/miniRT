@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:29 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 22:43:01 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:46:03 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	parse_sphere_token(t_scene *scene, int i, char ***s)
+int	parse_sp_token(t_scene *scene, int i, char ***s)
 {
 	if (!s[0])
 	{
@@ -34,7 +34,7 @@ int	parse_sphere_token(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-int	check_value_sphere_xyz_pos(t_scene *scene, int i, char **xyz_pos)
+int	check_value_sp_xyz_pos(t_scene *scene, int i, char **xyz_pos)
 {
 	if (ft_atod(xyz_pos[0]) == ERR_ATOD || ft_atod(xyz_pos[1]) == ERR_ATOD
 		|| ft_atod(xyz_pos[2]) == ERR_ATOD)
@@ -45,7 +45,7 @@ int	check_value_sphere_xyz_pos(t_scene *scene, int i, char **xyz_pos)
 	return (0);
 }
 
-int	parse_sphere_xyz_pos(t_scene *scene, int i, char ***s)
+int	parse_sp_xyz_pos(t_scene *scene, int i, char ***s)
 {
 	if (!s[1])
 	{
@@ -59,7 +59,7 @@ int	parse_sphere_xyz_pos(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_sphere_xyz_pos(scene, i, s[1]))
+	if (check_value_sp_xyz_pos(scene, i, s[1]))
 	{
 		ft_free_3d(s);
 		return (1);
@@ -70,7 +70,7 @@ int	parse_sphere_xyz_pos(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-int	parse_sphere_diameter(t_scene *scene, int i, char ***s)
+int	parse_sp_diameter(t_scene *scene, int i, char ***s)
 {
 	if (ft_atod(s[0][2]) == ERR_ATOD)
 	{
@@ -82,14 +82,14 @@ int	parse_sphere_diameter(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-void	parse_sphere(t_scene *scene, char **line)
+void	parse_sp(t_scene *scene, char **line)
 {
 	int		i;
 	char	***s;
 
 	i = scene->n_sphere;
 	if (i > 0)
-		init_struct_sphere(scene, i);
+		init_struct_sp(scene, i);
 	s = (char ***)ft_calloc(sizeof(char **), 4);
 	if (!s)
 	{
@@ -99,9 +99,12 @@ void	parse_sphere(t_scene *scene, char **line)
 	s[0] = ft_split(*line, ' ');
 	s[1] = ft_split(s[0][1], ',');
 	s[2] = ft_split(s[0][3], ',');
-	if (parse_sphere_token(scene, i, s) || parse_sphere_xyz_pos(scene, i, s)
-		|| parse_sphere_diameter(scene, i, s) || parse_sphere_rgb(scene, i, s))
+	if (parse_sp_token(scene, i, s) || parse_sp_xyz_pos(scene, i, s)
+		|| parse_sp_diameter(scene, i, s) || parse_sp_rgb(scene, i, s))
+	{
+		err_check_sp(scene, i);
 		return ;
+	}
 	ft_free_3d(s);
 	scene->sphere[i]->check++;
 	scene->n_sphere++;

@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 02:18:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 23:00:13 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:50:43 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	err_check_ambient(t_scene *scene)
+void	err_check_a(t_scene *scene)
 {
 	if (scene->ambient->err)
 	{
@@ -28,12 +28,10 @@ int	err_check_ambient(t_scene *scene)
 			err_msg("Map error: A: rgb token error");
 		else if (scene->ambient->err == ERR_RGB_VALUE)
 			err_msg("Map error: A: rgb value error");
-		return (1);
 	}
-	return (0);
 }
 
-int	err_check_camera(t_scene *scene)
+void	err_check_c(t_scene *scene)
 {
 	if (scene->camera->err)
 	{
@@ -53,12 +51,10 @@ int	err_check_camera(t_scene *scene)
 			err_msg("Map error: C: xyz normalized vector value error");
 		else if (scene->camera->err == ERR_FOV_VALUE)
 			err_msg("Map error: C: fov value error");
-		return (1);
 	}
-	return (0);
 }
 
-int	err_check_light(t_scene *scene)
+void	err_check_l(t_scene *scene)
 {
 	if (scene->light->err)
 	{
@@ -78,22 +74,24 @@ int	err_check_light(t_scene *scene)
 			err_msg("Map error: L: rbg token error");
 		else if (scene->light->err == ERR_RGB_VALUE)
 			err_msg("Map error: L: rgb value error");
-		return (1);
 	}
-	return (0);
 }
-
 
 int	check_parse_error(t_scene *scene)
 {
-	if (err_check_ambient(scene) || err_check_camera(scene)
-		|| err_check_light(scene) || err_check_sphere(scene)
-		|| err_check_plane(scene) || err_check_cylinder(scene))
-		return (1);
-	if (scene->ambient->check != 1 || scene->camera->check != 1
-		|| scene->light->check != 1)
+	if (!(scene->n_sphere))
 	{
-		err_msg("Map error: A, C, L should exist only once");
+		err_msg("Map error: sp should exist at least once");
+		return (1);
+	}
+	if (!(scene->n_plane))
+	{
+		err_msg("Map error: pl should exist at least once");
+		return (1);
+	}
+	if (!(scene->n_cylinder))
+	{
+		err_msg("Map error: cy should exist at least once");
 		return (1);
 	}
 	return (0);

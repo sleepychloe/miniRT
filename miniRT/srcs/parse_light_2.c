@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:47:48 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 22:04:16 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:36:28 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	check_value_light_rgb(t_scene *scene, char **rgb)
+int	check_value_l_rgb(t_scene *scene, char **rgb)
 {
 	if (ft_atoi(rgb[0]) == ERR_ATOI || ft_atoi(rgb[1]) == ERR_ATOI
 		|| ft_atoi(rgb[2]) == ERR_ATOI)
@@ -30,7 +30,7 @@ int	check_value_light_rgb(t_scene *scene, char **rgb)
 	return (0);
 }
 
-int	parse_light_rgb(t_scene *scene, char ***s)
+int	parse_l_rgb(t_scene *scene, char ***s)
 {
 	if (!s[2])
 	{
@@ -44,7 +44,7 @@ int	parse_light_rgb(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_light_rgb(scene, s[2]))
+	if (check_value_l_rgb(scene, s[2]))
 	{
 		ft_free_3d(s);
 		return (1);

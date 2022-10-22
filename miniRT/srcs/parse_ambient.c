@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 19:34:46 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 22:40:57 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:48:09 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	parse_ambient_token(t_scene *scene, char ***s)
+int	parse_a_token(t_scene *scene, char ***s)
 {
 	if (!s[0])
 	{
@@ -34,7 +34,7 @@ int	parse_ambient_token(t_scene *scene, char ***s)
 	return (0);
 }
 
-int	parse_ambient_lighting(t_scene *scene, char ***s)
+int	parse_a_lighting(t_scene *scene, char ***s)
 {
 	if (ft_atod(s[0][1]) == ERR_ATOD)
 	{
@@ -52,7 +52,7 @@ int	parse_ambient_lighting(t_scene *scene, char ***s)
 	return (0);
 }
 
-int	check_value_ambient_rgb(t_scene *scene, char **rgb)
+int	check_value_a_rgb(t_scene *scene, char **rgb)
 {
 	if (ft_atoi(rgb[0]) == ERR_ATOI || ft_atoi(rgb[1]) == ERR_ATOI
 		|| ft_atoi(rgb[2]) == ERR_ATOI)
@@ -70,7 +70,7 @@ int	check_value_ambient_rgb(t_scene *scene, char **rgb)
 	return (0);
 }
 
-int	parse_ambient_rgb(t_scene *scene, char ***s)
+int	parse_a_rgb(t_scene *scene, char ***s)
 {
 	if (!s[1])
 	{
@@ -84,7 +84,7 @@ int	parse_ambient_rgb(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_ambient_rgb(scene, s[1]))
+	if (check_value_a_rgb(scene, s[1]))
 	{
 		ft_free_3d(s);
 		return (1);
@@ -95,7 +95,7 @@ int	parse_ambient_rgb(t_scene *scene, char ***s)
 	return (0);
 }
 
-void	parse_ambient(t_scene *scene, char **line)
+void	parse_a(t_scene *scene, char **line)
 {
 	char	***s;
 
@@ -112,9 +112,12 @@ void	parse_ambient(t_scene *scene, char **line)
 	}
 	s[0] = ft_split(*line, ' ');
 	s[1] = ft_split(s[0][2], ',');
-	if (parse_ambient_token(scene, s) || parse_ambient_lighting(scene, s)
-		|| parse_ambient_rgb(scene, s))
+	if (parse_a_token(scene, s) || parse_a_lighting(scene, s)
+		|| parse_a_rgb(scene, s))
+	{
+		err_check_a(scene);
 		return ;
+	}
 	ft_free_3d(s);
 	scene->ambient->check++;
 }

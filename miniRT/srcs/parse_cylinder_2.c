@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:56 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 22:03:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:41:09 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	parse_cylinder_height(t_scene *scene, int i, char ***s)
+int	parse_cy_height(t_scene *scene, int i, char ***s)
 {
 	if (ft_atod(s[0][4]) == ERR_ATOD)
 	{
@@ -24,7 +24,7 @@ int	parse_cylinder_height(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-int	check_value_cylinder_xyz_vec(t_scene *scene, int i, char **xyz_vec)
+int	check_value_cy_xyz_vec(t_scene *scene, int i, char **xyz_vec)
 {
 	if (ft_atoi(xyz_vec[0]) == ERR_ATOI || ft_atoi(xyz_vec[1]) == ERR_ATOI
 		|| ft_atoi(xyz_vec[2]) == ERR_ATOI)
@@ -42,7 +42,7 @@ int	check_value_cylinder_xyz_vec(t_scene *scene, int i, char **xyz_vec)
 	return (0);
 }
 
-int	parse_cylinder_xyz_vec(t_scene *scene, int i, char ***s)
+int	parse_cy_xyz_vec(t_scene *scene, int i, char ***s)
 {
 	if (!s[2])
 	{
@@ -56,7 +56,7 @@ int	parse_cylinder_xyz_vec(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_cylinder_xyz_vec(scene, i, s[2]))
+	if (check_value_cy_xyz_vec(scene, i, s[2]))
 	{
 		ft_free_3d(s);
 		return (1);
@@ -67,7 +67,7 @@ int	parse_cylinder_xyz_vec(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-int	check_value_cylinder_rgb(t_scene *scene, int i, char **rgb)
+int	check_value_cy_rgb(t_scene *scene, int i, char **rgb)
 {
 	if (ft_atoi(rgb[0]) == ERR_ATOI || ft_atoi(rgb[1]) == ERR_ATOI
 		|| ft_atoi(rgb[2]) == ERR_ATOI)
@@ -85,7 +85,7 @@ int	check_value_cylinder_rgb(t_scene *scene, int i, char **rgb)
 	return (0);
 }
 
-int	parse_cylinder_rgb(t_scene *scene, int i, char ***s)
+int	parse_cy_rgb(t_scene *scene, int i, char ***s)
 {
 	if (!s[3])
 	{
@@ -99,7 +99,7 @@ int	parse_cylinder_rgb(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_cylinder_rgb(scene, i, s[3]))
+	if (check_value_cy_rgb(scene, i, s[3]))
 	{
 		ft_free_3d(s);
 		return (1);

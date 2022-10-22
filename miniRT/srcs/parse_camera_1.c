@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:42:46 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 22:41:12 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:35:57 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	parse_camera_token(t_scene *scene, char ***s)
+int	parse_c_token(t_scene *scene, char ***s)
 {
 	if (!s[0])
 	{
@@ -34,7 +34,7 @@ int	parse_camera_token(t_scene *scene, char ***s)
 	return (0);
 }
 
-int	check_value_camera_xyz_pos(t_scene *scene, char **xyz_pos)
+int	check_value_c_xyz_pos(t_scene *scene, char **xyz_pos)
 {
 	if (ft_atod(xyz_pos[0]) == ERR_ATOD || ft_atod(xyz_pos[1]) == ERR_ATOD
 		|| ft_atod(xyz_pos[2]) == ERR_ATOD)
@@ -45,7 +45,7 @@ int	check_value_camera_xyz_pos(t_scene *scene, char **xyz_pos)
 	return (0);
 }
 
-int	parse_camera_xyz_pos(t_scene *scene, char ***s)
+int	parse_c_xyz_pos(t_scene *scene, char ***s)
 {
 	if (!s[1])
 	{
@@ -59,7 +59,7 @@ int	parse_camera_xyz_pos(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_camera_xyz_pos(scene, s[1]))
+	if (check_value_c_xyz_pos(scene, s[1]))
 	{
 		ft_free_3d(s);
 		return (1);
@@ -70,7 +70,7 @@ int	parse_camera_xyz_pos(t_scene *scene, char ***s)
 	return (0);
 }
 
-void	parse_camera(t_scene *scene, char **line)
+void	parse_c(t_scene *scene, char **line)
 {
 	char	***s;
 
@@ -88,8 +88,8 @@ void	parse_camera(t_scene *scene, char **line)
 	s[0] = ft_split(*line, ' ');
 	s[1] = ft_split(s[0][1], ',');
 	s[2] = ft_split(s[0][2], ',');
-	if (parse_camera_token(scene, s) || parse_camera_xyz_pos(scene, s)
-		|| parse_camera_xyz_vec(scene, s) || parse_camera_fov(scene, s))
+	if (parse_c_token(scene, s) || parse_c_xyz_pos(scene, s)
+		|| parse_c_xyz_vec(scene, s) || parse_c_fov(scene, s))
 		return ;
 	ft_free_3d(s);
 	scene->camera->check++;

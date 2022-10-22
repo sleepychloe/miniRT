@@ -6,123 +6,85 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:09:02 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 23:08:38 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:41:38 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	err_check_sphere(t_scene *scene)
+void	err_check_sp(t_scene *scene, int i)
 {
-	int	i;
-
-	i = 0;
-	while (i < scene->n_sphere)
+	if (scene->sphere[i]->err)
 	{
-		if (scene->sphere[i]->err)
-		{
-			if (scene->sphere[i]->err == ERR_MALLOC)
-				err_msg("Map error: sp: malloc error");
-			else if (scene->sphere[i]->err == ERR_IDENTIFIER)
-				err_msg("Map error: sp: identifier error");
-			else if (scene->sphere[i]->err == ERR_LINE_TOKEN)
-				err_msg("Map error: sp: line token error");
-			else if (scene->sphere[i]->err == ERR_XYZ_POS_TOKEN)
-				err_msg("Map error: sp: xyz position token error");
-			else if (scene->sphere[i]->err == ERR_XYZ_POS_VALUE)
-				err_msg("Map error: sp: xyz position value error");
-			else if (scene->sphere[i]->err == ERR_DIAMETER_VALUE)
-				err_msg("Map error: sp: diameter value error");
-			else if (scene->sphere[i]->err == ERR_RGB_TOKEN)
-				err_msg("Map error: sp: rbg token error");
-			else if (scene->sphere[i]->err == ERR_RGB_VALUE)
-				err_msg("Map error: sp: rgb value error");
-			return (1);
-		}
-		else
-			i++;
+		if (scene->sphere[i]->err == ERR_MALLOC)
+			map_err_i(i + 1, "sp", "malloc error");
+		else if (scene->sphere[i]->err == ERR_IDENTIFIER)
+			map_err_i(i + 1, "sp", "identifier error");
+		else if (scene->sphere[i]->err == ERR_LINE_TOKEN)
+			map_err_i(i + 1, "sp", "line token error");
+		else if (scene->sphere[i]->err == ERR_XYZ_POS_TOKEN)
+			map_err_i(i + 1, "sp", "xyz position token error");
+		else if (scene->sphere[i]->err == ERR_XYZ_POS_VALUE)
+			map_err_i(i + 1, "sp", "xyz position value error");
+		else if (scene->sphere[i]->err == ERR_DIAMETER_VALUE)
+			map_err_i(i + 1, "sp", "diameter value error");
+		else if (scene->sphere[i]->err == ERR_RGB_TOKEN)
+			map_err_i(i + 1, "sp", "rbg token error");
+		else if (scene->sphere[i]->err == ERR_RGB_VALUE)
+			map_err_i(i + 1, "sp", "rgb value error");
 	}
-	if (!scene->n_sphere)
-		err_msg("Map error: sp: should exists at least once");
-	return (0);
 }
 
-int	err_check_plane(t_scene *scene)
+void	err_check_pl(t_scene *scene, int i)
 {
-	int	i;
-
-	i = 0;
-	while (i < scene->n_plane)
+	if (scene->plane[i]->err)
 	{
-		if (scene->plane[i]->err)
-		{
-			if (scene->plane[i]->err == ERR_MALLOC)
-				err_msg("Map error: pl: malloc error");
-			else if (scene->plane[i]->err == ERR_IDENTIFIER)
-				err_msg("Map error: pl: identifier error");
-			else if (scene->plane[i]->err == ERR_LINE_TOKEN)
-				err_msg("Map error: pl: line token error");
-			else if (scene->plane[i]->err == ERR_XYZ_POS_TOKEN)
-				err_msg("Map error: pl: xyz position token error");
-			else if (scene->plane[i]->err == ERR_XYZ_POS_VALUE)
-				err_msg("Map error: pl: xyz position value error");
-			else if (scene->plane[i]->err == ERR_XYZ_VEC_TOKEN)
-				err_msg("Map error: pl: xyz normalized vector token error");
-			else if (scene->plane[i]->err == ERR_XYZ_VEC_VALUE)
-				err_msg("Map error: pl: xyz normalized vector value error");
-			else if (scene->plane[i]->err == ERR_RGB_TOKEN)
-				err_msg("Map error: pl: rbg token error");
-			else if (scene->plane[i]->err == ERR_RGB_VALUE)
-				err_msg("Map error: pl: rgb value error");
-			return (1);
-		}
-		else
-			i++;
+		if (scene->plane[i]->err == ERR_MALLOC)
+			map_err_i(i + 1, "pl", "malloc error");
+		else if (scene->plane[i]->err == ERR_IDENTIFIER)
+			map_err_i(i + 1, "pl", "identifier error");
+		else if (scene->plane[i]->err == ERR_LINE_TOKEN)
+			map_err_i(i + 1, "pl", "line token error");
+		else if (scene->plane[i]->err == ERR_XYZ_POS_TOKEN)
+			map_err_i(i + 1, "pl", "xyz position token error");
+		else if (scene->plane[i]->err == ERR_XYZ_POS_VALUE)
+			map_err_i(i + 1, "pl", "xyz position value error");
+		else if (scene->plane[i]->err == ERR_XYZ_VEC_TOKEN)
+			map_err_i(i + 1, "pl", "xyz normalized vector token error");
+		else if (scene->plane[i]->err == ERR_XYZ_VEC_VALUE)
+			map_err_i(i + 1, "pl", "xyz normalized vector value error");
+		else if (scene->plane[i]->err == ERR_RGB_TOKEN)
+			map_err_i(i + 1, "pl", "rbg token error");
+		else if (scene->plane[i]->err == ERR_RGB_VALUE)
+			map_err_i(i + 1, "pl", "rgb value error");
 	}
-	if (!scene->n_plane)
-		err_msg("Map error: pl: should exists at least once");
-	return (0);
 }
 
-int	err_check_cylinder(t_scene *scene)
+void	err_check_cy(t_scene *scene, int i)
 {
-	int	i;
-
-	i = 0;
-	if (!scene->n_cylinder)
-		err_msg("Map error: cy: should exists at least once");
-	while (i < scene->n_cylinder)
+	if (scene->cylinder[i]->err)
 	{
-		if (scene->cylinder[i]->err)
-		{
-			if (scene->cylinder[i]->err == ERR_MALLOC)
-				err_msg("Map error: cy: malloc error");
-			else if (scene->cylinder[i]->err == ERR_IDENTIFIER)
-				err_msg("Map error: cy: identifier error");
-			else if (scene->cylinder[i]->err == ERR_LINE_TOKEN)
-				err_msg("Map error: cy: line token error");
-			else if (scene->cylinder[i]->err == ERR_XYZ_POS_TOKEN)
-				err_msg("Map error: cy: xyz position token error");
-			else if (scene->cylinder[i]->err == ERR_XYZ_POS_VALUE)
-				err_msg("Map error: cy: xyz position value error");
-			else if (scene->cylinder[i]->err == ERR_XYZ_VEC_TOKEN)
-				err_msg("Map error: cy: xyz normalized vector token error");
-			else if (scene->cylinder[i]->err == ERR_XYZ_VEC_VALUE)
-				err_msg("Map error: cy: xyz normalized vector value error");
-			else if (scene->cylinder[i]->err == ERR_DIAMETER_VALUE)
-				err_msg("Map error: cy: diameter value error");
-			else if (scene->cylinder[i]->err == ERR_HEIGHT_VALUE)
-				err_msg("Map error: cy: height value error");
-			else if (scene->cylinder[i]->err == ERR_RGB_TOKEN)
-				err_msg("Map error: cy: rbg token error");
-			else if (scene->cylinder[i]->err == ERR_RGB_VALUE)
-				err_msg("Map error: cy: rgb value error");
-			return (1);
-		}
-		else
-			i++;
+		if (scene->cylinder[i]->err == ERR_MALLOC)
+			map_err_i(i + 1, "cy", "malloc error");
+		else if (scene->cylinder[i]->err == ERR_IDENTIFIER)
+			map_err_i(i + 1, "cy", "identifier error");
+		else if (scene->cylinder[i]->err == ERR_LINE_TOKEN)
+			map_err_i(i + 1, "cy", "line token error");
+		else if (scene->cylinder[i]->err == ERR_XYZ_POS_TOKEN)
+			map_err_i(i + 1, "cy", "xyz position token error");
+		else if (scene->cylinder[i]->err == ERR_XYZ_POS_VALUE)
+			map_err_i(i + 1, "cy", "xyz position value error");
+		else if (scene->cylinder[i]->err == ERR_XYZ_VEC_TOKEN)
+			map_err_i(i + 1, "cy", "xyz normalized vector token error");
+		else if (scene->cylinder[i]->err == ERR_XYZ_VEC_VALUE)
+			map_err_i(i + 1, "cy", "xyz normalized vector value error");
+		else if (scene->cylinder[i]->err == ERR_DIAMETER_VALUE)
+			map_err_i(i + 1, "cy", "diameter value error");
+		else if (scene->cylinder[i]->err == ERR_HEIGHT_VALUE)
+			map_err_i(i + 1, "cy", "height value error");
+		else if (scene->cylinder[i]->err == ERR_RGB_TOKEN)
+			map_err_i(i + 1, "cy", "rbg token error");
+		else if (scene->cylinder[i]->err == ERR_RGB_VALUE)
+			map_err_i(i + 1, "cy", "rgb value error");
 	}
-	if (!scene->n_cylinder)
-		err_msg("Map error: cy: should exists at least once");
-	return (0);
 }

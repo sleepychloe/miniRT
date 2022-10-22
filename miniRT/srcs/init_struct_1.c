@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:51:02 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 03:14:42 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:44:51 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-void	init_struct_ambient(t_scene *scene)
+void	init_struct_a(t_scene *scene)
 {
 	scene->ambient = (t_ambient *)ft_calloc(sizeof(t_ambient), 2);
 	if (!(scene->ambient))
@@ -23,7 +23,7 @@ void	init_struct_ambient(t_scene *scene)
 	}
 }
 
-void	init_struct_camera(t_scene *scene)
+void	init_struct_c(t_scene *scene)
 {
 	scene->camera = (t_camera *)ft_calloc(sizeof(t_camera), 2);
 	if (!(scene->camera))
@@ -35,7 +35,7 @@ void	init_struct_camera(t_scene *scene)
 	}
 }
 
-void	init_struct_light(t_scene *scene)
+void	init_struct_l(t_scene *scene)
 {
 	scene->light = (t_light *)ft_calloc(sizeof(t_light), 2);
 	if (!(scene->light))
@@ -50,10 +50,10 @@ void	init_struct_light(t_scene *scene)
 
 void	init_struct(t_scene *scene)
 {
-	init_struct_ambient(scene);
-	init_struct_camera(scene);
-	init_struct_light(scene);
-	init_struct_sphere(scene, 0);
-	init_struct_plane(scene, 0);
-	init_struct_cylinder(scene, 0);
+	init_struct_a(scene);
+	init_struct_c(scene);
+	init_struct_l(scene);
+	init_struct_sp(scene, 0);
+	init_struct_pl(scene, 0);
+	init_struct_cy(scene, 0);
 }

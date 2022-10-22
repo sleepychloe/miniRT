@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:46:18 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 22:40:41 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:49:05 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	parse_light_token(t_scene *scene, char ***s)
+int	parse_l_token(t_scene *scene, char ***s)
 {
 	if (!s[0])
 	{
@@ -34,7 +34,7 @@ int	parse_light_token(t_scene *scene, char ***s)
 	return (0);
 }
 
-int	check_value_light_xyz_pos(t_scene *scene, char **xyz_pos)
+int	check_value_l_xyz_pos(t_scene *scene, char **xyz_pos)
 {
 	if (ft_atod(xyz_pos[0]) == ERR_ATOD || ft_atod(xyz_pos[1]) == ERR_ATOD
 		|| ft_atod(xyz_pos[2]) == ERR_ATOD)
@@ -45,7 +45,7 @@ int	check_value_light_xyz_pos(t_scene *scene, char **xyz_pos)
 	return (0);
 }
 
-int	parse_light_xyz_pos(t_scene *scene, char ***s)
+int	parse_l_xyz_pos(t_scene *scene, char ***s)
 {
 	if (!s[1])
 	{
@@ -59,7 +59,7 @@ int	parse_light_xyz_pos(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_light_xyz_pos(scene, s[1]))
+	if (check_value_l_xyz_pos(scene, s[1]))
 	{
 		ft_free_3d(s);
 		return (1);
@@ -70,7 +70,7 @@ int	parse_light_xyz_pos(t_scene *scene, char ***s)
 	return (0);
 }
 
-int	parse_light_brightness(t_scene *scene, char ***s)
+int	parse_l_brightness(t_scene *scene, char ***s)
 {
 	if (ft_atod(s[0][2]) == ERR_ATOD)
 	{
@@ -88,7 +88,7 @@ int	parse_light_brightness(t_scene *scene, char ***s)
 	return (0);
 }
 
-void	parse_light(t_scene *scene, char **line)
+void	parse_l(t_scene *scene, char **line)
 {
 	char	***s;
 
@@ -106,8 +106,8 @@ void	parse_light(t_scene *scene, char **line)
 	s[0] = ft_split(*line, ' ');
 	s[1] = ft_split(s[0][1], ',');
 	s[2] = ft_split(s[0][3], ',');
-	if (parse_light_token(scene, s) || parse_light_xyz_pos(scene, s)
-		|| parse_light_brightness(scene, s) || parse_light_rgb(scene, s))
+	if (parse_l_token(scene, s) || parse_l_xyz_pos(scene, s)
+		|| parse_l_brightness(scene, s) || parse_l_rgb(scene, s))
 		return ;
 	ft_free_3d(s);
 	scene->light->check++;

@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:44:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 22:07:57 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 00:35:28 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	check_value_camera_xyz_vec(t_scene *scene, char **xyz_vec)
+int	check_value_c_xyz_vec(t_scene *scene, char **xyz_vec)
 {
 	if (ft_atoi(xyz_vec[0]) == ERR_ATOI || ft_atoi(xyz_vec[1]) == ERR_ATOI
 		|| ft_atoi(xyz_vec[2]) == ERR_ATOI)
@@ -30,7 +30,7 @@ int	check_value_camera_xyz_vec(t_scene *scene, char **xyz_vec)
 	return (0);
 }
 
-int	parse_camera_xyz_vec(t_scene *scene, char ***s)
+int	parse_c_xyz_vec(t_scene *scene, char ***s)
 {
 	if (!s[2])
 	{
@@ -44,7 +44,7 @@ int	parse_camera_xyz_vec(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_camera_xyz_vec(scene, s[2]))
+	if (check_value_c_xyz_vec(scene, s[2]))
 	{
 		ft_free_3d(s);
 		return (1);
@@ -55,7 +55,7 @@ int	parse_camera_xyz_vec(t_scene *scene, char ***s)
 	return (0);
 }
 
-int	parse_camera_fov(t_scene *scene, char ***s)
+int	parse_c_fov(t_scene *scene, char ***s)
 {
 	if (ft_atoi(s[0][3]) == ERR_ATOI)
 	{
