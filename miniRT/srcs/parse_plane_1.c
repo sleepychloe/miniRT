@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:08 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 20:48:18 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 22:43:42 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	parse_plane_xyz_pos(t_scene *scene, int i, char ***s)
 
 void	parse_plane(t_scene *scene, char **line)
 {
-	int	i;
+	int		i;
 	char	***s;
 
 	i = scene->n_plane;
@@ -86,17 +86,12 @@ void	parse_plane(t_scene *scene, char **line)
 		return ;
 	}
 	s[0] = ft_split(*line, ' ');
-	if (parse_plane_token(scene, i, s))
-		return ;
 	s[1] = ft_split(s[0][1], ',');
-	if (parse_plane_xyz_pos(scene, i, s))
-		return ;
 	s[2] = ft_split(s[0][2], ',');
-	if (parse_plane_xyz_vec(scene, i, s))
+	s[3] = ft_split(s[0][3], ',');
+	if (parse_plane_token(scene, i, s) || parse_plane_xyz_pos(scene, i, s)
+		|| parse_plane_xyz_vec(scene, i, s) || parse_plane_rgb(scene, i, s))
 		return ;
-        s[3] = ft_split(s[0][3], ','); 
-        if (parse_plane_rgb(scene, i, s))
-                return ;
 	ft_free_3d(s);
 	scene->plane[i]->check++;
 	scene->n_plane++;

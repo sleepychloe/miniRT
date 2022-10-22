@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 20:48:30 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 22:42:15 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int	parse_cylinder_xyz_pos(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-int     parse_cylinder_diameter(t_scene *scene, int i, char ***s)
+int	parse_cylinder_diameter(t_scene *scene, int i, char ***s)
 {
-        if (ft_atod(s[0][3]) == ERR_ATOD)
+	if (ft_atod(s[0][3]) == ERR_ATOD)
 	{
 		scene->cylinder[i]->err = ERR_DIAMETER_VALUE;
 		ft_free_3d(s);
@@ -84,7 +84,7 @@ int     parse_cylinder_diameter(t_scene *scene, int i, char ***s)
 
 void	parse_cylinder(t_scene *scene, char **line)
 {
-	int	i;
+	int		i;
 	char	***s;
 
 	i = scene->n_cylinder;
@@ -97,21 +97,15 @@ void	parse_cylinder(t_scene *scene, char **line)
 		return ;
 	}
 	s[0] = ft_split(*line, ' ');
-	if (parse_cylinder_token(scene, i, s))
-		return ;
 	s[1] = ft_split(s[0][1], ',');
-	if (parse_cylinder_xyz_pos(scene, i, s))
-		return ;
 	s[2] = ft_split(s[0][2], ',');
-	if (parse_cylinder_xyz_vec(scene, i, s))
+	s[3] = ft_split(s[0][5], ',');
+	if (parse_cylinder_token(scene, i, s) || parse_cylinder_xyz_pos(scene, i, s)
+		|| parse_cylinder_xyz_vec(scene, i, s)
+		|| parse_cylinder_diameter(scene, i, s)
+		|| parse_cylinder_height(scene, i, s)
+		|| parse_cylinder_rgb(scene, i, s))
 		return ;
-        if (parse_cylinder_diameter(scene, i, s))
-                return ;
-        if (parse_cylinder_height(scene, i, s))
-                return ;
-        s[3] = ft_split(s[0][5], ','); 
-        if (parse_cylinder_rgb(scene, i, s))
-                return ;
 	ft_free_3d(s);
 	scene->cylinder[i]->check++;
 	scene->n_cylinder++;

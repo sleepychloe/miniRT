@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:47:48 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 06:57:07 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 22:04:16 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_value_light_rgb(t_scene *scene, char **rgb)
 		scene->light->err = ERR_RGB_VALUE;
 		return (1);
 	}
-	if ( !(0 <= ft_atoi(rgb[0]) && ft_atoi(rgb[0]) <= 255)
+	if (!(0 <= ft_atoi(rgb[0]) && ft_atoi(rgb[0]) <= 255)
 		|| !(0 <= ft_atoi(rgb[1]) && ft_atoi(rgb[1]) <= 255)
 		|| !(0 <= ft_atoi(rgb[2]) && ft_atoi(rgb[2]) <= 255))
 	{

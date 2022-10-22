@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:42:46 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 06:45:23 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 22:41:12 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,13 @@ int	parse_camera_xyz_pos(t_scene *scene, char ***s)
 
 void	parse_camera(t_scene *scene, char **line)
 {
-	char ***s;
+	char	***s;
 
+	if (scene->camera->check)
+	{
+		err_msg("Map error: C: already exists");
+		return ;
+	}
 	s = (char ***)ft_calloc(sizeof(char **), 4);
 	if (!s)
 	{
@@ -81,16 +86,11 @@ void	parse_camera(t_scene *scene, char **line)
 		return ;
 	}
 	s[0] = ft_split(*line, ' ');
-	if (parse_camera_token(scene, s))
-		return ;
 	s[1] = ft_split(s[0][1], ',');
-	if (parse_camera_xyz_pos(scene, s))
-		return ;
 	s[2] = ft_split(s[0][2], ',');
-	if (parse_camera_xyz_vec(scene, s))
-		return ;
-	if (parse_camera_fov(scene, s))
+	if (parse_camera_token(scene, s) || parse_camera_xyz_pos(scene, s)
+		|| parse_camera_xyz_vec(scene, s) || parse_camera_fov(scene, s))
 		return ;
 	ft_free_3d(s);
-	scene->camera->cnt++;
+	scene->camera->check++;
 }

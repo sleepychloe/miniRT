@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 20:53:17 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 23:00:33 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 
 typedef struct s_ambient
 {
-	int		cnt;
+	int		check;
 	int		err;
 	double	lighting;
 	int		r;
@@ -51,7 +51,7 @@ typedef struct s_ambient
 
 typedef struct s_camera
 {
-	int		cnt;
+	int		check;
 	int		err;
 	double	x_pos;
 	double	y_pos;
@@ -64,7 +64,7 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	int		cnt;
+	int		check;
 	int		err;
 	double	x_pos;
 	double	y_pos;
@@ -128,9 +128,9 @@ typedef struct s_scene
 	t_sphere	**sphere;
 	t_plane		**plane;
 	t_cylinder	**cylinder;
-	int		n_sphere;
-	int		n_plane;
-	int		n_cylinder;
+	int			n_sphere;
+	int			n_plane;
+	int			n_cylinder;
 }	t_scene;
 
 // init_struct_1
@@ -176,22 +176,22 @@ int		parse_light_token(t_scene *scene, char ***s);
 int		check_value_light_xyz_pos(t_scene *scene, char **xyz_pos);
 int		parse_light_xyz_pos(t_scene *scene, char ***s);
 int		parse_light_brightness(t_scene *scene, char ***s);
-void		parse_light(t_scene *scene, char **line);
+void	parse_light(t_scene *scene, char **line);
 
 // parse_light_2
 int		check_value_light_rgb(t_scene *scene, char **rgb);
 int		parse_light_rgb(t_scene *scene, char ***s);
 
 // parse_sphere_1
-int	parse_sphere_token(t_scene *scene, int i, char ***s);
-int	check_value_sphere_xyz_pos(t_scene *scene, int i, char **xyz_pos);
-int	parse_sphere_xyz_pos(t_scene *scene, int i, char ***s);
-int	parse_sphere_diameter(t_scene *scene, int i, char ***s);
+int		parse_sphere_token(t_scene *scene, int i, char ***s);
+int		check_value_sphere_xyz_pos(t_scene *scene, int i, char **xyz_pos);
+int		parse_sphere_xyz_pos(t_scene *scene, int i, char ***s);
+int		parse_sphere_diameter(t_scene *scene, int i, char ***s);
 void	parse_sphere(t_scene *scene, char **line);
 
 // parse_sphere_2
-int	check_value_sphere_rgb(t_scene *scene, int i, char **rgb);
-int	parse_sphere_rgb(t_scene *scene, int i, char ***s);
+int		check_value_sphere_rgb(t_scene *scene, int i, char **rgb);
+int		parse_sphere_rgb(t_scene *scene, int i, char ***s);
 
 // parse_plane_1
 int		parse_plane_token(t_scene *scene, int i, char ***s);
@@ -209,11 +209,11 @@ int		parse_plane_rgb(t_scene *scene, int i, char ***s);
 int		parse_cylinder_token(t_scene *scene, int i, char ***s);
 int		check_value_cylinder_xyz_pos(t_scene *scene, int i, char **xyz_pos);
 int		parse_cylinder_xyz_pos(t_scene *scene, int i, char ***s);
-int	     parse_cylinder_diameter(t_scene *scene, int i, char ***s);
+int		parse_cylinder_diameter(t_scene *scene, int i, char ***s);
 void	parse_cylinder(t_scene *scene, char **line);
 
 // parse_cylinder_2
-int     	parse_cylinder_height(t_scene *scene, int i, char ***s);
+int		parse_cylinder_height(t_scene *scene, int i, char ***s);
 int		check_value_cylinder_xyz_vec(t_scene *scene, int i, char **xyz_vec);
 int		parse_cylinder_xyz_vec(t_scene *scene, int i, char ***s);
 int		check_value_cylinder_rgb(t_scene *scene, int i, char **rgb);
@@ -231,8 +231,8 @@ int		err_check_plane(t_scene *scene);
 int		err_check_cylinder(t_scene *scene);
 
 // utils
-int		token_count(char **token, int cnt);
 void	err_msg(char *str);
+int		token_count(char **token, int cnt);
 
 // utils_free
 void	*ft_realloc(void *old_ptr, size_t old_len, size_t new_len);

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:46:18 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 06:55:39 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 22:40:41 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	parse_light_brightness(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if ( !(0.0 <= ft_atod(s[0][2]) && ft_atod(s[0][2]) <= 1.0))
+	if (!(0.0 <= ft_atod(s[0][2]) && ft_atod(s[0][2]) <= 1.0))
 	{
 		scene->light->err = ERR_BRIGHTNESS_VALUE;
 		ft_free_3d(s);
@@ -90,8 +90,13 @@ int	parse_light_brightness(t_scene *scene, char ***s)
 
 void	parse_light(t_scene *scene, char **line)
 {
-	char ***s;
+	char	***s;
 
+	if (scene->light->check)
+	{
+		err_msg("Map error: L: already exists");
+		return ;
+	}
 	s = (char ***)ft_calloc(sizeof(char **), 4);
 	if (!s)
 	{
@@ -99,16 +104,11 @@ void	parse_light(t_scene *scene, char **line)
 		return ;
 	}
 	s[0] = ft_split(*line, ' ');
-	if (parse_light_token(scene, s))
-		return ;
 	s[1] = ft_split(s[0][1], ',');
-	if (parse_light_xyz_pos(scene, s))
-		return ;
-	if (parse_light_brightness(scene, s))
-		return ;
 	s[2] = ft_split(s[0][3], ',');
-	if (parse_light_rgb(scene, s))
+	if (parse_light_token(scene, s) || parse_light_xyz_pos(scene, s)
+		|| parse_light_brightness(scene, s) || parse_light_rgb(scene, s))
 		return ;
 	ft_free_3d(s);
-	scene->camera->cnt++;
+	scene->light->check++;
 }

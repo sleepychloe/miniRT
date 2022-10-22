@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 07:09:46 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 22:06:10 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_value_sphere_rgb(t_scene *scene, int i, char **rgb)
 		scene->sphere[i]->err = ERR_RGB_VALUE;
 		return (1);
 	}
-	if ( !(0 <= ft_atoi(rgb[0]) && ft_atoi(rgb[0]) <= 255)
+	if (!(0 <= ft_atoi(rgb[0]) && ft_atoi(rgb[0]) <= 255)
 		|| !(0 <= ft_atoi(rgb[1]) && ft_atoi(rgb[1]) <= 255)
 		|| !(0 <= ft_atoi(rgb[2]) && ft_atoi(rgb[2]) <= 255))
 	{

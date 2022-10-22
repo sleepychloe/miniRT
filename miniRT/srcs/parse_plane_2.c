@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:30 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 19:37:48 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 22:00:57 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_value_plane_xyz_vec(t_scene *scene, int i, char **xyz_vec)
 		scene->plane[i]->err = ERR_XYZ_VEC_VALUE;
 		return (1);
 	}
-	if ( !(-1 <= ft_atoi(xyz_vec[0]) && ft_atoi(xyz_vec[0]) <= 1)
+	if (!(-1 <= ft_atoi(xyz_vec[0]) && ft_atoi(xyz_vec[0]) <= 1)
 		|| !(-1 <= ft_atoi(xyz_vec[1]) && ft_atoi(xyz_vec[1]) <= 1)
 		|| !(-1 <= ft_atoi(xyz_vec[2]) && ft_atoi(xyz_vec[2]) <= 1))
 	{
@@ -63,7 +63,7 @@ int	check_value_plane_rgb(t_scene *scene, int i, char **rgb)
 		scene->plane[i]->err = ERR_RGB_VALUE;
 		return (1);
 	}
-	if ( !(0 <= ft_atoi(rgb[0]) && ft_atoi(rgb[0]) <= 255)
+	if (!(0 <= ft_atoi(rgb[0]) && ft_atoi(rgb[0]) <= 255)
 		|| !(0 <= ft_atoi(rgb[1]) && ft_atoi(rgb[1]) <= 255)
 		|| !(0 <= ft_atoi(rgb[2]) && ft_atoi(rgb[2]) <= 255))
 	{

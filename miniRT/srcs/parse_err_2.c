@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:09:02 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 07:56:46 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 23:08:38 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,28 @@ int	err_check_sphere(t_scene *scene)
 		if (scene->sphere[i]->err)
 		{
 			if (scene->sphere[i]->err == ERR_MALLOC)
-				err_msg("Map error: sphere[i]: malloc error");
+				err_msg("Map error: sp: malloc error");
 			else if (scene->sphere[i]->err == ERR_IDENTIFIER)
-				err_msg("Map error: sphere[i]: identifier error");
+				err_msg("Map error: sp: identifier error");
 			else if (scene->sphere[i]->err == ERR_LINE_TOKEN)
-				err_msg("Map error: sphere[i]: line token error");
+				err_msg("Map error: sp: line token error");
 			else if (scene->sphere[i]->err == ERR_XYZ_POS_TOKEN)
-				err_msg("Map error: sphere[i]: xyz position token error");
+				err_msg("Map error: sp: xyz position token error");
 			else if (scene->sphere[i]->err == ERR_XYZ_POS_VALUE)
-				err_msg("Map error: sphere[i]: xyz position value error");
+				err_msg("Map error: sp: xyz position value error");
 			else if (scene->sphere[i]->err == ERR_DIAMETER_VALUE)
-				err_msg("Map error: sphere[i]: diameter value error");
+				err_msg("Map error: sp: diameter value error");
 			else if (scene->sphere[i]->err == ERR_RGB_TOKEN)
-				err_msg("Map error: sphere[i]: rbg token error");
+				err_msg("Map error: sp: rbg token error");
 			else if (scene->sphere[i]->err == ERR_RGB_VALUE)
-				err_msg("Map error: sphere[i]: rgb value error: [0,255]");
+				err_msg("Map error: sp: rgb value error");
 			return (1);
 		}
 		else
 			i++;
 	}
+	if (!scene->n_sphere)
+		err_msg("Map error: sp: should exists at least once");
 	return (0);
 }
 
@@ -55,28 +57,30 @@ int	err_check_plane(t_scene *scene)
 		if (scene->plane[i]->err)
 		{
 			if (scene->plane[i]->err == ERR_MALLOC)
-				err_msg("Map error: plane[i]: malloc error");
+				err_msg("Map error: pl: malloc error");
 			else if (scene->plane[i]->err == ERR_IDENTIFIER)
-				err_msg("Map error: plane[i]: identifier error");
+				err_msg("Map error: pl: identifier error");
 			else if (scene->plane[i]->err == ERR_LINE_TOKEN)
-				err_msg("Map error: plane[i]: line token error");
+				err_msg("Map error: pl: line token error");
 			else if (scene->plane[i]->err == ERR_XYZ_POS_TOKEN)
-				err_msg("Map error: plane[i]: xyz position token error");
+				err_msg("Map error: pl: xyz position token error");
 			else if (scene->plane[i]->err == ERR_XYZ_POS_VALUE)
-				err_msg("Map error: plane[i]: xyz position value error");
+				err_msg("Map error: pl: xyz position value error");
 			else if (scene->plane[i]->err == ERR_XYZ_VEC_TOKEN)
-				err_msg("Map error: plane[i]: xyz normalized vector token error");
+				err_msg("Map error: pl: xyz normalized vector token error");
 			else if (scene->plane[i]->err == ERR_XYZ_VEC_VALUE)
-				err_msg("Map error: plane[i]: xyz normalized vector value error: [-1.0,1.0]");
+				err_msg("Map error: pl: xyz normalized vector value error");
 			else if (scene->plane[i]->err == ERR_RGB_TOKEN)
-				err_msg("Map error: plane[i]: rbg token error");
+				err_msg("Map error: pl: rbg token error");
 			else if (scene->plane[i]->err == ERR_RGB_VALUE)
-				err_msg("Map error: plane[i]: rgb value error: [0,255]");
+				err_msg("Map error: pl: rgb value error");
 			return (1);
 		}
 		else
 			i++;
 	}
+	if (!scene->n_plane)
+		err_msg("Map error: pl: should exists at least once");
 	return (0);
 }
 
@@ -85,36 +89,40 @@ int	err_check_cylinder(t_scene *scene)
 	int	i;
 
 	i = 0;
+	if (!scene->n_cylinder)
+		err_msg("Map error: cy: should exists at least once");
 	while (i < scene->n_cylinder)
 	{
 		if (scene->cylinder[i]->err)
 		{
 			if (scene->cylinder[i]->err == ERR_MALLOC)
-				err_msg("Map error: cylinder[i]: malloc error");
+				err_msg("Map error: cy: malloc error");
 			else if (scene->cylinder[i]->err == ERR_IDENTIFIER)
-				err_msg("Map error: cylinder[i]: identifier error");
+				err_msg("Map error: cy: identifier error");
 			else if (scene->cylinder[i]->err == ERR_LINE_TOKEN)
-				err_msg("Map error: cylinder[i]: line token error");
+				err_msg("Map error: cy: line token error");
 			else if (scene->cylinder[i]->err == ERR_XYZ_POS_TOKEN)
-				err_msg("Map error: cylinder[i]: xyz position token error");
+				err_msg("Map error: cy: xyz position token error");
 			else if (scene->cylinder[i]->err == ERR_XYZ_POS_VALUE)
-				err_msg("Map error: cylinder[i]: xyz position value error");
+				err_msg("Map error: cy: xyz position value error");
 			else if (scene->cylinder[i]->err == ERR_XYZ_VEC_TOKEN)
-				err_msg("Map error: cylinder[i]: xyz normalized vector token error");
+				err_msg("Map error: cy: xyz normalized vector token error");
 			else if (scene->cylinder[i]->err == ERR_XYZ_VEC_VALUE)
-				err_msg("Map error: cylinder[i]: xyz normalized vector value error: [-1.0,1.0]");
+				err_msg("Map error: cy: xyz normalized vector value error");
 			else if (scene->cylinder[i]->err == ERR_DIAMETER_VALUE)
-				err_msg("Map error: cylinder[i]: diameter value error");
+				err_msg("Map error: cy: diameter value error");
 			else if (scene->cylinder[i]->err == ERR_HEIGHT_VALUE)
-				err_msg("Map error: cylinder[i]: height value error");
+				err_msg("Map error: cy: height value error");
 			else if (scene->cylinder[i]->err == ERR_RGB_TOKEN)
-				err_msg("Map error: cylinder[i]: rbg token error");
+				err_msg("Map error: cy: rbg token error");
 			else if (scene->cylinder[i]->err == ERR_RGB_VALUE)
-				err_msg("Map error: cylinder[i]: rgb value error: [0,255]");
+				err_msg("Map error: cy: rgb value error");
 			return (1);
 		}
 		else
 			i++;
 	}
+	if (!scene->n_cylinder)
+		err_msg("Map error: cy: should exists at least once");
 	return (0);
 }

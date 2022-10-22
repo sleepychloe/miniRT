@@ -6,15 +6,15 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:56 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 07:51:52 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 22:03:53 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int     parse_cylinder_height(t_scene *scene, int i, char ***s)
+int	parse_cylinder_height(t_scene *scene, int i, char ***s)
 {
-        if (ft_atod(s[0][4]) == ERR_ATOD)
+	if (ft_atod(s[0][4]) == ERR_ATOD)
 	{
 		scene->cylinder[i]->err = ERR_HEIGHT_VALUE;
 		ft_free_3d(s);
@@ -32,7 +32,7 @@ int	check_value_cylinder_xyz_vec(t_scene *scene, int i, char **xyz_vec)
 		scene->cylinder[i]->err = ERR_XYZ_VEC_VALUE;
 		return (1);
 	}
-	if ( !(-1 <= ft_atoi(xyz_vec[0]) && ft_atoi(xyz_vec[0]) <= 1)
+	if (!(-1 <= ft_atoi(xyz_vec[0]) && ft_atoi(xyz_vec[0]) <= 1)
 		|| !(-1 <= ft_atoi(xyz_vec[1]) && ft_atoi(xyz_vec[1]) <= 1)
 		|| !(-1 <= ft_atoi(xyz_vec[2]) && ft_atoi(xyz_vec[2]) <= 1))
 	{
@@ -75,7 +75,7 @@ int	check_value_cylinder_rgb(t_scene *scene, int i, char **rgb)
 		scene->cylinder[i]->err = ERR_RGB_VALUE;
 		return (1);
 	}
-	if ( !(0 <= ft_atoi(rgb[0]) && ft_atoi(rgb[0]) <= 255)
+	if (!(0 <= ft_atoi(rgb[0]) && ft_atoi(rgb[0]) <= 255)
 		|| !(0 <= ft_atoi(rgb[1]) && ft_atoi(rgb[1]) <= 255)
 		|| !(0 <= ft_atoi(rgb[2]) && ft_atoi(rgb[2]) <= 255))
 	{

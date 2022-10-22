@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:29 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/22 20:38:55 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 22:43:01 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	parse_sphere_diameter(t_scene *scene, int i, char ***s)
 
 void	parse_sphere(t_scene *scene, char **line)
 {
-	int	i;
+	int		i;
 	char	***s;
 
 	i = scene->n_sphere;
@@ -97,15 +97,10 @@ void	parse_sphere(t_scene *scene, char **line)
 		return ;
 	}
 	s[0] = ft_split(*line, ' ');
-	if (parse_sphere_token(scene, i, s))
-		return ;
 	s[1] = ft_split(s[0][1], ',');
-	if (parse_sphere_xyz_pos(scene, i, s))
-		return ;
-	if (parse_sphere_diameter(scene, i, s))
-		return ;
 	s[2] = ft_split(s[0][3], ',');
-	if (parse_sphere_rgb(scene, i, s))
+	if (parse_sphere_token(scene, i, s) || parse_sphere_xyz_pos(scene, i, s)
+		|| parse_sphere_diameter(scene, i, s) || parse_sphere_rgb(scene, i, s))
 		return ;
 	ft_free_3d(s);
 	scene->sphere[i]->check++;

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 19:34:46 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 07:01:11 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 22:40:57 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	parse_ambient_lighting(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if ( !(0.0 <= ft_atod(s[0][1]) && ft_atod(s[0][1]) <= 1.0))
+	if (!(0.0 <= ft_atod(s[0][1]) && ft_atod(s[0][1]) <= 1.0))
 	{
 		scene->ambient->err = ERR_LIGHTING_VALUE;
 		ft_free_3d(s);
@@ -60,7 +60,7 @@ int	check_value_ambient_rgb(t_scene *scene, char **rgb)
 		scene->ambient->err = ERR_RGB_VALUE;
 		return (1);
 	}
-	if ( !(0 <= ft_atoi(rgb[0]) && ft_atoi(rgb[0]) <= 255)
+	if (!(0 <= ft_atoi(rgb[0]) && ft_atoi(rgb[0]) <= 255)
 		|| !(0 <= ft_atoi(rgb[1]) && ft_atoi(rgb[1]) <= 255)
 		|| !(0 <= ft_atoi(rgb[2]) && ft_atoi(rgb[2]) <= 255))
 	{
@@ -99,20 +99,22 @@ void	parse_ambient(t_scene *scene, char **line)
 {
 	char	***s;
 
+	if (scene->ambient->check)
+	{
+		err_msg("Map error: A: already exists");
+		return ;
+	}
 	s = (char ***)ft_calloc(sizeof(char **), 3);
 	if (!s)
 	{
 		err_msg("Malloc error");
 		return ;
 	}
-	s[0]= ft_split(*line, ' ');
-	if (parse_ambient_token(scene, s))
-		return ;
-	if (parse_ambient_lighting(scene, s))
-		return ;
+	s[0] = ft_split(*line, ' ');
 	s[1] = ft_split(s[0][2], ',');
-	if (parse_ambient_rgb(scene, s))
+	if (parse_ambient_token(scene, s) || parse_ambient_lighting(scene, s)
+		|| parse_ambient_rgb(scene, s))
 		return ;
 	ft_free_3d(s);
-	scene->ambient->cnt++;
+	scene->ambient->check++;
 }

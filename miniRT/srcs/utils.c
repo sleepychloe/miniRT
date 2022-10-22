@@ -6,11 +6,17 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:14:59 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/20 23:58:43 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 22:43:57 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
+
+void	err_msg(char *str)
+{
+	printf("Error\n");
+	printf("%s\n", str);
+}
 
 int	token_count(char **token, int cnt)
 {
@@ -26,15 +32,4 @@ int	token_count(char **token, int cnt)
 	if (i >= cnt && token[i])
 		return (1);
 	return (0);
-}
-/*
-int	sep_count(char **xyz_pos)
-{
-	
-}
-*/
-void	err_msg(char *str)
-{
-	printf("Error\n");
-	printf("%s\n", str);
 }
