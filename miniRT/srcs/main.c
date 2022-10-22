@@ -6,14 +6,14 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:14:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 03:58:23 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 19:25:11 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-//void	print_struct(t_scene *scene)
-//{
+void	print_struct(t_scene *scene)
+{
 /*
 	printf("\n");
 	printf("-----struct ambient--------\n");
@@ -86,8 +86,8 @@
 	printf("g\t\t: %d\n", scene->sphere[2]->g);
 	printf("b\t\t: %d\n", scene->sphere[2]->b);
 	printf("\n");
-*/
-/*
+
+
 	printf("-----struct plane1---------\n");
 	printf("check\t\t: %d\n", scene->plane[0]->check);
 	printf("err\t\t: %d\n", scene->plane[0]->err);
@@ -101,7 +101,7 @@
 	printf("g\t\t: %d\n", scene->plane[0]->g);
 	printf("b\t\t: %d\n", scene->plane[0]->b);
 	printf("\n");
-
+*/
 	printf("-----struct cylinder1-----\n");
 	printf("check\t\t: %d\n", scene->cylinder[0]->check);
 	printf("err\t\t: %d\n", scene->cylinder[0]->err);
@@ -117,8 +117,8 @@
 	printf("g\t\t: %d\n", scene->cylinder[0]->g);
 	printf("b\t\t: %d\n", scene->cylinder[0]->b);
 	printf("\n");
-	*/
-//}
+
+}
 
 int	minirt_main(char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:08 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 07:33:06 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 20:48:18 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	check_value_plane_xyz_pos(t_scene *scene, int i, char **xyz_pos)
 		return (1);
 	}
 	return (0);
+	printf("ok\n");
 }
 
 int	parse_plane_xyz_pos(t_scene *scene, int i, char ***s)
@@ -77,7 +78,7 @@ void	parse_plane(t_scene *scene, char **line)
 
 	i = scene->n_plane;
 	if (i > 0)
-		init_struct_sphere(scene, i);
+		init_struct_plane(scene, i);
 	s = (char ***)ft_calloc(sizeof(char **), 5);
 	if (!s)
 	{

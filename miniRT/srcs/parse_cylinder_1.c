@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/21 07:50:52 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/22 20:48:30 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	parse_cylinder(t_scene *scene, char **line)
 
 	i = scene->n_cylinder;
 	if (i > 0)
-		init_struct_sphere(scene, i);
+		init_struct_cylinder(scene, i);
 	s = (char ***)ft_calloc(sizeof(char **), 5);
 	if (!s)
 	{
