@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:47:48 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 03:29:19 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 08:02:02 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	parse_l_rgb(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (token_count(s[2], 3))
+	if (token_count(s[2], 3) || s[0][3][ft_strlen(s[0][3]) - 1] == ',')
 	{
 		scene->light->err = ERR_RGB_TOKEN;
 		ft_free_3d(s);

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 02:43:32 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 04:20:02 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 07:13:18 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	parse_a_norminette(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	s[1] = ft_split(s[0][2], ',');
+	s[1] = ft_split_comma(s[0][2], ',');
 	if (parse_a_lighting(scene, s) || parse_a_rgb(scene, s))
 	{
 		err_check_a(scene);

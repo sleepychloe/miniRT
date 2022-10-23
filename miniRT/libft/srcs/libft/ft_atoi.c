@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 18:38:31 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 05:16:33 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 07:54:22 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ int	check_valid_str_atoi(const char *str)
 	while (i < (int)ft_strlen(str))
 	{
 		if (!check_valid_atoi(str[i++]))
-			return (2);
+			return (1);
 	}
 	if (str[0] == '.' || str[ft_strlen(str) - 1] == '.')
-		return (3);
+		return (1);
 	i = 0;
 	j = 0;
 	point = 0;
 	if (check_after_point(str, i, j, point))
-		return (4);
+		return (1);
 	if (point > 1)
-		return (5);
+		return (1);
 	return (0);
 }
 
@@ -85,7 +85,7 @@ int	ft_atoi_start(const char *str)
 int	ft_atoi(const char *str)
 {
 	if (check_valid_str_atoi(str))
-		return (check_valid_str_atoi(str));
+		return (-9999);
 	else
 		return (ft_atoi_start(str));
 }

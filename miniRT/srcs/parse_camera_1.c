@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:42:46 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 03:19:59 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 07:29:38 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	parse_c_xyz_pos(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (token_count(s[1], 3))
+	if (token_count(s[1], 3) || s[0][1][ft_strlen(s[0][1]) - 1] == ',')
 	{
 		scene->camera->err = ERR_XYZ_POS_TOKEN;
 		ft_free_3d(s);
@@ -78,8 +78,8 @@ int	parse_c_norminette(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	s[1] = ft_split(s[0][1], ',');
-	s[2] = ft_split(s[0][2], ',');
+	s[1] = ft_split_comma(s[0][1], ',');
+	s[2] = ft_split_comma(s[0][2], ',');
 	if (parse_c_xyz_pos(scene, s) || parse_c_xyz_vec(scene, s)
 		|| parse_c_fov(scene, s))
 	{

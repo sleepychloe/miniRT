@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 04:13:36 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 08:16:03 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	parse_cy_xyz_pos(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (token_count(s[1], 3))
+	if (token_count(s[1], 3) || s[0][1][ft_strlen(s[0][1]) - 1] == ',')
 	{
 		scene->cylinder[i]->err = ERR_XYZ_POS_TOKEN;
 		ft_free_3d(s);
@@ -72,9 +72,9 @@ int	parse_cy_xyz_pos(t_scene *scene, int i, char ***s)
 
 int	parse_cy_norminette(t_scene *scene, int i, char ***s)
 {
-	s[1] = ft_split(s[0][1], ',');
-	s[2] = ft_split(s[0][2], ',');
-	s[3] = ft_split(s[0][5], ',');
+	s[1] = ft_split_comma(s[0][1], ',');
+	s[2] = ft_split_comma(s[0][2], ',');
+	s[3] = ft_split_comma(s[0][5], ',');
 	if (parse_cy_xyz_pos(scene, i, s) || parse_cy_xyz_vec(scene, i, s)
 		|| parse_cy_diameter(scene, i, s) || parse_cy_height(scene, i, s)
 		|| parse_cy_rgb(scene, i, s))

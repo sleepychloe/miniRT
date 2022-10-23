@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 04:14:34 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 08:19:34 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,6 +241,9 @@ void	err_check_cy(t_scene *scene, int i);
 void	err_msg(char *str);
 void	map_err_i(int i, char *id, char *str);
 int		token_count(char **token, int cnt);
+
+// utils_split
+char	**ft_split_comma(char const *s, char c);
 
 // utils_free
 void	*ft_realloc(void *old_ptr, size_t old_len, size_t new_len);

@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/10/23 02:45:36 by yhwang           ###   ########.fr        #
+#    Updated: 2022/10/23 08:19:48 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ FILES = main \
 		parse_err_1 \
 		parse_err_2 \
 		utils \
+		utils_split \
 		utils_free
 
 INCS_DIR = ./incs
