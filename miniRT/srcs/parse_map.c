@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 01:26:27 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 03:15:22 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	finish_gnl(t_scene *scene, char **line, int fd, int err)
 	exit(1);
 }
 
-void	check_id(t_scene *scene, char **line, int fd)
+int	check_id(t_scene *scene, char **line)
 {
 	int		err;
 
@@ -47,14 +47,14 @@ void	check_id(t_scene *scene, char **line, int fd)
 	else if (ft_strncmp(*line, "cy", 2) == 0)
 		err = parse_cy(scene, line);
 	else
-		finish_gnl(scene, line, fd, 9);
-	if (err)
-		finish_gnl(scene, line, fd, err);
+		return (9);
+	return (err);
 }
 
 void	parse_map(t_scene *scene, char *argv)
 {
 	int		fd;
+	int		err;
 	char	*line;
 
 	line = NULL;
@@ -71,7 +71,9 @@ void	parse_map(t_scene *scene, char *argv)
 		}
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
-		check_id(scene, &line, fd);
+		err = check_id(scene, &line);
+		if (err)
+			finish_gnl(scene, &line, fd, err);
 		free(line);
 	}
 	close(fd);

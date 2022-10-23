@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:14:59 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 00:11:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 02:10:23 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	map_err_i(int i, char *id, char *str)
 {
 	printf("Error\n");
 	printf("Map error: ");
-	if (i == 1)
+	if ((i % 10) == 1)
 		printf("%dst ", i);
-	else if (i == 2)
+	else if ((i % 10) == 2)
 		printf("%dnd ", i);
-	else if (i == 3)
+	else if ((i % 10) == 3)
 		printf("%drd ", i);
 	else
 		printf("%dth ", i);

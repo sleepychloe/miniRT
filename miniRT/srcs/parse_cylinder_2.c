@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:56 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 01:35:12 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 04:14:16 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ int	parse_cy_diameter(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
+	if (ft_atod(s[0][3]) <= 0)
+	{
+		scene->cylinder[i]->err = ERR_DIAMETER_VALUE;
+		ft_free_3d(s);
+		return (1);
+	}
 	scene->cylinder[i]->diameter = ft_atod(s[0][3]);
 	return (0);
 }
@@ -27,6 +33,12 @@ int	parse_cy_diameter(t_scene *scene, int i, char ***s)
 int	parse_cy_height(t_scene *scene, int i, char ***s)
 {
 	if (ft_atod(s[0][4]) == ERR_ATOD)
+	{
+		scene->cylinder[i]->err = ERR_HEIGHT_VALUE;
+		ft_free_3d(s);
+		return (1);
+	}
+	if (ft_atod(s[0][4]) <= 0)
 	{
 		scene->cylinder[i]->err = ERR_HEIGHT_VALUE;
 		ft_free_3d(s);

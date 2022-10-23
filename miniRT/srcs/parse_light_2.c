@@ -6,11 +6,29 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:47:48 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 00:36:28 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 03:29:19 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
+
+int	parse_l_brightness(t_scene *scene, char ***s)
+{
+	if (ft_atod(s[0][2]) == ERR_ATOD)
+	{
+		scene->light->err = ERR_BRIGHTNESS_VALUE;
+		ft_free_3d(s);
+		return (1);
+	}
+	if (!(0.0 <= ft_atod(s[0][2]) && ft_atod(s[0][2]) <= 1.0))
+	{
+		scene->light->err = ERR_BRIGHTNESS_VALUE;
+		ft_free_3d(s);
+		return (1);
+	}
+	scene->light->brightness = ft_atod(s[0][2]);
+	return (0);
+}
 
 int	check_value_l_rgb(t_scene *scene, char **rgb)
 {

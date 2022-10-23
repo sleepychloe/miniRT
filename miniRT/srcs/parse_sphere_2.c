@@ -6,11 +6,29 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 00:37:23 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 04:03:05 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
+
+int	parse_sp_diameter(t_scene *scene, int i, char ***s)
+{
+	if (ft_atod(s[0][2]) == ERR_ATOD)
+	{
+		scene->sphere[i]->err = ERR_DIAMETER_VALUE;
+		ft_free_3d(s);
+		return (1);
+	}
+	if (ft_atod(s[0][2]) <= 0)
+	{
+		scene->sphere[i]->err = ERR_DIAMETER_VALUE;
+		ft_free_3d(s);
+		return (1);
+	}
+	scene->sphere[i]->diameter = ft_atod(s[0][2]);
+	return (0);
+}
 
 int	check_value_sp_rgb(t_scene *scene, int i, char **rgb)
 {

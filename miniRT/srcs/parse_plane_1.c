@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:08 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 01:21:49 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 04:06:18 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,22 @@ int	parse_pl_xyz_pos(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
+int	parse_pl_norminette(t_scene *scene, int i, char ***s)
+{
+	s[1] = ft_split(s[0][1], ',');
+	s[2] = ft_split(s[0][2], ',');
+	s[3] = ft_split(s[0][3], ',');
+	if (parse_pl_xyz_pos(scene, i, s) || parse_pl_xyz_vec(scene, i, s)
+		|| parse_pl_rgb(scene, i, s))
+	{
+		err_check_pl(scene, i);
+		return (1);
+	}
+	ft_free_3d(s);
+	scene->n_plane++;
+	return (0);
+}
+
 int	parse_pl(t_scene *scene, char **line)
 {
 	int		i;
@@ -86,16 +102,12 @@ int	parse_pl(t_scene *scene, char **line)
 		return (1);
 	}
 	s[0] = ft_split(*line, ' ');
-	s[1] = ft_split(s[0][1], ',');
-	s[2] = ft_split(s[0][2], ',');
-	s[3] = ft_split(s[0][3], ',');
-	if (parse_pl_token(scene, i, s) || parse_pl_xyz_pos(scene, i, s)
-		|| parse_pl_xyz_vec(scene, i, s) || parse_pl_rgb(scene, i, s))
+	if (parse_pl_token(scene, i, s))
 	{
 		err_check_pl(scene, i);
 		return (1);
 	}
-	ft_free_3d(s);
-	scene->n_plane++;
+	if (parse_pl_norminette(scene, i, s))
+		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:42:46 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 01:20:35 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 03:19:59 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,27 @@ int	parse_c_xyz_pos(t_scene *scene, char ***s)
 	return (0);
 }
 
+int	parse_c_norminette(t_scene *scene, char ***s)
+{
+	if (!s[0][1])
+	{
+		scene->camera->err = ERR_LINE_TOKEN;
+		ft_free_3d(s);
+		return (1);
+	}
+	s[1] = ft_split(s[0][1], ',');
+	s[2] = ft_split(s[0][2], ',');
+	if (parse_c_xyz_pos(scene, s) || parse_c_xyz_vec(scene, s)
+		|| parse_c_fov(scene, s))
+	{
+		err_check_c(scene);
+		return (1);
+	}
+	ft_free_3d(s);
+	scene->camera->check++;
+	return (0);
+}
+
 int	parse_c(t_scene *scene, char **line)
 {
 	char	***s;
@@ -86,12 +107,12 @@ int	parse_c(t_scene *scene, char **line)
 		return (1);
 	}
 	s[0] = ft_split(*line, ' ');
-	s[1] = ft_split(s[0][1], ',');
-	s[2] = ft_split(s[0][2], ',');
-	if (parse_c_token(scene, s) || parse_c_xyz_pos(scene, s)
-		|| parse_c_xyz_vec(scene, s) || parse_c_fov(scene, s))
+	if (parse_c_token(scene, s))
+	{
+		err_check_c(scene);
 		return (1);
-	ft_free_3d(s);
-	scene->camera->check++;
+	}
+	if (parse_c_norminette(scene, s))
+		return (1);
 	return (0);
 }

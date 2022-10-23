@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 01:34:50 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 04:13:36 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,21 @@ int	parse_cy_xyz_pos(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-void	apply_split(char ***s, char **line)
+int	parse_cy_norminette(t_scene *scene, int i, char ***s)
 {
-	s[0] = ft_split(*line, ' ');
 	s[1] = ft_split(s[0][1], ',');
 	s[2] = ft_split(s[0][2], ',');
 	s[3] = ft_split(s[0][5], ',');
+	if (parse_cy_xyz_pos(scene, i, s) || parse_cy_xyz_vec(scene, i, s)
+		|| parse_cy_diameter(scene, i, s) || parse_cy_height(scene, i, s)
+		|| parse_cy_rgb(scene, i, s))
+	{
+		err_check_cy(scene, i);
+		return (1);
+	}
+	ft_free_3d(s);
+	scene->n_cylinder++;
+	return (0);
 }
 
 int	parse_cy(t_scene *scene, char **line)
@@ -92,15 +101,13 @@ int	parse_cy(t_scene *scene, char **line)
 		err_msg("Malloc error");
 		return (1);
 	}
-	apply_split(s, line);
-	if (parse_cy_token(scene, i, s) || parse_cy_xyz_pos(scene, i, s)
-		|| parse_cy_xyz_vec(scene, i, s) || parse_cy_diameter(scene, i, s)
-		|| parse_cy_height(scene, i, s) || parse_cy_rgb(scene, i, s))
+	s[0] = ft_split(*line, ' ');
+	if (parse_cy_token(scene, i, s))
 	{
 		err_check_cy(scene, i);
 		return (1);
 	}
-	ft_free_3d(s);
-	scene->n_cylinder++;
+	if (parse_cy_norminette(scene, i, s))
+		return (1);
 	return (0);
 }

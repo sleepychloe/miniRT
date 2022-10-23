@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:46:18 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 01:20:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 04:19:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,24 @@ int	parse_l_xyz_pos(t_scene *scene, char ***s)
 	return (0);
 }
 
-int	parse_l_brightness(t_scene *scene, char ***s)
+int	parse_l_norminette(t_scene *scene, char ***s)
 {
-	if (ft_atod(s[0][2]) == ERR_ATOD)
+	if (!s[0][1])
 	{
-		scene->light->err = ERR_BRIGHTNESS_VALUE;
+		scene->light->err = ERR_LINE_TOKEN;
 		ft_free_3d(s);
 		return (1);
 	}
-	if (!(0.0 <= ft_atod(s[0][2]) && ft_atod(s[0][2]) <= 1.0))
+	s[1] = ft_split(s[0][1], ',');
+	s[2] = ft_split(s[0][3], ',');
+	if (parse_l_xyz_pos(scene, s) || parse_l_brightness(scene, s)
+		|| parse_l_rgb(scene, s))
 	{
-		scene->light->err = ERR_BRIGHTNESS_VALUE;
-		ft_free_3d(s);
+		err_check_l(scene);
 		return (1);
 	}
-	scene->light->brightness = ft_atod(s[0][2]);
+	ft_free_3d(s);
+	scene->light->check++;
 	return (0);
 }
 
@@ -104,12 +107,12 @@ int	parse_l(t_scene *scene, char **line)
 		return (1);
 	}
 	s[0] = ft_split(*line, ' ');
-	s[1] = ft_split(s[0][1], ',');
-	s[2] = ft_split(s[0][3], ',');
-	if (parse_l_token(scene, s) || parse_l_xyz_pos(scene, s)
-		|| parse_l_brightness(scene, s) || parse_l_rgb(scene, s))
+	if (parse_l_token(scene, s))
+	{
+		err_check_l(scene);
 		return (1);
-	ft_free_3d(s);
-	scene->light->check++;
+	}
+	if (parse_l_norminette(scene, s))
+		return (1);
 	return (0);
 }

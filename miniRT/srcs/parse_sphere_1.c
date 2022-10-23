@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:29 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 01:21:27 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 03:52:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,18 @@ int	parse_sp_xyz_pos(t_scene *scene, int i, char ***s)
 	return (0);
 }
 
-int	parse_sp_diameter(t_scene *scene, int i, char ***s)
+int	parse_sp_norminette(t_scene *scene, int i, char ***s)
 {
-	if (ft_atod(s[0][2]) == ERR_ATOD)
+	s[1] = ft_split(s[0][1], ',');
+	s[2] = ft_split(s[0][3], ',');
+	if (parse_sp_xyz_pos(scene, i, s) || parse_sp_diameter(scene, i, s)
+		|| parse_sp_rgb(scene, i, s))
 	{
-		scene->sphere[i]->err = ERR_DIAMETER_VALUE;
-		ft_free_3d(s);
+		err_check_sp(scene, i);
 		return (1);
 	}
-	scene->sphere[i]->diameter = ft_atod(s[0][2]);
+	ft_free_3d(s);
+	scene->n_sphere++;
 	return (0);
 }
 
@@ -97,15 +100,12 @@ int	parse_sp(t_scene *scene, char **line)
 		return (1);
 	}
 	s[0] = ft_split(*line, ' ');
-	s[1] = ft_split(s[0][1], ',');
-	s[2] = ft_split(s[0][3], ',');
-	if (parse_sp_token(scene, i, s) || parse_sp_xyz_pos(scene, i, s)
-		|| parse_sp_diameter(scene, i, s) || parse_sp_rgb(scene, i, s))
+	if (parse_sp_token(scene, i, s))
 	{
 		err_check_sp(scene, i);
 		return (1);
 	}
-	ft_free_3d(s);
-	scene->n_sphere++;
+	if (parse_sp_norminette(scene, i, s))
+		return (1);
 	return (0);
 }
