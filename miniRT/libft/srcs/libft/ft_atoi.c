@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/22 18:38:31 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/19 22:41:52 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/23 05:16:33 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,54 @@
 
 int	check_valid_atoi(int c)
 {
-	return (c == '-' || ('0' <= c && c <= '9'));
+	return (c == '.' || c == '-' || ('0' <= c && c <= '9'));
+}
+
+int	check_after_point(const char *str, int i, int j, int point)
+{
+	while (i < (int)ft_strlen(str))
+	{
+		if (str[i] == '.')
+		{
+			point++;
+			j = i;
+		}
+		i++;
+	}
+	if (j != 0)
+	{
+		while (j + 1 < (int)ft_strlen(str))
+		{
+			if (str[j + 1] == '0')
+				j++;
+			else
+				return (1);
+		}
+	}
+	return (0);
 }
 
 int	check_valid_str_atoi(const char *str)
 {
 	int	i;
+	int	j;
+	int	point;
 
 	i = 0;
 	while (i < (int)ft_strlen(str))
 	{
 		if (!check_valid_atoi(str[i++]))
-			return (1);
+			return (2);
 	}
+	if (str[0] == '.' || str[ft_strlen(str) - 1] == '.')
+		return (3);
+	i = 0;
+	j = 0;
+	point = 0;
+	if (check_after_point(str, i, j, point))
+		return (4);
+	if (point > 1)
+		return (5);
 	return (0);
 }
 
@@ -34,32 +69,23 @@ int	ft_atoi_start(const char *str)
 {
 	long	sign;
 	long	nbr;
-	size_t	i;
 
-	i = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
-		i++;
 	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
+	if (*str == '-')
 	{
-		if (str[i] == '-')
-			sign = -sign;
-		i++;
+		sign *= -1;
+		str++;
 	}
 	nbr = 0;
-	while ('0' <= str[i] && str[i] <= '9')
-	{
-		nbr = nbr * 10 + (str[i] - '0');
-		i++;
-	}
+	while ('0' <= *str && *str <= '9')
+		nbr = nbr * 10 + (*str++ - '0');
 	return (sign * nbr);
 }
 
 int	ft_atoi(const char *str)
 {
 	if (check_valid_str_atoi(str))
-		return (-9999);
+		return (check_valid_str_atoi(str));
 	else
 		return (ft_atoi_start(str));
 }
