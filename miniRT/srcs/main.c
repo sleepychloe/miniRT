@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:14:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 08:18:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/24 15:18:06 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	minirt_main(char **argv)
 		exit(1);
 	}
 	ft_free_struct(scene);
+	printf("ok\n");
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 03:15:22 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/24 18:48:44 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,32 @@ void	finish_gnl(t_scene *scene, char **line, int fd, int err)
 	exit(1);
 }
 
+char	**check_line(char **line)
+{
+	int		i;
+	char	*new;
+
+	i = 0;
+	new = NULL;
+	if (*line[i] == ' ')
+	{
+		while ((*line)[i] && (*line)[i] == ' ')
+			i++;
+		new = ft_substr(*line, i, ft_strlen(*line) - i);
+		free(*line);
+		*line = new;
+	}
+	return (line);
+}
+
 int	check_id(t_scene *scene, char **line)
 {
 	int		err;
 
 	err = 0;
+	check_line(line);
+	if (**line == '\0')
+		return (0);
 	if (ft_strncmp(*line, "A", 1) == 0)
 		err = parse_a(scene, line);
 	else if (ft_strncmp(*line, "C", 1) == 0)

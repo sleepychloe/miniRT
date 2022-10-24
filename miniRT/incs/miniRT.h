@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 08:19:34 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/24 18:45:42 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ void	parse_arg(t_scene *scene, char *argv);
 // parse_map
 void	finish_gnl(t_scene *scene, char **line, int fd, int err);
 int		check_id(t_scene *scene, char **line);
+char	**check_line(char **line);
 void	parse_map(t_scene *scene, char *argv);
 
 // parse_ambient_1
