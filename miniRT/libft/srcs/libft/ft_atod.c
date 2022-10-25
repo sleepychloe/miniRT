@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:38:42 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 05:03:15 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/25 05:52:00 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_valid_atod(int c)
 {
-	return (c == '.' || c == '-' || ('0' <= c && c <= '9'));
+	return (c == '+' || c == '-' || c == '.' || ('0' <= c && c <= '9'));
 }
 
 int	check_valid_str_atod(const char *str)
@@ -28,9 +28,7 @@ int	check_valid_str_atod(const char *str)
 		if (!check_valid_atod(str[i++]))
 			return (1);
 	}
-	if (str[0] == '.')
-		return (1);
-	if (str[ft_strlen(str) - 1] == '.')
+	if (str[0] == '.' || str[ft_strlen(str) - 1] == '.')
 		return (1);
 	i = 0;
 	point = 0;
@@ -45,12 +43,20 @@ int	check_valid_str_atod(const char *str)
 	return (0);
 }
 
-void	ft_init(int *sign, int *nbr, int *cnt_zero, double *decimal_point)
+int	atod_decimal_point(const char **str, int *cnt_zero, double *decimal_point)
 {
-	*sign = 1;
-	*nbr = 0;
-	*cnt_zero = 0;
-	*decimal_point = 0.0;
+	if (**str == '.')
+		(*str)++;
+	while ('0' <= **str && **str <= '9')
+	{
+		(*decimal_point) = (*decimal_point) * 10 + (*(*str)++ - '0');
+		(*cnt_zero)++;
+	}
+	if (**str == '+' || **str == '-')
+		return (-9999);
+	while ((*cnt_zero)-- || *decimal_point >= 1)
+		(*decimal_point) /= 10;
+	return (*decimal_point);
 }
 
 double	ft_atod_start(const char *str)
@@ -60,23 +66,22 @@ double	ft_atod_start(const char *str)
 	int		cnt_zero;
 	double	decimal_point;
 
-	ft_init(&sign, &nbr, &cnt_zero, &decimal_point);
-	if (*str == '-')
+	sign = 1;
+	if (*str == '+' || *str == '-')
 	{
-		sign *= -1;
+		if (*str == '-')
+			sign *= -1;
 		str++;
 	}
+	nbr = 0;
 	while ('0' <= *str && *str <= '9')
 		nbr = nbr * 10 + (*str++ - '0');
-	if (*str == '.')
-		str++;
-	while ('0' <= *str && *str <= '9')
-	{
-		decimal_point = decimal_point * 10 + (*str++ - '0');
-		cnt_zero++;
-	}
-	while (cnt_zero-- || decimal_point >= 1)
-		decimal_point /= 10;
+	if (*str == '+' || *str == '-')
+		return (-9999);
+	cnt_zero = 0;
+	decimal_point = 0;
+	if (atod_decimal_point(&str, &cnt_zero, &decimal_point) == -9999)
+		return (-9999);
 	return (sign * (nbr + decimal_point));
 }
 
