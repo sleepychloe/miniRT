@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:08 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 08:09:54 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 19:10:51 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int	parse_pl_xyz_pos(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	scene->plane[i]->x_pos = ft_atod(s[1][0]);
-	scene->plane[i]->y_pos = ft_atod(s[1][1]);
-	scene->plane[i]->z_pos = ft_atod(s[1][2]);
+	scene->plane[i]->xyz_pos.x = ft_atod(s[1][0]);
+	scene->plane[i]->xyz_pos.y = ft_atod(s[1][1]);
+	scene->plane[i]->xyz_pos.z = ft_atod(s[1][2]);
 	return (0);
 }
 
@@ -109,5 +109,16 @@ int	parse_pl(t_scene *scene, char **line)
 	}
 	if (parse_pl_norminette(scene, i, s))
 		return (1);
+	
+	printf("----------\n");
+	printf("pl_%d->x_pos : %.1f\n", i + 1, scene->plane[i]->xyz_pos.x);
+	printf("pl_%d->y_pos : %.1f\n", i + 1, scene->plane[i]->xyz_pos.y);
+	printf("pl_%d->z_pos : %.1f\n", i + 1, scene->plane[i]->xyz_pos.z);
+	printf("pl_%d->x_vec : %.1f\n", i + 1, scene->plane[i]->xyz_vec.x);
+	printf("pl_%d->y_vec : %.1f\n", i + 1, scene->plane[i]->xyz_vec.y);
+	printf("pl_%d->z_vec : %.1f\n", i + 1, scene->plane[i]->xyz_vec.z);
+	printf("pl_%d->r : %d\n", i + 1, scene->plane[i]->r);
+	printf("pl_%d->g : %d\n", i + 1, scene->plane[i]->g);
+	printf("pl_%d->b : %d\n", i + 1, scene->plane[i]->b);
 	return (0);
 }

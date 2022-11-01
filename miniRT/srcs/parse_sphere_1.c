@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:29 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 08:05:08 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 19:06:27 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int	parse_sp_xyz_pos(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	scene->sphere[i]->x_pos = ft_atod(s[1][0]);
-	scene->sphere[i]->y_pos = ft_atod(s[1][1]);
-	scene->sphere[i]->z_pos = ft_atod(s[1][2]);
+	scene->sphere[i]->xyz_pos.x = ft_atod(s[1][0]);
+	scene->sphere[i]->xyz_pos.y = ft_atod(s[1][1]);
+	scene->sphere[i]->xyz_pos.z = ft_atod(s[1][2]);
 	return (0);
 }
 
@@ -107,5 +107,14 @@ int	parse_sp(t_scene *scene, char **line)
 	}
 	if (parse_sp_norminette(scene, i, s))
 		return (1);
+	
+	printf("----------\n");
+	printf("sp_%d->x_pos : %.1f\n", i + 1, scene->sphere[i]->xyz_pos.x);
+	printf("sp_%d->y_pos : %.1f\n", i + 1, scene->sphere[i]->xyz_pos.y);
+	printf("sp_%d->z_pos : %.1f\n", i + 1, scene->sphere[i]->xyz_pos.z);
+	printf("sp_%d->diameter : %.1f\n", i + 1, scene->sphere[i]->diameter);
+	printf("sp_%d->r : %d\n", i + 1, scene->sphere[i]->r);
+	printf("sp_%d->g : %d\n", i + 1, scene->sphere[i]->g);
+	printf("sp_%d->b : %d\n", i + 1, scene->sphere[i]->b);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/24 18:50:55 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 19:13:55 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
+typedef struct s_vec3
+{
+	double	x;
+	double	y;
+	double	z;
+}	t_vec3;
+
 typedef struct s_ambient
 {
 	int		check;
@@ -53,12 +60,8 @@ typedef struct s_camera
 {
 	int		check;
 	int		err;
-	double	x_pos;
-	double	y_pos;
-	double	z_pos;
-	int		x_vec;
-	int		y_vec;
-	int		z_vec;
+	t_vec3	xyz_pos;
+	t_vec3	xyz_vec;
 	int		fov;
 }	t_camera;
 
@@ -66,9 +69,7 @@ typedef struct s_light
 {
 	int		check;
 	int		err;
-	double	x_pos;
-	double	y_pos;
-	double	z_pos;
+	t_vec3	xyz_pos;
 	double	brightness;
 	int		r;
 	int		g;
@@ -78,9 +79,7 @@ typedef struct s_light
 typedef struct s_sphere
 {
 	int		err;
-	double	x_pos;
-	double	y_pos;
-	double	z_pos;
+	t_vec3	xyz_pos;
 	double	diameter;
 	int		r;
 	int		g;
@@ -90,12 +89,8 @@ typedef struct s_sphere
 typedef struct s_plane
 {
 	int		err;
-	double	x_pos;
-	double	y_pos;
-	double	z_pos;
-	int		x_vec;
-	int		y_vec;
-	int		z_vec;
+	t_vec3	xyz_pos;
+	t_vec3	xyz_vec;
 	int		r;
 	int		g;
 	int		b;
@@ -104,12 +99,8 @@ typedef struct s_plane
 typedef struct s_cylinder
 {
 	int		err;
-	double	x_pos;
-	double	y_pos;
-	double	z_pos;
-	int		x_vec;
-	int		y_vec;
-	int		z_vec;
+	t_vec3	xyz_pos;
+	t_vec3	xyz_vec;
 	double	diameter;
 	double	height;
 	int		r;

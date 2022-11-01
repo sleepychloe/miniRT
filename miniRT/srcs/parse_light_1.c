@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:46:18 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 07:59:27 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 19:01:27 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int	parse_l_xyz_pos(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	scene->light->x_pos = ft_atod(s[1][0]);
-	scene->light->y_pos = ft_atod(s[1][1]);
-	scene->light->z_pos = ft_atod(s[1][2]);
+	scene->light->xyz_pos.x = ft_atod(s[1][0]);
+	scene->light->xyz_pos.y = ft_atod(s[1][1]);
+	scene->light->xyz_pos.z = ft_atod(s[1][2]);
 	return (0);
 }
 
@@ -114,5 +114,14 @@ int	parse_l(t_scene *scene, char **line)
 	}
 	if (parse_l_norminette(scene, s))
 		return (1);
+
+	printf("----------\n");
+	printf("L->x_pos : %.1f\n", scene->light->xyz_pos.x);
+	printf("L->y_pos : %.1f\n", scene->light->xyz_pos.y);
+	printf("L->z_pos : %.1f\n", scene->light->xyz_pos.z);
+	printf("L->brightness : %.1f\n", scene->light->brightness);
+	printf("L->r : %d\n", scene->light->r);
+	printf("L->g : %d\n", scene->light->g);
+	printf("L->b : %d\n", scene->light->b);
 	return (0);
 }

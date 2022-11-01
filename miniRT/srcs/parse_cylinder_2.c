@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:56 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 08:16:15 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 19:14:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ int	parse_cy_xyz_vec(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	scene->cylinder[i]->x_vec = ft_atoi(s[2][0]);
-	scene->cylinder[i]->y_vec = ft_atoi(s[2][1]);
-	scene->cylinder[i]->z_vec = ft_atoi(s[2][2]);
+	scene->cylinder[i]->xyz_vec.x = ft_atoi(s[2][0]);
+	scene->cylinder[i]->xyz_vec.y = ft_atoi(s[2][1]);
+	scene->cylinder[i]->xyz_vec.z = ft_atoi(s[2][2]);
 	return (0);
 }

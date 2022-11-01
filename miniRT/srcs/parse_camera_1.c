@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:42:46 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 07:29:38 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 18:58:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int	parse_c_xyz_pos(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	scene->camera->x_pos = ft_atod(s[1][0]);
-	scene->camera->y_pos = ft_atod(s[1][1]);
-	scene->camera->z_pos = ft_atod(s[1][2]);
+	scene->camera->xyz_pos.x = ft_atod(s[1][0]);
+	scene->camera->xyz_pos.y = ft_atod(s[1][1]);
+	scene->camera->xyz_pos.z = ft_atod(s[1][2]);
 	return (0);
 }
 
@@ -114,5 +114,14 @@ int	parse_c(t_scene *scene, char **line)
 	}
 	if (parse_c_norminette(scene, s))
 		return (1);
+	
+	printf("----------\n");
+	printf("C->x_pos : %.1f\n", scene->camera->xyz_pos.x);
+	printf("C->y_pos : %.1f\n", scene->camera->xyz_pos.y);
+	printf("C->z_pos : %.1f\n", scene->camera->xyz_pos.z);
+	printf("C->x_vec : %.1f\n", scene->camera->xyz_vec.x);
+	printf("C->y_vec : %.1f\n", scene->camera->xyz_vec.y);
+	printf("C->z_vec : %.1f\n", scene->camera->xyz_vec.z);
+	printf("C->fov : %d\n", scene->camera->fov);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 08:16:03 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 19:23:37 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int	parse_cy_xyz_pos(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	scene->cylinder[i]->x_pos = ft_atod(s[1][0]);
-	scene->cylinder[i]->y_pos = ft_atod(s[1][1]);
-	scene->cylinder[i]->z_pos = ft_atod(s[1][2]);
+	scene->cylinder[i]->xyz_pos.x = ft_atod(s[1][0]);
+	scene->cylinder[i]->xyz_pos.y = ft_atod(s[1][1]);
+	scene->cylinder[i]->xyz_pos.z = ft_atod(s[1][2]);
 	return (0);
 }
 
@@ -109,5 +109,18 @@ int	parse_cy(t_scene *scene, char **line)
 	}
 	if (parse_cy_norminette(scene, i, s))
 		return (1);
+	
+	printf("----------\n");
+	printf("cy_%d->x_pos : %.1f\n", i + 1, scene->cylinder[i]->xyz_pos.x);
+	printf("cy_%d->y_pos : %.1f\n", i + 1, scene->cylinder[i]->xyz_pos.y);
+	printf("cy_%d->z_pos : %.1f\n", i + 1, scene->cylinder[i]->xyz_pos.z);
+	printf("cy_%d->x_vec : %.1f\n", i + 1, scene->cylinder[i]->xyz_vec.x);
+	printf("cy_%d->y_vec : %.1f\n", i + 1, scene->cylinder[i]->xyz_vec.y);
+	printf("cy_%d->z_vec : %.1f\n", i + 1, scene->cylinder[i]->xyz_vec.z);
+	printf("cy_%d->diameter : %.1f\n", i + 1, scene->cylinder[i]->diameter);
+	printf("cy_%d->height : %.1f\n", i + 1, scene->cylinder[i]->height);
+	printf("cy_%d->r : %d\n", i + 1, scene->cylinder[i]->r);
+	printf("cy_%d->g : %d\n", i + 1, scene->cylinder[i]->g);
+	printf("cy_%d->b : %d\n", i + 1, scene->cylinder[i]->b);
 	return (0);
 }
