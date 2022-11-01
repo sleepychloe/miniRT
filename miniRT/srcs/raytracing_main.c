@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/01 21:00:44 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 21:10:09 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	raytracing_main(t_scene *scene)
 {
 	t_mlx	mlx;
 
-        if (init_window(&mlx))
+	if (init_window(&mlx))
 	{
 		err_msg("mlx init error");
-		return(1);
+		return (1);
 	}
 	mlx_hook(mlx.win, 17, 2, mlx_exit, (void *)scene);
 	mlx_key_hook(mlx.win, mlx_keys, (void *)scene);

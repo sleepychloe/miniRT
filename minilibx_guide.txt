@@ -1,0 +1,34 @@
+1. sudo apt-get install gcc make xorg libxext-dev libbsd-dev
+
+2. 42Docs -> minilibx -> getting started -> compilation on linux
+	-> github 42paris minilibx-linux -> git clone(name : mlx_linux)
+
+3. (after gitclone) run ./configure -> make
+
+4. copy libmlx.a, libmlx_Linux, mlx.h(using cp command)
+	libmlx.a in /usr/local/lib
+	libmlx_Linux in /usr/local/lib
+	mlx.h in /usr/local/include
+
+5. go to the test directory(~/mlx_linux/test) -> run ./mlx-tests
+
+6. make main.c (-> opens empty black window with "Hello world!")
+
+	#include "mlx_linux/mlx.h"
+	
+	int     main(void)
+	{
+	    void    *mlx;
+	    void    *mlx_win;
+	
+	    mlx = mlx_init();
+	    mlx_win = mlx_new_window(mlx, 500, 500, "Hello, world!");
+	    mlx_loop(mlx);
+	}
+
+7. compile with command
+	"gcc main.c -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz"
+
+8. run ./a.out
+
+9. ctrl+c if you want to close the window
