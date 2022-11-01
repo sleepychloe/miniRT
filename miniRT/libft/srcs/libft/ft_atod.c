@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 17:38:42 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/25 05:52:00 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/10/25 18:47:10 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ int	atod_decimal_point(const char **str, int *cnt_zero, double *decimal_point)
 		(*cnt_zero)++;
 	}
 	if (**str == '+' || **str == '-')
-		return (-9999);
+		return (1);
 	while ((*cnt_zero)-- || *decimal_point >= 1)
 		(*decimal_point) /= 10;
-	return (*decimal_point);
+	return (0);
 }
 
 double	ft_atod_start(const char *str)
@@ -80,7 +80,7 @@ double	ft_atod_start(const char *str)
 		return (-9999);
 	cnt_zero = 0;
 	decimal_point = 0;
-	if (atod_decimal_point(&str, &cnt_zero, &decimal_point) == -9999)
+	if (atod_decimal_point(&str, &cnt_zero, &decimal_point))
 		return (-9999);
 	return (sign * (nbr + decimal_point));
 }
