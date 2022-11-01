@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 02:43:32 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/01 18:49:49 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 21:03:20 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,5 @@ int	parse_a(t_scene *scene, char **line)
 	}
 	if (parse_a_norminette(scene, s))
 		return (1);
-	
-	printf("----------\n");
-	printf("A->lighting : %.1f\n", scene->ambient->lighting);
-	printf("A->r : %d\n", scene->ambient->r);
-	printf("A->g : %d\n", scene->ambient->g);
-	printf("A->b : %d\n", scene->ambient->b);
 	return (0);
 }

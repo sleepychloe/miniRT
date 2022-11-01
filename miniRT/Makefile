@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/10/23 08:19:48 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/01 21:04:23 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,7 @@ MLX_DIR = ./mlx_linux
 MLX_FLAGS = -lX11 -lXext -lm -lz
 MLX = $(addprefix $(MLX_DIR)/, libmlx.a)
 
-FILES = main \
-		init_struct_1 \
+FILES = init_struct_1 \
 		init_struct_2 \
 		parse_arg \
 		parse_map \
@@ -44,9 +43,12 @@ FILES = main \
 		parse_cylinder_3 \
 		parse_err_1 \
 		parse_err_2 \
+		raytracing_main \
 		utils \
 		utils_split \
-		utils_free
+		utils_free \
+		mlx_utils \
+		main
 
 INCS_DIR = ./incs
 SRCS_DIR = ./srcs

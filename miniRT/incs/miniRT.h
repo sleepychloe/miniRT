@@ -6,15 +6,15 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/01 19:13:55 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 21:01:37 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# define ERR_ATOI	-9999
-# define ERR_ATOD	-9999.0
+# define ERR_ATOI		-9999
+# define ERR_ATOD		-9999.0
 
 # define ERR_MALLOC		1
 # define ERR_IDENTIFIER		2
@@ -33,8 +33,12 @@
 # define ERR_XYZ_VEC_TOKEN	13
 # define ERR_XYZ_VEC_VALUE	14
 
+# define ESC			0xFF1B
+
 # include "../libft/incs/libft.h"
 # include "../libft/incs/get_next_line.h"
+# include "../mlx_linux/mlx.h"
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -120,6 +124,17 @@ typedef struct s_scene
 	int			n_plane;
 	int			n_cylinder;
 }	t_scene;
+
+typedef struct s_mlx
+{
+	void	*mlx_ptr;
+	void	*win;
+	void	*img_ptr;
+	char	*addr;
+	int		line_length;
+	int		bits_per_pixel;
+	int		endian;
+}	t_mlx;
 
 // init_struct_1
 void	init_struct_a(t_scene *scene);
@@ -229,6 +244,10 @@ void	err_check_sp(t_scene *scene, int i);
 void	err_check_pl(t_scene *scene, int i);
 void	err_check_cy(t_scene *scene, int i);
 
+// raytracing_main
+int		init_window(t_mlx *mlx);
+int		raytracing_main(t_scene *scene);
+
 // utils
 void	err_msg(char *str);
 void	map_err_i(int i, char *id, char *str);
@@ -241,9 +260,14 @@ char	**ft_split_comma(char const *s, char c);
 void	*ft_realloc(void *old_ptr, size_t old_len, size_t new_len);
 void	ft_free_2d(char **str);
 void	ft_free_3d(char ***str);
-void	ft_free_struct(t_scene *scene);
+void	free_scene(t_scene *scene);
+
+// mlx_utils
+int		mlx_exit(t_scene *scene);
+int		mlx_keys(int key, t_scene *scene);
 
 // main
+int		raytracing_main(t_scene *scene);
 int		check_err_in_struct(t_scene *scene);
 int		minirt_main(char **argv);
 int		main(int argc, char **argv);

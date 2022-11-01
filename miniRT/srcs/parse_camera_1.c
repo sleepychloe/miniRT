@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:42:46 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/01 18:58:31 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 21:03:14 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,5 @@ int	parse_c(t_scene *scene, char **line)
 	}
 	if (parse_c_norminette(scene, s))
 		return (1);
-	
-	printf("----------\n");
-	printf("C->x_pos : %.1f\n", scene->camera->xyz_pos.x);
-	printf("C->y_pos : %.1f\n", scene->camera->xyz_pos.y);
-	printf("C->z_pos : %.1f\n", scene->camera->xyz_pos.z);
-	printf("C->x_vec : %.1f\n", scene->camera->xyz_vec.x);
-	printf("C->y_vec : %.1f\n", scene->camera->xyz_vec.y);
-	printf("C->z_vec : %.1f\n", scene->camera->xyz_vec.z);
-	printf("C->fov : %d\n", scene->camera->fov);
 	return (0);
 }

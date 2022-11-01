@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:12:07 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 01:43:25 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 20:16:35 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void	parse_arg(t_scene *scene, char *argv)
 	if (!fd || fd < 0)
 	{
 		err_msg("File open error");
-		ft_free_struct(scene);
+		free_scene(scene);
 		close(fd);
 		exit(1);
 	}
 	if (check_extention(argv))
 	{
-		ft_free_struct(scene);
+		free_scene(scene);
 		close(fd);
 		exit(1);
 	}

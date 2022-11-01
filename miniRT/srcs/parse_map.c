@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/24 18:48:44 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 20:17:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	finish_gnl(t_scene *scene, char **line, int fd, int err)
 	if (err == 9)
 		err_msg("Map error: invalid character or string exists");
 	free(*line);
-	ft_free_struct(scene);
+	free_scene(scene);
 	while (1)
 	{
 		*line = get_next_line(fd);

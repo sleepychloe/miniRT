@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0002/01/18 19:05:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/10/23 00:45:12 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/01 20:16:04 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	init_struct_sp(t_scene *scene, int i)
 	if (!(scene->sphere))
 	{
 		err_msg("Malloc error\n");
-		ft_free_struct(scene);
+		free_scene(scene);
 		exit(1);
 	}
 	scene->sphere[i] = (t_sphere *)ft_calloc(sizeof(t_sphere), 2);
 	if (!(scene->sphere[i]))
 	{
 		err_msg("Malloc error\n");
-		ft_free_struct(scene);
+		free_scene(scene);
 		exit(1);
 	}
 }
@@ -44,14 +44,14 @@ void	init_struct_pl(t_scene *scene, int i)
 	if (!(scene->plane))
 	{
 		err_msg("Malloc error\n");
-		ft_free_struct(scene);
+		free_scene(scene);
 		exit(1);
 	}
 	scene->plane[i] = (t_plane *)ft_calloc(sizeof(t_plane), 2);
 	if (!(scene->plane[i]))
 	{
 		err_msg("Malloc error\n");
-		ft_free_struct(scene);
+		free_scene(scene);
 		exit(1);
 	}
 }
@@ -66,14 +66,14 @@ void	init_struct_cy(t_scene *scene, int i)
 	if (!(scene->cylinder))
 	{
 		err_msg("Malloc error\n");
-		ft_free_struct(scene);
+		free_scene(scene);
 		exit(1);
 	}
 	scene->cylinder[i] = (t_cylinder *)ft_calloc(sizeof(t_cylinder), 2);
 	if (!(scene->cylinder[i]))
 	{
 		err_msg("Malloc error\n");
-		ft_free_struct(scene);
+		free_scene(scene);
 		exit(1);
 	}
 }
