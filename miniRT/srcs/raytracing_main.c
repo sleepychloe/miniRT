@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/02 05:17:21 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/02 11:29:43 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,6 @@ int	init_window(t_mlx *mlx)
 	if (!(mlx->addr))
 		return (1);
 	return (0);
-}
-
-t_vec3	ray(t_vec3 origin, t_vec3 direction, double t)
-{
-	t_vec3	res;
-
-	res = vec3_add_vec3(origin, vec3_mul_rn(direction, t));
-	return (res);
 }
 
 int hit_sphere(t_vec3 center, double radius, t_vec3 direction)
