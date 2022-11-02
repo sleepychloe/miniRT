@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:53:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/02 03:21:22 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/02 05:18:28 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,15 @@ void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	mlx_exit(t_scene *scene)
+int	mlx_exit(t_mlx *mlx)
 {
-	free_scene(scene);
-	exit(1);
+        mlx_destroy_window(mlx->mlx_ptr, mlx->win);
+	exit (0);
 }
 
-int	mlx_keys(int key, t_scene *scene)
+int	mlx_keys(int key, t_mlx *mlx)
 {
 	if (key == ESC)
-	{
-		if (mlx_exit(scene))
-			return (1);
-	}
+                mlx_exit(mlx);
 	return (0);
 }

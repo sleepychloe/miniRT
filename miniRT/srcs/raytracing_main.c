@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/02 04:18:56 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/02 05:17:21 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,9 @@ int hit_sphere(t_vec3 center, double radius, t_vec3 direction)
 
 int ray_color(double u, double v)
 {
-	int ratio = 16 / 9;
-	double viewport_height = 2.0;
-	double viewport_width = ratio * viewport_height;
-	double focal_length = 1.0;
+	double viewport_width = 2.0;
+	double viewport_height = viewport_width / 16 * 9;
+	double focal_length = 0.8;
 	t_vec3 origin = vec3(0, 0, 0);
 	t_vec3 horizontal = vec3(viewport_width, 0, 0);
 	t_vec3 vertical = vec3(0, viewport_height, 0);
@@ -83,7 +82,6 @@ int	raytrace(t_mlx *mlx)
 				my_mlx_pixel_put(mlx, i, j, 0x00000000);
 		}
 	}
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->img_ptr, 0, 0);
 	return (0);
 }
 
@@ -97,8 +95,10 @@ int	raytracing_main(t_scene *scene)
 		return (1);
 	}
 	raytrace(&mlx);
-	mlx_hook(mlx.win, 17, 2, mlx_exit, (void *)scene);
-	mlx_key_hook(mlx.win, mlx_keys, (void *)scene);
+	free_scene(scene);
+	mlx_put_image_to_window(mlx.mlx_ptr, mlx.win, mlx.img_ptr, 0, 0);
+	mlx_hook(mlx.win, 17, 2, mlx_exit, (t_mlx *)&mlx);
+	mlx_key_hook(mlx.win, mlx_keys, (t_mlx *)&mlx);
 	mlx_loop(mlx.mlx_ptr);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/02 04:17:21 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/02 05:11:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,8 +281,8 @@ t_vec3  vec3_unit(t_vec3 v);
 
 // utils_mlx
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
-int		mlx_exit(t_scene *scene);
-int		mlx_keys(int key, t_scene *scene);
+int		mlx_exit(t_mlx *mlx);
+int		mlx_keys(int key, t_mlx *mlx);
 
 // main
 int		minirt_main(char **argv);
