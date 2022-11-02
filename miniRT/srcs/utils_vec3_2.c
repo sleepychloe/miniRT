@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*   utils_vec3_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 19:59:01 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/02 02:43:36 by yhwang           ###   ########.fr       */
+/*   Created: 2022/11/02 03:26:45 by yhwang            #+#    #+#             */
+/*   Updated: 2022/11/02 03:26:59 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
+double  vec3_length(t_vec3 v)
 {
-	char	*dst;
+        double  res;
 
-	dst = mlx->addr + (x * mlx->bits_per_pixel / 8) + (y * mlx->line_length);
-	*(unsigned int *)dst = color;
+        res = sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+        return (res);
 }
 
-int	mlx_exit(t_scene *scene)
+t_vec3  vec3_unit(t_vec3 v)
 {
-	free_scene(scene);
-	exit(1);
-	return (0);
-}
+        t_vec3  res;
 
-int	mlx_keys(int key, t_scene *scene)
-{
-	if (key == ESC)
-	{
-		if (mlx_exit(scene))
-			return (1);
-	}
-	return (0);
+        res = vec3_mul_rn(v, (1/vec3_length(v)));
+        return (res);
 }
-

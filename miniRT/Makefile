@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/01 21:04:23 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/02 04:01:58 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,9 @@ FILES = init_struct_1 \
 		utils \
 		utils_split \
 		utils_free \
-		mlx_utils \
+		utils_vec3_1 \
+		utils_vec3_2 \
+		utils_mlx \
 		main
 
 INCS_DIR = ./incs

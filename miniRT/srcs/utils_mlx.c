@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_utils.c                                        :+:      :+:    :+:   */
+/*   utils_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 19:59:01 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/02 02:43:36 by yhwang           ###   ########.fr       */
+/*   Created: 2022/11/02 02:53:52 by yhwang            #+#    #+#             */
+/*   Updated: 2022/11/02 03:21:22 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	mlx_exit(t_scene *scene)
 {
 	free_scene(scene);
 	exit(1);
-	return (0);
 }
 
 int	mlx_keys(int key, t_scene *scene)
@@ -36,4 +35,3 @@ int	mlx_keys(int key, t_scene *scene)
 	}
 	return (0);
 }
-

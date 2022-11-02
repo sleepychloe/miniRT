@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/01 21:01:37 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/02 04:17:21 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@
 # define ERR_XYZ_VEC_TOKEN	13
 # define ERR_XYZ_VEC_VALUE	14
 
+# define ASPECT_RATIO_W		16
+# define ASPECT_RATIO_H		9
+# define ASPECT_RATIO		ASPECT_RATIO_W / ASPECT_RATIO_H
+# define WIN_W			800
+# define WIN_H			WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H
 # define ESC			0xFF1B
 
 # include "../libft/incs/libft.h"
@@ -42,6 +47,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <math.h>
 
 typedef struct s_vec3
 {
@@ -262,13 +268,23 @@ void	ft_free_2d(char **str);
 void	ft_free_3d(char ***str);
 void	free_scene(t_scene *scene);
 
-// mlx_utils
+// utils_vec3_1
+t_vec3	vec3(double x, double y, double z);
+t_vec3	vec3_add_vec3(t_vec3 v1, t_vec3 v2);
+t_vec3	vec3_sub_vec3(t_vec3 v1, t_vec3 v2);
+t_vec3 vec3_mul_rn(t_vec3 v, double rn);
+double vec3_dot_vec3(t_vec3 v1, t_vec3 v2);
+
+// utils_vec3_2
+double  vec3_length(t_vec3 v);
+t_vec3  vec3_unit(t_vec3 v);
+
+// utils_mlx
+void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 int		mlx_exit(t_scene *scene);
 int		mlx_keys(int key, t_scene *scene);
 
 // main
-int		raytracing_main(t_scene *scene);
-int		check_err_in_struct(t_scene *scene);
 int		minirt_main(char **argv);
 int		main(int argc, char **argv);
 
