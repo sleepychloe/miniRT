@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:30 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/01 19:11:08 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/02 20:42:40 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	check_value_pl_xyz_vec(t_scene *scene, int i, char **xyz_vec)
 {
-	if (ft_atoi(xyz_vec[0]) == ERR_ATOI || ft_atoi(xyz_vec[1]) == ERR_ATOI
-		|| ft_atoi(xyz_vec[2]) == ERR_ATOI)
+	if (ft_atod(xyz_vec[0]) == ERR_ATOD || ft_atod(xyz_vec[1]) == ERR_ATOD
+		|| ft_atod(xyz_vec[2]) == ERR_ATOD)
 	{
 		scene->plane[i]->err = ERR_XYZ_VEC_VALUE;
 		return (1);
 	}
-	if (!(-1 <= ft_atoi(xyz_vec[0]) && ft_atoi(xyz_vec[0]) <= 1)
-		|| !(-1 <= ft_atoi(xyz_vec[1]) && ft_atoi(xyz_vec[1]) <= 1)
-		|| !(-1 <= ft_atoi(xyz_vec[2]) && ft_atoi(xyz_vec[2]) <= 1))
+	if (!(ft_atod(xyz_vec[0]) * ft_atod(xyz_vec[0])
+		+ ft_atod(xyz_vec[1]) * ft_atod(xyz_vec[1])
+		+ ft_atod(xyz_vec[2]) * ft_atod(xyz_vec[2]) == 1))
 	{
 		scene->plane[i]->err = ERR_XYZ_VEC_VALUE;
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/02 05:11:31 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/02 14:18:53 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@
 
 # define ASPECT_RATIO_W		16
 # define ASPECT_RATIO_H		9
-# define ASPECT_RATIO		ASPECT_RATIO_W / ASPECT_RATIO_H
 # define WIN_W			800
 # define WIN_H			WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H
+
+# define PI			3.141592
+
 # define ESC			0xFF1B
 
 # include "../libft/incs/libft.h"
