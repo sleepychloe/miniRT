@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 07:02:00 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/05 07:14:45 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/05 10:52:25 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ int	rgb_color(t_rgb rgb)
 	int	res;
 
 	res = rgb.r * 256 * 256 + rgb.g * 256 + rgb.b;
+	return (res);
+}
+
+t_rgb	rgb3(int r, int g, int b)
+{
+	t_rgb	res;
+
+	res.r = r;
+	res.g = g;
+	res.b = b;
 	return (res);
 }
 

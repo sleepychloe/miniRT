@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/05 07:07:23 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/05 10:42:34 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,6 +281,7 @@ t_vec3	vec3_unit(t_vec3 v);
 t_vec3	ray(t_vec3 start, t_vec3 direc, double t);
 int		rgb_color(t_rgb rgb);
 int		rgb_unit(float r, float g, float b);
+t_rgb	rgb3(int r, int g, int b);
 double	random_double(void);
 t_vec3	random_double_xyz(void);
 
