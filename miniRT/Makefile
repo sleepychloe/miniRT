@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/02 04:01:58 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/05 07:05:39 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,12 @@ FILES = init_struct_1 \
 		parse_err_1 \
 		parse_err_2 \
 		raytracing_main \
-		utils \
+		utils_parse \
 		utils_split \
 		utils_free \
 		utils_vec3_1 \
 		utils_vec3_2 \
+		utils_rt \
 		utils_mlx \
 		main
 

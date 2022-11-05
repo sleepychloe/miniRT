@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/02 14:18:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/05 07:07:23 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@
 # define ASPECT_RATIO_W		16
 # define ASPECT_RATIO_H		9
 # define WIN_W			800
-# define WIN_H			WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H
 
 # define PI			3.141592
 
@@ -58,14 +57,19 @@ typedef struct s_vec3
 	double	z;
 }	t_vec3;
 
+typedef struct s_rgb
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_rgb;
+
 typedef struct s_ambient
 {
 	int		check;
 	int		err;
 	double	lighting;
-	int		r;
-	int		g;
-	int		b;
+	t_rgb	rgb;
 }	t_ambient;
 
 typedef struct s_camera
@@ -83,9 +87,7 @@ typedef struct s_light
 	int		err;
 	t_vec3	xyz_pos;
 	double	brightness;
-	int		r;
-	int		g;
-	int		b;
+	t_rgb	rgb;
 }	t_light;
 
 typedef struct s_sphere
@@ -93,9 +95,7 @@ typedef struct s_sphere
 	int		err;
 	t_vec3	xyz_pos;
 	double	diameter;
-	int		r;
-	int		g;
-	int		b;
+	t_rgb	rgb;
 }	t_sphere;
 
 typedef struct s_plane
@@ -103,9 +103,7 @@ typedef struct s_plane
 	int		err;
 	t_vec3	xyz_pos;
 	t_vec3	xyz_vec;
-	int		r;
-	int		g;
-	int		b;
+	t_rgb	rgb;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -115,9 +113,7 @@ typedef struct s_cylinder
 	t_vec3	xyz_vec;
 	double	diameter;
 	double	height;
-	int		r;
-	int		g;
-	int		b;
+	t_rgb	rgb;
 }	t_cylinder;
 
 typedef struct s_scene
@@ -256,7 +252,7 @@ void	err_check_cy(t_scene *scene, int i);
 int		init_window(t_mlx *mlx);
 int		raytracing_main(t_scene *scene);
 
-// utils
+// utils_parse
 void	err_msg(char *str);
 void	map_err_i(int i, char *id, char *str);
 int		token_count(char **token, int cnt);
@@ -274,12 +270,19 @@ void	free_scene(t_scene *scene);
 t_vec3	vec3(double x, double y, double z);
 t_vec3	vec3_add_vec3(t_vec3 v1, t_vec3 v2);
 t_vec3	vec3_sub_vec3(t_vec3 v1, t_vec3 v2);
-t_vec3 vec3_mul_rn(t_vec3 v, double rn);
-double vec3_dot_vec3(t_vec3 v1, t_vec3 v2);
+t_vec3	vec3_mul_rn(t_vec3 v, double rn);
+double	vec3_dot_vec3(t_vec3 v1, t_vec3 v2);
 
 // utils_vec3_2
-double  vec3_length(t_vec3 v);
-t_vec3  vec3_unit(t_vec3 v);
+double	vec3_length(t_vec3 v);
+t_vec3	vec3_unit(t_vec3 v);
+
+// utils_rt
+t_vec3	ray(t_vec3 start, t_vec3 direc, double t);
+int		rgb_color(t_rgb rgb);
+int		rgb_unit(float r, float g, float b);
+double	random_double(void);
+t_vec3	random_double_xyz(void);
 
 // utils_mlx
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:30 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/02 20:42:40 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/05 07:10:15 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	check_value_pl_xyz_vec(t_scene *scene, int i, char **xyz_vec)
 		return (1);
 	}
 	if (!(ft_atod(xyz_vec[0]) * ft_atod(xyz_vec[0])
-		+ ft_atod(xyz_vec[1]) * ft_atod(xyz_vec[1])
-		+ ft_atod(xyz_vec[2]) * ft_atod(xyz_vec[2]) == 1))
+			+ ft_atod(xyz_vec[1]) * ft_atod(xyz_vec[1])
+			+ ft_atod(xyz_vec[2]) * ft_atod(xyz_vec[2]) == 1))
 	{
 		scene->plane[i]->err = ERR_XYZ_VEC_VALUE;
 		return (1);
@@ -92,8 +92,8 @@ int	parse_pl_rgb(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	scene->plane[i]->r = ft_atoi(s[3][0]);
-	scene->plane[i]->g = ft_atoi(s[3][1]);
-	scene->plane[i]->b = ft_atoi(s[3][2]);
+	scene->plane[i]->rgb.r = ft_atoi(s[3][0]);
+	scene->plane[i]->rgb.g = ft_atoi(s[3][1]);
+	scene->plane[i]->rgb.b = ft_atoi(s[3][2]);
 	return (0);
 }

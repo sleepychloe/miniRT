@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/05 04:37:16 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/05 07:26:23 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ int	init_window(t_mlx *mlx)
 	mlx->mlx_ptr = mlx_init();
 	if (!(mlx->mlx_ptr))
 		return (1);
-	mlx->win = mlx_new_window(mlx->mlx_ptr, WIN_W, WIN_H, "miniRT");
+	mlx->win = mlx_new_window(mlx->mlx_ptr,
+			WIN_W, WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H, "miniRT");
 	if ((!mlx->win))
 		return (1);
-	mlx->img_ptr = mlx_new_image(mlx->mlx_ptr, WIN_W, WIN_H);
+	mlx->img_ptr = mlx_new_image(mlx->mlx_ptr, WIN_W,
+			WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H);
 	if (!(mlx->img_ptr))
 		return (1);
 	mlx->addr = mlx_get_data_addr(mlx->img_ptr, &mlx->bits_per_pixel,
@@ -30,36 +32,43 @@ int	init_window(t_mlx *mlx)
 	return (0);
 }
 
-t_vec3	ray(t_vec3 start, t_vec3 direc, double t)
+double	hit_sphere(t_scene *scene, t_vec3 center, double radius, t_vec3 direc)
 {
-	t_vec3	res;
-	
-	if (t == '\0')
-		return (direc);
-	res = vec3_add_vec3(start, vec3_mul_rn(direc, t));
-	return (res);
-}
+	t_vec3	oc;
+	double	a;
+	double	b;
+	double	c;
+	double	discriminant;
 
-double hit_sphere(t_scene *scene, t_vec3 center, double radius, t_vec3 direction)
-{
-	t_vec3 oc = vec3_sub_vec3(center, scene->camera->xyz_pos);
-	double a = vec3_dot_vec3(direction, direction);
-	double b = 2.0 * vec3_dot_vec3(oc, direction);
-	double c = vec3_dot_vec3(oc, oc) - radius * radius;
-	double discriminant = b * b - 4 * a * c;
-	if (discriminant > 0)
-		return (9999);
-	return (0);
+	oc = vec3_sub_vec3(center, scene->camera->xyz_pos);
+	a = vec3_dot_vec3(direc, direc);
+	b = 2.0 * vec3_dot_vec3(oc, direc);
+	c = vec3_dot_vec3(oc, oc) - radius * radius;
+	discriminant = b * b - 4 * a * c;
+	if (discriminant < 0)
+		return (-1);
+	return ((-b - sqrt(discriminant)) / (2.0 * a));
 }
 
 int	ray_color(t_scene *scene, t_vec3 dir_ray)
 {
-	if (hit_sphere(scene, scene->sphere[0]->xyz_pos, (scene->sphere[0]->diameter) / 2, dir_ray) == 9999)
-		return (0x00FF0000);
-	t_vec3 unit_dir_ray = vec3_unit(dir_ray);
-	double t = 0.5 * (unit_dir_ray.y + 1.0);
-	return ((1 - t) * (1*255+256*256 + 1*255+256 + 1*255)
-			+ t * (0.5*255+256*256 + 0.7*255+256 + 1*255));
+	double	t;
+	t_vec3	normal_vec;
+	t_vec3	unit_dir_ray;
+
+	t = hit_sphere(scene, scene->sphere[0]->xyz_pos,
+			(scene->sphere[0]->diameter) / 2, dir_ray);
+	if (t != -1)
+	{
+		normal_vec = vec3_unit(vec3_sub_vec3(ray(scene->camera->xyz_pos,
+						dir_ray, t), scene->camera->xyz_vec));
+		return (rgb_color(scene->sphere[0]->rgb)
+			+ 0.00001 * rgb_unit(normal_vec.x + 1,
+				normal_vec.y + 1, normal_vec.z + 1));
+	}
+	unit_dir_ray = vec3_unit(dir_ray);
+	t = 0.00001 * (unit_dir_ray.y + 1.0);
+	return ((1 - t) * rgb_unit(1, 1, 1) + t * rgb_unit(0.5, 0.7, 1));
 }
 
 void	raytrace(t_scene *scene, t_mlx *mlx)
@@ -68,27 +77,33 @@ void	raytrace(t_scene *scene, t_mlx *mlx)
 	int		j;
 	double	u;
 	double	v;
-	double	focal_length = 2 / tan((scene->camera->fov) * PI / 360);
-	double	viewport_width = 2.0;
-	double	viewport_height = 2.0 / 16 * 9;
+	double	focal_length;
+	double	viewport_width;
+	double	viewport_height;
 	int		c;
+	t_vec3	low_left;
+	t_vec3	dir_ray;
 
-	t_vec3	low_left = vec3(scene->camera->xyz_pos.x - viewport_width / 2,
-				scene->camera->xyz_pos.y - viewport_height / 2,
-				scene->camera->xyz_pos.z - focal_length);
-
+	focal_length = 1 / tan((scene->camera->fov) * PI / 360);
+	viewport_width = 2.0;
+	viewport_height = 2.0 / 16 * 9;
+	low_left = vec3(scene->camera->xyz_pos.x - viewport_width / 2,
+			scene->camera->xyz_pos.y - viewport_height / 2,
+			scene->camera->xyz_pos.z - focal_length);
 	i = 0;
-	j = WIN_H - 1;
+	j = (WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H) - 1;
 	while (0 <= j)
 	{
 		while (i < WIN_W)
 		{
 			u = (double)i / (WIN_W - 1);
-			v = (double)j / (WIN_H - 1);
-			t_vec3 dir_ray = vec3_sub_vec3(vec3_add_vec3(low_left,
-				vec3_add_vec3(vec3(u * viewport_width, 0, 0), vec3(0, v * viewport_height, 0))),
-				scene->camera->xyz_pos);
-			c = ray_color(scene, vec3_sub_vec3(dir_ray, scene->camera->xyz_pos));
+			v = (double)j / ((WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H) - 1);
+			dir_ray = vec3_sub_vec3(vec3_add_vec3(low_left,
+						vec3_add_vec3(vec3(u * viewport_width, 0, 0),
+							vec3(0, v * viewport_height, 0))),
+					scene->camera->xyz_pos);
+			c = ray_color(scene,
+					vec3_sub_vec3(dir_ray, scene->camera->xyz_pos));
 			my_mlx_pixel_put(mlx, i, j, c);
 			i++;
 		}

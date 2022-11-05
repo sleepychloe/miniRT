@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:46:38 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/02 03:26:42 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/05 07:16:48 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_vec3	vec3_sub_vec3(t_vec3 v1, t_vec3 v2)
 	return (res);
 }
 
-t_vec3 vec3_mul_rn(t_vec3 v, double rn)
+t_vec3	vec3_mul_rn(t_vec3 v, double rn)
 {
 	t_vec3	res;
 
@@ -52,7 +52,7 @@ t_vec3 vec3_mul_rn(t_vec3 v, double rn)
 	return (res);
 }
 
-double vec3_dot_vec3(t_vec3 v1, t_vec3 v2)
+double	vec3_dot_vec3(t_vec3 v1, t_vec3 v2)
 {
 	double	res;
 
