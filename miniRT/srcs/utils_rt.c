@@ -6,76 +6,26 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 07:02:00 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/05 10:52:25 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/12 03:03:55 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-t_vec3	ray(t_vec3 start, t_vec3 direc, double t)
+t_ray	ray(t_vec3 point, t_vec3 direc)
 {
-	t_vec3	res;
+	t_ray	res;
 
-	if (t == '\0')
-		return (direc);
-	res = vec3_add_vec3(start, vec3_mul_rn(direc, t));
+	res.point = point;
+	res.direc = direc;
 	return (res);
 }
 
-int	rgb_color(t_rgb rgb)
+double	color_clamp(double c)
 {
-	int	res;
-
-	res = rgb.r * 256 * 256 + rgb.g * 256 + rgb.b;
-	return (res);
-}
-
-t_rgb	rgb3(int r, int g, int b)
-{
-	t_rgb	res;
-
-	res.r = r;
-	res.g = g;
-	res.b = b;
-	return (res);
-}
-
-int	rgb_unit(float r, float g, float b)
-{
-	int	res;
-
-	res = (r * 255) * 256 * 256 + (g * 255) * 256 + (b * 255);
-	return (res);
-}
-
-double	random_double(void)
-{
-	int		fd;
-	double	x;
-
-	fd = open("/dev/urandom", O_RDONLY);
-	if (fd == -1)
-		return (-9999);
-	read(fd, &x, sizeof(x));
-	close(fd);
-	x = cos(x);
-	return (x);
-}
-
-t_vec3	random_double_xyz(void)
-{
-	t_vec3	res;
-	int		i;
-
-	i = 100000000;
-	while (0 < i)
-	{
-		res.x = random_double();
-		res.y = random_double();
-		res.z = sqrt(1 - res.x * res.x - res.y * res.y);
-		if (res.x * res.x + res.y * res.y + res.z * res.z == 1)
-			return (res);
-		i--;
-	}
-	return (vec3(0, 0, 0));
+	if (c < 0.0)
+		c = 0.0;
+	if (255.0 < c)
+		c = 255.0;
+	return (c);
 }

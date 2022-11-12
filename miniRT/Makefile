@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/05 07:05:39 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/11 18:59:42 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,8 @@ FILES = init_struct_1 \
 		utils_free \
 		utils_vec3_1 \
 		utils_vec3_2 \
+		utils_color \
+		utils_random \
 		utils_rt \
 		utils_mlx \
 		main

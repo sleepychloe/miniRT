@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/05 10:42:34 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/12 18:18:26 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@
 # define ASPECT_RATIO_H		9
 # define WIN_W			800
 
+# define NUM_SAMPLE		3
 # define PI			3.141592
+
+# define FRONT			1
+# define BACK			2
 
 # define ESC			0xFF1B
 
@@ -57,19 +61,19 @@ typedef struct s_vec3
 	double	z;
 }	t_vec3;
 
-typedef struct s_rgb
+typedef struct s_rgb3
 {
-	int	r;
-	int	g;
-	int	b;
-}	t_rgb;
+	double	r;
+	double	g;
+	double	b;
+}	t_rgb3;
 
 typedef struct s_ambient
 {
 	int		check;
 	int		err;
 	double	lighting;
-	t_rgb	rgb;
+	t_rgb3	rgb;
 }	t_ambient;
 
 typedef struct s_camera
@@ -87,7 +91,7 @@ typedef struct s_light
 	int		err;
 	t_vec3	xyz_pos;
 	double	brightness;
-	t_rgb	rgb;
+	t_rgb3	rgb;
 }	t_light;
 
 typedef struct s_sphere
@@ -95,7 +99,7 @@ typedef struct s_sphere
 	int		err;
 	t_vec3	xyz_pos;
 	double	diameter;
-	t_rgb	rgb;
+	t_rgb3	rgb;
 }	t_sphere;
 
 typedef struct s_plane
@@ -103,7 +107,7 @@ typedef struct s_plane
 	int		err;
 	t_vec3	xyz_pos;
 	t_vec3	xyz_vec;
-	t_rgb	rgb;
+	t_rgb3	rgb;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -113,7 +117,7 @@ typedef struct s_cylinder
 	t_vec3	xyz_vec;
 	double	diameter;
 	double	height;
-	t_rgb	rgb;
+	t_rgb3	rgb;
 }	t_cylinder;
 
 typedef struct s_scene
@@ -128,6 +132,33 @@ typedef struct s_scene
 	int			n_plane;
 	int			n_cylinder;
 }	t_scene;
+
+typedef struct s_ray
+{
+	t_vec3	point;
+	t_vec3	direc;
+}	t_ray;
+
+typedef struct s_hit
+{
+	double	t;
+	t_vec3	hit_point;
+	t_vec3	normal_vec;
+	int	front;
+	t_rgb3	color;
+}	t_hit;
+
+typedef struct s_rt
+{
+	int	obj;
+	double	focal_length;
+	double	viewport_width;
+	double	viewport_height;
+	t_vec3	vp_horizontal;
+	t_vec3	vp_vertical;
+	t_vec3	vp_low_left;
+	t_vec3	cam_xyz_pos;
+}	t_rt;
 
 typedef struct s_mlx
 {
@@ -250,7 +281,7 @@ void	err_check_cy(t_scene *scene, int i);
 
 // raytracing_main
 int		init_window(t_mlx *mlx);
-int		raytracing_main(t_scene *scene);
+void		raytracing_main(t_scene *scene, t_mlx *mlx);
 
 // utils_parse
 void	err_msg(char *str);
@@ -277,13 +308,19 @@ double	vec3_dot_vec3(t_vec3 v1, t_vec3 v2);
 double	vec3_length(t_vec3 v);
 t_vec3	vec3_unit(t_vec3 v);
 
-// utils_rt
-t_vec3	ray(t_vec3 start, t_vec3 direc, double t);
-int		rgb_color(t_rgb rgb);
-int		rgb_unit(float r, float g, float b);
-t_rgb	rgb3(int r, int g, int b);
+// utils_color
+t_rgb3	rgb3(double r, double g, double b);
+int		rgb_color(t_rgb3 rgb);
+t_rgb3	color_add(t_rgb3 c1, t_rgb3 c2);
+t_rgb3  color_average(t_rgb3 c, int samples_per_pixel);
+
+// utils_random
 double	random_double(void);
 t_vec3	random_double_xyz(void);
+
+// utils_rt
+t_ray	ray(t_vec3 point, t_vec3 direc);
+double	color_clamp(double c);
 
 // utils_mlx
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
