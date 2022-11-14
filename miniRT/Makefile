@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/11 18:59:42 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/14 05:10:26 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ MLX_DIR = ./mlx_linux
 MLX_FLAGS = -lX11 -lXext -lm -lz
 MLX = $(addprefix $(MLX_DIR)/, libmlx.a)
 
-FILES = init_struct_1 \
-		init_struct_2 \
+FILES = parse_init_struct_1 \
+		parse_init_struct_2 \
 		parse_arg \
 		parse_map \
 		parse_ambient_1 \
@@ -43,16 +43,27 @@ FILES = init_struct_1 \
 		parse_cylinder_3 \
 		parse_err_1 \
 		parse_err_2 \
+		parse_utils \
 		raytracing_main \
-		utils_parse \
+		raytracing_init_struct \
+		raytracing_ray \
+		raytracing_light \
+		raytracing_sphere \
+		raytracing_utils \
 		utils_split \
 		utils_free \
 		utils_vec3_1 \
 		utils_vec3_2 \
 		utils_color \
 		utils_random \
-		utils_rt \
 		utils_mlx \
+		utils_mlx_key_camera \
+		utils_mlx_key_light \
+		utils_mlx_key_sphere \
+		utils_mlx_key_plane \
+		utils_mlx_key_cylinder \
+		utils_msg_1 \
+		utils_msg_2 \
 		main
 
 INCS_DIR = ./incs

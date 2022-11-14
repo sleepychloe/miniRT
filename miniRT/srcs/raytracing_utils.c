@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_rt.c                                         :+:      :+:    :+:   */
+/*   raytracing_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 07:02:00 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/12 03:03:55 by yhwang           ###   ########.fr       */
+/*   Created: 2022/11/12 22:13:16 by yhwang            #+#    #+#             */
+/*   Updated: 2022/11/14 03:39:13 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-t_ray	ray(t_vec3 point, t_vec3 direc)
+void	set_hit_point(t_ray ray_set, t_hit *hit, double t)
 {
-	t_ray	res;
-
-	res.point = point;
-	res.direc = direc;
-	return (res);
+	hit->t = t;
+	hit->hit_point = vec3_add_vec3(ray_set.point,
+			vec3_mul_rn(ray_set.direc, t));
 }
 
-double	color_clamp(double c)
+void	set_hit_normal_direc(t_ray ray_set, t_hit *hit)
 {
-	if (c < 0.0)
-		c = 0.0;
-	if (255.0 < c)
-		c = 255.0;
-	return (c);
+	if (vec3_dot_vec3(ray_set.direc, hit->normal_vec) >= 0)
+	{
+		hit->front = BACK;
+		hit->normal_vec = vec3_mul_rn(hit->normal_vec, -1);
+	}
+	hit->front = FRONT;
 }
