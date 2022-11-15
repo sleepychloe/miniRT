@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/15 04:14:44 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/15 05:17:32 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,56 +24,55 @@ MLX_DIR = ./mlx_linux
 MLX_FLAGS = -lX11 -lXext -lm -lz
 MLX = $(addprefix $(MLX_DIR)/, libmlx.a)
 
-FILES = parse_init_struct_1 \
-		parse_init_struct_2 \
-		parse_arg \
-		parse_map \
-		parse_ambient_1 \
-		parse_ambient_2 \
-		parse_camera_1 \
-		parse_camera_2 \
-		parse_light_1 \
-		parse_light_2 \
-		parse_sphere_1 \
-		parse_sphere_2 \
-		parse_plane_1 \
-		parse_plane_2 \
-		parse_cylinder_1 \
-		parse_cylinder_2 \
-		parse_cylinder_3 \
-		parse_err_1 \
-		parse_err_2 \
-		parse_utils \
-		raytracing_main \
-		raytracing_init_struct \
-		raytracing_ray \
-		raytracing_light \
-		raytracing_sphere \
-		raytracing_utils \
-		utils_split \
-		utils_free \
-		utils_vec3_1 \
-		utils_vec3_2 \
-		utils_color \
-		utils_random \
-		utils_mlx \
-		utils_mlx_key_move_camera \
-		utils_mlx_key_rotate_camera \
-		utils_mlx_key_move_light \
-		utils_mlx_key_move_sphere \
-		utils_mlx_key_move_plane \
-		utils_mlx_key_rotate_plane \
-		utils_mlx_key_move_cylinder \
-		utils_mlx_key_rotate_cylinder \
-		utils_msg_1 \
-		utils_msg_2 \
-		main
+FILES	= ./srcs/main \
+		./srcs/parse/parse_init_struct_1 \
+		./srcs/parse/parse_init_struct_2 \
+		./srcs/parse/parse_arg \
+		./srcs/parse/parse_map \
+		./srcs/parse/parse_ambient_1 \
+		./srcs/parse/parse_ambient_2 \
+		./srcs/parse/parse_camera_1 \
+		./srcs/parse/parse_camera_2 \
+		./srcs/parse/parse_light_1 \
+		./srcs/parse/parse_light_2 \
+		./srcs/parse/parse_sphere_1 \
+		./srcs/parse/parse_sphere_2 \
+		./srcs/parse/parse_plane_1 \
+		./srcs/parse/parse_plane_2 \
+		./srcs/parse/parse_cylinder_1 \
+		./srcs/parse/parse_cylinder_2 \
+		./srcs/parse/parse_cylinder_3 \
+		./srcs/parse/parse_err_1 \
+		./srcs/parse/parse_err_2 \
+		./srcs/parse/parse_utils \
+		./srcs/raytracing/raytracing_main \
+		./srcs/raytracing/raytracing_init_struct \
+		./srcs/raytracing/raytracing_ray \
+		./srcs/raytracing/raytracing_light \
+		./srcs/raytracing/raytracing_sphere \
+		./srcs/raytracing/raytracing_utils \
+		./srcs/utils/utils_split \
+		./srcs/utils/utils_free \
+		./srcs/utils/utils_vec3_1 \
+		./srcs/utils/utils_vec3_2 \
+		./srcs/utils/utils_color \
+		./srcs/utils/utils_random \
+		./srcs/utils/utils_mlx \
+		./srcs/utils/utils_mlx_key_move_camera \
+		./srcs/utils/utils_mlx_key_rotate_camera \
+		./srcs/utils/utils_mlx_key_move_light \
+		./srcs/utils/utils_mlx_key_move_sphere \
+		./srcs/utils/utils_mlx_key_move_plane \
+		./srcs/utils/utils_mlx_key_rotate_plane \
+		./srcs/utils/utils_mlx_key_move_cylinder \
+		./srcs/utils/utils_mlx_key_rotate_cylinder \
+		./srcs/utils/utils_msg_1 \
+		./srcs/utils/utils_msg_2
 
-INCS_DIR = ./incs
-SRCS_DIR = ./srcs
+INCS_DIR	= ./incs
 
-SRCS = $(addprefix $(SRCS_DIR)/, $(addsuffix .c, $(FILES)))
-OBJS = $(addprefix $(SRCS_DIR)/, $(addsuffix .o, $(FILES)))
+SRCS = $(addsuffix .c, $(FILES))
+OBJS = $(addsuffix .o, $(FILES))
 
 .c.o: $(SRCS) $(INCS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -I$(INCS_DIR)
