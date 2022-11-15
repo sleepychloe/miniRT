@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:53:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/14 03:31:47 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/16 00:38:25 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ int	mlx_keys(int key, t_data *data)
 		|| key == KEY_SQUARE_BRACKET_LEFT || key == KEY_SQUARE_BRACKET_RIGHT)
 		mlx_move_light(key, data);
 	if (key == KEY_Z || key == KEY_X || key == KEY_C || key == KEY_V
-		|| key == KEY_B || key == KEY_N)
-		mlx_move_sphere(key, data);
-	/*if (key == KEY_A || key == KEY_S || key == KEY_D || key == KEY_F
-		|| key == KEY_G || key == KEY_H)
-		mlx_move_plane(key, data);
+		|| key == KEY_B || key == KEY_N || key == KEY_F1)
+		mlx_move_sphere(key, data, data->sp);
+	if (key == KEY_A || key == KEY_S || key == KEY_D || key == KEY_F
+		|| key == KEY_G || key == KEY_H || key == KEY_F2)
+		mlx_move_plane(key, data, data->pl);
 	if (key == KEY_J || key == KEY_K || key == KEY_L)
-		mlx_rotate_plane(key, data);*/
-	/*if (key == KEY_Q || key == KEY_W || key == KEY_E || key == KEY_R
-		|| key == KEY_T || key == KEY_Y)
-		mlx_move_cylinder(key, data);
+		mlx_rotate_plane(key, data, data->pl);
+	if (key == KEY_Q || key == KEY_W || key == KEY_E || key == KEY_R
+		|| key == KEY_T || key == KEY_Y || key == KEY_F3)
+		mlx_move_cylinder(key, data, data->cy);
 	if (key == KEY_U || key == KEY_I || key == KEY_O)
-		mlx_rotate_cylinder(key, data);*/
+		mlx_rotate_cylinder(key, data, data->cy);
 	return (0);
 }

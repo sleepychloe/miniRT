@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/15 04:51:19 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/16 00:39:40 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,10 @@
 # define KEY_SINGLE_QUOTE		0x27
 # define KEY_SQUARE_BRACKET_LEFT	0x5B
 # define KEY_SQUARE_BRACKET_RIGHT	0x5D
+
+# define KEY_F1				0xFFBE
+# define KEY_F2				0xFFBF
+# define KEY_F3				0xFFC0
 
 /* color */
 # define B				"\x1b[0m"
@@ -232,6 +236,9 @@ typedef struct s_data
 	t_mlx	*mlx;
 	t_rt	*rt;
 	t_hit	*hit;
+	int	sp;
+	int	pl;
+	int	cy;
 }	t_data;
 
 /* parse_init_struct_1 */
@@ -433,45 +440,48 @@ void	mlx_move_light_z(int key, t_data *data);
 void	mlx_move_light(int key, t_data *data);
 
 /* utils_mlx_key_move_sphere */
-void	mlx_move_sphere(int key, t_data *data);
+void	mlx_move_sphere_x(int key, t_data *data, int i);
+void	mlx_move_sphere_y(int key, t_data *data, int i);
+void	mlx_move_sphere_z(int key, t_data *data, int i);
+void	mlx_move_sphere(int key, t_data *data, int i);
 
 /* utils_mlx_key_move_plane */
-void	mlx_move_plane_x(int key, t_data *data);
-void	mlx_move_plane_y(int key, t_data *data);
-void	mlx_move_plane_z(int key, t_data *data);
-void	mlx_move_plane(int key, t_data *data);
+void	mlx_move_plane_x(int key, t_data *data, int i);
+void	mlx_move_plane_y(int key, t_data *data, int i);
+void	mlx_move_plane_z(int key, t_data *data, int i);
+void	mlx_move_plane(int key, t_data *data, int i);
 
 /* utils_mlx_key_rotate_plane */
-void	mlx_rotate_plane_x_axis(t_data *data, int flag);
-void	mlx_rotate_plane_y_axis(t_data *data, int flag);
-void	mlx_rotate_plane_z_axis(t_data *data, int flag);
-void	mlx_rotate_plane(int key, t_data *data);
+void	mlx_rotate_plane_x_axis(t_data *data, int flag, int i);
+void	mlx_rotate_plane_y_axis(t_data *data, int flag, int i);
+void	mlx_rotate_plane_z_axis(t_data *data, int flag, int i);
+void	mlx_rotate_plane(int key, t_data *data, int i);
 
 /* utils_mlx_key_move_cylinder */
-void	mlx_move_cylinder_x(int key, t_data *data);
-void	mlx_move_cylinder_y(int key, t_data *data);
-void	mlx_move_cylinder_(int key, t_data *data);
-void	mlx_move_cylinder(int key, t_data *data);
+void	mlx_move_cylinder_x(int key, t_data *data, int i);
+void	mlx_move_cylinder_y(int key, t_data *data, int i);
+void	mlx_move_cylinder_z(int key, t_data *data, int i);
+void	mlx_move_cylinder(int key, t_data *data, int i);
 
 /* utils_mlx_key_rotate_cylinder */
-void	mlx_rotate_cylinder_x_axis(t_data *data, int flag);
-void	mlx_rotate_cylinder_y_axis(t_data *data, int flag);
-void	mlx_rotate_cylinder_z_axis(t_data *data, int flag);
-void	mlx_rotate_cylinder(int key, t_data *data);
+void	mlx_rotate_cylinder_x_axis(t_data *data, int flag, int i);
+void	mlx_rotate_cylinder_y_axis(t_data *data, int flag, int i);
+void	mlx_rotate_cylinder_z_axis(t_data *data, int flag, int i);
+void	mlx_rotate_cylinder(int key, t_data *data, int i);
 
 /* utils_msg_1 */
 void	show_1(void);
 void	show_2(void);
 void	show_3(void);
 void	show_guide(void);
-void	print_scene_inform(t_scene *scene, int flag);
+void	print_scene_inform(t_data *data, t_scene *scene, int flag);
 
 /* utils_msg_2 */
-void	print_1(t_scene *scene, int flag);
-void	print_2(t_scene *scene, int flag);
-void	print_3(t_scene *scene, int flag);
-void	print_4(t_scene *scene, int flag);
-void	print_5(t_scene *scene, int flag);
+void	print_1(t_data *data, t_scene *scene, int flag);
+void	print_2(t_data *data, t_scene *scene, int flag);
+void	print_3(t_data *data, t_scene *scene, int flag);
+void	print_4(t_data *data, t_scene *scene, int flag);
+void	print_5(t_data *data, t_scene *scene, int flag);
 
 /* main */
 int		minirt_main(char **argv);
