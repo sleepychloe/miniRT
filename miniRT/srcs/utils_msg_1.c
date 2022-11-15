@@ -6,13 +6,90 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 03:38:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/14 05:14:23 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/15 04:56:10 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
 void	show_1(void)
+{
+	printf("║ %s1%s    ║ translate: -x position ║", BLUE, B);
+	printf(" %s.%s    ║ translate: -x position ║", BLUE, B);
+	printf("      ║                        ║");
+	printf(" %sA%s    ║ translate: -x position ║", BLUE, B);
+	printf(" %sQ%s    ║ translate: -x position ║\n", BLUE, B);
+	printf("║ %s2%s    ║ translate: +x position ║", BLUE, B);
+	printf(" %s/%s    ║ translate: +x position ║", BLUE, B);
+	printf("      ║                        ║");
+	printf(" %sS%s    ║ translate: +x position ║", BLUE, B);
+	printf(" %sW%s    ║ translate: +x position ║\n", BLUE, B);
+	printf("║ %s3%s    ║ translate: -y position ║", BLUE, B);
+	printf(" %s;%s    ║ translate: -y position ║", BLUE, B);
+	printf("      ║                        ║");
+	printf(" %sD%s    ║ translate: -y position ║", BLUE, B);
+	printf(" %sE%s    ║ translate: -y position ║\n", BLUE, B);
+	printf("║ %s4%s    ║ translate: +y position ║", BLUE, B);
+	printf(" %s'%s    ║ translate: +y position ║", BLUE, B);
+	printf(" %sZ%s    ║ translate: -x position ║", BLUE, B);
+	printf(" %sF%s    ║ translate: +y position ║", BLUE, B);
+	printf(" %sR%s    ║ translate: +y position ║\n", BLUE, B);
+	printf("║ %s5%s    ║ translate: -z position ║", BLUE, B);
+	printf(" %s[%s    ║ translate: -z position ║", BLUE, B);
+	printf(" %sX%s    ║ translate: +x position ║", BLUE, B);
+	printf(" %sG%s    ║ translate: -z position ║", BLUE, B);
+	printf(" %sT%s    ║ translate: -z position ║\n", BLUE, B);
+}
+
+void	show_2(void)
+{
+	printf("║ %s6%s    ║ translate: +z position ║", BLUE, B);
+	printf(" %s]%s    ║ translate: +z position ║", BLUE, B);
+	printf(" %sC%s    ║ translate: -y position ║", BLUE, B);
+	printf(" %sH%s    ║ translate: +z position ║", BLUE, B);
+	printf(" %sY%s    ║ translate: +z position ║\n", BLUE, B);
+	printf("╠══════╬════════════════════════╬");
+	printf("══════╩════════════════════════╣");
+	printf(" %sV%s    ║ translate: +y position ╠", BLUE, B);
+	printf("══════╬════════════════════════╬");
+	printf("══════╬════════════════════════╣\n");
+	printf("║      ║                        ║");
+	printf("             utils             ║");
+	printf(" %sB%s    ║ translate: -z position ║", BLUE, B);
+	printf("      ║                        ║");
+	printf("      ║                        ║\n");
+	printf("║ %s7%s    ║ rotate: x axis, +30°   ╠", BLUE, B);
+	printf("══════╦════════════════════════╣");
+	printf(" %sN%s    ║ translate: +z position ║", BLUE, B);
+	printf(" %sJ%s    ║ rotate: x axis, +30°   ║", BLUE, B);
+	printf(" %sU%s    ║ rotate: x axis, +30°   ║\n", BLUE, B);
+	printf("║ %s8%s    ║ rotate: y axis, +30°   ║", BLUE, B);
+	printf(" %sESC%s  ║ exit                   ║", BLUE, B);
+	printf("      ║                        ║");
+	printf(" %sK%s    ║ rotate: y axis, +30°   ║", BLUE, B);
+	printf(" %sI%s    ║ rotate: y axis, +30°   ║\n", BLUE, B);
+}
+
+void	show_3(void)
+{
+	printf("║ %s9%s    ║ rotate: z axis, +30°   ║", BLUE, B);
+	printf(" %sUP%s   ║ zoom in                ║", BLUE, B);
+	printf("      ║                        ║");
+	printf(" %sL%s    ║ rotate: z axis, +30°   ║", BLUE, B);
+	printf(" %sO%s    ║ rotate: z axis, +30°   ║\n", BLUE, B);
+	printf("║      ║                        ║");
+	printf(" %sDOWN%s ║ zoom out               ║", BLUE, B);
+	printf("      ║                        ║");
+	printf("      ║                        ║");
+	printf("      ║                        ║\n");
+	printf("╚══════╩════════════════════════╩");
+	printf("══════╩════════════════════════╩");
+	printf("══════╩════════════════════════╩");
+	printf("══════╩════════════════════════╩");
+	printf("══════╩════════════════════════╝\n");
+}
+
+void	show_guide(void)
 {
 	printf("╔═══════════════════════════════╦");
 	printf("═══════════════════════════════╦");
@@ -29,89 +106,31 @@ void	show_1(void)
 	printf("══════╦════════════════════════╬");
 	printf("══════╦════════════════════════╬");
 	printf("══════╦════════════════════════╣\n");
-	printf("║ 1    ║ translate: -x position ║");
-	printf(" .    ║ translate: -x position ║");
-	printf("      ║                        ║");
-	printf(" A    ║ translate: -x position ║");
-	printf(" Q    ║ translate: -x position ║\n");
-}
-
-void	show_2(void)
-{
-	printf("║ 2    ║ translate: +x position ║");
-	printf(" /    ║ translate: +x position ║");
-	printf("      ║                        ║");
-	printf(" S    ║ translate: +x position ║");
-	printf(" W    ║ translate: +x position ║\n");
-	printf("║ 3    ║ translate: -y position ║");
-	printf(" ;    ║ translate: -y position ║");
-	printf("      ║                        ║");
-	printf(" D    ║ translate: -y position ║");
-	printf(" E    ║ translate: -y position ║\n");
-	printf("║ 4    ║ translate: +y position ║");
-	printf(" '    ║ translate: +y position ║");
-	printf(" Z    ║ translate: -x position ║");
-	printf(" F    ║ translate: +y position ║");
-	printf(" R    ║ translate: +y position ║\n");
-	printf("║ 5    ║ translate: -z position ║");
-	printf(" [    ║ translate: -z position ║");
-	printf(" X    ║ translate: +x position ║");
-	printf(" G    ║ translate: -z position ║");
-	printf(" T    ║ translate: -z position ║\n");
-}
-
-void	show_3(void)
-{
-	printf("║ 6    ║ translate: +z position ║");
-	printf(" ]    ║ translate: +z position ║");
-	printf(" C    ║ translate: -y position ║");
-	printf(" H    ║ translate: +z position ║");
-	printf(" Y    ║ translate: +z position ║\n");
-	printf("╠══════╬════════════════════════╬");
-	printf("══════╩════════════════════════╣");
-	printf(" V    ║ translate: +y position ╠");
-	printf("══════╬════════════════════════╬");
-	printf("══════╬════════════════════════╣\n");
-	printf("║      ║                        ║");
-	printf("             utils             ║");
-	printf(" B    ║ translate: -z position ║");
-	printf("      ║                        ║");
-	printf("      ║                        ║\n");
-	printf("║ 7    ║ rotate: x axis, +30°   ╠");
-	printf("══════╦════════════════════════╣");
-	printf(" N    ║ translate: +z position ║");
-	printf(" J    ║ rotate: x axis, +30°   ║");
-	printf(" U    ║ rotate: x axis, +30°   ║\n");
-}
-
-void	show_4(void)
-{
-	printf("║ 8    ║ rotate: y axis, +30°   ║");
-	printf(" ESC  ║ exit                   ║");
-	printf("      ║                        ║");
-	printf(" K    ║ rotate: y axis, +30°   ║");
-	printf(" I    ║ rotate: y axis, +30°   ║\n");
-	printf("║ 9    ║ rotate: z axis, +30°   ║");
-	printf(" UP   ║ zoom in                ║");
-	printf("      ║                        ║");
-	printf(" L    ║ rotate: z axis, +30°   ║");
-	printf(" O    ║ rotate: z axis, +30°   ║\n");
-	printf("║      ║                        ║");
-	printf(" DOWN ║ zoom out               ║");
-	printf("      ║                        ║");
-	printf("      ║                        ║");
-	printf("      ║                        ║\n");
-	printf("╚══════╩════════════════════════╩");
-	printf("══════╩════════════════════════╩");
-	printf("══════╩════════════════════════╩");
-	printf("══════╩════════════════════════╩");
-	printf("══════╩════════════════════════╝\n");
-}
-
-void	show_guide(void)
-{
 	show_1();
 	show_2();
 	show_3();
-	show_4();
+}
+
+void	print_scene_inform(t_scene *scene, int flag)
+{
+	printf("╔═══════════════════════════════╦");
+	printf("═══════════════════════════════╦");
+	printf("═══════════════════════════════╦");
+	printf("═══════════════════════════════╦");
+	printf("═══════════════════════════════╗\n");
+	printf("║            camera             ║");
+	printf("             light             ║");
+	printf("            sphere             ║");
+	printf("             plane             ║");
+	printf("           cylinder            ║\n");
+	printf("╠════════════╦═══╦══════════════╬");
+	printf("════════════╦═══╦══════════════╬");
+	printf("════════════╦═══╦══════════════╬");
+	printf("════════════╦═══╦══════════════╬");
+	printf("════════════╦═══╦══════════════╣\n");
+	print_1(scene, flag);
+	print_2(scene, flag);
+	print_3(scene, flag);
+	print_4(scene, flag);
+	print_5(scene, flag);
 }

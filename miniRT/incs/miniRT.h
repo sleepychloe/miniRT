@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/14 05:34:27 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/15 04:51:19 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@
 # define KEY_SINGLE_QUOTE		0x27
 # define KEY_SQUARE_BRACKET_LEFT	0x5B
 # define KEY_SQUARE_BRACKET_RIGHT	0x5D
+
+/* color */
+# define B				"\x1b[0m"
+# define R				"\x1b[31m"
+# define BLUE				"\x1b[34m"
 
 # include "../libft/incs/libft.h"
 # include "../libft/incs/get_next_line.h"
@@ -346,7 +351,7 @@ int		token_count(char **token, int cnt);
 int		hittable(t_scene *scene, t_rt *rt, t_ray ray_set, t_hit *hit);
 t_rgb3	trace(t_scene *scene, t_rt *rt, t_ray ray_set);
 void	ray_tracing(t_data *data);
-void	rt_start(t_data *data);
+void	rt_start(t_data *data, int flag);
 void	raytracing_main(t_scene *scene, t_mlx *mlx);
 
 /* raytracing_init_struct */
@@ -409,45 +414,64 @@ void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 int		mlx_exit(t_data *data);
 int		mlx_keys(int key, t_data *data);
 
-/* utils_mlx_key_camera */
+/* utils_mlx_key_move_camera */
+void	mlx_move_camera_x(int key, t_data *data);
+void	mlx_move_camera_y(int key, t_data *data);
+void	mlx_move_camera_z(int key, t_data *data);
 void	mlx_move_camera(int key, t_data *data);
-void	mlx_rotate_camera_x_axis(t_data *data);
-void	mlx_rotate_camera_y_axis(t_data *data);
-void	mlx_rotate_camera_z_axis(t_data *data);
+
+/* utils_mlx_key_rotate_camera */
+void	mlx_rotate_camera_x_axis(t_data *data, int flag);
+void	mlx_rotate_camera_y_axis(t_data *data, int flag);
+void	mlx_rotate_camera_z_axis(t_data *data, int flag);
 void	mlx_rotate_camera(int key, t_data *data);
 
-/* utils_mlx_key_light */
+/* utils_mlx_key_move_light */
+void	mlx_move_light_x(int key, t_data *data);
+void	mlx_move_light_y(int key, t_data *data);
+void	mlx_move_light_z(int key, t_data *data);
 void	mlx_move_light(int key, t_data *data);
 
-/* utils_mlx_key_sphere */
+/* utils_mlx_key_move_sphere */
 void	mlx_move_sphere(int key, t_data *data);
 
-/* utils_mlx_key_plane */
+/* utils_mlx_key_move_plane */
+void	mlx_move_plane_x(int key, t_data *data);
+void	mlx_move_plane_y(int key, t_data *data);
+void	mlx_move_plane_z(int key, t_data *data);
 void	mlx_move_plane(int key, t_data *data);
-void	mlx_rotate_plane_x_axis(t_data *data);
-void	mlx_rotate_plane_y_axis(t_data *data);
-void	mlx_rotate_plane_z_axis(t_data *data);
+
+/* utils_mlx_key_rotate_plane */
+void	mlx_rotate_plane_x_axis(t_data *data, int flag);
+void	mlx_rotate_plane_y_axis(t_data *data, int flag);
+void	mlx_rotate_plane_z_axis(t_data *data, int flag);
 void	mlx_rotate_plane(int key, t_data *data);
 
-/* utils_mlx_key_cylinder */
+/* utils_mlx_key_move_cylinder */
+void	mlx_move_cylinder_x(int key, t_data *data);
+void	mlx_move_cylinder_y(int key, t_data *data);
+void	mlx_move_cylinder_(int key, t_data *data);
 void	mlx_move_cylinder(int key, t_data *data);
-void	mlx_rotate_cylinder_x_axis(t_data *data);
-void	mlx_rotate_cylinder_y_axis(t_data *data);
-void	mlx_rotate_cylinder_z_axis(t_data *data);
+
+/* utils_mlx_key_rotate_cylinder */
+void	mlx_rotate_cylinder_x_axis(t_data *data, int flag);
+void	mlx_rotate_cylinder_y_axis(t_data *data, int flag);
+void	mlx_rotate_cylinder_z_axis(t_data *data, int flag);
 void	mlx_rotate_cylinder(int key, t_data *data);
 
 /* utils_msg_1 */
 void	show_1(void);
 void	show_2(void);
 void	show_3(void);
-void	show_4(void);
 void	show_guide(void);
+void	print_scene_inform(t_scene *scene, int flag);
 
 /* utils_msg_2 */
-void	print_1(t_scene *scene);
-void	print_2(t_scene *scene);
-void	print_3(t_scene *scene);
-void	print_scene_inform(t_scene *scene);
+void	print_1(t_scene *scene, int flag);
+void	print_2(t_scene *scene, int flag);
+void	print_3(t_scene *scene, int flag);
+void	print_4(t_scene *scene, int flag);
+void	print_5(t_scene *scene, int flag);
 
 /* main */
 int		minirt_main(char **argv);

@@ -1,41 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_mlx_key_plane.c                              :+:      :+:    :+:   */
+/*   utils_mlx_key_rotate_plane.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 01:34:32 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/14 01:53:46 by yhwang           ###   ########.fr       */
+/*   Created: 2022/11/15 03:57:13 by yhwang            #+#    #+#             */
+/*   Updated: 2022/11/15 04:06:56 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-void	mlx_move_plane(int key, t_data *data)
-{
-	if (key == KEY_A)
-		data->scene->plane[0]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[0]->xyz_pos, vec3(-0.5, 0, 0));
-	if (key == KEY_S)
-		data->scene->plane[0]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[0]->xyz_pos, vec3(0.5, 0, 0));
-	if (key == KEY_D)
-		data->scene->plane[0]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[0]->xyz_pos, vec3(0, -0.5, 0));
-	if (key == KEY_F)
-		data->scene->plane[0]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[0]->xyz_pos, vec3(0, 0.5, 0));
-	if (key == KEY_G)
-		data->scene->plane[0]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[0]->xyz_pos, vec3(0, 0, -0.5));
-	if (key == KEY_H)
-		data->scene->plane[0]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[0]->xyz_pos, vec3(0, 0, 0.5));
-	rt_start(data);
-}
-
-void	mlx_rotate_plane_x_axis(t_data *data)
+void	mlx_rotate_plane_x_axis(t_data *data, int flag)
 {
 	double	val_cos;
 	double	val_sin;
@@ -55,10 +32,10 @@ void	mlx_rotate_plane_x_axis(t_data *data)
 	data->scene->plane[0]->xyz_pos
 		= vec3_add_vec3(data->scene->plane[0]->xyz_pos,
 			vec3_mul_rn(data->scene->plane[0]->xyz_vec, 1));
-	rt_start(data);
+	rt_start(data, flag);
 }
 
-void	mlx_rotate_plane_y_axis(t_data *data)
+void	mlx_rotate_plane_y_axis(t_data *data, int flag)
 {
 	double	val_cos;
 	double	val_sin;
@@ -78,10 +55,10 @@ void	mlx_rotate_plane_y_axis(t_data *data)
 	data->scene->plane[0]->xyz_pos
 		= vec3_add_vec3(data->scene->plane[0]->xyz_pos,
 			vec3_mul_rn(data->scene->plane[0]->xyz_vec, 1));
-	rt_start(data);
+	rt_start(data, flag);
 }
 
-void	mlx_rotate_plane_z_axis(t_data *data)
+void	mlx_rotate_plane_z_axis(t_data *data, int flag)
 {
 	double	val_cos;
 	double	val_sin;
@@ -101,15 +78,18 @@ void	mlx_rotate_plane_z_axis(t_data *data)
 	data->scene->plane[0]->xyz_pos
 		= vec3_add_vec3(data->scene->plane[0]->xyz_pos,
 			vec3_mul_rn(data->scene->plane[0]->xyz_vec, 1));
-	rt_start(data);
+	rt_start(data, flag);
 }
 
 void	mlx_rotate_plane(int key, t_data *data)
 {
+        int     flag;
+
+        flag = 14;
 	if (key == KEY_J)
-		mlx_rotate_plane_x_axis(data);
+		mlx_rotate_plane_x_axis(data, flag);
 	if (key == KEY_K)
-		mlx_rotate_plane_y_axis(data);
+		mlx_rotate_plane_y_axis(data, flag);
 	if (key == KEY_L)
-		mlx_rotate_plane_z_axis(data);
+		mlx_rotate_plane_z_axis(data, flag);
 }

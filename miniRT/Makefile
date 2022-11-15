@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/14 05:10:26 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/15 04:14:44 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,11 +57,14 @@ FILES = parse_init_struct_1 \
 		utils_color \
 		utils_random \
 		utils_mlx \
-		utils_mlx_key_camera \
-		utils_mlx_key_light \
-		utils_mlx_key_sphere \
-		utils_mlx_key_plane \
-		utils_mlx_key_cylinder \
+		utils_mlx_key_move_camera \
+		utils_mlx_key_rotate_camera \
+		utils_mlx_key_move_light \
+		utils_mlx_key_move_sphere \
+		utils_mlx_key_move_plane \
+		utils_mlx_key_rotate_plane \
+		utils_mlx_key_move_cylinder \
+		utils_mlx_key_rotate_cylinder \
 		utils_msg_1 \
 		utils_msg_2 \
 		main
