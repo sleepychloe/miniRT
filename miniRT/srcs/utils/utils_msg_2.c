@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 05:09:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 03:34:03 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/16 22:06:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_info_1(t_data *data, t_scene *scene, int flag)
 	else
 		printf("║            camera             ║");
 	if (flag == 5 || flag == 6 || flag == 7)
-		printf("             %slight%s            ║", R, B);
+		printf("             %slight%s             ║", R, B);
 	else
 		printf("             light             ║");
 	if (flag == 0 || flag == 8 || flag == 9 || flag == 10 || flag == 19)

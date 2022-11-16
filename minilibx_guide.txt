@@ -27,7 +27,7 @@
 	}
 
 7. compile with command
-	"gcc main.c -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz"
+	"gcc main.c -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm"
 
 8. run ./a.out
 

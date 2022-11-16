@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/16 03:34:14 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/16 22:23:44 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT_NAME = libft.a
 LIBFT = $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 
 MLX_DIR = ./mlx_linux
-MLX_FLAGS = -lX11 -lXext -lm -lz
+MLX_FLAGS = -lX11 -lXext -lm
 MLX = $(addprefix $(MLX_DIR)/, libmlx.a)
 
 FILES	= ./srcs/main \
