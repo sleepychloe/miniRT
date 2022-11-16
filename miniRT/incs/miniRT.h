@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 00:39:40 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/16 03:34:32 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -470,18 +470,23 @@ void	mlx_rotate_cylinder_z_axis(t_data *data, int flag, int i);
 void	mlx_rotate_cylinder(int key, t_data *data, int i);
 
 /* utils_msg_1 */
-void	show_1(void);
-void	show_2(void);
-void	show_3(void);
+void	show_guide_1(void);
+void	show_guide_2(void);
+void	show_guide_3(void);
+void	show_guide_3(void);
 void	show_guide(void);
-void	print_scene_inform(t_data *data, t_scene *scene, int flag);
 
 /* utils_msg_2 */
-void	print_1(t_data *data, t_scene *scene, int flag);
-void	print_2(t_data *data, t_scene *scene, int flag);
-void	print_3(t_data *data, t_scene *scene, int flag);
-void	print_4(t_data *data, t_scene *scene, int flag);
-void	print_5(t_data *data, t_scene *scene, int flag);
+void	print_info_1(t_data *data, t_scene *scene, int flag);
+void	print_info_2(t_data *data, t_scene *scene, int flag);
+void	print_info_3(t_data *data, t_scene *scene, int flag);
+void	print_info_4(t_data *data, t_scene *scene, int flag);
+void	print_scene_info(t_data *data, t_scene *scene, int flag);
+
+/* utils_msg_3 */
+void	print_info_5(t_data *data, t_scene *scene, int flag);
+void	print_info_6(t_data *data, t_scene *scene, int flag);
+void	print_info_7(t_data *data, t_scene *scene, int flag);
 
 /* main */
 int		minirt_main(char **argv);

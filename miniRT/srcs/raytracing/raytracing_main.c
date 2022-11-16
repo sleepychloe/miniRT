@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 00:01:46 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/16 03:04:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	rt_start(t_data *data, int flag)
 	mlx_put_image_to_window(data->mlx->mlx_ptr, data->mlx->win,
 		data->mlx->img_ptr, 0, 0);
 	show_guide();
-	print_scene_inform(data, data->scene, flag);
+	print_scene_info(data, data->scene, flag);
 }
 
 void	raytracing_main(t_scene *scene, t_mlx *mlx)

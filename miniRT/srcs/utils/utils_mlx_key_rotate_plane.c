@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:57:13 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 00:29:02 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/16 03:36:05 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void	mlx_rotate_plane_z_axis(t_data *data, int flag, int i)
 
 void	mlx_rotate_plane(int key, t_data *data, int i)
 {
-        int     flag;
+	int	flag;
 
-        flag = 14;
+	flag = 14;
 	if (key == KEY_J)
 		mlx_rotate_plane_x_axis(data, flag, i);
 	if (key == KEY_K)

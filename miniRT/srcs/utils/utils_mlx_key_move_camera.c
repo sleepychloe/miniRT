@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:20:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/15 03:33:50 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/16 03:36:45 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	mlx_move_camera_x(int key, t_data *data)
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos, vec3(-1, 0, 0));
 	if (key == KEY_2)
-
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos, vec3(1, 0, 0));
 	flag = 1;

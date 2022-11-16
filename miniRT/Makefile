@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/15 05:17:32 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/16 03:34:14 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,8 @@ FILES	= ./srcs/main \
 		./srcs/utils/utils_mlx_key_move_cylinder \
 		./srcs/utils/utils_mlx_key_rotate_cylinder \
 		./srcs/utils/utils_msg_1 \
-		./srcs/utils/utils_msg_2
+		./srcs/utils/utils_msg_2 \
+		./srcs/utils/utils_msg_3
 
 INCS_DIR	= ./incs
 
