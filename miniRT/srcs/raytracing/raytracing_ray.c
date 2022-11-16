@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:00:33 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/15 22:45:50 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/16 21:55:54 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ t_ray	ray(t_vec3 point, t_vec3 direc)
 	return (res);
 }
 
-t_ray	ray_set(t_rt *rt, double u, double v)
+t_ray	ray_set(t_data *data, double u, double v)
 {
 	t_vec3	direc;
 
 	u = (u /*+ random_double()*/) / (WIN_W - 1);
 	v = (v /*+ random_double()*/)
 		/ ((WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H) - 1);
-	direc.x = rt->vp_low_left.x + rt->vp_horizontal.x * u
-		+ rt->vp_vertical.x * v - rt->cam_xyz_pos.x;
-	direc.y = rt->vp_low_left.y + rt->vp_horizontal.y * u
-		+ rt->vp_vertical.y * v - rt->cam_xyz_pos.y;
-	direc.z = rt->vp_low_left.z + rt->vp_horizontal.z * u
-		+ rt->vp_vertical.z * v - rt->cam_xyz_pos.z;
-	return (ray(rt->cam_xyz_pos, vec3_unit(direc)));
+	direc.x = data->rt->vp_low_left.x + data->rt->vp_horizontal.x * u
+		+ data->rt->vp_vertical.x * v - data->rt->cam_xyz_pos.x;
+	direc.y = data->rt->vp_low_left.y + data->rt->vp_horizontal.y * u
+		+ data->rt->vp_vertical.y * v - data->rt->cam_xyz_pos.y;
+	direc.z = data->rt->vp_low_left.z + data->rt->vp_horizontal.z * u
+		+ data->rt->vp_vertical.z * v - data->rt->cam_xyz_pos.z;
+	return (ray(data->rt->cam_xyz_pos, vec3_unit(direc)));
 }

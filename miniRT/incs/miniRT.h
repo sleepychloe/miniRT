@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 03:34:32 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/16 22:00:03 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@
 # define B				"\x1b[0m"
 # define R				"\x1b[31m"
 # define BLUE				"\x1b[34m"
+# define WHITE				"\x1b[7m"
 
 # include "../libft/incs/libft.h"
 # include "../libft/incs/get_next_line.h"
@@ -235,6 +236,7 @@ typedef struct s_data
 	t_scene	*scene;
 	t_mlx	*mlx;
 	t_rt	*rt;
+	t_ray	*ray;
 	t_hit	*hit;
 	int	sp;
 	int	pl;
@@ -355,8 +357,8 @@ void	map_err_i(int i, char *id, char *str);
 int		token_count(char **token, int cnt);
 
 /* raytracing_main */
-int		hittable(t_scene *scene, t_rt *rt, t_ray ray_set, t_hit *hit);
-t_rgb3	trace(t_scene *scene, t_rt *rt, t_ray ray_set);
+int		hittable(t_data *data, t_hit *hit);
+t_rgb3	trace(t_data *data, t_ray ray_set);
 void	ray_tracing(t_data *data);
 void	rt_start(t_data *data, int flag);
 void	raytracing_main(t_scene *scene, t_mlx *mlx);
@@ -366,23 +368,21 @@ void	init_rt(t_scene *scene, t_rt *rt);
 
 /* raytracing_ray */
 t_ray	ray(t_vec3 point, t_vec3 direc);
-t_ray	ray_set(t_rt *rt, double u, double v);
+t_ray	ray_set(t_data *data, double u, double v);
 
 /* raytracing_light */
-int		check_light_hit_obj(t_scene *scene, int cnt, t_ray r, double lim);
-int		calculate_light(t_scene *scene, t_hit *hit, double *s, t_rgb3 *tc);
-t_rgb3	apply_light(t_scene *scene, t_hit *hit);
+int	check_light_hit_obj(t_data *data, double lim);
+int		calculate_light(t_data *data, t_hit *hit, double *s, t_rgb3 *tc);
+t_rgb3	apply_light(t_data *data, t_hit *hit);
 
 /* raytracing_sphere */
-int		check_sphere(t_scene *scene,
-			t_ray ray_set, double *t, int sp_i, double lim);
-int		hit_sphere(t_scene *scene,
-			t_ray ray_set, t_hit *hit, int sp_i, double lim);
-int		interfere_sp(t_scene *scene, t_ray r, int sp_i, double lim);
+int		check_sphere(t_data *data, double *t, int sp_i, double lim);
+int		hit_sphere(t_data *data, t_hit *hit, int sp_i, double lim);
+int		interfere_sp(t_data *data, int sp_i, double lim);
 
 /* raytracing_utils */
-void	set_hit_point(t_ray ray_set, t_hit *hit, double t);
-void	set_hit_normal_direc(t_ray ray_set, t_hit *hit);
+void	set_hit_point(t_data *data, t_hit *hit, double t);
+void	set_hit_normal_direc(t_data *data, t_hit *hit);
 
 /* utils_split */
 char	**ft_split_comma(char const *s, char c);

@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 03:04:31 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/16 22:00:22 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-int	hittable(t_scene *scene, t_rt *rt, t_ray ray_set, t_hit *hit)
+int	hittable(t_data *data, t_hit *hit)
 {
 	int		i;
 	int		hit_flag;
@@ -21,9 +21,9 @@ int	hittable(t_scene *scene, t_rt *rt, t_ray ray_set, t_hit *hit)
 	i = 0;
 	hit_flag = 0;
 	lim = INFINITY;
-	while (i < rt->obj)
+	while (i < data->rt->obj)
 	{
-		if (!(hit_sphere(scene, ray_set, hit, i, lim)))
+		if (!(hit_sphere(data, hit, i, lim)))
 		{
 			hit_flag = 1;
 			lim = hit->t;
@@ -33,21 +33,22 @@ int	hittable(t_scene *scene, t_rt *rt, t_ray ray_set, t_hit *hit)
 	return (hit_flag);
 }
 
-t_rgb3	trace(t_scene *scene, t_rt *rt, t_ray ray_set)
+t_rgb3	trace(t_data *data, t_ray ray_set)
 {
 	t_hit	hit;
 	t_rgb3	a;
 	t_rgb3	l;
 
-	if (hittable(scene, rt, ray_set, &hit))
+	data->ray = &ray_set;
+	if (hittable(data, &hit))
 	{
-		a.r = (scene->ambient->lighting)
-			* (scene->ambient->rgb.r) * hit.color.r * 0.001;
-		a.g = (scene->ambient->lighting)
-			* (scene->ambient->rgb.g) * hit.color.g * 0.001;
-		a.b = (scene->ambient->lighting)
-			* (scene->ambient->rgb.b) * hit.color.b * 0.001;
-		l = apply_light(scene, &hit);
+		a.r = (data->scene->ambient->lighting)
+			* (data->scene->ambient->rgb.r) * hit.color.r * 0.001;
+		a.g = (data->scene->ambient->lighting)
+			* (data->scene->ambient->rgb.g) * hit.color.g * 0.001;
+		a.b = (data->scene->ambient->lighting)
+			* (data->scene->ambient->rgb.b) * hit.color.b * 0.001;
+		l = apply_light(data, &hit);
 		return (color_add(a, l));
 	}
 	return (rgb3(0, 0, 0));
@@ -64,7 +65,7 @@ void	ray_tracing(t_data *data)
 	while (0 <= --j)
 	{
 		if (j == (WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H) - 1)
-			printf("Rendering...\n");
+			printf("%sRendering...%s\n", WHITE, B);
 		i = -1;
 		while (++i <= WIN_W - 1)
 		{
@@ -72,8 +73,7 @@ void	ray_tracing(t_data *data)
 			s = -1;
 			while (++s < NUM_SAMPLE)
 			{
-				c = color_add(c, trace(data->scene, data->rt,
-							ray_set(data->rt, i, j)));
+				c = color_add(c, trace(data, ray_set(data, i, j)));
 			}
 			c = color_average(c, NUM_SAMPLE);
 			my_mlx_pixel_put(data->mlx, i, j, color_convert_to_int(c));
