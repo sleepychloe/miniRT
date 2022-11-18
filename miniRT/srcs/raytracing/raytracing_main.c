@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/19 00:04:51 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/19 00:25:52 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,19 @@ void	ray_tracing(t_data *data)
 	while (0 <= --j)
 	{
 		if (j == (WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H) - 1)
-			printf("%sRendering...%s\n", WHITE, B);
+			printf("%sRendering... %s", WHITE, B);
 		i = -1;
 		while (++i <= WIN_W - 1)
 		{
 			c = rgb3(0, 0, 0);
 			s = -1;
 			while (++s < NUM_SAMPLE)
-			{
 				c = color_add(c, trace(data, ray_set(data, i, j)));
-			}
 			c = color_average(c, NUM_SAMPLE);
 			my_mlx_pixel_put(data->mlx, i, j, color_convert_to_int(c));
 		}
 	}
+	printf("%s%s%d%%%s\n", WHITE, R, 100, B);
 }
 
 void	rt_start(t_data *data, int flag)
