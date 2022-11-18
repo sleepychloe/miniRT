@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 22:00:22 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/18 23:40:28 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int	hittable(t_data *data, t_hit *hit)
 	i = 0;
 	hit_flag = 0;
 	lim = INFINITY;
-	while (i < data->rt->obj)
+	while (i < data->n_obj)
 	{
-		if (!(hit_sphere(data, hit, i, lim)))
+		if (!(hit_sphere(data, hit, i, lim))
+			|| !(hit_plane(data, hit, i, lim)))
 		{
 			hit_flag = 1;
 			lim = hit->t;
@@ -83,6 +84,9 @@ void	ray_tracing(t_data *data)
 
 void	rt_start(t_data *data, int flag)
 {
+	t_rt	rt;
+
+	data->rt = &rt;
 	mlx_clear_window(data->mlx->mlx_ptr, data->mlx->win);
 	init_rt(data->scene, data->rt);
 	ray_tracing(data);
@@ -95,18 +99,18 @@ void	rt_start(t_data *data, int flag)
 void	raytracing_main(t_scene *scene, t_mlx *mlx)
 {
 	t_data	data;
-	t_rt	rt;
 
 	data.scene = scene;
+	data.obj = init_obj(scene);
 	data.mlx = mlx;
-	data.rt = &rt;
+	data.n_obj = scene->n_sphere + scene->n_plane + scene->n_cylinder;
 	data.sp = 0;
 	data.pl = 0;
 	data.cy = 0;
 	if (mlx_init_window(mlx))
 	{
 		err_msg("mlx init error");
-		free(scene);
+		free_scene(scene);
 		exit (1);
 	}
 	rt_start(&data, 0);

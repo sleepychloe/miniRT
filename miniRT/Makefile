@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/16 22:23:44 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/18 23:41:17 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ FILES	= ./srcs/main \
 		./srcs/raytracing/raytracing_ray \
 		./srcs/raytracing/raytracing_light \
 		./srcs/raytracing/raytracing_sphere \
+		./srcs/raytracing/raytracing_plane \
 		./srcs/raytracing/raytracing_utils \
 		./srcs/utils/utils_split \
 		./srcs/utils/utils_free \

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:04:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 22:22:25 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/18 23:49:39 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ int	check_light_hit_obj(t_data *data, double lim)
 	int	i;
 
 	i = 0;
-	while (i < data->rt->obj)
+	while (i < data->n_obj)
 	{
-		if (interfere_sp(data, i, lim))
+		if (!(interfere_sp(data, i, lim)))
+			return (1);
+		if (!(interfere_pl(data, i, lim)))
 			return (1);
 		i++;
 	}

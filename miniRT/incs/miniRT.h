@@ -6,14 +6,14 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 22:00:03 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/18 23:52:55 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-/* error code for parsing */
+/* parsing error code */
 # define ERR_ATOI			-9999
 # define ERR_ATOD			-9999.0
 # define ERR_MALLOC			1
@@ -36,6 +36,11 @@
 # define ASPECT_RATIO_W			16
 # define ASPECT_RATIO_H			9
 # define WIN_W				800
+
+/* object */
+# define SPHERE				1
+# define PLANE				2
+# define CYLINDER			3
 
 /* num for math */
 # define PI				3.14159265359
@@ -193,6 +198,38 @@ typedef struct s_scene
 	int			n_cylinder;
 }	t_scene;
 
+typedef struct s_obj
+{
+	int		obj_type;
+	t_vec3	xyz_pos;
+	t_vec3	xyz_vec;
+	double	diameter;
+	double	height;
+	t_rgb3	rgb;
+}	t_obj;
+
+typedef struct s_mlx
+{
+	void	*mlx_ptr;
+	void	*win;
+	void	*img_ptr;
+	char	*addr;
+	int		line_length;
+	int		bits_per_pixel;
+	int		endian;
+}	t_mlx;
+
+typedef struct s_rt
+{
+	double	focal_length;
+	double	viewport_width;
+	double	viewport_height;
+	t_vec3	vp_horizontal;
+	t_vec3	vp_vertical;
+	t_vec3	vp_low_left;
+	t_vec3	cam_xyz_pos;
+}	t_rt;
+
 typedef struct s_ray
 {
 	t_vec3	point;
@@ -208,39 +245,18 @@ typedef struct s_hit
 	t_rgb3	color;
 }	t_hit;
 
-typedef struct s_rt
-{
-	int		obj;
-	double	focal_length;
-	double	viewport_width;
-	double	viewport_height;
-	t_vec3	vp_horizontal;
-	t_vec3	vp_vertical;
-	t_vec3	vp_low_left;
-	t_vec3	cam_xyz_pos;
-}	t_rt;
-
-typedef struct s_mlx
-{
-	void	*mlx_ptr;
-	void	*win;
-	void	*img_ptr;
-	char	*addr;
-	int		line_length;
-	int		bits_per_pixel;
-	int		endian;
-}	t_mlx;
-
 typedef struct s_data
 {
 	t_scene	*scene;
+	t_obj	**obj;
 	t_mlx	*mlx;
 	t_rt	*rt;
 	t_ray	*ray;
 	t_hit	*hit;
-	int	sp;
-	int	pl;
-	int	cy;
+	int		n_obj;
+	int		sp;
+	int		pl;
+	int		cy;
 }	t_data;
 
 /* parse_init_struct_1 */
@@ -364,6 +380,10 @@ void	rt_start(t_data *data, int flag);
 void	raytracing_main(t_scene *scene, t_mlx *mlx);
 
 /* raytracing_init_struct */
+void	put_value_obj_sp_pl(t_scene *scene, t_obj **obj);
+void	put_value_obj_cy(t_scene *scene, t_obj **obj);
+void	norminette_init_obj(t_scene *scene, t_obj **obj);
+t_obj	**init_obj(t_scene *scene);
 void	init_rt(t_scene *scene, t_rt *rt);
 
 /* raytracing_ray */
@@ -371,7 +391,7 @@ t_ray	ray(t_vec3 point, t_vec3 direc);
 t_ray	ray_set(t_data *data, double u, double v);
 
 /* raytracing_light */
-int	check_light_hit_obj(t_data *data, double lim);
+int		check_light_hit_obj(t_data *data, double lim);
 int		calculate_light(t_data *data, t_hit *hit, double *s, t_rgb3 *tc);
 t_rgb3	apply_light(t_data *data, t_hit *hit);
 
@@ -380,6 +400,10 @@ int		check_sphere(t_data *data, double *t, int sp_i, double lim);
 int		hit_sphere(t_data *data, t_hit *hit, int sp_i, double lim);
 int		interfere_sp(t_data *data, int sp_i, double lim);
 
+/* raytracing_plane */
+int		check_plane(t_data *data, double *t, int pl_i, double lim);
+int		hit_plane(t_data *data, t_hit *hit, int pl_i, double lim);
+int		interfere_pl(t_data *data, int pl_i, double lim);
 /* raytracing_utils */
 void	set_hit_point(t_data *data, t_hit *hit, double t);
 void	set_hit_normal_direc(t_data *data, t_hit *hit);
@@ -392,6 +416,7 @@ void	*ft_realloc(void *old_ptr, size_t old_len, size_t new_len);
 void	ft_free_2d(char **str);
 void	ft_free_3d(char ***str);
 void	free_scene(t_scene *scene);
+void	free_obj(t_obj **obj);
 
 /* utils_vec3_1 */
 t_vec3	vec3(double x, double y, double z);

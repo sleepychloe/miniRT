@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:58:07 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/01 20:14:52 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/18 23:50:29 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,14 @@ void	free_scene(t_scene *scene)
 		free(scene->cylinder[i++]);
 	free(scene->cylinder);
 	free(scene);
+}
+
+void	free_obj(t_obj **obj)
+{
+	int	i;
+
+	i = 0;
+	while (obj[i])
+		free(obj[i++]);
+	free(obj);
 }
