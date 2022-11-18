@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/18 23:40:28 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/19 00:04:51 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	rt_start(t_data *data, int flag)
 {
 	t_rt	rt;
 
+	data->obj = init_obj(data->scene);
 	data->rt = &rt;
 	mlx_clear_window(data->mlx->mlx_ptr, data->mlx->win);
 	init_rt(data->scene, data->rt);
@@ -101,7 +102,6 @@ void	raytracing_main(t_scene *scene, t_mlx *mlx)
 	t_data	data;
 
 	data.scene = scene;
-	data.obj = init_obj(scene);
 	data.mlx = mlx;
 	data.n_obj = scene->n_sphere + scene->n_plane + scene->n_cylinder;
 	data.sp = 0;
