@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:36:49 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/11 18:37:11 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/20 04:09:43 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,16 @@ double	random_double(void)
 t_vec3	random_double_xyz(void)
 {
 	t_vec3	res;
-	int		i;
 
-	i = 100000000;
-	while (0 < i)
+	while (1)
 	{
 		res.x = random_double();
 		res.y = random_double();
+		if (res.x * res.x + res.y * res.y >= 1)
+			continue ;
 		res.z = sqrt(1 - res.x * res.x - res.y * res.y);
 		if (res.x * res.x + res.y * res.y + res.z * res.z == 1)
-			return (res);
-		i--;
+			break ;
 	}
-	return (vec3(0, 0, 0));
+	return (res);
 }

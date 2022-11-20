@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/18 23:52:55 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/20 03:48:03 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -374,7 +374,7 @@ int		token_count(char **token, int cnt);
 
 /* raytracing_main */
 int		hittable(t_data *data, t_hit *hit);
-t_rgb3	trace(t_data *data, t_ray ray_set);
+t_rgb3	trace(t_data *data, t_ray ray);
 void	ray_tracing(t_data *data);
 void	rt_start(t_data *data, int flag);
 void	raytracing_main(t_scene *scene, t_mlx *mlx);
@@ -391,19 +391,21 @@ t_ray	ray(t_vec3 point, t_vec3 direc);
 t_ray	ray_set(t_data *data, double u, double v);
 
 /* raytracing_light */
-int		check_light_hit_obj(t_data *data, double lim);
-int		calculate_light(t_data *data, t_hit *hit, double *s, t_rgb3 *tc);
+int		check_light_hit_obj(t_data *data, double distance);
+int		calculate_light(t_data *data, t_hit *hit,
+			double *light_intensity, t_rgb3 *light_color);
 t_rgb3	apply_light(t_data *data, t_hit *hit);
 
 /* raytracing_sphere */
-int		check_sphere(t_data *data, double *t, int sp_i, double lim);
-int		hit_sphere(t_data *data, t_hit *hit, int sp_i, double lim);
-int		interfere_sp(t_data *data, int sp_i, double lim);
+int		check_sphere(t_data *data, double *t, int sp_i, double distance);
+int		hit_sphere(t_data *data, t_hit *hit, int sp_i, double distance);
+int		light_hit_sp(t_data *data, int sp_i, double distance);
 
 /* raytracing_plane */
-int		check_plane(t_data *data, double *t, int pl_i, double lim);
-int		hit_plane(t_data *data, t_hit *hit, int pl_i, double lim);
-int		interfere_pl(t_data *data, int pl_i, double lim);
+int		check_plane(t_data *data, double *t, int pl_i, double distance);
+int		hit_plane(t_data *data, t_hit *hit, int pl_i, double distance);
+int		light_hit_pl(t_data *data, int pl_i, double distance);
+
 /* raytracing_utils */
 void	set_hit_point(t_data *data, t_hit *hit, double t);
 void	set_hit_normal_direc(t_data *data, t_hit *hit);

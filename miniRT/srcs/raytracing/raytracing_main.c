@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/19 00:25:52 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/20 04:09:17 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,41 +16,41 @@ int	hittable(t_data *data, t_hit *hit)
 {
 	int		i;
 	int		hit_flag;
-	double	lim;
+	double	distance;
 
 	i = 0;
 	hit_flag = 0;
-	lim = INFINITY;
+	distance = INFINITY;
 	while (i < data->n_obj)
 	{
-		if (!(hit_sphere(data, hit, i, lim))
-			|| !(hit_plane(data, hit, i, lim)))
+		if (!(hit_sphere(data, hit, i, distance))
+			|| !(hit_plane(data, hit, i, distance)))
 		{
 			hit_flag = 1;
-			lim = hit->t;
+			distance = hit->t;
 		}
 		i++;
 	}
 	return (hit_flag);
 }
 
-t_rgb3	trace(t_data *data, t_ray ray_set)
+t_rgb3	trace(t_data *data, t_ray ray)
 {
 	t_hit	hit;
-	t_rgb3	a;
-	t_rgb3	l;
+	t_rgb3	ambient;
+	t_rgb3	light;
 
-	data->ray = &ray_set;
+	data->ray = &ray;
 	if (hittable(data, &hit))
 	{
-		a.r = (data->scene->ambient->lighting)
+		ambient.r = (data->scene->ambient->lighting)
 			* (data->scene->ambient->rgb.r) * hit.color.r * 0.001;
-		a.g = (data->scene->ambient->lighting)
+		ambient.g = (data->scene->ambient->lighting)
 			* (data->scene->ambient->rgb.g) * hit.color.g * 0.001;
-		a.b = (data->scene->ambient->lighting)
+		ambient.b = (data->scene->ambient->lighting)
 			* (data->scene->ambient->rgb.b) * hit.color.b * 0.001;
-		l = apply_light(data, &hit);
-		return (color_add(a, l));
+		light = apply_light(data, &hit);
+		return (color_add(ambient, light));
 	}
 	return (rgb3(0, 0, 0));
 }
@@ -60,7 +60,7 @@ void	ray_tracing(t_data *data)
 	int		i;
 	int		j;
 	int		s;
-	t_rgb3	c;
+	t_rgb3	color;
 
 	j = (WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H);
 	while (0 <= --j)
@@ -70,12 +70,12 @@ void	ray_tracing(t_data *data)
 		i = -1;
 		while (++i <= WIN_W - 1)
 		{
-			c = rgb3(0, 0, 0);
+			color = rgb3(0, 0, 0);
 			s = -1;
 			while (++s < NUM_SAMPLE)
-				c = color_add(c, trace(data, ray_set(data, i, j)));
-			c = color_average(c, NUM_SAMPLE);
-			my_mlx_pixel_put(data->mlx, i, j, color_convert_to_int(c));
+				color = color_add(color, trace(data, ray_set(data, i, j)));
+			color = color_average(color, NUM_SAMPLE);
+			my_mlx_pixel_put(data->mlx, i, j, color_convert_to_int(color));
 		}
 	}
 	printf("%s%s%d%%%s\n", WHITE, R, 100, B);
