@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/20 04:09:17 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/22 02:34:23 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	hittable(t_data *data, t_hit *hit)
 	while (i < data->n_obj)
 	{
 		if (!(hit_sphere(data, hit, i, distance))
-			|| !(hit_plane(data, hit, i, distance)))
+			|| !(hit_plane(data, hit, i, distance))
+			|| !(hit_cylinder(data, hit, i, distance)))
 		{
 			hit_flag = 1;
 			distance = hit->t;

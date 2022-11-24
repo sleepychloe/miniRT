@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:56:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/20 03:47:49 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/22 02:09:37 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	check_sphere(t_data *data, double *t, int sp_i, double distance)
 {
-	t_vec3	oc;
+	t_vec3	rc;
 	double	a;
 	double	b;
 	double	c;
 
-	oc = vec3_sub_vec3(data->ray->point, data->obj[sp_i]->xyz_pos);
+	rc = vec3_sub_vec3(data->obj[sp_i]->xyz_pos, data->ray->point);
 	a = vec3_dot_vec3(data->ray->direc, data->ray->direc);
-	b = vec3_dot_vec3(oc, data->ray->direc);
-	c = vec3_dot_vec3(oc, oc)
+	b = -1 * vec3_dot_vec3(rc, data->ray->direc);
+	c = vec3_dot_vec3(rc, rc)
 		- (((data->obj[sp_i]->diameter) / 2)
 			* ((data->obj[sp_i]->diameter) / 2));
 	if (b * b - a * c < 0)

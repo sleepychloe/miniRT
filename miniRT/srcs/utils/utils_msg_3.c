@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 03:33:31 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 03:33:57 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/20 12:48:14 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_info_5(t_data *data, t_scene *scene, int flag)
 	printf("════════════╬═══╬══════════════╬");
 	printf("════════════╬═══╬══════════════╣\n");
 	if (flag == 4)
-		printf("║            ║ x ║  %s%f%s\t║", R, scene->camera->xyz_vec.x, B);
+		printf("║            ║ x ║ %s%f%s\t║", R, scene->camera->xyz_vec.x, B);
 	else
 		printf("║            ║ x ║  %f\t║", scene->camera->xyz_vec.x);
 	if (flag == 7)
@@ -49,7 +49,7 @@ void	print_info_6(t_data *data, t_scene *scene, int flag)
 	else
 		printf("            ║ x ║ %f\t║\n", scene->cylinder[data->cy]->xyz_vec.x);
 	if (flag == 4)
-		printf("║ normal vec ║ y ║  %s%f%s\t║", R, scene->camera->xyz_vec.y, B);
+		printf("║ normal vec ║ y ║ %s%f%s\t║", R, scene->camera->xyz_vec.y, B);
 	else
 		printf("║ normal vec ║ y ║  %f\t║", scene->camera->xyz_vec.y);
 	printf("            ║   ║              ║");
@@ -65,7 +65,7 @@ void	print_info_6(t_data *data, t_scene *scene, int flag)
 	else
 		printf(" normal vec ║ y ║ %f\t║\n", scene->cylinder[data->cy]->xyz_vec.y);
 	if (flag == 4)
-		printf("║            ║ z ║  %s%f%s\t║", R, scene->camera->xyz_vec.z, B);
+		printf("║            ║ z ║ %s%f%s\t║", R, scene->camera->xyz_vec.z, B);
 	else
 		printf("║            ║ z ║  %f\t║", scene->camera->xyz_vec.z);
 }

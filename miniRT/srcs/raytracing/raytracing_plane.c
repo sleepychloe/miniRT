@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 23:40:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/20 03:48:08 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/22 01:45:56 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	check_plane(t_data *data, double *t, int pl_i, double distance)
 {
-	double	d;
-	double	n;
+	t_vec3	rc;
+	double	dot_normal_ray;
+	double	dot_normal_rc;
 
-	d = vec3_dot_vec3(data->ray->direc, data->obj[pl_i]->xyz_vec);
-	if (!d)
+	rc = vec3_sub_vec3(data->obj[pl_i]->xyz_pos, data->ray->point);
+	dot_normal_ray = vec3_dot_vec3(data->obj[pl_i]->xyz_vec, data->ray->direc);
+	if (dot_normal_ray == 0)
 		return (1);
-	n = vec3_dot_vec3(vec3_sub_vec3(data->obj[pl_i]->xyz_pos,
-				data->ray->point),
-			data->obj[pl_i]->xyz_vec);
-	*t = n / d;
+	dot_normal_rc = vec3_dot_vec3(data->obj[pl_i]->xyz_vec, rc);
+	*t = dot_normal_rc / dot_normal_ray;
 	if (*t < 0.00001 || distance < *t)
 		return (1);
 	return (0);

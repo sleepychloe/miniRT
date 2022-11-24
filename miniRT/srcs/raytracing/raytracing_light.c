@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:04:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/20 04:05:06 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/22 02:34:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	check_light_hit_obj(t_data *data, double distance)
 		if (!(light_hit_sp(data, i, distance)))
 			return (1);
 		if (!(light_hit_pl(data, i, distance)))
+			return (1);
+		if (!(light_hit_cy(data, i, distance)))
 			return (1);
 		i++;
 	}
