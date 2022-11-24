@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 02:31:10 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/24 08:28:19 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/24 09:24:39 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,10 +145,12 @@ int	hit_cylinder(t_data *data, t_hit *hit, int cy_i, double distance)
 	{
 		set_hit_point(data, hit, t_body);
 		hit->normal_vec = vec3_unit(vec3_sub_vec3(hit->hit_point,
-			vec3_add_vec3(vec3_mul_rn(data->obj[cy_i]->xyz_vec,
-				vec3_dot_vec3(data->obj[cy_i]->xyz_vec,
-					vec3_sub_vec3(hit->hit_point, data->obj[cy_i]->xyz_pos))),
-				data->obj[cy_i]->xyz_pos)));
+			vec3_add_vec3(data->obj[cy_i]->xyz_pos,
+				vec3_mul_rn(data->obj[cy_i]->xyz_vec,
+					((vec3_dot_vec3(data->obj[cy_i]->xyz_vec,
+					vec3_sub_vec3(hit->hit_point, data->obj[cy_i]->xyz_pos))))
+					/ vec3_dot_vec3(data->obj[cy_i]->xyz_vec,
+						data->obj[cy_i]->xyz_vec)))));
 		set_hit_normal_direc(data, hit);
 	}
 	else
