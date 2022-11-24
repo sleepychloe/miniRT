@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 22:04:46 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/18 23:51:03 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/24 12:46:15 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	put_value_obj_sp_pl(t_scene *scene, t_obj **obj)
 	{
 		obj[i]->obj_type = SPHERE;
 		obj[i]->xyz_pos = scene->sphere[i]->xyz_pos;
-		obj[i]->xyz_vec = vec3(0, 0, 0);
 		obj[i]->diameter = scene->sphere[i]->diameter;
 		obj[i]->height = 0;
 		obj[i]->rgb = scene->sphere[i]->rgb;
@@ -33,8 +32,6 @@ void	put_value_obj_sp_pl(t_scene *scene, t_obj **obj)
 		obj[scene->n_sphere + i]->obj_type = PLANE;
 		obj[scene->n_sphere + i]->xyz_pos = scene->plane[i]->xyz_pos;
 		obj[scene->n_sphere + i]->xyz_vec = scene->plane[i]->xyz_vec;
-		obj[scene->n_sphere + i]->diameter = 0;
-		obj[scene->n_sphere + i]->height = 0;
 		obj[scene->n_sphere + i]->rgb = scene->plane[i]->rgb;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/22 02:34:04 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/24 16:30:08 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@
 /* checking direction of normal vector */
 # define FRONT				1
 # define BACK				2
+
+/* cylinder circle */
+# define TOP				0
+# define BOTTOM				1
 
 /* linux key code */
 # define KEY_UP				0xFF52
@@ -406,10 +410,23 @@ int		check_plane(t_data *data, double *t, int pl_i, double distance);
 int		hit_plane(t_data *data, t_hit *hit, int pl_i, double distance);
 int		light_hit_pl(t_data *data, int pl_i, double distance);
 
-/* raytracing_cylinder */
-int		check_cylinder(t_data *data, double *t, int cy_i, double distance);
+/* raytracing_cylinder_1 */
+void	norminette_check_cylinder_body(t_data *data,
+			int cy_i, double *d, t_vec3 *cy_center);
+double	check_cylinder_body(t_data *data, int cy_i, double distance);
+t_vec3	calc_normal_vec_cylinder_body(t_data *data, t_hit *hit, int cy_i);
 int		hit_cylinder(t_data *data, t_hit *hit, int cy_i, double distance);
 int		light_hit_cy(t_data *data, int cy_i, double distance);
+
+/* raytracing_cylinder_2 */
+void	norminette_check_cylinder_circle_1(t_data *data,
+			int cy_i, t_vec3 *cy_center, t_vec3 *tc);
+void	norminette_check_cylinder_circle_2(double *dot, double *t_circle);
+void	norminette_check_cylinder_circle_3(t_data *data,
+			double *t_circle, t_vec3 *hit_p);
+int		check_circle_radius(t_data *data,
+			int cy_i, t_vec3 hit_point, t_vec3 cy_center);
+double	check_cylinder_circle(t_data *data, int cy_i, double distance);
 
 /* raytracing_utils */
 void	set_hit_point(t_data *data, t_hit *hit, double t);
