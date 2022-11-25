@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/05 05:38:07 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/25 21:34:27 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	parse_sp_rgb(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (token_count(s[2], 3) || s[0][3][ft_strlen(s[0][3]) - 1] == ',')
+	if (token_count(s[2], 3) || check_comma(s[0][3]))
 	{
 		scene->sphere[i]->err = ERR_RGB_TOKEN;
 		ft_free_3d(s);

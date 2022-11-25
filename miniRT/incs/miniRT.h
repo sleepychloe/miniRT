@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/24 16:30:08 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/25 21:43:49 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,54 +139,54 @@ typedef struct s_rgb3
 
 typedef struct s_ambient
 {
-	int		check;
-	int		err;
-	double	lighting;
-	t_rgb3	rgb;
+	int			check;
+	int			err;
+	double		lighting;
+	t_rgb3		rgb;
 }	t_ambient;
 
 typedef struct s_camera
 {
-	int		check;
-	int		err;
+	int			check;
+	int			err;
 	t_vec3	xyz_pos;
-	t_vec3	xyz_vec;
-	int		fov;
+	t_vec3		xyz_vec;
+	int		 fov;
 }	t_camera;
 
 typedef struct s_light
 {
-	int		check;
-	int		err;
-	t_vec3	xyz_pos;
-	double	brightness;
-	t_rgb3	rgb;
+	int			check;
+	int			err;
+	t_vec3		xyz_pos;
+	double		brightness;
+	t_rgb3		rgb;
 }	t_light;
 
 typedef struct s_sphere
 {
-	int		err;
-	t_vec3	xyz_pos;
-	double	diameter;
-	t_rgb3	rgb;
+	int			err;
+	t_vec3		xyz_pos;
+	double		diameter;
+	t_rgb3		rgb;
 }	t_sphere;
 
 typedef struct s_plane
 {
-	int		err;
-	t_vec3	xyz_pos;
-	t_vec3	xyz_vec;
-	t_rgb3	rgb;
+	int			err;
+	t_vec3		xyz_pos;
+	t_vec3		xyz_vec;
+	t_rgb3		rgb;
 }	t_plane;
 
 typedef struct s_cylinder
 {
-	int		err;
-	t_vec3	xyz_pos;
-	t_vec3	xyz_vec;
-	double	diameter;
-	double	height;
-	t_rgb3	rgb;
+	int			err;
+	t_vec3		xyz_pos;
+	t_vec3		xyz_vec;
+	double		diameter;
+	double		height;
+	t_rgb3		rgb;
 }	t_cylinder;
 
 typedef struct s_scene
@@ -204,63 +204,63 @@ typedef struct s_scene
 
 typedef struct s_obj
 {
-	int		obj_type;
-	t_vec3	xyz_pos;
-	t_vec3	xyz_vec;
-	double	diameter;
-	double	height;
-	t_rgb3	rgb;
+	int			obj_type;
+	t_vec3		xyz_pos;
+	t_vec3		xyz_vec;
+	double		diameter;
+	double		height;
+	t_rgb3		rgb;
 }	t_obj;
 
 typedef struct s_mlx
 {
-	void	*mlx_ptr;
-	void	*win;
-	void	*img_ptr;
-	char	*addr;
-	int		line_length;
-	int		bits_per_pixel;
-	int		endian;
+	void		*mlx_ptr;
+	void		*win;
+	void		*img_ptr;
+	char		*addr;
+	int			line_length;
+	int			bits_per_pixel;
+	int			endian;
 }	t_mlx;
 
 typedef struct s_rt
 {
-	double	focal_length;
-	double	viewport_width;
-	double	viewport_height;
-	t_vec3	vp_horizontal;
-	t_vec3	vp_vertical;
-	t_vec3	vp_low_left;
-	t_vec3	cam_xyz_pos;
+	double		focal_length;
+	double		viewport_width;
+	double		viewport_height;
+	t_vec3		vp_horizontal;
+	t_vec3		vp_vertical;
+	t_vec3		vp_low_left;
+	t_vec3		cam_xyz_pos;
 }	t_rt;
 
 typedef struct s_ray
 {
-	t_vec3	point;
-	t_vec3	direc;
+	t_vec3		point;
+	t_vec3		direc;
 }	t_ray;
 
 typedef struct s_hit
 {
-	double	t;
-	t_vec3	hit_point;
-	t_vec3	normal_vec;
-	int		front;
-	t_rgb3	color;
+	double		t;
+	t_vec3		hit_point;
+	t_vec3		normal_vec;
+	int			front;
+	t_rgb3		color;
 }	t_hit;
 
 typedef struct s_data
 {
-	t_scene	*scene;
-	t_obj	**obj;
-	t_mlx	*mlx;
-	t_rt	*rt;
-	t_ray	*ray;
-	t_hit	*hit;
-	int		n_obj;
-	int		sp;
-	int		pl;
-	int		cy;
+	t_scene		*scene;
+	t_obj		**obj;
+	t_mlx		*mlx;
+	t_rt		*rt;
+	t_ray		*ray;
+	t_hit		*hit;
+	int			n_obj;
+	int			sp;
+	int			pl;
+	int			cy;
 }	t_data;
 
 /* parse_init_struct_1 */
@@ -375,6 +375,7 @@ void	err_check_cy(t_scene *scene, int i);
 void	err_msg(char *str);
 void	map_err_i(int i, char *id, char *str);
 int		token_count(char **token, int cnt);
+int		check_comma(char *str);
 
 /* raytracing_main */
 int		hittable(t_data *data, t_hit *hit);
@@ -431,9 +432,6 @@ double	check_cylinder_circle(t_data *data, int cy_i, double distance);
 /* raytracing_utils */
 void	set_hit_point(t_data *data, t_hit *hit, double t);
 void	set_hit_normal_direc(t_data *data, t_hit *hit);
-
-/* utils_split */
-char	**ft_split_comma(char const *s, char c);
 
 /* utils_free */
 void	*ft_realloc(void *old_ptr, size_t old_len, size_t new_len);

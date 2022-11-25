@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:44:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/05 07:14:06 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/25 21:33:37 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	parse_c_xyz_vec(t_scene *scene, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	if (token_count(s[2], 3) || s[0][2][ft_strlen(s[0][2]) - 1] == ',')
+	if (token_count(s[2], 3) || check_comma(s[0][2]))
 	{
 		scene->camera->err = ERR_XYZ_VEC_TOKEN;
 		ft_free_3d(s);

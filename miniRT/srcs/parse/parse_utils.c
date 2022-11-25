@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_parse.c                                      :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:14:59 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/12 22:11:30 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/25 21:36:10 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,35 @@ int	token_count(char **token, int cnt)
 		i++;
 	}
 	if (i >= cnt && token[i])
+		return (1);
+	return (0);
+}
+
+int	check_comma(char *str)
+{
+	if (str[0] == ',' || str[ft_strlen(str) - 1] == ',')
+		return (1);
+	while (str)
+	{
+		if (*str == ',')
+		{
+			str++;
+			break ;
+		}
+		str++;
+	}
+	if (*str == ',')
+		return (1);
+	while (str)
+	{
+		if (*str == ',')
+		{
+			str++;
+			break ;
+		}
+		str++;
+	}
+	if (*str == ',')
 		return (1);
 	return (0);
 }
