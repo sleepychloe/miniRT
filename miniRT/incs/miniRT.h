@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/25 21:43:49 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/26 01:17:55 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@
 # define PI				3.14159265359
 
 /* repeating time for ray tracing */
-# define NUM_SAMPLE			1
+# define NUM_SAMPLE			2
+# define NUM_DEPTH			1
 
 /* checking direction of normal vector */
 # define FRONT				1
@@ -379,7 +380,7 @@ int		check_comma(char *str);
 
 /* raytracing_main */
 int		hittable(t_data *data, t_hit *hit);
-t_rgb3	trace(t_data *data, t_ray ray);
+t_rgb3	trace(t_data *data, t_ray ray, int depth);
 void	ray_tracing(t_data *data);
 void	rt_start(t_data *data, int flag);
 void	raytracing_main(t_scene *scene, t_mlx *mlx);
@@ -455,7 +456,7 @@ t_vec3	vec3_unit(t_vec3 v);
 t_rgb3	rgb3(double r, double g, double b);
 t_rgb3	color_add(t_rgb3 c1, t_rgb3 c2);
 double	color_clamp(double c);
-t_rgb3	color_average(t_rgb3 c, int samples_per_pixel);
+t_rgb3	color_average(t_rgb3 c);
 int		color_convert_to_int(t_rgb3 rgb);
 
 /* utils_random */

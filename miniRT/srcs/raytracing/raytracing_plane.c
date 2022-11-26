@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 23:40:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/24 13:34:39 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/26 01:30:21 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int	light_hit_pl(t_data *data, int pl_i, double distance)
 	double	t;
 
 	if (data->obj[pl_i]->obj_type != PLANE)
-		return (0);
-	if (!check_plane(data, &t, pl_i, distance))
-		return (0);
-	return (1);
+		return (1);
+	if (check_plane(data, &t, pl_i, distance))
+		return (1);
+	return (0);
 }

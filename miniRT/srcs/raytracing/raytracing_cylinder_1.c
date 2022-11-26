@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 02:31:10 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/24 16:27:54 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/26 04:02:37 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,10 @@ int	light_hit_cy(t_data *data, int cy_i, double distance)
 	double	t_circle;
 
 	if (data->obj[cy_i]->obj_type != CYLINDER)
-		return (0);
+		return (1);
 	t_body = check_cylinder_body(data, cy_i, distance);
 	t_circle = check_cylinder_circle(data, cy_i, distance);
 	if (t_body == INFINITY && t_circle == INFINITY)
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }

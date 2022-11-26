@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:58:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 03:37:17 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/25 23:59:35 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ double	color_clamp(double c)
 	return (c);
 }
 
-t_rgb3	color_average(t_rgb3 c, int samples_per_pixel)
+t_rgb3	color_average(t_rgb3 c)
 {
-	c.r = c.r / samples_per_pixel;
-	c.g = c.g / samples_per_pixel;
-	c.b = c.b / samples_per_pixel;
+	c.r = c.r / (NUM_SAMPLE * NUM_DEPTH);
+	c.g = c.g / (NUM_SAMPLE * NUM_DEPTH);
+	c.b = c.b / (NUM_SAMPLE * NUM_DEPTH);
 	return (c);
 }
 

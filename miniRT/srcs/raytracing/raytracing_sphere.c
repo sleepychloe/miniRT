@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:56:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/22 02:09:37 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/26 01:22:25 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	light_hit_sp(t_data *data, int sp_i, double distance)
 
 	if (data->obj[sp_i]->obj_type != SPHERE)
 		return (1);
-	if (!check_sphere(data, &t, sp_i, distance))
+	if (check_sphere(data, &t, sp_i, distance))
 		return (1);
 	return (0);
 }

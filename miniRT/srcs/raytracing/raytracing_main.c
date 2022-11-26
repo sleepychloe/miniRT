@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/22 02:34:23 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/26 01:50:45 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,17 @@ int	hittable(t_data *data, t_hit *hit)
 	return (hit_flag);
 }
 
-t_rgb3	trace(t_data *data, t_ray ray)
+t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
 {
 	t_hit	hit;
 	t_rgb3	ambient;
 	t_rgb3	light;
+	t_vec3	target;
+	t_ray	ray_diffuse;
 
-	data->ray = &ray;
+	if (depth <= 0)
+		return (rgb3(0, 0, 0));
+	data->ray = &ray_set;
 	if (hittable(data, &hit))
 	{
 		ambient.r = (data->scene->ambient->lighting)
@@ -51,7 +55,11 @@ t_rgb3	trace(t_data *data, t_ray ray)
 		ambient.b = (data->scene->ambient->lighting)
 			* (data->scene->ambient->rgb.b) * hit.color.b * 0.001;
 		light = apply_light(data, &hit);
-		return (color_add(ambient, light));
+		ray_diffuse = ray(hit.hit_point, vec3_sub_vec3(target, hit.hit_point));
+		target = vec3_add_vec3(vec3_add_vec3(hit.hit_point, hit.normal_vec),
+				random_double_xyz());
+		return (color_add(color_add(ambient, light),
+				trace(data, ray_diffuse, depth - 1)));
 	}
 	return (rgb3(0, 0, 0));
 }
@@ -64,18 +72,21 @@ void	ray_tracing(t_data *data)
 	t_rgb3	color;
 
 	j = (WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H);
+	printf("%sRendering... %s", WHITE, B);
 	while (0 <= --j)
 	{
-		if (j == (WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H) - 1)
-			printf("%sRendering... %s", WHITE, B);
+		printf("Rendering... %d %%\n",
+			((WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H) - j) * 100
+			/ (WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H));
 		i = -1;
 		while (++i <= WIN_W - 1)
 		{
 			color = rgb3(0, 0, 0);
 			s = -1;
 			while (++s < NUM_SAMPLE)
-				color = color_add(color, trace(data, ray_set(data, i, j)));
-			color = color_average(color, NUM_SAMPLE);
+				color = color_add(color,
+						trace(data, ray_set(data, i, j), NUM_DEPTH));
+			color = color_average(color);
 			my_mlx_pixel_put(data->mlx, i, j, color_convert_to_int(color));
 		}
 	}
