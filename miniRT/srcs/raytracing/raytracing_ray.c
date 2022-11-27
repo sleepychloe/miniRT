@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:00:33 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/26 04:05:28 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/27 08:50:19 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_ray	ray_set(t_data *data, double u, double v)
 {
 	t_vec3	direc;
 
-	u = (u /*+ random_double()*/) / (WIN_W - 1);
-	v = (v /*+ random_double()*/)
+	u = (u + random_double()) / (WIN_W - 1);
+	v = (v + random_double())
 		/ ((WIN_W / ASPECT_RATIO_W * ASPECT_RATIO_H) - 1);
 	direc.x = data->rt->vp_low_left.x + data->rt->vp_horizontal.x * u
 		+ data->rt->vp_vertical.x * v - data->rt->cam_xyz_pos.x;

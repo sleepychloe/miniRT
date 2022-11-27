@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/26 01:50:45 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/27 08:54:13 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
 		ambient.b = (data->scene->ambient->lighting)
 			* (data->scene->ambient->rgb.b) * hit.color.b * 0.001;
 		light = apply_light(data, &hit);
-		ray_diffuse = ray(hit.hit_point, vec3_sub_vec3(target, hit.hit_point));
 		target = vec3_add_vec3(vec3_add_vec3(hit.hit_point, hit.normal_vec),
 				random_double_xyz());
+		ray_diffuse = ray(hit.hit_point, vec3_sub_vec3(target, hit.hit_point));
+		return (color_add(ambient, light));
 		return (color_add(color_add(ambient, light),
 				trace(data, ray_diffuse, depth - 1)));
 	}
@@ -90,7 +91,7 @@ void	ray_tracing(t_data *data)
 			my_mlx_pixel_put(data->mlx, i, j, color_convert_to_int(color));
 		}
 	}
-	printf("%s%s%d%%%s\n", WHITE, R, 100, B);
+	printf("%s%sDone%s\n", WHITE, R, B);
 }
 
 void	rt_start(t_data *data, int flag)

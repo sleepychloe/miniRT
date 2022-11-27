@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:36:49 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/26 04:04:19 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/27 08:50:07 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 double	random_double(void)
 {
-	int		fd;
-	double	x;
+	static int	a;
+	double	res;
 
-	fd = open("/dev/urandom", O_RDONLY);
-	if (fd == -1)
-		return (-9999);
-	read(fd, &x, sizeof(x));
-	close(fd);
-	x = cos(x);
-	return (x);
+	a = (a * 123456789123 + 123456) & 0x7fffffff;
+	res = ((double)a / (double)0x80000000);
+	return (res);
 }
 
 t_vec3	random_double_xyz(void)
