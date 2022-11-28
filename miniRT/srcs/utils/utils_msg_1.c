@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 03:38:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 03:35:24 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/28 02:08:02 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,25 +77,25 @@ void	show_guide_3(void)
 	printf("             object            ║");
 	printf("      ║                        ║");
 	printf("      ║                        ║\n");
-	printf("║ %s7%s    ║ rotate: x axis, +30°   ╠", BLUE, B);
+	printf("║ %s7%s    ║ rotate: x axis, +45°   ╠", BLUE, B);
 	printf("══════╦════════════════════════╣");
 	printf("══════╦════════════════════════╣");
-	printf(" %sJ%s    ║ rotate: x axis, +30°   ║", BLUE, B);
-	printf(" %sU%s    ║ rotate: x axis, +30°   ║\n", BLUE, B);
+	printf(" %sJ%s    ║ rotate: x axis, +45°   ║", BLUE, B);
+	printf(" %sU%s    ║ rotate: x axis, +45°   ║\n", BLUE, B);
 }
 
 void	show_guide_4(void)
 {
-	printf("║ %s8%s    ║ rotate: y axis, +30°   ║", BLUE, B);
+	printf("║ %s8%s    ║ rotate: y axis, +45°   ║", BLUE, B);
 	printf(" %sESC%s  ║ exit                   ║", BLUE, B);
 	printf(" %sF1%s   ║ show info: sphere +1   ║", BLUE, B);
-	printf(" %sK%s    ║ rotate: y axis, +30°   ║", BLUE, B);
-	printf(" %sI%s    ║ rotate: y axis, +30°   ║\n", BLUE, B);
-	printf("║ %s9%s    ║ rotate: z axis, +30°   ║", BLUE, B);
+	printf(" %sK%s    ║ rotate: y axis, +45°   ║", BLUE, B);
+	printf(" %sI%s    ║ rotate: y axis, +45°   ║\n", BLUE, B);
+	printf("║ %s9%s    ║ rotate: z axis, +45°   ║", BLUE, B);
 	printf(" %sUP%s   ║ zoom in                ║", BLUE, B);
 	printf(" %sF2%s   ║ show info: plane +1    ║", BLUE, B);
-	printf(" %sL%s    ║ rotate: z axis, +30°   ║", BLUE, B);
-	printf(" %sO%s    ║ rotate: z axis, +30°   ║\n", BLUE, B);
+	printf(" %sL%s    ║ rotate: z axis, +45°   ║", BLUE, B);
+	printf(" %sO%s    ║ rotate: z axis, +45°   ║\n", BLUE, B);
 	printf("║      ║                        ║");
 	printf(" %sDOWN%s ║ zoom out               ║", BLUE, B);
 	printf(" %sF3%s   ║ show info: cylinder +1 ║", BLUE, B);

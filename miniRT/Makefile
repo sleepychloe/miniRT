@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/25 21:44:04 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/28 07:45:03 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,8 @@ FILES	= ./srcs/main \
 		./srcs/parse/parse_err_2 \
 		./srcs/parse/parse_utils \
 		./srcs/raytracing/raytracing_main \
-		./srcs/raytracing/raytracing_init_struct \
+		./srcs/raytracing/raytracing_init_struct_obj \
+		./srcs/raytracing/raytracing_init_struct_rt \
 		./srcs/raytracing/raytracing_ray \
 		./srcs/raytracing/raytracing_light \
 		./srcs/raytracing/raytracing_sphere \
@@ -62,6 +63,12 @@ FILES	= ./srcs/main \
 		./srcs/utils/utils_mlx \
 		./srcs/utils/utils_mlx_key_move_camera \
 		./srcs/utils/utils_mlx_key_rotate_camera \
+		./srcs/utils/utils_mlx_key_rotate_camera_x_1 \
+		./srcs/utils/utils_mlx_key_rotate_camera_x_2 \
+		./srcs/utils/utils_mlx_key_rotate_camera_y_1 \
+		./srcs/utils/utils_mlx_key_rotate_camera_y_2 \
+		./srcs/utils/utils_mlx_key_rotate_camera_z_1 \
+		./srcs/utils/utils_mlx_key_rotate_camera_z_2 \
 		./srcs/utils/utils_mlx_key_move_light \
 		./srcs/utils/utils_mlx_key_move_sphere \
 		./srcs/utils/utils_mlx_key_move_plane \

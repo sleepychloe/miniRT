@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 18:36:49 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/27 08:50:07 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/28 07:52:23 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 double	random_double(void)
 {
 	static int	a;
-	double	res;
+	double		res;
 
 	a = (a * 123456789123 + 123456) & 0x7fffffff;
 	res = ((double)a / (double)0x80000000);

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:04:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/26 01:56:05 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/28 01:18:47 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	calculate_light(t_data *data, t_hit *hit,
 	light_color->g = light_color->g / (4 * PI * distance * distance);
 	light_color->b = light_color->b / (4 * PI * distance * distance);
 	ray_calc_light = ray(hit->hit_point, vec3_mul_rn(light_direc, -1));
-	*light_intensity = vec3_dot_vec3(hit->normal_vec,
+	*light_intensity = vec3_dot_vec3(vec3_mul_rn(hit->normal_vec, 1 + 1e-10),
 			vec3_mul_rn(light_direc, -1));
 	if (*light_intensity < 0)
 		*light_intensity = 0;

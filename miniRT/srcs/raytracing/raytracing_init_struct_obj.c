@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raytracing_init_struct.c                           :+:      :+:    :+:   */
+/*   raytracing_init_struct_obj.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 22:04:46 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/24 12:46:15 by yhwang           ###   ########.fr       */
+/*   Created: 2022/11/28 07:42:51 by yhwang            #+#    #+#             */
+/*   Updated: 2022/11/28 07:43:41 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-void	put_value_obj_sp_pl(t_scene *scene, t_obj **obj)
+void	put_value_obj_sp(t_scene *scene, t_obj **obj)
 {
 	int	i;
 
@@ -26,6 +26,12 @@ void	put_value_obj_sp_pl(t_scene *scene, t_obj **obj)
 		obj[i]->rgb = scene->sphere[i]->rgb;
 		i++;
 	}
+}
+
+void	put_value_obj_pl(t_scene *scene, t_obj **obj)
+{
+	int	i;
+
 	i = 0;
 	while (i < scene->n_plane)
 	{
@@ -92,22 +98,8 @@ t_obj	**init_obj(t_scene *scene)
 		exit (1);
 	}
 	norminette_init_obj(scene, obj);
-	put_value_obj_sp_pl(scene, obj);
+	put_value_obj_sp(scene, obj);
+	put_value_obj_pl(scene, obj);
 	put_value_obj_cy(scene, obj);
 	return (obj);
-}
-
-void	init_rt(t_scene *scene, t_rt *rt)
-{
-	rt->focal_length = 1;
-	rt->viewport_height
-		= 2 * rt->focal_length * tan(scene->camera->fov * PI / 360);
-	rt->viewport_width = rt->viewport_height * ASPECT_RATIO_W / ASPECT_RATIO_H;
-	rt->vp_horizontal = vec3(rt->viewport_width, 0, -1 * (rt->focal_length));
-	rt->vp_vertical
-		= vec3(0, -1 * (rt->viewport_height), -1 * (rt->focal_length));
-	rt->vp_low_left
-		= vec3(-1 * (rt->vp_horizontal.x) / 2,
-			-1 * (rt->vp_vertical.y) / 2, -1 * (rt->focal_length));
-	rt->cam_xyz_pos = scene->camera->xyz_pos;
 }

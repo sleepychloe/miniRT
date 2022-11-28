@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/27 08:54:40 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/28 07:45:52 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -385,11 +385,14 @@ void	ray_tracing(t_data *data);
 void	rt_start(t_data *data, int flag);
 void	raytracing_main(t_scene *scene, t_mlx *mlx);
 
-/* raytracing_init_struct */
-void	put_value_obj_sp_pl(t_scene *scene, t_obj **obj);
+/* raytracing_init_struct_obj */
+void	put_value_obj_sp(t_scene *scene, t_obj **obj);
+void	put_value_obj_pl(t_scene *scene, t_obj **obj);
 void	put_value_obj_cy(t_scene *scene, t_obj **obj);
 void	norminette_init_obj(t_scene *scene, t_obj **obj);
 t_obj	**init_obj(t_scene *scene);
+
+/* raytracing_init_struct_rt */
 void	init_rt(t_scene *scene, t_rt *rt);
 
 /* raytracing_ray */
@@ -476,10 +479,61 @@ void	mlx_move_camera_z(int key, t_data *data);
 void	mlx_move_camera(int key, t_data *data);
 
 /* utils_mlx_key_rotate_camera */
-void	mlx_rotate_camera_x_axis(t_data *data, int flag);
-void	mlx_rotate_camera_y_axis(t_data *data, int flag);
-void	mlx_rotate_camera_z_axis(t_data *data, int flag);
+void	mlx_rotate_camera_x_axis(t_data *data, int flag,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_y_axis(t_data *data, int flag,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_z_axis(t_data *data, int flag,
+			double val_cos, double val_sin);
 void	mlx_rotate_camera(int key, t_data *data);
+
+/* utils_mlx_key_rotate_camera_x_1 */
+void	mlx_rotate_camera_x_axis_set_sp(t_data *data,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_x_axis_set_pl_vec(t_data *data,
+			double val_cos, double val_sin, int i);
+void	mlx_rotate_camera_x_axis_set_pl(t_data *data,
+			double val_cos, double val_sin);
+
+/* utils_mlx_key_rotate_camera_x_2 */
+void	mlx_rotate_camera_x_axis_set_cy_vec(t_data *data,
+			double val_cos, double val_sin, int i);
+void	mlx_rotate_camera_x_axis_set_cy(t_data *data,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_x_axis_set_l(t_data *data,
+			double val_cos, double val_sin);
+
+/* utils_mlx_key_rotate_camera_y_1 */
+void	mlx_rotate_camera_y_axis_set_sp(t_data *data,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_y_axis_set_pl_vec(t_data *data,
+			double val_cos, double val_sin, int i);
+void	mlx_rotate_camera_y_axis_set_pl(t_data *data,
+			double val_cos, double val_sin);
+
+/* utils_mlx_key_rotate_camera_y_2 */
+void	mlx_rotate_camera_y_axis_set_cy_vec(t_data *data,
+			double val_cos, double val_sin, int i);
+void	mlx_rotate_camera_y_axis_set_cy(t_data *data,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_y_axis_set_l(t_data *data,
+			double val_cos, double val_sin);
+
+/* utils_mlx_key_rotate_camera_z_1 */
+void	mlx_rotate_camera_z_axis_set_sp(t_data *data,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_z_axis_set_pl_vec(t_data *data,
+			double val_cos, double val_sin, int i);
+void	mlx_rotate_camera_z_axis_set_pl(t_data *data,
+			double val_cos, double val_sin);
+
+/* utils_mlx_key_rotate_camera_z_2 */
+void	mlx_rotate_camera_z_axis_set_cy_vec(t_data *data,
+			double val_cos, double val_sin, int i);
+void	mlx_rotate_camera_z_axis_set_cy(t_data *data,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_z_axis_set_l(t_data *data,
+			double val_cos, double val_sin);
 
 /* utils_mlx_key_move_light */
 void	mlx_move_light_x(int key, t_data *data);

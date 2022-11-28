@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 04:08:59 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 00:30:27 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/28 02:09:53 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	mlx_rotate_cylinder_x_axis(t_data *data, int flag, int i)
 	double	val_cos;
 	double	val_sin;
 
-	val_cos = cos(PI / 6);
+	val_cos = cos(PI / 4);
 	val_sin = sqrt(1 - val_cos * val_cos);
 	data->scene->cylinder[i]->xyz_vec
 		= vec3(1 * data->scene->cylinder[i]->xyz_vec.x
@@ -31,7 +31,7 @@ void	mlx_rotate_cylinder_x_axis(t_data *data, int flag, int i)
 			+ val_cos * data->scene->cylinder[i]->xyz_vec.z);
 	data->scene->cylinder[i]->xyz_pos
 		= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1));
+			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1e-10));
 	rt_start(data, flag);
 }
 
@@ -40,7 +40,7 @@ void	mlx_rotate_cylinder_y_axis(t_data *data, int flag, int i)
 	double	val_cos;
 	double	val_sin;
 
-	val_cos = cos(PI / 6);
+	val_cos = cos(PI / 4);
 	val_sin = sqrt(1 - val_cos * val_cos);
 	data->scene->cylinder[i]->xyz_vec
 		= vec3(val_cos * data->scene->cylinder[i]->xyz_vec.x
@@ -54,7 +54,7 @@ void	mlx_rotate_cylinder_y_axis(t_data *data, int flag, int i)
 			+ val_cos * data->scene->cylinder[i]->xyz_vec.z);
 	data->scene->cylinder[i]->xyz_pos
 		= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1));
+			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1e-10));
 	rt_start(data, flag);
 }
 
@@ -63,7 +63,7 @@ void	mlx_rotate_cylinder_z_axis(t_data *data, int flag, int i)
 	double	val_cos;
 	double	val_sin;
 
-	val_cos = cos(PI / 6);
+	val_cos = cos(PI / 4);
 	val_sin = sqrt(1 - val_cos * val_cos);
 	data->scene->cylinder[i]->xyz_vec
 		= vec3(val_cos * data->scene->cylinder[i]->xyz_vec.x
@@ -77,7 +77,7 @@ void	mlx_rotate_cylinder_z_axis(t_data *data, int flag, int i)
 			+ 1 * data->scene->cylinder[i]->xyz_vec.z);
 	data->scene->cylinder[i]->xyz_pos
 		= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1));
+			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1e-10));
 	rt_start(data, flag);
 }
 
