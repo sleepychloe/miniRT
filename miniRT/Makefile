@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/29 12:24:34 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/29 22:50:00 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ FILES	= $(SRCS_DIR)main \
 		$(SRCS_RT_DIR)raytracing_main \
 		$(SRCS_RT_DIR)raytracing_set_camera_1 \
 		$(SRCS_RT_DIR)raytracing_set_camera_2 \
-		$(SRCS_RT_DIR)raytracing_init_struct_obj \
+		$(SRCS_RT_DIR)raytracing_init_struct_obj_1 \
+		$(SRCS_RT_DIR)raytracing_init_struct_obj_2 \
 		$(SRCS_RT_DIR)raytracing_init_struct_rt \
 		$(SRCS_RT_DIR)raytracing_ray \
 		$(SRCS_RT_DIR)raytracing_light \

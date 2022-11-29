@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 12:07:14 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 22:53:28 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -472,12 +472,15 @@ void	raytracing_set_camera(t_data *data);
 void	camera_vec_zero_minusone_zero(t_data *data);
 void	camera_vec_zero_plusone_zero(t_data *data);
 
-/* raytracing_init_struct_obj */
+/* raytracing_init_struct_obj_1 */
+void	norminette_init_obj(t_scene *scene, t_obj **obj, int n_obj);
+t_obj	**init_obj(t_scene *scene);
+
+/* raytracing_init_struct_obj_2 */
 void	put_value_obj_sp(t_scene *scene, t_obj **obj);
 void	put_value_obj_pl(t_scene *scene, t_obj **obj);
 void	put_value_obj_cy(t_scene *scene, t_obj **obj);
-void	norminette_init_obj(t_scene *scene, t_obj **obj);
-t_obj	**init_obj(t_scene *scene);
+void	put_value_obj_pl_dup(t_scene *scene, t_obj **obj, int n_obj);
 
 /* raytracing_init_struct_rt */
 void	init_rt(t_scene *scene, t_rt *rt);
