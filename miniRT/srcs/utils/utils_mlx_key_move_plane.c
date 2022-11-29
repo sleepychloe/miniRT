@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:57:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 00:38:03 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 02:16:22 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ void	mlx_move_plane_x(int key, t_data *data, int i)
 
 	if (key == KEY_A)
 		data->scene->plane[i]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[i]->xyz_pos, vec3(-0.5, 0, 0));
+			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
+				vec3_mul_rn(data->x_normal, -0.5));
 	if (key == KEY_S)
 		data->scene->plane[i]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[i]->xyz_pos, vec3(0.5, 0, 0));
+			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
+				vec3_mul_rn(data->x_normal, 0.5));
 	flag = 11;
 	rt_start(data, flag);
 }
@@ -32,10 +34,12 @@ void	mlx_move_plane_y(int key, t_data *data, int i)
 
 	if (key == KEY_D)
 		data->scene->plane[i]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[i]->xyz_pos, vec3(0, -0.5, 0));
+			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
+				vec3_mul_rn(data->y_normal, -0.5));
 	if (key == KEY_F)
 		data->scene->plane[i]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[i]->xyz_pos, vec3(0, 0.5, 0));
+			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
+				vec3_mul_rn(data->y_normal, 0.5));
 	flag = 12;
 	rt_start(data, flag);
 }
@@ -46,10 +50,12 @@ void	mlx_move_plane_z(int key, t_data *data, int i)
 
 	if (key == KEY_G)
 		data->scene->plane[i]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[i]->xyz_pos, vec3(0, 0, -0.5));
+			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
+				vec3_mul_rn(data->z_normal, -0.5));
 	if (key == KEY_H)
 		data->scene->plane[i]->xyz_pos
-			= vec3_add_vec3(data->scene->plane[i]->xyz_pos, vec3(0, 0, 0.5));
+			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
+				vec3_mul_rn(data->z_normal, 0.5));
 	flag = 13;
 	rt_start(data, flag);
 }

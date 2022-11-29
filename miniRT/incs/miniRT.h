@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/28 07:45:52 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 02:07:59 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,6 +262,9 @@ typedef struct s_data
 	int			sp;
 	int			pl;
 	int			cy;
+	t_vec3		x_normal;
+	t_vec3		y_normal;
+	t_vec3		z_normal;
 }	t_data;
 
 /* parse_init_struct_1 */
@@ -478,7 +481,7 @@ void	mlx_move_camera_y(int key, t_data *data);
 void	mlx_move_camera_z(int key, t_data *data);
 void	mlx_move_camera(int key, t_data *data);
 
-/* utils_mlx_key_rotate_camera */
+/* utils_mlx_key_rotate_camera_1 */
 void	mlx_rotate_camera_x_axis(t_data *data, int flag,
 			double val_cos, double val_sin);
 void	mlx_rotate_camera_y_axis(t_data *data, int flag,
@@ -486,6 +489,14 @@ void	mlx_rotate_camera_y_axis(t_data *data, int flag,
 void	mlx_rotate_camera_z_axis(t_data *data, int flag,
 			double val_cos, double val_sin);
 void	mlx_rotate_camera(int key, t_data *data);
+
+/* utils_mlx_key_rotate_camera_2 */
+void	mlx_rotate_camera_x_axis_set_norm_vec(t_data *data,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_y_axis_set_norm_vec(t_data *data,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_z_axis_set_norm_vec(t_data *data,
+			double val_cos, double val_sin);
 
 /* utils_mlx_key_rotate_camera_x_1 */
 void	mlx_rotate_camera_x_axis_set_sp(t_data *data,

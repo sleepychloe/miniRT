@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/28 07:45:03 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/29 01:55:53 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,8 @@ FILES	= ./srcs/main \
 		./srcs/utils/utils_random \
 		./srcs/utils/utils_mlx \
 		./srcs/utils/utils_mlx_key_move_camera \
-		./srcs/utils/utils_mlx_key_rotate_camera \
+		./srcs/utils/utils_mlx_key_rotate_camera_1 \
+		./srcs/utils/utils_mlx_key_rotate_camera_2 \
 		./srcs/utils/utils_mlx_key_rotate_camera_x_1 \
 		./srcs/utils/utils_mlx_key_rotate_camera_x_2 \
 		./srcs/utils/utils_mlx_key_rotate_camera_y_1 \

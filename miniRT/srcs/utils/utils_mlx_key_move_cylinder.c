@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 04:08:42 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/16 00:38:42 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 02:12:37 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ void	mlx_move_cylinder_x(int key, t_data *data, int i)
 	int	flag;
 
 	if (key == KEY_Q)
-		data->scene->cylinder[i]->xyz_pos.x
-			= data->scene->cylinder[i]->xyz_pos.x - 0.5;
+		data->scene->cylinder[i]->xyz_pos
+			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
+				vec3_mul_rn(data->x_normal, -0.5));
 	if (key == KEY_W)
-		data->scene->cylinder[i]->xyz_pos.x
-			= data->scene->cylinder[i]->xyz_pos.x + 0.5;
+		data->scene->cylinder[i]->xyz_pos
+			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
+				vec3_mul_rn(data->x_normal, 0.5));
 	flag = 15;
 	rt_start(data, flag);
 }
@@ -31,11 +33,13 @@ void	mlx_move_cylinder_y(int key, t_data *data, int i)
 	int	flag;
 
 	if (key == KEY_E)
-		data->scene->cylinder[i]->xyz_pos.y
-			= data->scene->cylinder[i]->xyz_pos.y - 0.5;
+		data->scene->cylinder[i]->xyz_pos
+			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
+				vec3_mul_rn(data->y_normal, -0.5));
 	if (key == KEY_R)
-		data->scene->cylinder[i]->xyz_pos.y
-			= data->scene->cylinder[i]->xyz_pos.y + 0.5;
+		data->scene->cylinder[i]->xyz_pos
+			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
+				vec3_mul_rn(data->y_normal, 0.5));
 	flag = 16;
 	rt_start(data, flag);
 }
@@ -45,11 +49,13 @@ void	mlx_move_cylinder_z(int key, t_data *data, int i)
 	int	flag;
 
 	if (key == KEY_T)
-		data->scene->cylinder[i]->xyz_pos.z
-			= data->scene->cylinder[i]->xyz_pos.z - 0.5;
+		data->scene->cylinder[i]->xyz_pos
+			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
+				vec3_mul_rn(data->z_normal, -0.5));
 	if (key == KEY_Y)
-		data->scene->cylinder[i]->xyz_pos.z
-			= data->scene->cylinder[i]->xyz_pos.z + 0.5;
+		data->scene->cylinder[i]->xyz_pos
+			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
+				vec3_mul_rn(data->z_normal, 0.5));
 	flag = 17;
 	rt_start(data, flag);
 }

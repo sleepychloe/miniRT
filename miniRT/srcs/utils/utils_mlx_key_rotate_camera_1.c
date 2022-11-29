@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_mlx_key_rotate_camera.c                      :+:      :+:    :+:   */
+/*   utils_mlx_key_rotate_camera_1.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:20:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/28 02:09:26 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 01:54:52 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	mlx_rotate_camera_x_axis(t_data *data, int flag,
 	data->scene->camera->xyz_pos
 		= vec3_add_vec3(data->scene->camera->xyz_pos,
 			vec3_mul_rn(data->scene->camera->xyz_vec, 1e-10));
+	mlx_rotate_camera_x_axis_set_norm_vec(data, val_cos, val_sin);
 	rt_start(data, flag);
 }
 
@@ -55,6 +56,7 @@ void	mlx_rotate_camera_y_axis(t_data *data, int flag,
 	data->scene->camera->xyz_pos
 		= vec3_add_vec3(data->scene->camera->xyz_pos,
 			vec3_mul_rn(data->scene->camera->xyz_vec, 1e-10));
+	mlx_rotate_camera_y_axis_set_norm_vec(data, val_cos, val_sin);
 	rt_start(data, flag);
 }
 
@@ -78,6 +80,7 @@ void	mlx_rotate_camera_z_axis(t_data *data, int flag,
 	data->scene->camera->xyz_pos
 		= vec3_add_vec3(data->scene->camera->xyz_pos,
 			vec3_mul_rn(data->scene->camera->xyz_vec, 1e-10));
+	mlx_rotate_camera_z_axis_set_norm_vec(data, val_cos, val_sin);
 	rt_start(data, flag);
 }
 

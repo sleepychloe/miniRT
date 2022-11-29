@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/28 07:19:39 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 02:30:07 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	set_camera_normal_vec(t_data *data)
 
 	if (data->scene->camera->xyz_vec.x == 0
 		&& data->scene->camera->xyz_vec.y == 0
-		&& data->scene->camera->xyz_vec.z == -1)
+		&& data->scene->camera->xyz_vec.z == 1)
 	{
 		val_cos = cos(PI);
 		val_sin = sin(PI);
@@ -109,6 +109,7 @@ void	set_camera_normal_vec(t_data *data)
 		mlx_rotate_camera_y_axis_set_pl(data, val_cos, val_sin);
 		mlx_rotate_camera_y_axis_set_cy(data, val_cos, val_sin);
 		mlx_rotate_camera_y_axis_set_l(data, val_cos, val_sin);
+		mlx_rotate_camera_y_axis_set_norm_vec(data, val_cos, val_sin);
 	}
 	if (data->scene->camera->xyz_vec.x == 1
 		&& data->scene->camera->xyz_vec.y == 0
@@ -120,6 +121,7 @@ void	set_camera_normal_vec(t_data *data)
 		mlx_rotate_camera_y_axis_set_pl(data, val_cos, val_sin);
 		mlx_rotate_camera_y_axis_set_cy(data, val_cos, val_sin);
 		mlx_rotate_camera_y_axis_set_l(data, val_cos, val_sin);
+		mlx_rotate_camera_y_axis_set_norm_vec(data, val_cos, val_sin);
 	}
 	if (data->scene->camera->xyz_vec.x == -1
 		&& data->scene->camera->xyz_vec.y == 0
@@ -131,6 +133,7 @@ void	set_camera_normal_vec(t_data *data)
 		mlx_rotate_camera_y_axis_set_pl(data, val_cos, val_sin);
 		mlx_rotate_camera_y_axis_set_cy(data, val_cos, val_sin);
 		mlx_rotate_camera_y_axis_set_l(data, val_cos, val_sin);
+		mlx_rotate_camera_y_axis_set_norm_vec(data, val_cos, val_sin);
 	}
 	if (data->scene->camera->xyz_vec.x == 0
 		&& data->scene->camera->xyz_vec.y == 1
@@ -142,6 +145,7 @@ void	set_camera_normal_vec(t_data *data)
 		mlx_rotate_camera_x_axis_set_pl(data, val_cos, val_sin);
 		mlx_rotate_camera_x_axis_set_cy(data, val_cos, val_sin);
 		mlx_rotate_camera_x_axis_set_l(data, val_cos, val_sin);
+		mlx_rotate_camera_x_axis_set_norm_vec(data, val_cos, val_sin);
 	}
 	if (data->scene->camera->xyz_vec.x == 0
 		&& data->scene->camera->xyz_vec.y == -1
@@ -153,6 +157,7 @@ void	set_camera_normal_vec(t_data *data)
 		mlx_rotate_camera_x_axis_set_pl(data, val_cos, val_sin);
 		mlx_rotate_camera_x_axis_set_cy(data, val_cos, val_sin);
 		mlx_rotate_camera_x_axis_set_l(data, val_cos, val_sin);
+		mlx_rotate_camera_x_axis_set_norm_vec(data, val_cos, val_sin);
 	}
 	data->scene->camera->xyz_pos
 		= vec3_add_vec3(data->scene->camera->xyz_pos,
@@ -186,6 +191,9 @@ void	raytracing_main(t_scene *scene, t_mlx *mlx)
 	data.sp = 0;
 	data.pl = 0;
 	data.cy = 0;
+	data.x_normal = vec3(1, 0, 0);
+	data.y_normal = vec3(0, 1, 0);
+	data.z_normal = vec3(0, 0, 1);
 	if (mlx_init_window(mlx))
 	{
 		err_msg("mlx init error");
