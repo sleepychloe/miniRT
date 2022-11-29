@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 07:01:03 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 12:07:14 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,40 +71,46 @@
 # define C_MOVE_Y_PLUS			4
 # define C_MOVE_Z_MINUS			5
 # define C_MOVE_Z_PLUS			6
-# define C_ROTATE			7
+# define C_ROTATE_X			7
+# define C_ROTATE_Y			8
+# define C_ROTATE_Z			9
 
-# define L_MOVE_X_MINUS			8
-# define L_MOVE_X_PLUS			9
-# define L_MOVE_Y_MINUS			10
-# define L_MOVE_Y_PLUS			11
-# define L_MOVE_Z_MINUS			12
-# define L_MOVE_Z_PLUS			13
+# define L_MOVE_X_MINUS			10
+# define L_MOVE_X_PLUS			11
+# define L_MOVE_Y_MINUS			12
+# define L_MOVE_Y_PLUS			13
+# define L_MOVE_Z_MINUS			14
+# define L_MOVE_Z_PLUS			15
 
-# define SP_MOVE_X_MINUS		14
-# define SP_MOVE_X_PLUS			15
-# define SP_MOVE_Y_MINUS		16
-# define SP_MOVE_Y_PLUS			17
-# define SP_MOVE_Z_MINUS		18
-# define SP_MOVE_Z_PLUS			19
-# define SP_NEXT			20
+# define SP_MOVE_X_MINUS		16
+# define SP_MOVE_X_PLUS			17
+# define SP_MOVE_Y_MINUS		18
+# define SP_MOVE_Y_PLUS			19
+# define SP_MOVE_Z_MINUS		20
+# define SP_MOVE_Z_PLUS			21
+# define SP_NEXT			22
 
-# define PL_MOVE_X_MINUS		21
-# define PL_MOVE_X_PLUS			22
-# define PL_MOVE_Y_MINUS		23
-# define PL_MOVE_Y_PLUS			24
-# define PL_MOVE_Z_MINUS		25
-# define PL_MOVE_Z_PLUS			26
-# define PL_ROTATE			27
-# define PL_NEXT			28
+# define PL_MOVE_X_MINUS		23
+# define PL_MOVE_X_PLUS			24
+# define PL_MOVE_Y_MINUS		25
+# define PL_MOVE_Y_PLUS			26
+# define PL_MOVE_Z_MINUS		27
+# define PL_MOVE_Z_PLUS			28
+# define PL_ROTATE_X			29
+# define PL_ROTATE_Y			30
+# define PL_ROTATE_Z			31
+# define PL_NEXT			32
 
-# define CY_MOVE_X_MINUS		29
-# define CY_MOVE_X_PLUS			30
-# define CY_MOVE_Y_MINUS		31
-# define CY_MOVE_Y_PLUS			32
-# define CY_MOVE_Z_MINUS		33
-# define CY_MOVE_Z_PLUS			34
-# define CY_ROTATE			35
-# define CY_NEXT			36
+# define CY_MOVE_X_MINUS		33
+# define CY_MOVE_X_PLUS			34
+# define CY_MOVE_Y_MINUS		35
+# define CY_MOVE_Y_PLUS			36
+# define CY_MOVE_Z_MINUS		37
+# define CY_MOVE_Z_PLUS			38
+# define CY_ROTATE_X			39
+# define CY_ROTATE_Y			40
+# define CY_ROTATE_Z			41
+# define CY_NEXT			42
 
 /* linux key code */
 # define KEY_UP				0xFF52
@@ -199,9 +205,9 @@ typedef struct s_camera
 {
 	int			check;
 	int			err;
-	t_vec3	xyz_pos;
+	t_vec3		xyz_pos;
 	t_vec3		xyz_vec;
-	int		 fov;
+	int			fov;
 }	t_camera;
 
 typedef struct s_light
@@ -318,15 +324,15 @@ typedef struct s_data
 }	t_data;
 
 /* parse_init_struct_1 */
-void	init_struct_a(t_scene *scene);
-void	init_struct_c(t_scene *scene);
-void	init_struct_l(t_scene *scene);
-void	init_struct(t_scene *scene);
+void	init_struct_scene_a(t_scene *scene);
+void	init_struct_scene_c(t_scene *scene);
+void	init_struct_scene_l(t_scene *scene);
+void	init_struct_scene(t_scene *scene);
 
 /* parse_init_struct_2 */
-void	init_struct_sp(t_scene *scene, int i);
-void	init_struct_pl(t_scene *scene, int i);
-void	init_struct_cy(t_scene *scene, int i);
+void	init_struct_scene_sp(t_scene *scene, int i);
+void	init_struct_scene_pl(t_scene *scene, int i);
+void	init_struct_scene_cy(t_scene *scene, int i);
 
 /* parse_arg */
 int		check_extention(char *str);
@@ -425,6 +431,24 @@ void	err_check_sp(t_scene *scene, int i);
 void	err_check_pl(t_scene *scene, int i);
 void	err_check_cy(t_scene *scene, int i);
 
+/* parse_init_struct_keep_scene_1 */
+void	init_struct_keep_scene_a(t_scene *keep_scene, t_scene *scene);
+void	init_struct_keep_scene_c(t_scene *keep_scene, t_scene *scene);
+void	init_struct_keep_scene_l(t_scene *keep_scene, t_scene *scene);
+void	init_struct_keep_scene(t_scene *keep_scene, t_scene *scene);
+
+/* parse_init_struct_keep_scene_2 */
+void	put_value_keep_scene_sp(t_scene *keep_scene, t_scene *scene);
+void	init_struct_keep_scene_sp(t_scene *keep_scene, t_scene *scene);
+void	put_value_keep_scene_pl(t_scene *keep_scene, t_scene *scene);
+void	init_struct_keep_scene_pl(t_scene *keep_scene, t_scene *scene);
+
+/* parse_init_struct_keep_scene_3 */
+void	put_value_keep_scene_cy(t_scene *keep_scene, t_scene *scene);
+void	init_struct_keep_scene_cy_norminette(t_scene *keep_scene,
+			t_scene *scene);
+void	init_struct_keep_scene_cy(t_scene *keep_scene, t_scene *scene);
+
 /* parse_utils */
 void	err_msg(char *str);
 void	map_err_i(int i, char *id, char *str);
@@ -437,6 +461,16 @@ t_rgb3	trace(t_data *data, t_ray ray, int depth);
 void	ray_tracing(t_data *data);
 void	rt_start(t_data *data, int flag);
 void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx);
+
+/* raytracing_set_camera_1 */
+void	camera_vec_zero_zero_plusone(t_data *data);
+void	camera_vec_minusone_zero_zero(t_data *data);
+void	camera_vec_plusone_zero_zero(t_data *data);
+void	raytracing_set_camera(t_data *data);
+
+/* raytracing_set_camera_2 */
+void	camera_vec_zero_minusone_zero(t_data *data);
+void	camera_vec_zero_plusone_zero(t_data *data);
 
 /* raytracing_init_struct_obj */
 void	put_value_obj_sp(t_scene *scene, t_obj **obj);
@@ -549,6 +583,14 @@ void	mlx_rotate_camera_y_axis_set_norm_vec(t_data *data,
 void	mlx_rotate_camera_z_axis_set_norm_vec(t_data *data,
 			double val_cos, double val_sin);
 
+/* utils_mlx_key_rotate_camera_3 */
+void	mlx_rotate_camera_x_axis_set_keep_scene(t_data *data,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_y_axis_set_keep_scene(t_data *data,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_z_axis_set_keep_scene(t_data *data,
+			double val_cos, double val_sin);
+
 /* utils_mlx_key_rotate_camera_x_1 */
 void	mlx_rotate_camera_x_axis_set_sp(t_data *data,
 			double val_cos, double val_sin);
@@ -615,23 +657,39 @@ void	mlx_move_plane_y(int key, t_data *data, int i);
 void	mlx_move_plane_z(int key, t_data *data, int i);
 void	mlx_move_plane(int key, t_data *data, int i);
 
-/* utils_mlx_key_rotate_plane */
+/* utils_mlx_key_rotate_plane_1 */
 void	mlx_rotate_plane_x_axis(t_data *data, int flag, int i);
 void	mlx_rotate_plane_y_axis(t_data *data, int flag, int i);
 void	mlx_rotate_plane_z_axis(t_data *data, int flag, int i);
 void	mlx_rotate_plane(int key, t_data *data, int i);
 
-/* utils_mlx_key_move_cylinder */
+/* utils_mlx_key_rotate_plane_2 */
+void	mlx_rotate_plane_x_axis_set_keep_scene(t_data *data, int i,
+			double val_cos, double val_sin);
+void	mlx_rotate_plane_y_axis_set_keep_scene(t_data *data, int i,
+			double val_cos, double val_sin);
+void	mlx_rotate_plane_z_axis_set_keep_scene(t_data *data, int i,
+			double val_cos, double val_sin);
+
+/* utils_mlx_key_move_cylinde */
 void	mlx_move_cylinder_x(int key, t_data *data, int i);
 void	mlx_move_cylinder_y(int key, t_data *data, int i);
 void	mlx_move_cylinder_z(int key, t_data *data, int i);
 void	mlx_move_cylinder(int key, t_data *data, int i);
 
-/* utils_mlx_key_rotate_cylinder */
+/* utils_mlx_key_rotate_cylinder_1 */
 void	mlx_rotate_cylinder_x_axis(t_data *data, int flag, int i);
 void	mlx_rotate_cylinder_y_axis(t_data *data, int flag, int i);
 void	mlx_rotate_cylinder_z_axis(t_data *data, int flag, int i);
 void	mlx_rotate_cylinder(int key, t_data *data, int i);
+
+/* utils_mlx_key_rotate_cylinder_2 */
+void	mlx_rotate_cylinder_x_axis_set_keep_scene(t_data *data, int i,
+			double val_cos, double val_sin);
+void	mlx_rotate_cylinder_y_axis_set_keep_scene(t_data *data, int i,
+			double val_cos, double val_sin);
+void	mlx_rotate_cylinder_z_axis_set_keep_scene(t_data *data, int i,
+			double val_cos, double val_sin);
 
 /* utils_msg_1 */
 void	show_guide_1(void);

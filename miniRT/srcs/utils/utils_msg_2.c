@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 05:09:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 07:02:06 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 08:22:26 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	print_info_1(t_data *data, t_scene *scene, int flag)
 	printf("═══════════════════════════════╗\n");
 	if (flag == C_MOVE_X_MINUS || flag == C_MOVE_X_PLUS
 		|| flag == C_MOVE_Y_MINUS || flag == C_MOVE_Y_PLUS
-		|| flag == C_MOVE_Z_MINUS || flag == C_MOVE_Z_PLUS || flag == C_ROTATE)
+		|| flag == C_MOVE_Z_MINUS || flag == C_MOVE_Z_PLUS
+		|| flag == C_ROTATE_X || flag == C_ROTATE_Y || flag == C_ROTATE_Z)
 		printf("║            %scamera%s             ║", R, B);
 	else
 		printf("║            camera             ║");
@@ -45,17 +46,19 @@ void	print_info_2(t_data *data, t_scene *scene, int flag)
 		printf("           %ssphere[%d]%s           ║", R, data->sp, B);
 	else
 		printf("           sphere[%d]           ║", data->sp);
-	if (flag == 0 || flag == PL_MOVE_X_MINUS || flag == PL_MOVE_X_PLUS
+	if (flag == 0 || flag == PL_NEXT
+		|| flag == PL_MOVE_X_MINUS || flag == PL_MOVE_X_PLUS
 		|| flag == PL_MOVE_Y_MINUS || flag == PL_MOVE_Y_PLUS
 		|| flag == PL_MOVE_Z_MINUS || flag == PL_MOVE_Z_PLUS
-		|| flag == PL_ROTATE || flag == PL_NEXT)
+		|| flag == PL_ROTATE_X || flag == PL_ROTATE_Y || flag == PL_ROTATE_Z)
 		printf("            %splane[%d]%s           ║", R, data->pl, B);
 	else
 		printf("            plane[%d]           ║", data->pl);
-	if (flag == 0 || flag == CY_MOVE_X_MINUS || flag == CY_MOVE_X_PLUS
+	if (flag == 0 || flag == CY_NEXT
+		|| flag == CY_MOVE_X_MINUS || flag == CY_MOVE_X_PLUS
 		|| flag == CY_MOVE_Y_MINUS || flag == CY_MOVE_Y_PLUS
 		|| flag == CY_MOVE_Z_MINUS || flag == CY_MOVE_Z_PLUS
-		|| flag == CY_ROTATE || flag == CY_NEXT)
+		|| flag == CY_ROTATE_X || flag == CY_ROTATE_Y || flag == CY_ROTATE_Z)
 		printf("          %scylinder[%d]%s          ║\n", R, data->cy, B);
 	else
 		printf("          cylinder[%d]          ║\n", data->cy);

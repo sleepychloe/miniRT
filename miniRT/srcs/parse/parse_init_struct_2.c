@@ -6,13 +6,13 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0002/01/18 19:05:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/12 22:19:36 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 07:34:23 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
 
-void	init_struct_sp(t_scene *scene, int i)
+void	init_struct_scene_sp(t_scene *scene, int i)
 {
 	if (i == 0)
 		scene->sphere = (t_sphere **)ft_calloc(sizeof(t_sphere *), 2);
@@ -34,7 +34,7 @@ void	init_struct_sp(t_scene *scene, int i)
 	}
 }
 
-void	init_struct_pl(t_scene *scene, int i)
+void	init_struct_scene_pl(t_scene *scene, int i)
 {
 	if (i == 0)
 		scene->plane = (t_plane **)ft_calloc(sizeof(t_plane *), 2);
@@ -56,7 +56,7 @@ void	init_struct_pl(t_scene *scene, int i)
 	}
 }
 
-void	init_struct_cy(t_scene *scene, int i)
+void	init_struct_scene_cy(t_scene *scene, int i)
 {
 	if (i == 0)
 		scene->cylinder = (t_cylinder **)ft_calloc(sizeof(t_cylinder *), 2);

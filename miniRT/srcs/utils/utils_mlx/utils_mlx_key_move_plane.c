@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:57:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 06:28:29 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 10:31:49 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	mlx_move_plane_x(int key, t_data *data, int i)
 			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
 				vec3_mul_rn(data->x_normal, -1 * OBJECT_MOVE));
 		flag = PL_MOVE_X_MINUS;
+		data->keep_scene->plane[i]->xyz_pos.x -= OBJECT_MOVE;
 	}
 	if (key == KEY_S)
 	{
@@ -29,6 +30,7 @@ void	mlx_move_plane_x(int key, t_data *data, int i)
 			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
 				vec3_mul_rn(data->x_normal, OBJECT_MOVE));
 		flag = PL_MOVE_X_PLUS;
+		data->keep_scene->plane[i]->xyz_pos.x += OBJECT_MOVE;
 	}
 	rt_start(data, flag);
 }
@@ -43,6 +45,7 @@ void	mlx_move_plane_y(int key, t_data *data, int i)
 			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
 				vec3_mul_rn(data->y_normal, -1 * OBJECT_MOVE));
 		flag = PL_MOVE_Y_MINUS;
+		data->keep_scene->plane[i]->xyz_pos.y -= OBJECT_MOVE;
 	}
 	if (key == KEY_F)
 	{
@@ -50,6 +53,7 @@ void	mlx_move_plane_y(int key, t_data *data, int i)
 			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
 				vec3_mul_rn(data->y_normal, OBJECT_MOVE));
 		flag = PL_MOVE_Y_PLUS;
+		data->keep_scene->plane[i]->xyz_pos.y += OBJECT_MOVE;
 	}
 	rt_start(data, flag);
 }
@@ -64,6 +68,7 @@ void	mlx_move_plane_z(int key, t_data *data, int i)
 			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
 				vec3_mul_rn(data->z_normal, -1 * OBJECT_MOVE));
 		flag = PL_MOVE_Z_MINUS;
+		data->keep_scene->plane[i]->xyz_pos.z -= OBJECT_MOVE;
 	}
 	if (key == KEY_H)
 	{
@@ -71,6 +76,7 @@ void	mlx_move_plane_z(int key, t_data *data, int i)
 			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
 				vec3_mul_rn(data->z_normal, OBJECT_MOVE));
 		flag = PL_MOVE_Z_PLUS;
+		data->keep_scene->plane[i]->xyz_pos.z += OBJECT_MOVE;
 	}
 	rt_start(data, flag);
 }

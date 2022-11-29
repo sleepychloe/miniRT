@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/25 21:40:52 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 07:35:03 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	parse_cy(t_scene *scene, char **line)
 
 	i = scene->n_cylinder;
 	if (i > 0)
-		init_struct_cy(scene, i);
+		init_struct_scene_cy(scene, i);
 	s = (char ***)ft_calloc(sizeof(char **), 5);
 	if (!s)
 	{

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 03:18:38 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 12:05:56 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
 		target = vec3_add_vec3(vec3_add_vec3(hit.hit_point, hit.normal_vec),
 				random_double_xyz());
 		ray_diffuse = ray(hit.hit_point, vec3_sub_vec3(target, hit.hit_point));
-		return (color_add(ambient, light));
 		return (color_add(color_add(ambient, light),
 				trace(data, ray_diffuse, depth - 1)));
 	}
@@ -94,82 +93,10 @@ void	ray_tracing(t_data *data)
 	printf("%s%sDone%s\n", WHITE, R, B);
 }
 
-void	set_camera_normal_vec(t_data *data)
-{
-	double	val_cos;
-	double	val_sin;
-
-	if (data->scene->camera->xyz_vec.x == 0
-		&& data->scene->camera->xyz_vec.y == 0
-		&& data->scene->camera->xyz_vec.z == 1)
-	{
-		val_cos = cos(PI);
-		val_sin = sin(PI);
-		mlx_rotate_camera_y_axis_set_sp(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_pl(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_cy(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_l(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_norm_vec(data, val_cos, val_sin);
-	}
-	if (data->scene->camera->xyz_vec.x == 1
-		&& data->scene->camera->xyz_vec.y == 0
-		&& data->scene->camera->xyz_vec.z == 0)
-	{
-		val_cos = cos(PI / 2);
-		val_sin = sin(PI / 2);
-		mlx_rotate_camera_y_axis_set_sp(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_pl(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_cy(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_l(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_norm_vec(data, val_cos, val_sin);
-	}
-	if (data->scene->camera->xyz_vec.x == -1
-		&& data->scene->camera->xyz_vec.y == 0
-		&& data->scene->camera->xyz_vec.z == 0)
-	{
-		val_cos = cos(3 * PI / 2);
-		val_sin = sin(3 * PI / 2);
-		mlx_rotate_camera_y_axis_set_sp(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_pl(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_cy(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_l(data, val_cos, val_sin);
-		mlx_rotate_camera_y_axis_set_norm_vec(data, val_cos, val_sin);
-	}
-	if (data->scene->camera->xyz_vec.x == 0
-		&& data->scene->camera->xyz_vec.y == 1
-		&& data->scene->camera->xyz_vec.z == 0)
-	{
-		val_cos = cos(3 * PI / 2);
-		val_sin = sin(3 * PI / 2);
-		mlx_rotate_camera_x_axis_set_sp(data, val_cos, val_sin);
-		mlx_rotate_camera_x_axis_set_pl(data, val_cos, val_sin);
-		mlx_rotate_camera_x_axis_set_cy(data, val_cos, val_sin);
-		mlx_rotate_camera_x_axis_set_l(data, val_cos, val_sin);
-		mlx_rotate_camera_x_axis_set_norm_vec(data, val_cos, val_sin);
-	}
-	if (data->scene->camera->xyz_vec.x == 0
-		&& data->scene->camera->xyz_vec.y == -1
-		&& data->scene->camera->xyz_vec.z == 0)
-	{
-		val_cos = cos(PI / 2);
-		val_sin = sin(PI / 2);
-		mlx_rotate_camera_x_axis_set_sp(data, val_cos, val_sin);
-		mlx_rotate_camera_x_axis_set_pl(data, val_cos, val_sin);
-		mlx_rotate_camera_x_axis_set_cy(data, val_cos, val_sin);
-		mlx_rotate_camera_x_axis_set_l(data, val_cos, val_sin);
-		mlx_rotate_camera_x_axis_set_norm_vec(data, val_cos, val_sin);
-	}
-	data->scene->camera->xyz_pos
-		= vec3_add_vec3(data->scene->camera->xyz_pos,
-			vec3_mul_rn(data->scene->camera->xyz_vec, 1e-10));
-}
-
 void	rt_start(t_data *data, int flag)
 {
 	t_rt	rt;
 
-	if (!(data->scene->camera->xyz_vec.z == -1))
-		set_camera_normal_vec(data);
 	data->obj = init_obj(data->scene);
 	data->rt = &rt;
 	mlx_clear_window(data->mlx->mlx_ptr, data->mlx->win);
@@ -201,6 +128,8 @@ void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx)
 		free_scene(scene);
 		exit (1);
 	}
+	if (data.keep_scene->camera->xyz_vec.z != -1)
+		raytracing_set_camera(&data);
 	rt_start(&data, 0);
 	mlx_key_hook(mlx->win, mlx_keys, (void *)&data);
 	mlx_hook(mlx->win, 17, 2, mlx_exit, (void *)&data);

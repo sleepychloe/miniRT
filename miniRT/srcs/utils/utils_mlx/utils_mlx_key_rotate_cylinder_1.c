@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_mlx_key_rotate_cylinder.c                    :+:      :+:    :+:   */
+/*   utils_mlx_key_rotate_cylinder_1.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 04:08:59 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 06:49:19 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 10:51:49 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	mlx_rotate_cylinder_x_axis(t_data *data, int flag, int i)
 	data->scene->cylinder[i]->xyz_pos
 		= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
 			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1e-10));
+	mlx_rotate_cylinder_x_axis_set_keep_scene(data, i, val_cos, val_sin);
 	rt_start(data, flag);
 }
 
@@ -59,6 +60,7 @@ void	mlx_rotate_cylinder_y_axis(t_data *data, int flag, int i)
 	data->scene->cylinder[i]->xyz_pos
 		= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
 			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1e-10));
+	mlx_rotate_cylinder_y_axis_set_keep_scene(data, i, val_cos, val_sin);
 	rt_start(data, flag);
 }
 
@@ -84,18 +86,16 @@ void	mlx_rotate_cylinder_z_axis(t_data *data, int flag, int i)
 	data->scene->cylinder[i]->xyz_pos
 		= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
 			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1e-10));
+	mlx_rotate_cylinder_z_axis_set_keep_scene(data, i, val_cos, val_sin);
 	rt_start(data, flag);
 }
 
 void	mlx_rotate_cylinder(int key, t_data *data, int i)
 {
-	int	flag;
-
-	flag = CY_ROTATE;
 	if (key == KEY_U)
-		mlx_rotate_cylinder_x_axis(data, flag, i);
+		mlx_rotate_cylinder_x_axis(data, CY_ROTATE_X, i);
 	if (key == KEY_I)
-		mlx_rotate_cylinder_y_axis(data, flag, i);
+		mlx_rotate_cylinder_y_axis(data, CY_ROTATE_Y, i);
 	if (key == KEY_O)
-		mlx_rotate_cylinder_z_axis(data, flag, i);
+		mlx_rotate_cylinder_z_axis(data, CY_ROTATE_Z, i);
 }

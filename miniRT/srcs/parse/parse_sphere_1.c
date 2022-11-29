@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:29 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/25 21:34:34 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 07:34:52 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	parse_sp(t_scene *scene, char **line)
 
 	i = scene->n_sphere;
 	if (i > 0)
-		init_struct_sp(scene, i);
+		init_struct_scene_sp(scene, i);
 	s = (char ***)ft_calloc(sizeof(char **), 4);
 	if (!s)
 	{

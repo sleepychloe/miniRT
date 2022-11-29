@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:08 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/25 21:38:20 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 07:34:57 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	parse_pl(t_scene *scene, char **line)
 
 	i = scene->n_plane;
 	if (i > 0)
-		init_struct_pl(scene, i);
+		init_struct_scene_pl(scene, i);
 	s = (char ***)ft_calloc(sizeof(char **), 5);
 	if (!s)
 	{

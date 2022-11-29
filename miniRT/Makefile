@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/29 01:55:53 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/29 12:24:34 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,61 +24,75 @@ MLX_DIR = ./mlx_linux
 MLX_FLAGS = -lX11 -lXext -lm
 MLX = $(addprefix $(MLX_DIR)/, libmlx.a)
 
-FILES	= ./srcs/main \
-		./srcs/parse/parse_init_struct_1 \
-		./srcs/parse/parse_init_struct_2 \
-		./srcs/parse/parse_arg \
-		./srcs/parse/parse_map \
-		./srcs/parse/parse_ambient_1 \
-		./srcs/parse/parse_ambient_2 \
-		./srcs/parse/parse_camera_1 \
-		./srcs/parse/parse_camera_2 \
-		./srcs/parse/parse_light_1 \
-		./srcs/parse/parse_light_2 \
-		./srcs/parse/parse_sphere_1 \
-		./srcs/parse/parse_sphere_2 \
-		./srcs/parse/parse_plane_1 \
-		./srcs/parse/parse_plane_2 \
-		./srcs/parse/parse_cylinder_1 \
-		./srcs/parse/parse_cylinder_2 \
-		./srcs/parse/parse_cylinder_3 \
-		./srcs/parse/parse_err_1 \
-		./srcs/parse/parse_err_2 \
-		./srcs/parse/parse_utils \
-		./srcs/raytracing/raytracing_main \
-		./srcs/raytracing/raytracing_init_struct_obj \
-		./srcs/raytracing/raytracing_init_struct_rt \
-		./srcs/raytracing/raytracing_ray \
-		./srcs/raytracing/raytracing_light \
-		./srcs/raytracing/raytracing_sphere \
-		./srcs/raytracing/raytracing_plane \
-		./srcs/raytracing/raytracing_cylinder_1 \
-		./srcs/raytracing/raytracing_cylinder_2 \
-		./srcs/raytracing/raytracing_utils \
-		./srcs/utils/utils_free \
-		./srcs/utils/utils_vec3_1 \
-		./srcs/utils/utils_vec3_2 \
-		./srcs/utils/utils_color \
-		./srcs/utils/utils_random \
-		./srcs/utils/utils_mlx \
-		./srcs/utils/utils_mlx_key_move_camera \
-		./srcs/utils/utils_mlx_key_rotate_camera_1 \
-		./srcs/utils/utils_mlx_key_rotate_camera_2 \
-		./srcs/utils/utils_mlx_key_rotate_camera_x_1 \
-		./srcs/utils/utils_mlx_key_rotate_camera_x_2 \
-		./srcs/utils/utils_mlx_key_rotate_camera_y_1 \
-		./srcs/utils/utils_mlx_key_rotate_camera_y_2 \
-		./srcs/utils/utils_mlx_key_rotate_camera_z_1 \
-		./srcs/utils/utils_mlx_key_rotate_camera_z_2 \
-		./srcs/utils/utils_mlx_key_move_light \
-		./srcs/utils/utils_mlx_key_move_sphere \
-		./srcs/utils/utils_mlx_key_move_plane \
-		./srcs/utils/utils_mlx_key_rotate_plane \
-		./srcs/utils/utils_mlx_key_move_cylinder \
-		./srcs/utils/utils_mlx_key_rotate_cylinder \
-		./srcs/utils/utils_msg_1 \
-		./srcs/utils/utils_msg_2 \
-		./srcs/utils/utils_msg_3
+SRCS_DIR = ./srcs/
+SRCS_PARSE_DIR = ./srcs/parse/
+SRCS_RT_DIR = ./srcs/raytracing/
+SRCS_UTILS_DIR = ./srcs/utils/
+SRCS_UTILS_MLX_DIR = ./srcs/utils/utils_mlx/
+
+FILES	= $(SRCS_DIR)main \
+		$(SRCS_PARSE_DIR)parse_init_struct_1 \
+		$(SRCS_PARSE_DIR)parse_init_struct_2 \
+		$(SRCS_PARSE_DIR)parse_arg \
+		$(SRCS_PARSE_DIR)parse_map \
+		$(SRCS_PARSE_DIR)parse_ambient_1 \
+		$(SRCS_PARSE_DIR)parse_ambient_2 \
+		$(SRCS_PARSE_DIR)parse_camera_1 \
+		$(SRCS_PARSE_DIR)parse_camera_2 \
+		$(SRCS_PARSE_DIR)parse_light_1 \
+		$(SRCS_PARSE_DIR)parse_light_2 \
+		$(SRCS_PARSE_DIR)parse_sphere_1 \
+		$(SRCS_PARSE_DIR)parse_sphere_2 \
+		$(SRCS_PARSE_DIR)parse_plane_1 \
+		$(SRCS_PARSE_DIR)parse_plane_2 \
+		$(SRCS_PARSE_DIR)parse_cylinder_1 \
+		$(SRCS_PARSE_DIR)parse_cylinder_2 \
+		$(SRCS_PARSE_DIR)parse_cylinder_3 \
+		$(SRCS_PARSE_DIR)parse_err_1 \
+		$(SRCS_PARSE_DIR)parse_err_2 \
+		$(SRCS_PARSE_DIR)parse_init_struct_keep_scene_1 \
+		$(SRCS_PARSE_DIR)parse_init_struct_keep_scene_2 \
+		$(SRCS_PARSE_DIR)parse_init_struct_keep_scene_3 \
+		$(SRCS_PARSE_DIR)parse_utils \
+		$(SRCS_RT_DIR)raytracing_main \
+		$(SRCS_RT_DIR)raytracing_set_camera_1 \
+		$(SRCS_RT_DIR)raytracing_set_camera_2 \
+		$(SRCS_RT_DIR)raytracing_init_struct_obj \
+		$(SRCS_RT_DIR)raytracing_init_struct_rt \
+		$(SRCS_RT_DIR)raytracing_ray \
+		$(SRCS_RT_DIR)raytracing_light \
+		$(SRCS_RT_DIR)raytracing_sphere \
+		$(SRCS_RT_DIR)raytracing_plane \
+		$(SRCS_RT_DIR)raytracing_cylinder_1 \
+		$(SRCS_RT_DIR)raytracing_cylinder_2 \
+		$(SRCS_RT_DIR)raytracing_utils \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_move_camera \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_1 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_2 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_3 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_x_1 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_x_2 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_y_1 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_y_2 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_z_1 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_z_2 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_move_light \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_move_sphere \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_move_plane \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_plane_1 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_plane_2 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_move_cylinder \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_cylinder_1 \
+		$(SRCS_UTILS_MLX_DIR)utils_mlx_key_rotate_cylinder_2 \
+		$(SRCS_UTILS_DIR)utils_free \
+		$(SRCS_UTILS_DIR)utils_vec3_1 \
+		$(SRCS_UTILS_DIR)utils_vec3_2 \
+		$(SRCS_UTILS_DIR)utils_color \
+		$(SRCS_UTILS_DIR)utils_random \
+		$(SRCS_UTILS_DIR)utils_msg_1 \
+		$(SRCS_UTILS_DIR)utils_msg_2 \
+		$(SRCS_UTILS_DIR)utils_msg_3
 
 INCS_DIR	= ./incs
 

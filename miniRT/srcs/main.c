@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:14:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 03:15:22 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 08:12:07 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ int	minirt_main(char **argv)
 	t_mlx	mlx;
 
 	scene = (t_scene *)ft_calloc(sizeof(t_scene), 2);
-	if (!scene)
+	keep_scene = (t_scene *)ft_calloc(sizeof(t_scene), 2);
+	if (!scene || !keep_scene)
 	{
 		err_msg("Malloc error");
 		exit(1);
 	}
-	init_struct(scene);
+	init_struct_scene(scene);
 	parse_arg(scene, argv[1]);
 	parse_map(scene, argv[1]);
 	if (check_parse_error(scene))
@@ -32,9 +33,10 @@ int	minirt_main(char **argv)
 		free_scene(scene);
 		exit(1);
 	}
-	keep_scene = scene;
+	init_struct_keep_scene(keep_scene, scene);
 	raytracing_main(scene, keep_scene, &mlx);
 	free_scene(scene);
+	free_scene(keep_scene);
 	return (0);
 }
 

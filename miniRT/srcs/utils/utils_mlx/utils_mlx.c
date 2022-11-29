@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:53:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/18 23:40:22 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 08:13:21 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	mlx_exit(t_data *data)
 	mlx_clear_window(data->mlx->mlx_ptr, data->mlx->win);
 	mlx_destroy_window(data->mlx->mlx_ptr, data->mlx->win);
 	free_obj(data->obj);
+	free_scene(data->keep_scene);
 	free_scene(data->scene);
 	exit (0);
 }
