@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 04:08:59 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/28 02:09:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 03:43:07 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	mlx_rotate_cylinder_x_axis(t_data *data, int flag, int i)
 {
+	double	rad;
 	double	val_cos;
 	double	val_sin;
 
-	val_cos = cos(PI / 4);
+	rad = ROTATE_ANGLE * PI / 180;
+	val_cos = cos(rad);
 	val_sin = sqrt(1 - val_cos * val_cos);
 	data->scene->cylinder[i]->xyz_vec
 		= vec3(1 * data->scene->cylinder[i]->xyz_vec.x
@@ -37,10 +39,12 @@ void	mlx_rotate_cylinder_x_axis(t_data *data, int flag, int i)
 
 void	mlx_rotate_cylinder_y_axis(t_data *data, int flag, int i)
 {
+	double	rad;
 	double	val_cos;
 	double	val_sin;
 
-	val_cos = cos(PI / 4);
+	rad = ROTATE_ANGLE * PI / 180;
+	val_cos = cos(rad);
 	val_sin = sqrt(1 - val_cos * val_cos);
 	data->scene->cylinder[i]->xyz_vec
 		= vec3(val_cos * data->scene->cylinder[i]->xyz_vec.x
@@ -60,10 +64,12 @@ void	mlx_rotate_cylinder_y_axis(t_data *data, int flag, int i)
 
 void	mlx_rotate_cylinder_z_axis(t_data *data, int flag, int i)
 {
+	double	rad;
 	double	val_cos;
 	double	val_sin;
 
-	val_cos = cos(PI / 4);
+	rad = ROTATE_ANGLE * PI / 180;
+	val_cos = cos(rad);
 	val_sin = sqrt(1 - val_cos * val_cos);
 	data->scene->cylinder[i]->xyz_vec
 		= vec3(val_cos * data->scene->cylinder[i]->xyz_vec.x

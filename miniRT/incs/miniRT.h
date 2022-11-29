@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 02:07:59 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 03:30:47 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define ERR_XYZ_VEC_TOKEN		13
 # define ERR_XYZ_VEC_VALUE		14
 
-/* window setting for mlx */
+/* mlx window setting */
 # define ASPECT_RATIO_W			16
 # define ASPECT_RATIO_H			9
 # define WIN_W				800
@@ -56,6 +56,61 @@
 /* cylinder circle */
 # define TOP				0
 # define BOTTOM				1
+
+/* translating rotating */
+# define ROTATE_ANGLE			45
+# define CAMERA_MOVE			1
+# define LIGHT_MOVE			1
+# define OBJECT_MOVE			0.5
+# define ZOOM				10
+
+/* printing flag */
+# define C_MOVE_X_MINUS			1
+# define C_MOVE_X_PLUS			2
+# define C_MOVE_Y_MINUS			3
+# define C_MOVE_Y_PLUS			4
+# define C_MOVE_Z_MINUS			5
+# define C_MOVE Z_PLUS			6
+# define C_ROTATE_X			7
+# define C_ROTATE_Y			8
+# define C_ROTATE_Z			9
+
+# define L_MOVE_X_MINUS			10
+# define L_MOVE_X_PLUS			11
+# define L_MOVE_Y_MINUS			12
+# define L_MOVE_Y_PLUS			13
+# define L_MOVE_Z_MINUS			14
+# define L_MOVE Z_PLUS			15
+
+# define SP_MOVE_X_MINUS		16
+# define SP_MOVE_X_PLUS			17
+# define SP_MOVE_Y_MINUS		18
+# define SP_MOVE_Y_PLUS			19
+# define SP_MOVE_Z_MINUS		20
+# define SP_MOVE Z_PLUS			21
+# define SP_NEXT			22
+
+# define PL_MOVE_X_MINUS		23
+# define PL_MOVE_X_PLUS			24
+# define PL_MOVE_Y_MINUS		25
+# define PL_MOVE_Y_PLUS			26
+# define PL_MOVE_Z_MINUS		27
+# define PL_MOVE Z_PLUS			28
+# define PL_ROTATE_X			29
+# define PL_ROTATE_Y			30
+# define PL_ROTATE_Z			31
+# define PL_NEXT			32
+
+# define CY_MOVE_X_MINUS		33
+# define CY_MOVE_X_PLUS			34
+# define CY_MOVE_Y_MINUS		35
+# define CY_MOVE_Y_PLUS			36
+# define CY_MOVE_Z_MINUS		37
+# define CY_MOVE Z_PLUS			38
+# define CY_ROTATE_X			39
+# define CY_ROTATE_Y			40
+# define CY_ROTATE_Z			41
+# define CY_NEXT			42
 
 /* linux key code */
 # define KEY_UP				0xFF52
@@ -252,6 +307,7 @@ typedef struct s_hit
 
 typedef struct s_data
 {
+	t_scene		*keep_scene;
 	t_scene		*scene;
 	t_obj		**obj;
 	t_mlx		*mlx;
@@ -386,7 +442,7 @@ int		hittable(t_data *data, t_hit *hit);
 t_rgb3	trace(t_data *data, t_ray ray, int depth);
 void	ray_tracing(t_data *data);
 void	rt_start(t_data *data, int flag);
-void	raytracing_main(t_scene *scene, t_mlx *mlx);
+void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx);
 
 /* raytracing_init_struct_obj */
 void	put_value_obj_sp(t_scene *scene, t_obj **obj);

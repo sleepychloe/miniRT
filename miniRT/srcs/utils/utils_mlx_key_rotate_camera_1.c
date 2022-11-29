@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:20:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 01:54:52 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 03:33:57 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,13 @@ void	mlx_rotate_camera_z_axis(t_data *data, int flag,
 void	mlx_rotate_camera(int key, t_data *data)
 {
 	int		flag;
+	double	rad;
 	double	val_cos;
 	double	val_sin;
 
 	flag = 4;
-	val_cos = cos(1 * PI / 4);
+	rad = ROTATE_ANGLE * PI / 180;
+	val_cos = cos(rad);
 	val_sin = sqrt(1 - val_cos * val_cos);
 	if (key == KEY_7)
 		mlx_rotate_camera_x_axis(data, flag, val_cos, val_sin);

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:14:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/25 21:44:32 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 03:15:22 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	minirt_main(char **argv)
 {
 	t_scene	*scene;
+	t_scene	*keep_scene;
 	t_mlx	mlx;
 
 	scene = (t_scene *)ft_calloc(sizeof(t_scene), 2);
@@ -31,7 +32,8 @@ int	minirt_main(char **argv)
 		free_scene(scene);
 		exit(1);
 	}
-	raytracing_main(scene, &mlx);
+	keep_scene = scene;
+	raytracing_main(scene, keep_scene, &mlx);
 	free_scene(scene);
 	return (0);
 }

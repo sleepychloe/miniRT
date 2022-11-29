@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 04:08:42 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 02:12:37 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 03:38:51 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	mlx_move_cylinder_x(int key, t_data *data, int i)
 	if (key == KEY_Q)
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-				vec3_mul_rn(data->x_normal, -0.5));
+				vec3_mul_rn(data->x_normal, -1 * OBJECT_MOVE));
 	if (key == KEY_W)
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-				vec3_mul_rn(data->x_normal, 0.5));
+				vec3_mul_rn(data->x_normal, OBJECT_MOVE));
 	flag = 15;
 	rt_start(data, flag);
 }
@@ -35,11 +35,11 @@ void	mlx_move_cylinder_y(int key, t_data *data, int i)
 	if (key == KEY_E)
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-				vec3_mul_rn(data->y_normal, -0.5));
+				vec3_mul_rn(data->y_normal, -1 * OBJECT_MOVE));
 	if (key == KEY_R)
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-				vec3_mul_rn(data->y_normal, 0.5));
+				vec3_mul_rn(data->y_normal, OBJECT_MOVE));
 	flag = 16;
 	rt_start(data, flag);
 }
@@ -51,11 +51,11 @@ void	mlx_move_cylinder_z(int key, t_data *data, int i)
 	if (key == KEY_T)
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-				vec3_mul_rn(data->z_normal, -0.5));
+				vec3_mul_rn(data->z_normal, -1 * OBJECT_MOVE));
 	if (key == KEY_Y)
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-				vec3_mul_rn(data->z_normal, 0.5));
+				vec3_mul_rn(data->z_normal, OBJECT_MOVE));
 	flag = 17;
 	rt_start(data, flag);
 }
