@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:49:41 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 03:37:48 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 06:27:44 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,19 @@ void	mlx_move_sphere_x(int key, t_data *data, int i)
 	int	flag;
 
 	if (key == KEY_Z)
+	{
 		data->scene->sphere[i]->xyz_pos
 			= vec3_add_vec3(data->scene->sphere[i]->xyz_pos,
 				vec3_mul_rn(data->x_normal, -1 * OBJECT_MOVE));
+		flag = SP_MOVE_X_MINUS;
+	}
 	if (key == KEY_X)
+	{
 		data->scene->sphere[i]->xyz_pos
 			= vec3_add_vec3(data->scene->sphere[i]->xyz_pos,
 				vec3_mul_rn(data->x_normal, OBJECT_MOVE));
-	flag = 8;
+		flag = SP_MOVE_X_PLUS;
+	}
 	rt_start(data, flag);
 }
 
@@ -33,14 +38,19 @@ void	mlx_move_sphere_y(int key, t_data *data, int i)
 	int	flag;
 
 	if (key == KEY_C)
+	{
 		data->scene->sphere[i]->xyz_pos
 			= vec3_add_vec3(data->scene->sphere[i]->xyz_pos,
 				vec3_mul_rn(data->y_normal, -1 * OBJECT_MOVE));
+		flag = SP_MOVE_Y_MINUS;
+	}
 	if (key == KEY_V)
+	{
 		data->scene->sphere[i]->xyz_pos
 			= vec3_add_vec3(data->scene->sphere[i]->xyz_pos,
 				vec3_mul_rn(data->y_normal, OBJECT_MOVE));
-	flag = 9;
+		flag = SP_MOVE_Y_PLUS;
+	}
 	rt_start(data, flag);
 }
 
@@ -49,14 +59,19 @@ void	mlx_move_sphere_z(int key, t_data *data, int i)
 	int	flag;
 
 	if (key == KEY_B)
+	{
 		data->scene->sphere[i]->xyz_pos
 			= vec3_add_vec3(data->scene->sphere[i]->xyz_pos,
 				vec3_mul_rn(data->z_normal, -1 * OBJECT_MOVE));
+		flag = SP_MOVE_Z_MINUS;
+	}
 	if (key == KEY_N)
+	{
 		data->scene->sphere[i]->xyz_pos
 			= vec3_add_vec3(data->scene->sphere[i]->xyz_pos,
 				vec3_mul_rn(data->z_normal, OBJECT_MOVE));
-	flag = 10;
+		flag = SP_MOVE_Z_PLUS;
+	}
 	rt_start(data, flag);
 }
 
@@ -76,7 +91,7 @@ void	mlx_move_sphere(int key, t_data *data, int i)
 			data->sp = 0;
 		else
 			data->sp++;
-		flag = 19;
+		flag = SP_NEXT;
 		rt_start(data, flag);
 	}
 }

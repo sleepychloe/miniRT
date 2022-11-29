@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 03:30:47 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 06:25:10 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@
 # define C_MOVE_Y_MINUS			3
 # define C_MOVE_Y_PLUS			4
 # define C_MOVE_Z_MINUS			5
-# define C_MOVE Z_PLUS			6
+# define C_MOVE_Z_PLUS			6
 # define C_ROTATE_X			7
 # define C_ROTATE_Y			8
 # define C_ROTATE_Z			9
@@ -80,14 +80,14 @@
 # define L_MOVE_Y_MINUS			12
 # define L_MOVE_Y_PLUS			13
 # define L_MOVE_Z_MINUS			14
-# define L_MOVE Z_PLUS			15
+# define L_MOVE_Z_PLUS			15
 
 # define SP_MOVE_X_MINUS		16
 # define SP_MOVE_X_PLUS			17
 # define SP_MOVE_Y_MINUS		18
 # define SP_MOVE_Y_PLUS			19
 # define SP_MOVE_Z_MINUS		20
-# define SP_MOVE Z_PLUS			21
+# define SP_MOVE_Z_PLUS			21
 # define SP_NEXT			22
 
 # define PL_MOVE_X_MINUS		23
@@ -95,7 +95,7 @@
 # define PL_MOVE_Y_MINUS		25
 # define PL_MOVE_Y_PLUS			26
 # define PL_MOVE_Z_MINUS		27
-# define PL_MOVE Z_PLUS			28
+# define PL_MOVE_Z_PLUS			28
 # define PL_ROTATE_X			29
 # define PL_ROTATE_Y			30
 # define PL_ROTATE_Z			31
@@ -106,7 +106,7 @@
 # define CY_MOVE_Y_MINUS		35
 # define CY_MOVE_Y_PLUS			36
 # define CY_MOVE_Z_MINUS		37
-# define CY_MOVE Z_PLUS			38
+# define CY_MOVE_Z_PLUS			38
 # define CY_ROTATE_X			39
 # define CY_ROTATE_Y			40
 # define CY_ROTATE_Z			41

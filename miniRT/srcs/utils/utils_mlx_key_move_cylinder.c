@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 04:08:42 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 03:38:51 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 06:29:44 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,19 @@ void	mlx_move_cylinder_x(int key, t_data *data, int i)
 	int	flag;
 
 	if (key == KEY_Q)
+	{
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
 				vec3_mul_rn(data->x_normal, -1 * OBJECT_MOVE));
+		flag = CY_MOVE_X_MINUS;
+	}
 	if (key == KEY_W)
+	{
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
 				vec3_mul_rn(data->x_normal, OBJECT_MOVE));
-	flag = 15;
+		flag = CY_MOVE_X_PLUS;
+	}
 	rt_start(data, flag);
 }
 
@@ -33,14 +38,19 @@ void	mlx_move_cylinder_y(int key, t_data *data, int i)
 	int	flag;
 
 	if (key == KEY_E)
+	{
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
 				vec3_mul_rn(data->y_normal, -1 * OBJECT_MOVE));
+		flag = CY_MOVE_Y_MINUS;
+	}
 	if (key == KEY_R)
+	{
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
 				vec3_mul_rn(data->y_normal, OBJECT_MOVE));
-	flag = 16;
+		flag = CY_MOVE_Y_PLUS;
+	}
 	rt_start(data, flag);
 }
 
@@ -49,14 +59,19 @@ void	mlx_move_cylinder_z(int key, t_data *data, int i)
 	int	flag;
 
 	if (key == KEY_T)
+	{
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
 				vec3_mul_rn(data->z_normal, -1 * OBJECT_MOVE));
+		flag = CY_MOVE_Z_MINUS;
+	}
 	if (key == KEY_Y)
+	{
 		data->scene->cylinder[i]->xyz_pos
 			= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
 				vec3_mul_rn(data->z_normal, OBJECT_MOVE));
-	flag = 17;
+		flag = CY_MOVE_Z_PLUS;
+	}
 	rt_start(data, flag);
 }
 
@@ -76,7 +91,7 @@ void	mlx_move_cylinder(int key, t_data *data, int i)
 			data->cy = 0;
 		else
 			data->cy++;
-		flag = 21;
+		flag = CY_NEXT;
 		rt_start(data, flag);
 	}
 }

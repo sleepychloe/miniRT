@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:20:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 03:31:59 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 06:21:27 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,19 @@ void	mlx_move_camera_x(int key, t_data *data)
 	int	flag;
 
 	if (key == KEY_1)
+	{
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos,
 				vec3(-1 * CAMERA_MOVE, 0, 0));
+		flag = C_MOVE_X_MINUS;
+	}
 	if (key == KEY_2)
+	{
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos,
 				vec3(CAMERA_MOVE, 0, 0));
-	flag = 1;
+		flag = C_MOVE_X_PLUS;
+	}
 	rt_start(data, flag);
 }
 
@@ -33,14 +38,19 @@ void	mlx_move_camera_y(int key, t_data *data)
 	int	flag;
 
 	if (key == KEY_3)
+	{
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos,
 				vec3(0, -1 * CAMERA_MOVE, 0));
+		flag = C_MOVE_Y_MINUS;
+	}
 	if (key == KEY_4)
+	{
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos,
 				vec3(0, CAMERA_MOVE, 0));
-	flag = 2;
+		flag = C_MOVE_Y_PLUS;
+	}
 	rt_start(data, flag);
 }
 
@@ -48,23 +58,30 @@ void	mlx_move_camera_z(int key, t_data *data)
 {
 	int	flag;
 
-	if (key == KEY_5)
-		data->scene->camera->xyz_pos
-			= vec3_add_vec3(data->scene->camera->xyz_pos,
-				vec3(0, 0, -1 * CAMERA_MOVE));
-	if (key == KEY_6)
-		data->scene->camera->xyz_pos
-			= vec3_add_vec3(data->scene->camera->xyz_pos,
-				vec3(0, 0, CAMERA_MOVE));
-	if (key == KEY_UP)
-		data->scene->camera->xyz_pos
-			= vec3_add_vec3(data->scene->camera->xyz_pos,
-				vec3(0, 0, -1 * ZOOM));
-	if (key == KEY_DOWN)
-		data->scene->camera->xyz_pos
-			= vec3_add_vec3(data->scene->camera->xyz_pos,
-				vec3(0, 0, ZOOM));
-	flag = 3;
+	if (key == KEY_5 || key == KEY_UP)
+	{
+		if (key == KEY_5)
+			data->scene->camera->xyz_pos
+				= vec3_add_vec3(data->scene->camera->xyz_pos,
+					vec3(0, 0, -1 * CAMERA_MOVE));
+		if (key == KEY_UP)
+			data->scene->camera->xyz_pos
+				= vec3_add_vec3(data->scene->camera->xyz_pos,
+					vec3(0, 0, -1 * ZOOM));
+		flag = C_MOVE_Z_MINUS;
+	}
+	if (key == KEY_6 || key == KEY_DOWN)
+	{
+		if (key == KEY_6)
+			data->scene->camera->xyz_pos
+				= vec3_add_vec3(data->scene->camera->xyz_pos,
+					vec3(0, 0, CAMERA_MOVE));
+		if (key == KEY_DOWN)
+			data->scene->camera->xyz_pos
+				= vec3_add_vec3(data->scene->camera->xyz_pos,
+					vec3(0, 0, ZOOM));
+		flag = C_MOVE_Z_MINUS;
+	}
 	rt_start(data, flag);
 }
 

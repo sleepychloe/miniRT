@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 04:08:59 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 03:43:07 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 06:30:58 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,10 @@ void	mlx_rotate_cylinder_z_axis(t_data *data, int flag, int i)
 
 void	mlx_rotate_cylinder(int key, t_data *data, int i)
 {
-	int	flag;
-
-	flag = 18;
 	if (key == KEY_U)
-		mlx_rotate_cylinder_x_axis(data, flag, i);
+		mlx_rotate_cylinder_x_axis(data, CY_ROTATE_X, i);
 	if (key == KEY_I)
-		mlx_rotate_cylinder_y_axis(data, flag, i);
+		mlx_rotate_cylinder_y_axis(data, CY_ROTATE_Y, i);
 	if (key == KEY_O)
-		mlx_rotate_cylinder_z_axis(data, flag, i);
+		mlx_rotate_cylinder_z_axis(data, CY_ROTATE_Z, i);
 }
