@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 06:25:10 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 07:01:03 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,46 +71,40 @@
 # define C_MOVE_Y_PLUS			4
 # define C_MOVE_Z_MINUS			5
 # define C_MOVE_Z_PLUS			6
-# define C_ROTATE_X			7
-# define C_ROTATE_Y			8
-# define C_ROTATE_Z			9
+# define C_ROTATE			7
 
-# define L_MOVE_X_MINUS			10
-# define L_MOVE_X_PLUS			11
-# define L_MOVE_Y_MINUS			12
-# define L_MOVE_Y_PLUS			13
-# define L_MOVE_Z_MINUS			14
-# define L_MOVE_Z_PLUS			15
+# define L_MOVE_X_MINUS			8
+# define L_MOVE_X_PLUS			9
+# define L_MOVE_Y_MINUS			10
+# define L_MOVE_Y_PLUS			11
+# define L_MOVE_Z_MINUS			12
+# define L_MOVE_Z_PLUS			13
 
-# define SP_MOVE_X_MINUS		16
-# define SP_MOVE_X_PLUS			17
-# define SP_MOVE_Y_MINUS		18
-# define SP_MOVE_Y_PLUS			19
-# define SP_MOVE_Z_MINUS		20
-# define SP_MOVE_Z_PLUS			21
-# define SP_NEXT			22
+# define SP_MOVE_X_MINUS		14
+# define SP_MOVE_X_PLUS			15
+# define SP_MOVE_Y_MINUS		16
+# define SP_MOVE_Y_PLUS			17
+# define SP_MOVE_Z_MINUS		18
+# define SP_MOVE_Z_PLUS			19
+# define SP_NEXT			20
 
-# define PL_MOVE_X_MINUS		23
-# define PL_MOVE_X_PLUS			24
-# define PL_MOVE_Y_MINUS		25
-# define PL_MOVE_Y_PLUS			26
-# define PL_MOVE_Z_MINUS		27
-# define PL_MOVE_Z_PLUS			28
-# define PL_ROTATE_X			29
-# define PL_ROTATE_Y			30
-# define PL_ROTATE_Z			31
-# define PL_NEXT			32
+# define PL_MOVE_X_MINUS		21
+# define PL_MOVE_X_PLUS			22
+# define PL_MOVE_Y_MINUS		23
+# define PL_MOVE_Y_PLUS			24
+# define PL_MOVE_Z_MINUS		25
+# define PL_MOVE_Z_PLUS			26
+# define PL_ROTATE			27
+# define PL_NEXT			28
 
-# define CY_MOVE_X_MINUS		33
-# define CY_MOVE_X_PLUS			34
-# define CY_MOVE_Y_MINUS		35
-# define CY_MOVE_Y_PLUS			36
-# define CY_MOVE_Z_MINUS		37
-# define CY_MOVE_Z_PLUS			38
-# define CY_ROTATE_X			39
-# define CY_ROTATE_Y			40
-# define CY_ROTATE_Z			41
-# define CY_NEXT			42
+# define CY_MOVE_X_MINUS		29
+# define CY_MOVE_X_PLUS			30
+# define CY_MOVE_Y_MINUS		31
+# define CY_MOVE_Y_PLUS			32
+# define CY_MOVE_Z_MINUS		33
+# define CY_MOVE_Z_PLUS			34
+# define CY_ROTATE			35
+# define CY_NEXT			36
 
 /* linux key code */
 # define KEY_UP				0xFF52
@@ -535,6 +529,7 @@ int		mlx_keys(int key, t_data *data);
 void	mlx_move_camera_x(int key, t_data *data);
 void	mlx_move_camera_y(int key, t_data *data);
 void	mlx_move_camera_z(int key, t_data *data);
+void	mlx_move_camera_zoom(int key, t_data *data);
 void	mlx_move_camera(int key, t_data *data);
 
 /* utils_mlx_key_rotate_camera_1 */
@@ -656,6 +651,7 @@ void	print_scene_info(t_data *data, t_scene *scene, int flag);
 void	print_info_5(t_data *data, t_scene *scene, int flag);
 void	print_info_6(t_data *data, t_scene *scene, int flag);
 void	print_info_7(t_data *data, t_scene *scene, int flag);
+void	print_info_8(t_data *data, t_scene *scene, int flag);
 
 /* main */
 int		minirt_main(char **argv);

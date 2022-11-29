@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 03:33:31 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 06:41:36 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 07:01:11 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 
 void	print_info_5(t_data *data, t_scene *scene, int flag)
 {
+	if (flag == PL_MOVE_Z_MINUS || flag == PL_MOVE_Z_PLUS)
+		printf("            ║ z ║ %s%f%s\t║",
+			R, scene->plane[data->pl]->xyz_pos.z, B);
+	else
+		printf("            ║ z ║ %f\t║", scene->plane[data->pl]->xyz_pos.z);
+	if (flag == CY_MOVE_Z_MINUS || flag == CY_MOVE_Z_PLUS)
+		printf("            ║ z ║ %s%f%s\t║\n",
+			R, scene->cylinder[data->cy]->xyz_pos.z, B);
+	else
+		printf("            ║ z ║ %f\t║\n", scene->cylinder[data->cy]->xyz_pos.z);
+	printf("╠════════════╬═══╬══════════════╣");
+	if (flag == L_MOVE_Y_MINUS || flag == L_MOVE_Y_PLUS)
+		printf(" position   ║ y ║ %s%f%s\t║", R, scene->light->xyz_pos.y, B);
+	else
+		printf(" position   ║ y ║ %f\t║", scene->light->xyz_pos.y);
 	if (flag == SP_MOVE_Y_MINUS || flag == SP_MOVE_Y_PLUS)
 		printf(" position   ║ y ║ %s%f%s\t╠",
 			R, scene->sphere[data->sp]->xyz_pos.y, B);
@@ -21,7 +36,11 @@ void	print_info_5(t_data *data, t_scene *scene, int flag)
 		printf(" position   ║ y ║ %f\t╠", scene->sphere[data->sp]->xyz_pos.y);
 	printf("════════════╬═══╬══════════════╬");
 	printf("════════════╬═══╬══════════════╣\n");
-	if (flag == C_ROTATE_X || flag == C_ROTATE_Y || flag == C_ROTATE_Z)
+}
+
+void	print_info_6(t_data *data, t_scene *scene, int flag)
+{
+	if (flag == C_ROTATE)
 		printf("║            ║ x ║ %s%f%s\t║", R, scene->camera->xyz_vec.x, B);
 	else
 		printf("║            ║ x ║  %f\t║", scene->camera->xyz_vec.x);
@@ -34,52 +53,52 @@ void	print_info_5(t_data *data, t_scene *scene, int flag)
 			R, scene->sphere[data->sp]->xyz_pos.z, B);
 	else
 		printf("            ║ z ║ %f\t║", scene->sphere[data->sp]->xyz_pos.z);
-	if (flag == PL_ROTATE_X || flag == PL_ROTATE_Y || flag == PL_ROTATE_Z)
+	if (flag == PL_ROTATE)
 		printf("            ║ x ║ %s%f%s\t║",
 			R, scene->plane[data->pl]->xyz_vec.x, B);
 	else
 		printf("            ║ x ║ %f\t║", scene->plane[data->pl]->xyz_vec.x);
-}
-
-void	print_info_6(t_data *data, t_scene *scene, int flag)
-{
-	if (flag == CY_ROTATE_X || flag == CY_ROTATE_Y || flag == CY_ROTATE_Z)
+	if (flag == CY_ROTATE)
 		printf("            ║ x ║ %s%f%s\t║\n",
 			R, scene->cylinder[data->cy]->xyz_vec.x, B);
 	else
 		printf("            ║ x ║ %f\t║\n", scene->cylinder[data->cy]->xyz_vec.x);
-	if (flag == C_ROTATE_X || flag == C_ROTATE_Y || flag == C_ROTATE_Z)
+}
+
+void	print_info_7(t_data *data, t_scene *scene, int flag)
+{
+	if (flag == C_ROTATE)
 		printf("║ normal vec ║ y ║ %s%f%s\t║", R, scene->camera->xyz_vec.y, B);
 	else
 		printf("║ normal vec ║ y ║  %f\t║", scene->camera->xyz_vec.y);
 	printf("            ║   ║              ║");
 	printf("            ║   ║              ║");
-	if (flag == PL_ROTATE_X || flag == PL_ROTATE_Y || flag == PL_ROTATE_Z)
+	if (flag == PL_ROTATE)
 		printf(" normal vec ║ y ║ %s%f%s\t║",
 			R, scene->plane[data->pl]->xyz_vec.y, B);
 	else
 		printf(" normal vec ║ y ║ %f\t║", scene->plane[data->pl]->xyz_vec.y);
-	if (flag == CY_ROTATE_X || flag == CY_ROTATE_Y || flag == CY_ROTATE_Z)
+	if (flag == CY_ROTATE)
 		printf(" normal vec ║ y ║ %s%f%s\t║\n",
 			R, scene->cylinder[data->cy]->xyz_vec.y, B);
 	else
 		printf(" normal vec ║ y ║ %f\t║\n", scene->cylinder[data->cy]->xyz_vec.y);
-	if (flag == C_ROTATE_X || flag == C_ROTATE_Y || flag == C_ROTATE_Z)
+	if (flag == C_ROTATE)
 		printf("║            ║ z ║ %s%f%s\t║", R, scene->camera->xyz_vec.z, B);
 	else
 		printf("║            ║ z ║  %f\t║", scene->camera->xyz_vec.z);
+	printf("            ║   ║              ║");
+	printf("            ║   ║              ║");
 }
 
-void	print_info_7(t_data *data, t_scene *scene, int flag)
+void	print_info_8(t_data *data, t_scene *scene, int flag)
 {
-	printf("            ║   ║              ║");
-	printf("            ║   ║              ║");
-	if (flag == PL_ROTATE_X || flag == PL_ROTATE_Y || flag == PL_ROTATE_Z)
+	if (flag == PL_ROTATE)
 		printf("            ║ z ║ %s%f%s\t║",
 			R, scene->plane[data->pl]->xyz_vec.z, B);
 	else
 		printf("            ║ z ║ %f\t║", scene->plane[data->pl]->xyz_vec.z);
-	if (flag == CY_ROTATE_X || flag == CY_ROTATE_Y || flag == CY_ROTATE_Z)
+	if (flag == CY_ROTATE)
 		printf("            ║ z ║ %s%f%s\t║\n",
 			R, scene->cylinder[data->cy]->xyz_vec.z, B);
 	else

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:20:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 06:21:27 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/11/29 06:56:11 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,40 @@ void	mlx_move_camera_z(int key, t_data *data)
 {
 	int	flag;
 
-	if (key == KEY_5 || key == KEY_UP)
+	if (key == KEY_5)
 	{
-		if (key == KEY_5)
-			data->scene->camera->xyz_pos
-				= vec3_add_vec3(data->scene->camera->xyz_pos,
-					vec3(0, 0, -1 * CAMERA_MOVE));
-		if (key == KEY_UP)
-			data->scene->camera->xyz_pos
-				= vec3_add_vec3(data->scene->camera->xyz_pos,
-					vec3(0, 0, -1 * ZOOM));
+		data->scene->camera->xyz_pos
+			= vec3_add_vec3(data->scene->camera->xyz_pos,
+				vec3(0, 0, -1 * CAMERA_MOVE));
 		flag = C_MOVE_Z_MINUS;
 	}
-	if (key == KEY_6 || key == KEY_DOWN)
+	if (key == KEY_6)
 	{
-		if (key == KEY_6)
-			data->scene->camera->xyz_pos
-				= vec3_add_vec3(data->scene->camera->xyz_pos,
-					vec3(0, 0, CAMERA_MOVE));
-		if (key == KEY_DOWN)
-			data->scene->camera->xyz_pos
-				= vec3_add_vec3(data->scene->camera->xyz_pos,
-					vec3(0, 0, ZOOM));
+		data->scene->camera->xyz_pos
+			= vec3_add_vec3(data->scene->camera->xyz_pos,
+				vec3(0, 0, CAMERA_MOVE));
+		flag = C_MOVE_Z_PLUS;
+	}
+	rt_start(data, flag);
+}
+
+void	mlx_move_camera_zoom(int key, t_data *data)
+{
+	int	flag;
+
+	if (key == KEY_UP)
+	{
+		data->scene->camera->xyz_pos
+			= vec3_add_vec3(data->scene->camera->xyz_pos,
+				vec3(0, 0, -1 * ZOOM));
 		flag = C_MOVE_Z_MINUS;
+	}
+	if (key == KEY_DOWN)
+	{
+		data->scene->camera->xyz_pos
+			= vec3_add_vec3(data->scene->camera->xyz_pos,
+				vec3(0, 0, ZOOM));
+		flag = C_MOVE_Z_PLUS;
 	}
 	rt_start(data, flag);
 }
@@ -91,6 +102,8 @@ void	mlx_move_camera(int key, t_data *data)
 		mlx_move_camera_x(key, data);
 	if (key == KEY_3 || key == KEY_4)
 		mlx_move_camera_y(key, data);
-	if (key == KEY_5 || key == KEY_6 || key == KEY_UP || key == KEY_DOWN)
+	if (key == KEY_5 || key == KEY_6)
 		mlx_move_camera_z(key, data);
+	if (key == KEY_UP || key == KEY_DOWN)
+		mlx_move_camera_zoom(key, data);
 }
