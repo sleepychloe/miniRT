@@ -6,11 +6,12 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/29 22:50:00 by yhwang           ###   ########.fr        #
+#    Updated: 2022/11/30 22:41:07 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
+NAME_B = miniRT_bonus
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -29,6 +30,12 @@ SRCS_PARSE_DIR = ./srcs/parse/
 SRCS_RT_DIR = ./srcs/raytracing/
 SRCS_UTILS_DIR = ./srcs/utils/
 SRCS_UTILS_MLX_DIR = ./srcs/utils/utils_mlx/
+
+SRCS_B_DIR = ./srcs_bonus/
+SRCS_B_PARSE_DIR = ./srcs_bonus/parse_bonus/
+SRCS_B_RT_DIR = ./srcs_bonus/raytracing_bonus/
+SRCS_B_UTILS_DIR = ./srcs_bonus/utils_bonus/
+SRCS_B_UTILS_MLX_DIR = ./srcs_bonus/utils_bonus/utils_mlx_bonus/
 
 FILES	= $(SRCS_DIR)main \
 		$(SRCS_PARSE_DIR)parse_init_struct_1 \
@@ -95,10 +102,79 @@ FILES	= $(SRCS_DIR)main \
 		$(SRCS_UTILS_DIR)utils_msg_2 \
 		$(SRCS_UTILS_DIR)utils_msg_3
 
+FILES_B = $(SRCS_B_DIR)main_bonus \
+		$(SRCS_B_PARSE_DIR)parse_init_struct_1_bonus \
+		$(SRCS_B_PARSE_DIR)parse_init_struct_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_arg_bonus \
+		$(SRCS_B_PARSE_DIR)parse_map_bonus \
+		$(SRCS_B_PARSE_DIR)parse_ambient_1_bonus \
+		$(SRCS_B_PARSE_DIR)parse_ambient_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_camera_1_bonus \
+		$(SRCS_B_PARSE_DIR)parse_camera_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_light_1_bonus \
+		$(SRCS_B_PARSE_DIR)parse_light_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_sphere_1_bonus \
+		$(SRCS_B_PARSE_DIR)parse_sphere_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_plane_1_bonus \
+		$(SRCS_B_PARSE_DIR)parse_plane_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_cylinder_1_bonus \
+		$(SRCS_B_PARSE_DIR)parse_cylinder_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_cylinder_3_bonus \
+		$(SRCS_B_PARSE_DIR)parse_err_1_bonus \
+		$(SRCS_B_PARSE_DIR)parse_err_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_1_bonus \
+		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_3_bonus \
+		$(SRCS_B_PARSE_DIR)parse_utils_bonus \
+		$(SRCS_B_RT_DIR)raytracing_main_bonus \
+		$(SRCS_B_RT_DIR)raytracing_set_camera_1_bonus \
+		$(SRCS_B_RT_DIR)raytracing_set_camera_2_bonus \
+		$(SRCS_B_RT_DIR)raytracing_init_struct_obj_1_bonus \
+		$(SRCS_B_RT_DIR)raytracing_init_struct_obj_2_bonus \
+		$(SRCS_B_RT_DIR)raytracing_init_struct_rt_bonus \
+		$(SRCS_B_RT_DIR)raytracing_ray_bonus \
+		$(SRCS_B_RT_DIR)raytracing_light_bonus \
+		$(SRCS_B_RT_DIR)raytracing_sphere_bonus \
+		$(SRCS_B_RT_DIR)raytracing_plane_bonus \
+		$(SRCS_B_RT_DIR)raytracing_cylinder_1_bonus \
+		$(SRCS_B_RT_DIR)raytracing_cylinder_2_bonus \
+		$(SRCS_B_RT_DIR)raytracing_utils_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_move_camera_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_1_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_2_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_3_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_x_1_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_x_2_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_y_1_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_y_2_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_z_1_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_camera_z_2_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_move_light_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_move_sphere_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_move_plane_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_plane_1_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_plane_2_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_move_cylinder_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_cylinder_1_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_cylinder_2_bonus \
+		$(SRCS_B_UTILS_DIR)utils_free_bonus \
+		$(SRCS_B_UTILS_DIR)utils_vec3_1_bonus \
+		$(SRCS_B_UTILS_DIR)utils_vec3_2_bonus \
+		$(SRCS_B_UTILS_DIR)utils_color_bonus \
+		$(SRCS_B_UTILS_DIR)utils_random_bonus \
+		$(SRCS_B_UTILS_DIR)utils_msg_1_bonus \
+		$(SRCS_B_UTILS_DIR)utils_msg_2_bonus \
+		$(SRCS_B_UTILS_DIR)utils_msg_3_bonus
+
 INCS_DIR	= ./incs
+INCS_B_DIR	= ./incs_bonus
 
 SRCS = $(addsuffix .c, $(FILES))
 OBJS = $(addsuffix .o, $(FILES))
+
+SRCS_B = $(addsuffix .c, $(FILES_B))
+OBJS_B = $(addsuffix .o, $(FILES_B))
 
 .c.o: $(SRCS) $(INCS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -I$(INCS_DIR)
@@ -114,15 +190,22 @@ $(NAME): $(MLX) $(OBJS) $(LIBFT)
 $(MLX):
 	make -C $(MLX_DIR)
 
+bonus: $(LIBFT_NAME) $(NAME_B)
+
+$(NAME_B): $(MLX) $(OBJS_B) $(LIBFT)
+	$(CC) $(CFLAGS) $^ -o $@ -I$(INCS_B_DIR) -L$(MLX_DIR) -lmlx $(MLX_FLAGS)
+
 clean:
 	make clean -C $(LIBFT_DIR)
 	make clean -C $(MLX_DIR)
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJS_B)
 
 fclean: clean
 	make fclean -C $(LIBFT_DIR)
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME_B)
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+bonusre : fclean bonus
+
+.PHONY: all, bonus, clean, fclean, re, bonusre
