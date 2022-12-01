@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 05:09:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:54:13 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 08:05:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	print_info_1(t_data *data, t_scene *scene, int flag)
 		printf("║            %scamera%s             ║", R, B);
 	else
 		printf("║            camera             ║");
-	if (flag == L_MOVE_X_MINUS || flag == L_MOVE_X_PLUS
+	if (flag == L_NEXT || flag == L_MOVE_X_MINUS || flag == L_MOVE_X_PLUS
 		|| flag == L_MOVE_Y_MINUS || flag == L_MOVE_Y_PLUS
 		|| flag == L_MOVE_Z_MINUS || flag == L_MOVE_Z_PLUS)
-		printf("             %slight%s             ║", R, B);
+		printf("           %slight[%d]%s            ║", R, data->l, B);
 	else
 		printf("             light             ║");
 }
@@ -112,14 +112,10 @@ void	print_info_4(t_data *data, t_scene *scene, int flag)
 	else
 		printf("║            ║ z ║ %f\t║", scene->camera->xyz_pos.z);
 	if (flag == L_MOVE_X_MINUS || flag == L_MOVE_X_PLUS)
-		printf("            ║ x ║ %s%f%s\t║", R, scene->light->xyz_pos.x, B);
-	else
-		printf("            ║ x ║ %f\t║", scene->light->xyz_pos.x);
-	if (flag == SP_MOVE_X_MINUS || flag == SP_MOVE_X_PLUS)
 		printf("            ║ x ║ %s%f%s\t║",
-			R, scene->sphere[data->sp]->xyz_pos.x, B);
+			R, scene->light[data->l]->xyz_pos.x, B);
 	else
-		printf("            ║ x ║ %f\t║", scene->sphere[data->sp]->xyz_pos.x);
+		printf("            ║ x ║ %f\t║", scene->light[data->l]->xyz_pos.x);
 }
 
 void	print_scene_info(t_data *data, t_scene *scene, int flag)
@@ -132,4 +128,5 @@ void	print_scene_info(t_data *data, t_scene *scene, int flag)
 	print_info_6(data, scene, flag);
 	print_info_7(data, scene, flag);
 	print_info_8(data, scene, flag);
+	print_info_9(data, scene, flag);
 }

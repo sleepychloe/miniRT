@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:04:42 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 22:18:33 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 04:48:53 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 /* parse_init_struct_1_bonus */
 void	init_struct_scene_a(t_scene *scene);
 void	init_struct_scene_c(t_scene *scene);
-void	init_struct_scene_l(t_scene *scene);
+void	init_struct_scene_l(t_scene *scene, int i);
 void	init_struct_scene(t_scene *scene);
 
 /* parse_init_struct_2_bonus */
@@ -78,16 +78,16 @@ int		parse_c_xyz_vec(t_scene *scene, char ***s);
 int		parse_c_fov(t_scene *scene, char ***s);
 
 /* parse_light_1_bonus */
-int		parse_l_token(t_scene *scene, char ***s);
-int		check_value_l_xyz_pos(t_scene *scene, char **xyz_pos);
-int		parse_l_xyz_pos(t_scene *scene, char ***s);
-int		parse_l_norminette(t_scene *scene, char ***s);
+int		parse_l_token(t_scene *scene, int i, char ***s);
+int		check_value_l_xyz_pos(t_scene *scene, int i, char **xyz_pos);
+int		parse_l_xyz_pos(t_scene *scene, int i, char ***s);
+int		parse_l_norminette(t_scene *scene, int i, char ***s);
 int		parse_l(t_scene *scene, char **line);
 
 /* parse_light_2_bonus */
-int		parse_l_brightness(t_scene *scene, char ***s);
-int		check_value_l_rgb(t_scene *scene, char **rgb);
-int		parse_l_rgb(t_scene *scene, char ***s);
+int		parse_l_brightness(t_scene *scene, int i, char ***s);
+int		check_value_l_rgb(t_scene *scene, int i, char **rgb);
+int		parse_l_rgb(t_scene *scene, int i, char ***s);
 
 /* parse_sphere_1_bonus */
 int		parse_sp_token(t_scene *scene, int i, char ***s);
@@ -134,7 +134,7 @@ int		parse_cy_rgb(t_scene *scene, int i, char ***s);
 /* parse_err_1_bonus */
 void	err_check_a(t_scene *scene);
 void	err_check_c(t_scene *scene);
-void	err_check_l(t_scene *scene);
+void	err_check_l(t_scene *scene, int i);
 int		check_parse_error(t_scene *scene);
 
 /* parse_err_2_bonus */
@@ -145,6 +145,7 @@ void	err_check_cy(t_scene *scene, int i);
 /* parse_init_struct_keep_scene_1_bonus */
 void	init_struct_keep_scene_a(t_scene *keep_scene, t_scene *scene);
 void	init_struct_keep_scene_c(t_scene *keep_scene, t_scene *scene);
+void	put_value_keep_scene_l(t_scene *keep_scene, t_scene *scene);
 void	init_struct_keep_scene_l(t_scene *keep_scene, t_scene *scene);
 void	init_struct_keep_scene(t_scene *keep_scene, t_scene *scene);
 

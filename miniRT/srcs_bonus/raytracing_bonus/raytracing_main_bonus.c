@@ -6,68 +6,11 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 04:03:32 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 07:32:03 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs_bonus/miniRT_bonus.h"
-
-int	hittable(t_data *data, t_hit *hit)
-{
-	int		i;
-	int		hit_flag;
-	double	distance;
-
-	i = 0;
-	hit_flag = 0;
-	distance = INFINITY;
-	while (i < data->n_obj + data->scene->n_plane + data->scene->n_plane)
-	{
-		if (!(hit_sphere(data, hit, i, distance))
-			|| !(hit_plane(data, hit, i, distance))
-			|| !(hit_cylinder(data, hit, i, distance)))
-		{
-			hit_flag = 1;
-			distance = hit->t;
-		}
-		i++;
-	}
-	return (hit_flag);
-}
-
-t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
-{
-	t_hit	hit;
-	t_rgb3	ambient;
-	t_rgb3	light;
-	t_vec3	target;
-	t_ray	ray_diffuse;
-
-	if (depth <= 0)
-		return (rgb3(0, 0, 0));
-	data->ray = &ray_set;
-	if (hittable(data, &hit))
-	{
-		ambient.r = (data->scene->ambient->lighting)
-			* (data->scene->ambient->rgb.r) * hit.color.r * 0.001;
-		ambient.g = (data->scene->ambient->lighting)
-			* (data->scene->ambient->rgb.g) * hit.color.g * 0.001;
-		ambient.b = (data->scene->ambient->lighting)
-			* (data->scene->ambient->rgb.b) * hit.color.b * 0.001;
-		light = apply_light(data, &hit);
-		target = vec3_add_vec3(vec3_add_vec3(hit.hit_point, hit.normal_vec),
-				random_double_xyz());
-		if (vec3_dot_vec3(target, hit.normal_vec) < 0)
-			target = vec3_add_vec3(vec3_add_vec3(hit.hit_point, hit.normal_vec),
-					vec3_mul_rn(hit.normal_vec, 1.0));
-		ray_diffuse = ray(hit.hit_point, vec3_sub_vec3(target, hit.hit_point));
-		return (color_add(color_add(ambient, light),
-				rgb3(trace(data, ray_diffuse, depth - 1).r * 0.1,
-					trace(data, ray_diffuse, depth - 1).g * 0.1,
-					trace(data, ray_diffuse, depth - 1).b * 0.1)));
-	}
-	return (rgb3(0, 0, 0));
-}
 
 void	ray_tracing(t_data *data)
 {
@@ -113,20 +56,27 @@ void	rt_start(t_data *data, int flag)
 	print_scene_info(data, data->keep_scene, flag);
 }
 
+void	init_struct_data(t_data *data, t_scene *scene,
+				t_scene *keep_scene, t_mlx *mlx)
+{
+	data->keep_scene = keep_scene;
+	data->scene = scene;
+	data->mlx = mlx;
+	data->n_obj = scene->n_sphere + scene->n_plane + scene->n_cylinder;
+	data->l = 0;
+	data->sp = 0;
+	data->pl = 0;
+	data->cy = 0;
+	data->x_normal = vec3(1, 0, 0);
+	data->y_normal = vec3(0, 1, 0);
+	data->z_normal = vec3(0, 0, 1);
+}
+
 void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx)
 {
 	t_data	data;
 
-	data.keep_scene = keep_scene;
-	data.scene = scene;
-	data.mlx = mlx;
-	data.n_obj = scene->n_sphere + scene->n_plane + scene->n_cylinder;
-	data.sp = 0;
-	data.pl = 0;
-	data.cy = 0;
-	data.x_normal = vec3(1, 0, 0);
-	data.y_normal = vec3(0, 1, 0);
-	data.z_normal = vec3(0, 0, 1);
+	init_struct_data(&data, scene, keep_scene, mlx);
 	if (mlx_init_window(mlx))
 	{
 		err_msg("mlx init error");

@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/11/30 22:41:07 by yhwang           ###   ########.fr        #
+#    Updated: 2022/12/01 07:28:06 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,6 +127,7 @@ FILES_B = $(SRCS_B_DIR)main_bonus \
 		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_3_bonus \
 		$(SRCS_B_PARSE_DIR)parse_utils_bonus \
 		$(SRCS_B_RT_DIR)raytracing_main_bonus \
+		$(SRCS_B_RT_DIR)raytracing_trace_bonus \
 		$(SRCS_B_RT_DIR)raytracing_set_camera_1_bonus \
 		$(SRCS_B_RT_DIR)raytracing_set_camera_2_bonus \
 		$(SRCS_B_RT_DIR)raytracing_init_struct_obj_1_bonus \

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:58:07 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:54:04 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 04:25:32 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ void	free_scene(t_scene *scene)
 
 	free(scene->ambient);
 	free(scene->camera);
+	i = 0;
+	while (scene->light[i])
+		free(scene->light[i++]);
 	free(scene->light);
 	i = 0;
 	while (scene->sphere[i])

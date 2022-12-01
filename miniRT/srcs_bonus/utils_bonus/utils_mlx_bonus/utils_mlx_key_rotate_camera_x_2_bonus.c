@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 01:43:59 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:50:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 05:09:48 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,21 @@ void	mlx_rotate_camera_x_axis_set_cy(t_data *data,
 void	mlx_rotate_camera_x_axis_set_l(t_data *data,
 				double val_cos, double val_sin)
 {
-	data->scene->light->xyz_pos
-		= vec3(1 * data->scene->light->xyz_pos.x
-			+ 0 * data->scene->light->xyz_pos.y
-			+ 0 * data->scene->light->xyz_pos.z,
-			0 * data->scene->light->xyz_pos.x
-			+ val_cos * data->scene->light->xyz_pos.y
-			+ -1 * val_sin * data->scene->light->xyz_pos.z,
-			0 * data->scene->light->xyz_pos.x
-			+ val_sin * data->scene->light->xyz_pos.y
-			+ val_cos * data->scene->light->xyz_pos.z);
+	int	i;
+
+	i = 0;
+	while (i < data->scene->n_light)
+	{
+		data->scene->light[i]->xyz_pos
+			= vec3(1 * data->scene->light[i]->xyz_pos.x
+				+ 0 * data->scene->light[i]->xyz_pos.y
+				+ 0 * data->scene->light[i]->xyz_pos.z,
+				0 * data->scene->light[i]->xyz_pos.x
+				+ val_cos * data->scene->light[i]->xyz_pos.y
+				+ -1 * val_sin * data->scene->light[i]->xyz_pos.z,
+				0 * data->scene->light[i]->xyz_pos.x
+				+ val_sin * data->scene->light[i]->xyz_pos.y
+				+ val_cos * data->scene->light[i]->xyz_pos.z);
+		i++;
+	}
 }

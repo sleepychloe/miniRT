@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:09:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 22:17:08 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 08:06:50 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void	print_info_5(t_data *data, t_scene *scene, int flag);
 void	print_info_6(t_data *data, t_scene *scene, int flag);
 void	print_info_7(t_data *data, t_scene *scene, int flag);
 void	print_info_8(t_data *data, t_scene *scene, int flag);
+void	print_info_9(t_data *data, t_scene *scene, int flag);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 04:02:46 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 07:59:02 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,17 @@
 # include "./miniRT_bonus.h"
 
 /* raytracing_main_bonus */
-int		hittable(t_data *data, t_hit *hit);
-t_rgb3	trace(t_data *data, t_ray ray, int depth);
 void	ray_tracing(t_data *data);
 void	rt_start(t_data *data, int flag);
+void	init_struct_data(t_data *data, t_scene *scene,
+			t_scene *keep_scene, t_mlx *mlx);
 void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx);
+
+/* raytracing_trace_bonus */
+int		hittable(t_data *data, t_hit *hit);
+t_rgb3	calc_ambient(t_data *data, t_hit *hit);
+t_rgb3	calc_diffuse(t_data *data, t_hit *hit, int *depth);
+t_rgb3	trace(t_data *data, t_ray ray, int depth);
 
 /* raytracing_set_camera_1_bonus */
 void	camera_vec_zero_zero_plusone(t_data *data);
@@ -72,9 +78,10 @@ t_ray	ray_set(t_data *data, double u, double v);
 
 /* raytracing_light_bonus */
 int		check_light_hit_obj(t_data *data, double distance);
-int		calculate_light(t_data *data, t_hit *hit,
-			double *light_intensity, t_rgb3 *light_color);
-t_rgb3	apply_light(t_data *data, t_hit *hit);
+int		light_hit_obj(t_data *data, t_hit *hit, int i);
+t_rgb3	calc_light_color(t_data *data, t_hit *hit, t_vec3 light_direc, int i);
+double	calc_intensity(t_hit *hit, t_vec3 light_direc);
+t_rgb3	apply_light(t_data *data, t_hit *hit, int i);
 
 /* raytracing_sphere_bonus */
 int		check_sphere(t_data *data, double *t, int sp_i, double distance);

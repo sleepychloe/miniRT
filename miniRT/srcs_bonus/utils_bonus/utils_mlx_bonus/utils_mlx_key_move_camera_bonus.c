@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:20:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:49:38 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 05:29:47 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	mlx_move_camera_x(int key, t_data *data)
 {
 	int	flag;
 
-	if (key == KEY_1)
+	if (key == KEY_F1)
 	{
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos,
@@ -24,7 +24,7 @@ void	mlx_move_camera_x(int key, t_data *data)
 		flag = C_MOVE_X_MINUS;
 		data->keep_scene->camera->xyz_pos.x -= CAMERA_MOVE;
 	}
-	if (key == KEY_2)
+	if (key == KEY_F2)
 	{
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos,
@@ -39,7 +39,7 @@ void	mlx_move_camera_y(int key, t_data *data)
 {
 	int	flag;
 
-	if (key == KEY_3)
+	if (key == KEY_F3)
 	{
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos,
@@ -47,7 +47,7 @@ void	mlx_move_camera_y(int key, t_data *data)
 		flag = C_MOVE_Y_MINUS;
 		data->keep_scene->camera->xyz_pos.y -= CAMERA_MOVE;
 	}
-	if (key == KEY_4)
+	if (key == KEY_F4)
 	{
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos,
@@ -62,7 +62,7 @@ void	mlx_move_camera_z(int key, t_data *data)
 {
 	int	flag;
 
-	if (key == KEY_5)
+	if (key == KEY_F5)
 	{
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos,
@@ -70,7 +70,7 @@ void	mlx_move_camera_z(int key, t_data *data)
 		flag = C_MOVE_Z_MINUS;
 		data->keep_scene->camera->xyz_pos.z -= CAMERA_MOVE;
 	}
-	if (key == KEY_6)
+	if (key == KEY_F6)
 	{
 		data->scene->camera->xyz_pos
 			= vec3_add_vec3(data->scene->camera->xyz_pos,
@@ -106,11 +106,11 @@ void	mlx_move_camera_zoom(int key, t_data *data)
 
 void	mlx_move_camera(int key, t_data *data)
 {
-	if (key == KEY_1 || key == KEY_2)
+	if (key == KEY_F1 || key == KEY_F2)
 		mlx_move_camera_x(key, data);
-	if (key == KEY_3 || key == KEY_4)
+	if (key == KEY_F3 || key == KEY_F4)
 		mlx_move_camera_y(key, data);
-	if (key == KEY_5 || key == KEY_6)
+	if (key == KEY_F5 || key == KEY_F6)
 		mlx_move_camera_z(key, data);
 	if (key == KEY_UP || key == KEY_DOWN)
 		mlx_move_camera_zoom(key, data);

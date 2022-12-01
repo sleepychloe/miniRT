@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 07:45:41 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:43:42 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 04:30:03 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_struct_keep_scene_sp(t_scene *keep_scene, t_scene *scene)
 			scene->n_sphere + 1);
 	if (!(keep_scene->sphere))
 	{
-		err_msg("Malloc error\n");
+		err_msg("Malloc error");
 		free_scene(keep_scene);
 		free_scene(scene);
 		exit(1);
@@ -46,7 +46,7 @@ void	init_struct_keep_scene_sp(t_scene *keep_scene, t_scene *scene)
 		keep_scene->sphere[i] = (t_sphere *)ft_calloc(sizeof(t_sphere), 2);
 		if (!(keep_scene->sphere[i]))
 		{
-			err_msg("Malloc error\n");
+			err_msg("Malloc error");
 			free_scene(keep_scene);
 			free_scene(scene);
 			exit(1);
@@ -80,7 +80,7 @@ void	init_struct_keep_scene_pl(t_scene *keep_scene, t_scene *scene)
 			scene->n_plane + 1);
 	if (!(keep_scene->plane))
 	{
-		err_msg("Malloc error\n");
+		err_msg("Malloc error");
 		free_scene(keep_scene);
 		free_scene(scene);
 		exit(1);
@@ -90,7 +90,7 @@ void	init_struct_keep_scene_pl(t_scene *keep_scene, t_scene *scene)
 		keep_scene->plane[i] = (t_plane *)ft_calloc(sizeof(t_plane), 2);
 		if (!(keep_scene->plane[i]))
 		{
-			err_msg("Malloc error\n");
+			err_msg("Malloc error");
 			free_scene(keep_scene);
 			free_scene(scene);
 			exit(1);

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:00:17 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 22:16:37 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 05:37:55 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	int			check;
 	int			err;
 	t_vec3		xyz_pos;
 	double		brightness;
@@ -85,10 +84,11 @@ typedef struct s_scene
 {
 	t_ambient	*ambient;
 	t_camera	*camera;
-	t_light		*light;
+	t_light		**light;
 	t_sphere	**sphere;
 	t_plane		**plane;
 	t_cylinder	**cylinder;
+	int			n_light;
 	int			n_sphere;
 	int			n_plane;
 	int			n_cylinder;
@@ -151,6 +151,7 @@ typedef struct s_data
 	t_ray		*ray;
 	t_hit		*hit;
 	int			n_obj;
+	int			l;
 	int			sp;
 	int			pl;
 	int			cy;

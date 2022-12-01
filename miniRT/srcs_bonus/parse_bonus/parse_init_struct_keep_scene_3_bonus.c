@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 07:58:02 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:43:47 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 04:30:25 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	put_value_keep_scene_cy(t_scene *keep_scene, t_scene *scene)
 void	init_struct_keep_scene_cy_norminette(t_scene *keep_scene,
 				t_scene *scene)
 {
-	err_msg("Malloc error\n");
+	err_msg("Malloc error");
 	free_scene(keep_scene);
 	free_scene(scene);
 }
@@ -46,7 +46,7 @@ void	init_struct_keep_scene_cy(t_scene *keep_scene, t_scene *scene)
 			scene->n_cylinder + 1);
 	if (!(keep_scene->cylinder))
 	{
-		err_msg("Malloc error\n");
+		err_msg("Malloc error");
 		free_scene(keep_scene);
 		free_scene(scene);
 		exit(1);

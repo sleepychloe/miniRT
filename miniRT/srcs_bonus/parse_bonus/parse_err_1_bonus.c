@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 02:18:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:42:56 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 04:41:24 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,25 @@ void	err_check_c(t_scene *scene)
 	}
 }
 
-void	err_check_l(t_scene *scene)
+void	err_check_l(t_scene *scene, int i)
 {
-	if (scene->light->err)
+	if (scene->light[i]->err)
 	{
-		if (scene->light->err == ERR_MALLOC)
+		if (scene->light[i]->err == ERR_MALLOC)
 			err_msg("Map error: L: malloc error");
-		else if (scene->light->err == ERR_IDENTIFIER)
+		else if (scene->light[i]->err == ERR_IDENTIFIER)
 			err_msg("Map error: L: identifier error");
-		else if (scene->light->err == ERR_LINE_TOKEN)
+		else if (scene->light[i]->err == ERR_LINE_TOKEN)
 			err_msg("Map error: L: line token error");
-		else if (scene->light->err == ERR_XYZ_POS_TOKEN)
+		else if (scene->light[i]->err == ERR_XYZ_POS_TOKEN)
 			err_msg("Map error: L: xyz position token error");
-		else if (scene->light->err == ERR_XYZ_POS_VALUE)
+		else if (scene->light[i]->err == ERR_XYZ_POS_VALUE)
 			err_msg("Map error: L: xyz position value error");
-		else if (scene->light->err == ERR_BRIGHTNESS_VALUE)
+		else if (scene->light[i]->err == ERR_BRIGHTNESS_VALUE)
 			err_msg("Map error: L: brightness value error");
-		else if (scene->light->err == ERR_RGB_TOKEN)
+		else if (scene->light[i]->err == ERR_RGB_TOKEN)
 			err_msg("Map error: L: rbg token error");
-		else if (scene->light->err == ERR_RGB_VALUE)
+		else if (scene->light[i]->err == ERR_RGB_VALUE)
 			err_msg("Map error: L: rgb value error");
 	}
 }
@@ -80,14 +80,14 @@ void	err_check_l(t_scene *scene)
 int	check_parse_error(t_scene *scene)
 {
 	if (!(scene->ambient->check) || !(scene->camera->check)
-		|| !(scene->light->check) || !(scene->n_sphere)
+		|| !(scene->n_light) || !(scene->n_sphere)
 		|| !(scene->n_plane) || !(scene->n_cylinder))
 	{
 		if (!(scene->ambient->check))
 			err_msg("Map error: A should exist at least once");
 		else if (!(scene->camera->check))
 			err_msg("Map error: C should exist at least once");
-		else if (!(scene->light->check))
+		else if (!(scene->n_light))
 			err_msg("Map error: L should exist at least once");
 		else if (!(scene->n_sphere))
 			err_msg("Map error: sp should exist at least once");

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:02:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 22:03:35 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 06:49:16 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,17 @@
 # define KEY_F1				0xFFBE
 # define KEY_F2				0xFFBF
 # define KEY_F3				0xFFC0
+# define KEY_F4				0xFFC1
+# define KEY_F5				0xFFC2
+# define KEY_F6				0xFFC3
+# define KEY_F7				0xFFC4
+# define KEY_F8				0xFFC5
+# define KEY_F9				0xFFC6
+
+# define KEY_GRAVE_ACCENT		0x60
+# define KEY_TAB			0xFF09
+# define KEY_CAPSLOCK			0XffE5
+# define KEY_LEFT_SHIFT			0xFFE1
+# define KEY_LEFT_CTRL			0xFFE3
 
 #endif

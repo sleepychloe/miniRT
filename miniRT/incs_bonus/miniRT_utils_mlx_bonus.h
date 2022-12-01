@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:07:49 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 22:36:43 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 08:10:46 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,36 +42,37 @@
 # define L_MOVE_Y_PLUS			13
 # define L_MOVE_Z_MINUS			14
 # define L_MOVE_Z_PLUS			15
+# define L_NEXT				16
 
-# define SP_MOVE_X_MINUS		16
-# define SP_MOVE_X_PLUS			17
-# define SP_MOVE_Y_MINUS		18
-# define SP_MOVE_Y_PLUS			19
-# define SP_MOVE_Z_MINUS		20
-# define SP_MOVE_Z_PLUS			21
-# define SP_NEXT			22
+# define SP_MOVE_X_MINUS		17
+# define SP_MOVE_X_PLUS			18
+# define SP_MOVE_Y_MINUS		19
+# define SP_MOVE_Y_PLUS			20
+# define SP_MOVE_Z_MINUS		21
+# define SP_MOVE_Z_PLUS			22
+# define SP_NEXT			23
 
-# define PL_MOVE_X_MINUS		23
-# define PL_MOVE_X_PLUS			24
-# define PL_MOVE_Y_MINUS		25
-# define PL_MOVE_Y_PLUS			26
-# define PL_MOVE_Z_MINUS		27
-# define PL_MOVE_Z_PLUS			28
-# define PL_ROTATE_X			29
-# define PL_ROTATE_Y			30
-# define PL_ROTATE_Z			31
-# define PL_NEXT			32
+# define PL_MOVE_X_MINUS		24
+# define PL_MOVE_X_PLUS			25
+# define PL_MOVE_Y_MINUS		26
+# define PL_MOVE_Y_PLUS			27
+# define PL_MOVE_Z_MINUS		28
+# define PL_MOVE_Z_PLUS			29
+# define PL_ROTATE_X			30
+# define PL_ROTATE_Y			31
+# define PL_ROTATE_Z			32
+# define PL_NEXT			33
 
-# define CY_MOVE_X_MINUS		33
-# define CY_MOVE_X_PLUS			34
-# define CY_MOVE_Y_MINUS		35
-# define CY_MOVE_Y_PLUS			36
-# define CY_MOVE_Z_MINUS		37
-# define CY_MOVE_Z_PLUS			38
-# define CY_ROTATE_X			39
-# define CY_ROTATE_Y			40
-# define CY_ROTATE_Z			41
-# define CY_NEXT			42
+# define CY_MOVE_X_MINUS		34
+# define CY_MOVE_X_PLUS			35
+# define CY_MOVE_Y_MINUS		36
+# define CY_MOVE_Y_PLUS			37
+# define CY_MOVE_Z_MINUS		38
+# define CY_MOVE_Z_PLUS			39
+# define CY_ROTATE_X			40
+# define CY_ROTATE_Y			41
+# define CY_ROTATE_Z			42
+# define CY_NEXT			43
 
 # include "./miniRT_bonus.h"
 
@@ -79,6 +80,7 @@
 int		mlx_init_window(t_mlx *mlx);
 void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
 int		mlx_exit(t_data *data);
+void	mlx_move_rotate_obj(int key, t_data *data);
 int		mlx_keys(int key, t_data *data);
 
 /* utils_mlx_key_move_camera_bonus */
@@ -162,10 +164,10 @@ void	mlx_rotate_camera_z_axis_set_l(t_data *data,
 			double val_cos, double val_sin);
 
 /* utils_mlx_key_move_light_bonus */
-void	mlx_move_light_x(int key, t_data *data);
-void	mlx_move_light_y(int key, t_data *data);
-void	mlx_move_light_z(int key, t_data *data);
-void	mlx_move_light(int key, t_data *data);
+void	mlx_move_light_x(int key, t_data *data, int i);
+void	mlx_move_light_y(int key, t_data *data, int i);
+void	mlx_move_light_z(int key, t_data *data, int i);
+void	mlx_move_light(int key, t_data *data, int i);
 
 /* utils_mlx_key_move_sphere_bonus */
 void	mlx_move_sphere_x(int key, t_data *data, int i);

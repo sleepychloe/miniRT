@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 02:53:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:52:24 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 08:10:36 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,44 @@ int	mlx_exit(t_data *data)
 	exit (0);
 }
 
+void	mlx_move_rotate_obj(int key, t_data *data)
+{
+	if (key == KEY_TAB || key == KEY_Z || key == KEY_X
+		|| key == KEY_C || key == KEY_V || key == KEY_B || key == KEY_N)
+		mlx_move_sphere(key, data, data->sp);
+	if (key == KEY_CAPSLOCK || key == KEY_A || key == KEY_S
+		|| key == KEY_D || key == KEY_F || key == KEY_G || key == KEY_H)
+		mlx_move_plane(key, data, data->pl);
+	if (key == KEY_J || key == KEY_K || key == KEY_L)
+		mlx_rotate_plane(key, data, data->pl);
+	if (key == KEY_LEFT_SHIFT || key == KEY_Q || key == KEY_W
+		|| key == KEY_E || key == KEY_R || key == KEY_T || key == KEY_Y)
+		mlx_move_cylinder(key, data, data->cy);
+	if (key == KEY_U || key == KEY_I || key == KEY_O)
+		mlx_rotate_cylinder(key, data, data->cy);
+}
+
 int	mlx_keys(int key, t_data *data)
 {
 	if (key == KEY_ESC)
 		mlx_exit(data);
-	if (key == KEY_1 || key == KEY_2 || key == KEY_3 || key == KEY_4
-		|| key == KEY_5 || key == KEY_6 || key == KEY_UP || key == KEY_DOWN)
+	if (key == KEY_F1 || key == KEY_F2 || key == KEY_F3 || key == KEY_F4
+		|| key == KEY_F5 || key == KEY_F6 || key == KEY_UP || key == KEY_DOWN)
 		mlx_move_camera(key, data);
-	if (key == KEY_7 || key == KEY_8 || key == KEY_9)
+	if (key == KEY_F7 || key == KEY_F8 || key == KEY_F9)
 		mlx_rotate_camera(key, data);
-	if (key == KEY_POINT || key == KEY_SLASH
+	if (key == KEY_GRAVE_ACCENT || key == KEY_POINT || key == KEY_SLASH
 		|| key == KEY_SEMICOLON || key == KEY_SINGLE_QUOTE
 		|| key == KEY_SQUARE_BRACKET_LEFT || key == KEY_SQUARE_BRACKET_RIGHT)
-		mlx_move_light(key, data);
-	if (key == KEY_Z || key == KEY_X || key == KEY_C || key == KEY_V
-		|| key == KEY_B || key == KEY_N || key == KEY_F1)
-		mlx_move_sphere(key, data, data->sp);
-	if (key == KEY_A || key == KEY_S || key == KEY_D || key == KEY_F
-		|| key == KEY_G || key == KEY_H || key == KEY_F2)
-		mlx_move_plane(key, data, data->pl);
-	if (key == KEY_J || key == KEY_K || key == KEY_L)
-		mlx_rotate_plane(key, data, data->pl);
-	if (key == KEY_Q || key == KEY_W || key == KEY_E || key == KEY_R
-		|| key == KEY_T || key == KEY_Y || key == KEY_F3)
-		mlx_move_cylinder(key, data, data->cy);
-	if (key == KEY_U || key == KEY_I || key == KEY_O)
-		mlx_rotate_cylinder(key, data, data->cy);
+		mlx_move_light(key, data, data->l);
+	if (key == KEY_TAB || key == KEY_Z || key == KEY_X
+		|| key == KEY_C || key == KEY_V || key == KEY_B || key == KEY_N
+		|| key == KEY_CAPSLOCK || key == KEY_A || key == KEY_S
+		|| key == KEY_D || key == KEY_F || key == KEY_G || key == KEY_H
+		|| key == KEY_J || key == KEY_K || key == KEY_L
+		|| key == KEY_LEFT_SHIFT || key == KEY_Q || key == KEY_W
+		|| key == KEY_E || key == KEY_R || key == KEY_T || key == KEY_Y
+		|| key == KEY_U || key == KEY_I || key == KEY_O)
+		mlx_move_rotate_obj(key, data);
 	return (0);
 }

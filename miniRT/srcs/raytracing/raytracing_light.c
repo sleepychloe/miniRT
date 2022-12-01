@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:04:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 03:30:37 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 07:45:13 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,16 @@ t_rgb3	apply_light(t_data *data, t_hit *hit)
 	t_rgb3	color_applied_light;
 	t_rgb3	light_color;
 	double	light_intensity;
-	int		light;
+	int		light_hit;
 
-	light = calculate_light(data, hit, &light_intensity, &light_color);
-	if (light == 0)
+	light_hit = calculate_light(data, hit, &light_intensity, &light_color);
+	if (light_hit == 0)
 		return (rgb3(0, 0, 0));
 	color_applied_light.r
-		= light * hit->color.r * light_intensity * light_color.r * 10;
+		= light_hit * hit->color.r * light_intensity * light_color.r * 10;
 	color_applied_light.g
-		= light * hit->color.g * light_intensity * light_color.g * 10;
+		= light_hit * hit->color.g * light_intensity * light_color.g * 10;
 	color_applied_light.b
-		= light * hit->color.b * light_intensity * light_color.b * 10;
+		= light_hit * hit->color.b * light_intensity * light_color.b * 10;
 	return (color_applied_light);
 }

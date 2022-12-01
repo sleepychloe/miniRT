@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:57:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:49:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 06:50:58 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	mlx_move_plane(int key, t_data *data, int i)
 		mlx_move_plane_y(key, data, i);
 	if (key == KEY_G || key == KEY_H)
 		mlx_move_plane_z(key, data, i);
-	if (key == KEY_F2)
+	if (key == KEY_CAPSLOCK)
 	{
 		if (data->pl == data->scene->n_plane - 1)
 			data->pl = 0;

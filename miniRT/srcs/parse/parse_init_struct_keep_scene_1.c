@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 07:35:44 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 11:01:40 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 04:28:53 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_struct_keep_scene_a(t_scene *keep_scene, t_scene *scene)
 	keep_scene->ambient = (t_ambient *)ft_calloc(sizeof(t_ambient), 2);
 	if (!(keep_scene->ambient))
 	{
-		err_msg("Malloc error\n");
+		err_msg("Malloc error");
 		free(keep_scene);
 		free_scene(scene);
 		exit(1);
@@ -33,7 +33,7 @@ void	init_struct_keep_scene_c(t_scene *keep_scene, t_scene *scene)
 	keep_scene->camera = (t_camera *)ft_calloc(sizeof(t_camera), 2);
 	if (!(keep_scene->camera))
 	{
-		err_msg("Malloc error\n");
+		err_msg("Malloc error");
 		free(keep_scene->ambient);
 		free(keep_scene);
 		free_scene(scene);
@@ -51,7 +51,7 @@ void	init_struct_keep_scene_l(t_scene *keep_scene, t_scene *scene)
 	keep_scene->light = (t_light *)ft_calloc(sizeof(t_light), 2);
 	if (!(keep_scene->light))
 	{
-		err_msg("Malloc error\n");
+		err_msg("Malloc error");
 		free(keep_scene->ambient);
 		free(keep_scene->camera);
 		free(keep_scene);
