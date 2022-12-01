@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 22:35:57 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 04:02:46 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 /* repeating time for ray tracing */
 # define NUM_SAMPLE			2
-# define NUM_DEPTH			1
+# define NUM_DEPTH			2
 
 /* checking direction of normal vector */
 # define FRONT				1
@@ -60,7 +60,8 @@ t_obj	**init_obj(t_scene *scene);
 void	put_value_obj_sp(t_scene *scene, t_obj **obj);
 void	put_value_obj_pl(t_scene *scene, t_obj **obj);
 void	put_value_obj_cy(t_scene *scene, t_obj **obj);
-void	put_value_obj_pl_dup(t_scene *scene, t_obj **obj, int n_obj);
+void	put_value_obj_pl_dup_1(t_scene *scene, t_obj **obj, int n_obj);
+void	put_value_obj_pl_dup_2(t_scene *scene, t_obj **obj, int n_obj);
 
 /* raytracing_init_struct_rt_bonus */
 void	init_rt(t_scene *scene, t_rt *rt);

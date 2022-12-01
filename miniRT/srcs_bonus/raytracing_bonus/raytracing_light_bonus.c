@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:04:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:47:20 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 03:32:01 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_light_hit_obj(t_data *data, double distance)
 	int	i;
 
 	i = 0;
-	while (i < data->n_obj + data->scene->n_plane)
+	while (i < data->n_obj + data->scene->n_plane + data->scene->n_plane)
 	{
 		if ((!light_hit_sp(data, i, distance)))
 			return (0);
@@ -70,10 +70,10 @@ t_rgb3	apply_light(t_data *data, t_hit *hit)
 	if (light == 0)
 		return (rgb3(0, 0, 0));
 	color_applied_light.r
-		= light * hit->color.r * light_intensity * light_color.r * 100;
+		= light * hit->color.r * light_intensity * light_color.r * 10;
 	color_applied_light.g
-		= light * hit->color.g * light_intensity * light_color.g * 100;
+		= light * hit->color.g * light_intensity * light_color.g * 10;
 	color_applied_light.b
-		= light * hit->color.b * light_intensity * light_color.b * 100;
+		= light * hit->color.b * light_intensity * light_color.b * 10;
 	return (color_applied_light);
 }

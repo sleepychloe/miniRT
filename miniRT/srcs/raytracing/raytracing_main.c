@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 22:48:03 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 03:12:48 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	hittable(t_data *data, t_hit *hit)
 	i = 0;
 	hit_flag = 0;
 	distance = INFINITY;
-	while (i < data->n_obj + data->scene->n_plane)
+	while (i < data->n_obj + data->scene->n_plane + data->scene->n_plane)
 	{
 		if (!(hit_sphere(data, hit, i, distance))
 			|| !(hit_plane(data, hit, i, distance))
@@ -35,16 +35,12 @@ int	hittable(t_data *data, t_hit *hit)
 	return (hit_flag);
 }
 
-t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
+t_rgb3	trace(t_data *data, t_ray ray_set)
 {
 	t_hit	hit;
 	t_rgb3	ambient;
 	t_rgb3	light;
-	t_vec3	target;
-	t_ray	ray_diffuse;
 
-	if (depth <= 0)
-		return (rgb3(0, 0, 0));
 	data->ray = &ray_set;
 	if (hittable(data, &hit))
 	{
@@ -55,11 +51,7 @@ t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
 		ambient.b = (data->scene->ambient->lighting)
 			* (data->scene->ambient->rgb.b) * hit.color.b * 0.001;
 		light = apply_light(data, &hit);
-		target = vec3_add_vec3(vec3_add_vec3(hit.hit_point, hit.normal_vec),
-				random_double_xyz());
-		ray_diffuse = ray(hit.hit_point, vec3_sub_vec3(target, hit.hit_point));
-		return (color_add(color_add(ambient, light),
-				trace(data, ray_diffuse, depth - 1)));
+		return (color_add(ambient, light));
 	}
 	return (rgb3(0, 0, 0));
 }
@@ -85,7 +77,7 @@ void	ray_tracing(t_data *data)
 			s = -1;
 			while (++s < NUM_SAMPLE)
 				color = color_add(color,
-						trace(data, ray_set(data, i, j), NUM_DEPTH));
+						trace(data, ray_set(data, i, j)));
 			color = color_average(color);
 			my_mlx_pixel_put(data->mlx, i, j, color_convert_to_int(color));
 		}

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:20:12 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 22:35:38 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 03:14:40 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 
 /* repeating time for ray tracing */
 # define NUM_SAMPLE			2
-# define NUM_DEPTH			1
 
 /* checking direction of normal vector */
 # define FRONT				1
@@ -37,7 +36,7 @@
 
 /* raytracing_main */
 int		hittable(t_data *data, t_hit *hit);
-t_rgb3	trace(t_data *data, t_ray ray, int depth);
+t_rgb3	trace(t_data *data, t_ray ray);
 void	ray_tracing(t_data *data);
 void	rt_start(t_data *data, int flag);
 void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx);
@@ -60,7 +59,8 @@ t_obj	**init_obj(t_scene *scene);
 void	put_value_obj_sp(t_scene *scene, t_obj **obj);
 void	put_value_obj_pl(t_scene *scene, t_obj **obj);
 void	put_value_obj_cy(t_scene *scene, t_obj **obj);
-void	put_value_obj_pl_dup(t_scene *scene, t_obj **obj, int n_obj);
+void	put_value_obj_pl_dup_1(t_scene *scene, t_obj **obj, int n_obj);
+void	put_value_obj_pl_dup_2(t_scene *scene, t_obj **obj, int n_obj);
 
 /* raytracing_init_struct_rt */
 void	init_rt(t_scene *scene, t_rt *rt);

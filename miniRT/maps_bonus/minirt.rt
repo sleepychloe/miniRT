@@ -1,0 +1,48 @@
+############################################################################
+## ambient : declare only once                                            ##
+##       A  lighting   r,g,b                                              ##
+##                                                                        ##
+## camera  : declare only once                                            ##
+##       C  pos(x,y,z) vec(x,y,z) fov                                     ##
+##                                                                        ##
+## light   : you can declare light multiple times                         ##
+##       L  pos(x,y,z) brightness r,g,b                                   ##
+##                                                                        ##
+## object  : you can declare light multiple times                         ##
+##   sphere                                                               ##
+##       sp pos(x,y,z)            diameter         color  fuzz  meterial  ##
+##   plane                                                                ##
+##       pl pos(x,y,z) vec(x,y,z)                  color  fuzz  meterial  ##
+##   cylinder                                                             ##
+##       cy pos(x,y,z) vec(x,y,z) diameter height  color  fuzz  meterial  ##
+##   cone                                                                 ##
+##       co pos(x,y,z) vec(x,y,z) diameter height  color  fuzz  meterial  ##
+############################################################################
+## object information                                                      ##
+##    c_flag,r,g,b,r,g,b                                                   ##
+##       (single_color) S,100,100,100,(r,g,b)                              ##
+##       (checkerboard) C,255,255,255,100,100,100(r1,g1,b1,r2,g2,b2)       ##
+##       (bpm_image)    B,path_of_the_image                                ##
+##    fuzz                                                                 ##
+##       range : [0.0,1.0]                                                 ##
+##    meterial                                                             ##
+##       (lambertian) L                                                    ##
+##       (metal)      M                                                    ##
+#############################################################################
+A    0.5           255,255,255
+C    0,1.5,10      0,0,-1        50
+L    0,6,3         0.05           255,255,255
+#L    15,15,15      0.25          0,255,255
+#sp   0,2.9,0                          2.0     S,105,95,160,0,0,0      0.5     L
+#pl   0,0,0         0,0,1                      S,255,255,255,0,0,0     0       L
+#pl   0,-0.1,0      0,1,0                      S,125,135,150,0,0,0     0       L
+#cy   0,0.9,0       0,1,0      2.0     2.0     S,160,70,80,0,0,0       1       L
+#co   2,0.9,0     0,1,0      2.0     2.0       S,160,70,80,0,0,0       0.5     L
+sp   0,2.9,0       2.0           105,95,160
+sp   -1.5,0.65,2   1.5           50,125,80
+sp   1.5,0.65,2    1.5           160,70,80
+pl   0,0,-3        0,0,1         255,255,255
+pl   0,-0.1,0      0,1,0         255,255,255
+pl   -3,0,0        1,0,0         255,255,255
+pl   3,0,0         1,0,0         255,255,255
+cy   0,0.9,0       0,1,0         2.0          2.0         160,70,80

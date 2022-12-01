@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:47:25 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 04:03:32 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	hittable(t_data *data, t_hit *hit)
 	i = 0;
 	hit_flag = 0;
 	distance = INFINITY;
-	while (i < data->n_obj + data->scene->n_plane)
+	while (i < data->n_obj + data->scene->n_plane + data->scene->n_plane)
 	{
 		if (!(hit_sphere(data, hit, i, distance))
 			|| !(hit_plane(data, hit, i, distance))
@@ -57,9 +57,14 @@ t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
 		light = apply_light(data, &hit);
 		target = vec3_add_vec3(vec3_add_vec3(hit.hit_point, hit.normal_vec),
 				random_double_xyz());
+		if (vec3_dot_vec3(target, hit.normal_vec) < 0)
+			target = vec3_add_vec3(vec3_add_vec3(hit.hit_point, hit.normal_vec),
+					vec3_mul_rn(hit.normal_vec, 1.0));
 		ray_diffuse = ray(hit.hit_point, vec3_sub_vec3(target, hit.hit_point));
 		return (color_add(color_add(ambient, light),
-				trace(data, ray_diffuse, depth - 1)));
+				rgb3(trace(data, ray_diffuse, depth - 1).r * 0.1,
+					trace(data, ray_diffuse, depth - 1).g * 0.1,
+					trace(data, ray_diffuse, depth - 1).b * 0.1)));
 	}
 	return (rgb3(0, 0, 0));
 }
