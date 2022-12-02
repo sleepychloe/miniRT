@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/02 00:53:01 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 06:12:57 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,10 @@ void	init_rt(t_scene *scene, t_rt *rt);
 t_ray	ray(t_vec3 point, t_vec3 direc);
 t_ray	ray_set(t_data *data, double u, double v);
 
-/* raytracing_light_bonus */    ////////
+/* raytracing_light_bonus */
 int		check_light_hit_obj(t_data *data, double distance);
 int		light_hit_obj(t_data *data, t_hit *hit, int i);
+double	calc_specular(double *light_intensity);
 t_rgb3	calc_light_color(t_data *data, t_hit *hit, t_vec3 light_direc, int i);
 t_rgb3	apply_light(t_data *data, t_hit *hit);
 
