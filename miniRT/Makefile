@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/12/02 01:51:16 by yhwang           ###   ########.fr        #
+#    Updated: 2022/12/02 02:24:14 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -213,8 +213,6 @@ fclean: clean
 	make fclean -C $(LIBFT_DIR)
 	$(RM) $(NAME) $(NAME_B)
 
-re: fclean all
+re: fclean all bonus
 
-bonusre : fclean bonus
-
-.PHONY: all, bonus, clean, fclean, re, bonusre
+.PHONY: all, bonus, clean, fclean, re
