@@ -6,11 +6,21 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:14:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 08:12:07 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 00:41:56 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/miniRT.h"
+
+void	minirt_main_norminette(t_scene *scene, t_scene *keep_scene)
+{
+	if (!keep_scene)
+	{
+		err_msg("Malloc error");
+		free_scene(scene);
+		exit(1);
+	}
+}
 
 int	minirt_main(char **argv)
 {
@@ -19,8 +29,7 @@ int	minirt_main(char **argv)
 	t_mlx	mlx;
 
 	scene = (t_scene *)ft_calloc(sizeof(t_scene), 2);
-	keep_scene = (t_scene *)ft_calloc(sizeof(t_scene), 2);
-	if (!scene || !keep_scene)
+	if (!scene)
 	{
 		err_msg("Malloc error");
 		exit(1);
@@ -33,7 +42,9 @@ int	minirt_main(char **argv)
 		free_scene(scene);
 		exit(1);
 	}
+	keep_scene = (t_scene *)ft_calloc(sizeof(t_scene), 2);
 	init_struct_keep_scene(keep_scene, scene);
+	minirt_main_norminette(scene, keep_scene);
 	raytracing_main(scene, keep_scene, &mlx);
 	free_scene(scene);
 	free_scene(keep_scene);

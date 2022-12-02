@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 07:35:44 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 04:48:26 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 00:10:23 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ void	init_struct_keep_scene(t_scene *keep_scene, t_scene *scene)
 	init_struct_keep_scene_sp(keep_scene, scene);
 	init_struct_keep_scene_pl(keep_scene, scene);
 	init_struct_keep_scene_cy(keep_scene, scene);
+	init_struct_keep_scene_co(keep_scene, scene);
 }

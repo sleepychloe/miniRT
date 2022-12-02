@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 04:08:42 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 06:51:05 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 01:53:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	mlx_move_cylinder(int key, t_data *data, int i)
 		mlx_move_cylinder_y(key, data, i);
 	if (key == KEY_T || key == KEY_Y)
 		mlx_move_cylinder_z(key, data, i);
-	if (key == KEY_LEFT_SHIFT)
+	if (key == KEY_TAB)
 	{
 		if (data->cy == data->scene->n_cylinder - 1)
 			data->cy = 0;

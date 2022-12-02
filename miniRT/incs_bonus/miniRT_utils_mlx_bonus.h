@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:07:49 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 08:10:46 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 01:50:53 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,17 @@
 # define CY_ROTATE_Z			42
 # define CY_NEXT			43
 
+# define CO_MOVE_X_MINUS		44
+# define CO_MOVE_X_PLUS			45
+# define CO_MOVE_Y_MINUS		46
+# define CO_MOVE_Y_PLUS			47
+# define CO_MOVE_Z_MINUS		48
+# define CO_MOVE_Z_PLUS			49
+# define CO_ROTATE_X			50
+# define CO_ROTATE_Y			51
+# define CO_ROTATE_Z			52
+# define CO_NEXT			53
+
 # include "./miniRT_bonus.h"
 
 /* utils_mlx_bonus */
@@ -128,6 +139,10 @@ void	mlx_rotate_camera_x_axis_set_cy_vec(t_data *data,
 			double val_cos, double val_sin, int i);
 void	mlx_rotate_camera_x_axis_set_cy(t_data *data,
 			double val_cos, double val_sin);
+void	mlx_rotate_camera_x_axis_set_co_vec(t_data *data,
+			double val_cos, double val_sin, int i);
+void	mlx_rotate_camera_x_axis_set_co(t_data *data,
+			double val_cos, double val_sin);
 void	mlx_rotate_camera_x_axis_set_l(t_data *data,
 			double val_cos, double val_sin);
 
@@ -144,6 +159,10 @@ void	mlx_rotate_camera_y_axis_set_cy_vec(t_data *data,
 			double val_cos, double val_sin, int i);
 void	mlx_rotate_camera_y_axis_set_cy(t_data *data,
 			double val_cos, double val_sin);
+void	mlx_rotate_camera_y_axis_set_co_vec(t_data *data,
+			double val_cos, double val_sin, int i);
+void	mlx_rotate_camera_y_axis_set_co(t_data *data,
+			double val_cos, double val_sin);
 void	mlx_rotate_camera_y_axis_set_l(t_data *data,
 			double val_cos, double val_sin);
 
@@ -159,6 +178,10 @@ void	mlx_rotate_camera_z_axis_set_pl(t_data *data,
 void	mlx_rotate_camera_z_axis_set_cy_vec(t_data *data,
 			double val_cos, double val_sin, int i);
 void	mlx_rotate_camera_z_axis_set_cy(t_data *data,
+			double val_cos, double val_sin);
+void	mlx_rotate_camera_z_axis_set_co_vec(t_data *data,
+			double val_cos, double val_sin, int i);
+void	mlx_rotate_camera_z_axis_set_co(t_data *data,
 			double val_cos, double val_sin);
 void	mlx_rotate_camera_z_axis_set_l(t_data *data,
 			double val_cos, double val_sin);
@@ -213,6 +236,26 @@ void	mlx_rotate_cylinder_x_axis_set_keep_scene(t_data *data, int i,
 void	mlx_rotate_cylinder_y_axis_set_keep_scene(t_data *data, int i,
 			double val_cos, double val_sin);
 void	mlx_rotate_cylinder_z_axis_set_keep_scene(t_data *data, int i,
+			double val_cos, double val_sin);
+
+/* utils_mlx_key_move_cone_bonus */
+void	mlx_move_cone_x(int key, t_data *data, int i);
+void	mlx_move_cone_y(int key, t_data *data, int i);
+void	mlx_move_cone_z(int key, t_data *data, int i);
+void	mlx_move_cone(int key, t_data *data, int i);
+
+/* utils_mlx_key_rotate_cone_1_bonus */
+void	mlx_rotate_cone_x_axis(t_data *data, int flag, int i);
+void	mlx_rotate_cone_y_axis(t_data *data, int flag, int i);
+void	mlx_rotate_cone_z_axis(t_data *data, int flag, int i);
+void	mlx_rotate_cone(int key, t_data *data, int i);
+
+/* utils_mlx_key_rotate_cone_2_bonus */
+void	mlx_rotate_cone_x_axis_set_keep_scene(t_data *data, int i,
+			double val_cos, double val_sin);
+void	mlx_rotate_cone_y_axis_set_keep_scene(t_data *data, int i,
+			double val_cos, double val_sin);
+void	mlx_rotate_cone_z_axis_set_keep_scene(t_data *data, int i,
 			double val_cos, double val_sin);
 
 #endif

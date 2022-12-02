@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 03:38:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 06:56:50 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 01:55:49 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	show_guide_4(void)
 {
 	printf("║ %sF8%s   ║ rotate: y axis, -%d°   ║", BLUE, B, ROTATE_ANGLE);
 	printf(" %sESC%s  ║ exit                   ║", BLUE, B);
-	printf(" %sTAB%s  ║ show info: sphere +1   ║", BLUE, B);
+	printf(" %sL_S%s  ║ show info: sphere +1   ║", BLUE, B);
 	printf(" %sK%s    ║ rotate: y axis, -%d°   ║", BLUE, B, ROTATE_ANGLE);
 	printf(" %sI%s    ║ rotate: y axis, -%d°   ║\n", BLUE, B, ROTATE_ANGLE);
 	printf("║ %sF9%s   ║ rotate: z axis, -%d°   ║", BLUE, B, ROTATE_ANGLE);
@@ -98,7 +98,7 @@ void	show_guide_4(void)
 	printf(" %sO%s    ║ rotate: z axis, -%d°   ║\n", BLUE, B, ROTATE_ANGLE);
 	printf("║      ║                        ║");
 	printf(" %sDOWN%s ║ zoom out               ║", BLUE, B);
-	printf(" %sL_S%s  ║ show info: cylinder +1 ║", BLUE, B);
+	printf(" %sTAB%s  ║ show info: cylinder +1 ║", BLUE, B);
 	printf("      ║                        ║");
 	printf("      ║                        ║\n");
 	printf("╚══════╩════════════════════════╩");

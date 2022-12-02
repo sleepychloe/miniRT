@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0002/01/18 19:05:39 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 04:28:04 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 00:33:08 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,28 @@ void	init_struct_scene_cy(t_scene *scene, int i)
 	}
 	scene->cylinder[i] = (t_cylinder *)ft_calloc(sizeof(t_cylinder), 2);
 	if (!(scene->cylinder[i]))
+	{
+		err_msg("Malloc error");
+		free_scene(scene);
+		exit(1);
+	}
+}
+
+void	init_struct_scene_co(t_scene *scene, int i)
+{
+	if (i == 0)
+		scene->cone = (t_cone **)ft_calloc(sizeof(t_cone *), 2);
+	if (i > 0)
+		scene->cone = (t_cone **)ft_realloc(scene->cone,
+				sizeof(t_cone *) * (i + 1), sizeof(t_cone *) * (i + 2));
+	if (!(scene->cone))
+	{
+		err_msg("Malloc error");
+		free_scene(scene);
+		exit(1);
+	}
+	scene->cone[i] = (t_cone *)ft_calloc(sizeof(t_cone), 2);
+	if (!(scene->cone[i]))
 	{
 		err_msg("Malloc error");
 		free_scene(scene);

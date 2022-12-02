@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:42:01 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 06:50:30 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 01:53:20 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	mlx_move_light(int key, t_data *data, int i)
 		mlx_move_light_y(key, data, i);
 	if (key == KEY_SQUARE_BRACKET_LEFT || key == KEY_SQUARE_BRACKET_RIGHT)
 		mlx_move_light_z(key, data, i);
-	if (key == KEY_GRAVE_ACCENT)
+	if (key == KEY_LEFT_CTRL)
 	{
 		if (data->l == data->scene->n_light - 1)
 			data->l = 0;

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:09:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 08:06:50 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 10:23:16 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,12 @@ double	vec3_dot_vec3(t_vec3 v1, t_vec3 v2);
 double	vec3_length(t_vec3 v);
 t_vec3	vec3_unit(t_vec3 v);
 
-/* utils_color_bonus */
+/* utils_color_bonus_1 */
 t_rgb3	rgb3(double r, double g, double b);
 t_rgb3	color_add(t_rgb3 c1, t_rgb3 c2);
+t_rgb3	color_mul_rn(t_rgb3 c, double rn);
+
+/* utils_color_bonus_2 */
 double	color_clamp(double c);
 t_rgb3	color_average(t_rgb3 c);
 int		color_convert_to_int(t_rgb3 rgb);

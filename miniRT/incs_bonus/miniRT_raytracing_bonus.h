@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 07:59:02 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 00:53:01 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define SPHERE				1
 # define PLANE				2
 # define CYLINDER			3
+# define CONE				4
 
 /* num for math */
 # define PI				3.14159265359
@@ -42,10 +43,11 @@ void	init_struct_data(t_data *data, t_scene *scene,
 			t_scene *keep_scene, t_mlx *mlx);
 void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx);
 
-/* raytracing_trace_bonus */
+/* raytracing_trace_bonus */  //////
 int		hittable(t_data *data, t_hit *hit);
 t_rgb3	calc_ambient(t_data *data, t_hit *hit);
 t_rgb3	calc_diffuse(t_data *data, t_hit *hit, int *depth);
+t_vec3	calc_perfect_reflected_direc(t_hit *hit, t_vec3 reflecting_ray_direc);
 t_rgb3	trace(t_data *data, t_ray ray, int depth);
 
 /* raytracing_set_camera_1_bonus */
@@ -59,6 +61,8 @@ void	camera_vec_zero_minusone_zero(t_data *data);
 void	camera_vec_zero_plusone_zero(t_data *data);
 
 /* raytracing_init_struct_obj_1_bonus */
+void	put_value_obj_pl_dup_1(t_scene *scene, t_obj **obj, int n_obj);
+void	put_value_obj_pl_dup_2(t_scene *scene, t_obj **obj, int n_obj);
 void	norminette_init_obj(t_scene *scene, t_obj **obj, int n_obj);
 t_obj	**init_obj(t_scene *scene);
 
@@ -66,8 +70,7 @@ t_obj	**init_obj(t_scene *scene);
 void	put_value_obj_sp(t_scene *scene, t_obj **obj);
 void	put_value_obj_pl(t_scene *scene, t_obj **obj);
 void	put_value_obj_cy(t_scene *scene, t_obj **obj);
-void	put_value_obj_pl_dup_1(t_scene *scene, t_obj **obj, int n_obj);
-void	put_value_obj_pl_dup_2(t_scene *scene, t_obj **obj, int n_obj);
+void	put_value_obj_co(t_scene *scene, t_obj **obj);
 
 /* raytracing_init_struct_rt_bonus */
 void	init_rt(t_scene *scene, t_rt *rt);
@@ -76,12 +79,11 @@ void	init_rt(t_scene *scene, t_rt *rt);
 t_ray	ray(t_vec3 point, t_vec3 direc);
 t_ray	ray_set(t_data *data, double u, double v);
 
-/* raytracing_light_bonus */
+/* raytracing_light_bonus */    ////////
 int		check_light_hit_obj(t_data *data, double distance);
 int		light_hit_obj(t_data *data, t_hit *hit, int i);
 t_rgb3	calc_light_color(t_data *data, t_hit *hit, t_vec3 light_direc, int i);
-double	calc_intensity(t_hit *hit, t_vec3 light_direc);
-t_rgb3	apply_light(t_data *data, t_hit *hit, int i);
+t_rgb3	apply_light(t_data *data, t_hit *hit);
 
 /* raytracing_sphere_bonus */
 int		check_sphere(t_data *data, double *t, int sp_i, double distance);

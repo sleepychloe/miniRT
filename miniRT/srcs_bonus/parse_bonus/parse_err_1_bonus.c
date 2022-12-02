@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 02:18:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 04:41:24 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 00:08:06 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	check_parse_error(t_scene *scene)
 {
 	if (!(scene->ambient->check) || !(scene->camera->check)
 		|| !(scene->n_light) || !(scene->n_sphere)
-		|| !(scene->n_plane) || !(scene->n_cylinder))
+		|| !(scene->n_plane) || !(scene->n_cylinder) || !(scene->n_cone))
 	{
 		if (!(scene->ambient->check))
 			err_msg("Map error: A should exist at least once");
@@ -95,6 +95,8 @@ int	check_parse_error(t_scene *scene)
 			err_msg("Map error: pl should exist at least once");
 		else if (!(scene->n_cylinder))
 			err_msg("Map error: cy should exist at least once");
+		else if (!(scene->n_cone))
+			err_msg("Map error: co should exist at least once");
 		return (1);
 	}
 	return (0);

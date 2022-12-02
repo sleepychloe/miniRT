@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/12/01 07:28:06 by yhwang           ###   ########.fr        #
+#    Updated: 2022/12/02 01:51:16 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,11 +120,15 @@ FILES_B = $(SRCS_B_DIR)main_bonus \
 		$(SRCS_B_PARSE_DIR)parse_cylinder_1_bonus \
 		$(SRCS_B_PARSE_DIR)parse_cylinder_2_bonus \
 		$(SRCS_B_PARSE_DIR)parse_cylinder_3_bonus \
+		$(SRCS_B_PARSE_DIR)parse_cone_1_bonus \
+		$(SRCS_B_PARSE_DIR)parse_cone_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_cone_3_bonus \
 		$(SRCS_B_PARSE_DIR)parse_err_1_bonus \
 		$(SRCS_B_PARSE_DIR)parse_err_2_bonus \
 		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_1_bonus \
 		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_2_bonus \
 		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_3_bonus \
+		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_4_bonus \
 		$(SRCS_B_PARSE_DIR)parse_utils_bonus \
 		$(SRCS_B_RT_DIR)raytracing_main_bonus \
 		$(SRCS_B_RT_DIR)raytracing_trace_bonus \
@@ -159,10 +163,14 @@ FILES_B = $(SRCS_B_DIR)main_bonus \
 		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_move_cylinder_bonus \
 		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_cylinder_1_bonus \
 		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_cylinder_2_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_move_cone_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_cone_1_bonus \
+		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_cone_2_bonus \
 		$(SRCS_B_UTILS_DIR)utils_free_bonus \
 		$(SRCS_B_UTILS_DIR)utils_vec3_1_bonus \
 		$(SRCS_B_UTILS_DIR)utils_vec3_2_bonus \
-		$(SRCS_B_UTILS_DIR)utils_color_bonus \
+		$(SRCS_B_UTILS_DIR)utils_color_1_bonus \
+		$(SRCS_B_UTILS_DIR)utils_color_2_bonus \
 		$(SRCS_B_UTILS_DIR)utils_random_bonus \
 		$(SRCS_B_UTILS_DIR)utils_msg_1_bonus \
 		$(SRCS_B_UTILS_DIR)utils_msg_2_bonus \

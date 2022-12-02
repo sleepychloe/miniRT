@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:20:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 05:31:51 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 01:31:58 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	mlx_rotate_camera_x_axis(t_data *data, int flag,
 	mlx_rotate_camera_x_axis_set_sp(data, val_cos, val_sin);
 	mlx_rotate_camera_x_axis_set_pl(data, val_cos, val_sin);
 	mlx_rotate_camera_x_axis_set_cy(data, val_cos, val_sin);
+	mlx_rotate_camera_x_axis_set_co(data, val_cos, val_sin);
 	mlx_rotate_camera_x_axis_set_l(data, val_cos, val_sin);
 	data->scene->camera->xyz_vec
 		= vec3(1 * data->scene->camera->xyz_vec.x
@@ -43,6 +44,7 @@ void	mlx_rotate_camera_y_axis(t_data *data, int flag,
 	mlx_rotate_camera_y_axis_set_sp(data, val_cos, val_sin);
 	mlx_rotate_camera_y_axis_set_pl(data, val_cos, val_sin);
 	mlx_rotate_camera_y_axis_set_cy(data, val_cos, val_sin);
+	mlx_rotate_camera_y_axis_set_co(data, val_cos, val_sin);
 	mlx_rotate_camera_y_axis_set_l(data, val_cos, val_sin);
 	data->scene->camera->xyz_vec
 		= vec3(val_cos * data->scene->camera->xyz_vec.x
@@ -68,6 +70,7 @@ void	mlx_rotate_camera_z_axis(t_data *data, int flag,
 	mlx_rotate_camera_z_axis_set_sp(data, val_cos, val_sin);
 	mlx_rotate_camera_z_axis_set_pl(data, val_cos, val_sin);
 	mlx_rotate_camera_z_axis_set_cy(data, val_cos, val_sin);
+	mlx_rotate_camera_z_axis_set_co(data, val_cos, val_sin);
 	mlx_rotate_camera_z_axis_set_l(data, val_cos, val_sin);
 	data->scene->camera->xyz_vec
 		= vec3(val_cos * data->scene->camera->xyz_vec.x

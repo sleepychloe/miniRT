@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 07:32:03 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 01:02:00 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	rt_start(t_data *data, int flag)
 		data->mlx->img_ptr, 0, 0);
 	show_guide();
 	print_scene_info(data, data->keep_scene, flag);
+	(void)flag;
 }
 
 void	init_struct_data(t_data *data, t_scene *scene,
@@ -62,11 +63,13 @@ void	init_struct_data(t_data *data, t_scene *scene,
 	data->keep_scene = keep_scene;
 	data->scene = scene;
 	data->mlx = mlx;
-	data->n_obj = scene->n_sphere + scene->n_plane + scene->n_cylinder;
+	data->n_obj = scene->n_sphere + scene->n_plane
+		+ scene->n_cylinder + scene->n_cone;
 	data->l = 0;
 	data->sp = 0;
 	data->pl = 0;
 	data->cy = 0;
+	data->co = 0;
 	data->x_normal = vec3(1, 0, 0);
 	data->y_normal = vec3(0, 1, 0);
 	data->z_normal = vec3(0, 0, 1);
@@ -81,6 +84,7 @@ void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx)
 	{
 		err_msg("mlx init error");
 		free_scene(scene);
+		free_scene(keep_scene);
 		exit (1);
 	}
 	if (data.keep_scene->camera->xyz_vec.z != -1)

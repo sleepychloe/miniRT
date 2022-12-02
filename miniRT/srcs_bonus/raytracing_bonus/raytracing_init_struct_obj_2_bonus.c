@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 22:50:12 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 03:01:15 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 00:52:34 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,42 +66,21 @@ void	put_value_obj_cy(t_scene *scene, t_obj **obj)
 	}
 }
 
-void	put_value_obj_pl_dup_1(t_scene *scene, t_obj **obj, int n_obj)
+void	put_value_obj_co(t_scene *scene, t_obj **obj)
 {
 	int	i;
+	int	n;
 
 	i = 0;
-	while (i < scene->n_plane)
+	n = scene->n_sphere + scene->n_plane + scene->n_cylinder;
+	while (i < scene->n_cone)
 	{
-		obj[n_obj + i]->obj_type = PLANE;
-		obj[n_obj + i]->xyz_pos = scene->plane[i]->xyz_pos;
-		obj[n_obj + i]->xyz_vec = scene->plane[i]->xyz_vec;
-		obj[n_obj + i]->rgb = scene->plane[i]->rgb;
-		obj[n_obj + i]->xyz_pos = vec3_add_vec3(scene->plane[i]->xyz_pos,
-				vec3_mul_rn(scene->plane[i]->xyz_vec, 1e-10));
-		obj[n_obj + i]->xyz_vec.x *= -1;
-		obj[n_obj + i]->xyz_vec.y *= -1;
-		obj[n_obj + i]->xyz_vec.z *= -1;
-		i++;
-	}
-}
-
-void	put_value_obj_pl_dup_2(t_scene *scene, t_obj **obj, int n_obj)
-{
-	int	i;
-
-	i = 0;
-	while (i < scene->n_plane)
-	{
-		obj[n_obj + i]->obj_type = PLANE;
-		obj[n_obj + i]->xyz_pos = scene->plane[i]->xyz_pos;
-		obj[n_obj + i]->xyz_vec = scene->plane[i]->xyz_vec;
-		obj[n_obj + i]->rgb = scene->plane[i]->rgb;
-		obj[n_obj + i]->xyz_pos = vec3_sub_vec3(scene->plane[i]->xyz_pos,
-				vec3_mul_rn(scene->plane[i]->xyz_vec, 1e-10));
-		obj[n_obj + i]->xyz_vec.x *= -1;
-		obj[n_obj + i]->xyz_vec.y *= -1;
-		obj[n_obj + i]->xyz_vec.z *= -1;
+		obj[n + i]->obj_type = CONE;
+		obj[n + i]->xyz_pos = scene->cone[i]->xyz_pos;
+		obj[n + i]->xyz_vec = scene->cone[i]->xyz_vec;
+		obj[n + i]->diameter = scene->cone[i]->diameter;
+		obj[n + i]->height = scene->cone[i]->height;
+		obj[n + i]->rgb = scene->cone[i]->rgb;
 		i++;
 	}
 }

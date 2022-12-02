@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:04:42 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 04:48:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 00:32:32 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	init_struct_scene(t_scene *scene);
 void	init_struct_scene_sp(t_scene *scene, int i);
 void	init_struct_scene_pl(t_scene *scene, int i);
 void	init_struct_scene_cy(t_scene *scene, int i);
+void	init_struct_scene_co(t_scene *scene, int i);
 
 /* parse_arg_bonus */
 int		check_extention(char *str);
@@ -131,6 +132,23 @@ int		parse_cy_xyz_vec(t_scene *scene, int i, char ***s);
 int		check_value_cy_rgb(t_scene *scene, int i, char **rgb);
 int		parse_cy_rgb(t_scene *scene, int i, char ***s);
 
+/* parse_cone_1_bonus */
+int		parse_co_token(t_scene *scene, int i, char ***s);
+int		check_value_co_xyz_pos(t_scene *scene, int i, char **xyz_pos);
+int		parse_co_xyz_pos(t_scene *scene, int i, char ***s);
+int		parse_co_norminette(t_scene *scene, int i, char ***s);
+int		parse_co(t_scene *scene, char **line);
+
+/* parse_cone_2_bonus */
+int		parse_co_diameter(t_scene *scene, int i, char ***s);
+int		parse_co_height(t_scene *scene, int i, char ***s);
+int		check_value_co_xyz_vec(t_scene *scene, int i, char **xyz_vec);
+int		parse_co_xyz_vec(t_scene *scene, int i, char ***s);
+
+/* parse_cone_3_bonus */
+int		check_value_co_rgb(t_scene *scene, int i, char **rgb);
+int		parse_co_rgb(t_scene *scene, int i, char ***s);
+
 /* parse_err_1_bonus */
 void	err_check_a(t_scene *scene);
 void	err_check_c(t_scene *scene);
@@ -141,6 +159,7 @@ int		check_parse_error(t_scene *scene);
 void	err_check_sp(t_scene *scene, int i);
 void	err_check_pl(t_scene *scene, int i);
 void	err_check_cy(t_scene *scene, int i);
+void	err_check_co(t_scene *scene, int i);
 
 /* parse_init_struct_keep_scene_1_bonus */
 void	init_struct_keep_scene_a(t_scene *keep_scene, t_scene *scene);
@@ -160,6 +179,12 @@ void	put_value_keep_scene_cy(t_scene *keep_scene, t_scene *scene);
 void	init_struct_keep_scene_cy_norminette(t_scene *keep_scene,
 			t_scene *scene);
 void	init_struct_keep_scene_cy(t_scene *keep_scene, t_scene *scene);
+
+/* parse_init_struct_keep_scene_4_bonus */
+void	put_value_keep_scene_co(t_scene *keep_scene, t_scene *scene);
+void	init_struct_keep_scene_co_norminette(t_scene *keep_scene,
+			t_scene *scene);
+void	init_struct_keep_scene_co(t_scene *keep_scene, t_scene *scene);
 
 /* parse_utils_bonus */
 void	err_msg(char *str);

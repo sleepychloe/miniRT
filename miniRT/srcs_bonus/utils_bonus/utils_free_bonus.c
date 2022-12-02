@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 23:58:07 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 04:25:32 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/01 23:53:26 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ void	free_scene(t_scene *scene)
 	while (scene->cylinder[i])
 		free(scene->cylinder[i++]);
 	free(scene->cylinder);
+	i = 0;
+	while (scene->cone[i])
+		free(scene->cone[i++]);
+	free(scene->cone);
 	free(scene);
 }
 

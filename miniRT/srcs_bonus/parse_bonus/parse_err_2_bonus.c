@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:09:02 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:43:02 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 00:09:41 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,34 @@ void	err_check_cy(t_scene *scene, int i)
 			map_err_i(i + 1, "cy", "rbg token error");
 		else if (scene->cylinder[i]->err == ERR_RGB_VALUE)
 			map_err_i(i + 1, "cy", "rgb value error");
+	}
+}
+
+void	err_check_co(t_scene *scene, int i)
+{
+	if (scene->cone[i]->err)
+	{
+		if (scene->cone[i]->err == ERR_MALLOC)
+			map_err_i(i + 1, "co", "malloc error");
+		else if (scene->cone[i]->err == ERR_IDENTIFIER)
+			map_err_i(i + 1, "co", "identifier error");
+		else if (scene->cone[i]->err == ERR_LINE_TOKEN)
+			map_err_i(i + 1, "co", "line token error");
+		else if (scene->cone[i]->err == ERR_XYZ_POS_TOKEN)
+			map_err_i(i + 1, "co", "xyz position token error");
+		else if (scene->cone[i]->err == ERR_XYZ_POS_VALUE)
+			map_err_i(i + 1, "co", "xyz position value error");
+		else if (scene->cone[i]->err == ERR_XYZ_VEC_TOKEN)
+			map_err_i(i + 1, "co", "xyz normalized vector token error");
+		else if (scene->cone[i]->err == ERR_XYZ_VEC_VALUE)
+			map_err_i(i + 1, "co", "xyz normalized vector value error");
+		else if (scene->cone[i]->err == ERR_DIAMETER_VALUE)
+			map_err_i(i + 1, "co", "diameter value error");
+		else if (scene->cone[i]->err == ERR_HEIGHT_VALUE)
+			map_err_i(i + 1, "co", "height value error");
+		else if (scene->cone[i]->err == ERR_RGB_TOKEN)
+			map_err_i(i + 1, "co", "rbg token error");
+		else if (scene->cone[i]->err == ERR_RGB_VALUE)
+			map_err_i(i + 1, "co", "rgb value error");
 	}
 }

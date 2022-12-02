@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:53:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:44:28 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 00:32:12 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int	check_id(t_scene *scene, char **line)
 		err = parse_pl(scene, line);
 	else if (ft_strncmp(*line, "cy", 2) == 0)
 		err = parse_cy(scene, line);
+	else if (ft_strncmp(*line, "co", 2) == 0)
+		err = parse_co(scene, line);
 	else
 		return (9);
 	return (err);

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 03:12:48 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 00:57:58 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx)
 	{
 		err_msg("mlx init error");
 		free_scene(scene);
+		free_scene(keep_scene);
 		exit (1);
 	}
 	if (data.keep_scene->camera->xyz_vec.z != -1)

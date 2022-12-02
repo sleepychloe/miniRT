@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 03:49:41 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 06:50:50 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/02 01:53:02 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	mlx_move_sphere(int key, t_data *data, int i)
 		mlx_move_sphere_y(key, data, i);
 	if (key == KEY_B || key == KEY_N)
 		mlx_move_sphere_z(key, data, i);
-	if (key == KEY_TAB)
+	if (key == KEY_LEFT_SHIFT)
 	{
 		if (data->sp == data->scene->n_sphere - 1)
 			data->sp = 0;
