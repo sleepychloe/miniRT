@@ -1,19 +1,19 @@
 # miniRT
 
-## Mandatory part\
+## Mandatory part
 
-### scene\
+### scene
 
 ![image](https://user-images.githubusercontent.com/78352910/205449470-53def130-63f5-41b5-a1d4-324c8844bf36.png)
-\
 
-### camera\
+
+### camera
 
 ![image](https://user-images.githubusercontent.com/78352910/205449484-4abe5dfd-e7df-4b5a-a869-ef4f113f782f.png)
-###### ↳camera position(0,0,10), normal vector(0,0,-1)\
+###### ↳camera position(0,0,10), normal vector(0,0,-1)
 
 ![image](https://user-images.githubusercontent.com/78352910/205449548-d80a9c67-f740-44ec-b665-e71a42792353.png)
-###### ↳camera position(0,0,-10), normal vector(0,0,1)\
+###### ↳camera position(0,0,-10), normal vector(0,0,1)\n
 
 
 ![image](https://user-images.githubusercontent.com/78352910/205449565-5f47a7f3-b1ed-4928-b5fd-b91db2f2d610.png)
