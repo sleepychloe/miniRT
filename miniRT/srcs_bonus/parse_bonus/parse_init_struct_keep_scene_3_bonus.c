@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 07:58:02 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 04:30:25 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 07:30:53 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@ void	put_value_keep_scene_cy(t_scene *keep_scene, t_scene *scene)
 		keep_scene->cylinder[i]->xyz_vec = scene->cylinder[i]->xyz_vec;
 		keep_scene->cylinder[i]->diameter = scene->cylinder[i]->diameter;
 		keep_scene->cylinder[i]->height = scene->cylinder[i]->height;
-		keep_scene->cylinder[i]->rgb = scene->cylinder[i]->rgb;
+		keep_scene->cylinder[i]->surface = scene->cylinder[i]->surface;
+		keep_scene->cylinder[i]->fuzz = scene->cylinder[i]->fuzz;
+		keep_scene->cylinder[i]->rgb1 = scene->cylinder[i]->rgb1;
+		keep_scene->cylinder[i]->rgb2 = scene->cylinder[i]->rgb2;
+		keep_scene->cylinder[i]->img_path = scene->cylinder[i]->img_path;
+		keep_scene->cylinder[i]->texture_path
+			= scene->cylinder[i]->texture_path;
 		i++;
 	}
 }

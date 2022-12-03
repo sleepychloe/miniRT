@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 17:14:59 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:45:09 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 02:48:36 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,24 @@ int	check_comma(char *str)
 		str++;
 	}
 	if (*str == ',')
+		return (1);
+	while (str)
+	{
+		if (*str == ',')
+		{
+			str++;
+			break ;
+		}
+		str++;
+	}
+	if (*str == ',')
+		return (1);
+	return (0);
+}
+
+int	check_comma_surface_flag(char *str)
+{
+	if (str[0] == ',' || str[ft_strlen(str) - 1] == ',')
 		return (1);
 	while (str)
 	{

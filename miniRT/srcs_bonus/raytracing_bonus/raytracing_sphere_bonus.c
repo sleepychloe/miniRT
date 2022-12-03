@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:56:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:48:06 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 06:57:24 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ int	hit_sphere(t_data *data, t_hit *hit, int sp_i, double distance)
 	hit->normal_vec = vec3_unit(vec3_sub_vec3(hit->hit_point,
 				data->obj[sp_i]->xyz_pos));
 	set_hit_normal_direc(data, hit);
-	hit->color = data->obj[sp_i]->rgb;
+	hit->surface = data->obj[sp_i]->surface;
+	hit->fuzz = data->obj[sp_i]->fuzz;
+	hit->color = data->obj[sp_i]->rgb1;
 	return (0);
 }
 

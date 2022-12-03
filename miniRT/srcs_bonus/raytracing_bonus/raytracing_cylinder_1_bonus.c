@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 02:31:10 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:46:33 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 06:58:30 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,9 @@ int	hit_cylinder(t_data *data, t_hit *hit, int cy_i, double distance)
 		hit->normal_vec = data->obj[cy_i]->xyz_vec;
 		set_hit_normal_direc(data, hit);
 	}
-	hit->color = data->obj[cy_i]->rgb;
+	hit->surface = data->obj[cy_i]->surface;
+	hit->fuzz = data->obj[cy_i]->fuzz;
+	hit->color = data->obj[cy_i]->rgb1;
 	return (0);
 }
 

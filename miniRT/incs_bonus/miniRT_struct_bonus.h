@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:00:17 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 23:50:01 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 06:56:43 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,12 @@ typedef struct s_sphere
 	int			err;
 	t_vec3		xyz_pos;
 	double		diameter;
-	t_rgb3		rgb;
+	int			surface;
+	int			fuzz;
+	t_rgb3		rgb1;
+	t_rgb3		rgb2;
+	char		*img_path;
+	char		*texture_path;
 }	t_sphere;
 
 typedef struct s_plane
@@ -67,7 +72,12 @@ typedef struct s_plane
 	int			err;
 	t_vec3		xyz_pos;
 	t_vec3		xyz_vec;
-	t_rgb3		rgb;
+	int			surface;
+	int			fuzz;
+	t_rgb3		rgb1;
+	t_rgb3		rgb2;
+	char		*img_path;
+	char		*texture_path;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -77,7 +87,12 @@ typedef struct s_cylinder
 	t_vec3		xyz_vec;
 	double		diameter;
 	double		height;
-	t_rgb3		rgb;
+	int			surface;
+	int			fuzz;
+	t_rgb3		rgb1;
+	t_rgb3		rgb2;
+	char		*img_path;
+	char		*texture_path;
 }	t_cylinder;
 
 typedef struct s_cone
@@ -87,7 +102,12 @@ typedef struct s_cone
 	t_vec3		xyz_vec;
 	double		diameter;
 	double		height;
-	t_rgb3		rgb;
+	int			surface;
+	int			fuzz;
+	t_rgb3		rgb1;
+	t_rgb3		rgb2;
+	char		*img_path;
+	char		*texture_path;
 }	t_cone;
 
 typedef struct s_scene
@@ -113,7 +133,12 @@ typedef struct s_obj
 	t_vec3		xyz_vec;
 	double		diameter;
 	double		height;
-	t_rgb3		rgb;
+	int			surface;
+	int			fuzz;
+	t_rgb3		rgb1;
+	t_rgb3		rgb2;
+	char		*img_path;
+	char		*texture_path;
 }	t_obj;
 
 typedef struct s_mlx
@@ -150,6 +175,8 @@ typedef struct s_hit
 	t_vec3		hit_point;
 	t_vec3		normal_vec;
 	int			front;
+	int			surface;
+	int			fuzz;
 	t_rgb3		color;
 }	t_hit;
 

@@ -1,52 +1,44 @@
-#######################################################################
-## ambient : declare only once                                       ##
-##       A  lighting   r,g,b                                         ##
-## camera  : declare only once                                       ##
-##       C  pos(x,y,z) vec(x,y,z) fov                                ##
-## light   : you can declare light multiple times                    ##
-##       L  pos(x,y,z) brightness r,g,b                              ##
-## object  : you can declare light multiple times                    ##
-##   sphere                                                          ##
-##       sp pos(x,y,z)            diameter         color  meterial   ##
-##   plane                                                           ##
-##       pl pos(x,y,z) vec(x,y,z)                  color  meterial   ##
-##   cylinder                                                        ##
-##       cy pos(x,y,z) vec(x,y,z) diameter height  color  meterial   ##
-##   cone                                                            ##
-##       co pos(x,y,z) vec(x,y,z) diameter height  color  meterial   ##
-#######################################################################
-## object information                                                ##
-##    color : c_flag,r,g,b,r,g,b                                     ##
-##       (single_color) S,100,100,100(r,g,b)                         ##
-##       (checkerboard) C,255,255,255(r,g,b)                         ##
-##       (bpm_image)    B,path_of_the_image                          ##
-##    meterial : m_flag(,fuzz)                                       ##
-##       (lambertian) L                                              ##
-##       (metal)      M,fuzz(fuzz range[0.0,1.0])                    ##
-#######################################################################
-#A    0.5           255,255,255
-#C    0,1.5,10      0,0,-1        50
-##L    0,3.9,3       0.03          255,255,255
-#L    0,7,3         0.03          255,255,255
-#sp   0,2.9,0       2.0           105,95,160
-#sp   -1.5,0.65,2   1.5           50,125,80
-#sp   1.5,0.65,2    1.5           160,70,80
-#pl   0,0,-3        0,0,1         255,255,255
-#pl   0,-0.1,0      0,1,0         255,255,255
-##pl   0,4,0         0,1,0         255,255,255
-#pl   -3,0,0        1,0,0         255,255,255
-#pl   3,0,0         1,0,0         255,255,255
-#cy   0,0.9,0       0,1,0         2.0          2.0         160,70,80
-
 A    0.5           255,255,255
-C    0,1.5,10      0,0,-1        50
-#L    -5,2,5        0.08          255,255,255
-#L    5,5,5         0.15          0,0,255    
-L    0,1.5,5       0.1          255,255,255
-sp   0,3.4,0       2.0           255,255,255
-sp   -2,0.65,2     1.5           255,255,255
-sp   3,1.6,2       3             255,255,255
-pl   0,0,-4        0,0,1         255,255,255
-pl   0,-0.1,0      0,1,0         255,255,255
-cy   0,0.9,1       0,1,0         2.0          2.0         160,70,80
-co   0,0.9,1       0,1,0         2.0          2.0         160,70,80
+C    0,2,10         0,0,-1        50
+L    -5,2,5        0.08          255,255,255
+L    5,5,5         0.15          255,255,255    
+sp   0,2.9,0       2.0           L       255,255,255
+sp   -2,0.65,2     1.5           M,0     255,255,255
+sp   3,1.6,2       3             M,1     255,0,0
+pl   0,0,-4        0,0,1         L       255,255,255
+pl   0,-0.1,0      0,1,0         M,0       255,255,255
+cy   0,0.9,1       0,1,0         2.0     2.0     L       160,70,80
+co   0,0.9,1       0,1,0         2.0     2.0     L       160,70,80
+
+
+#sp   0,0,0    2.0    L      105,95,160
+#sp   0,0,0    2.0    C      255,255,255
+#sp   0,0,0    2.0    T      255,255,255  ./maps_bonus/guide_bonus_map.txt
+#sp   0,0,0    2.0    I      ./maps_bonus/guide_bonus_map.txt
+#sp   0,0,0    2.0    D      ./maps_bonus/guide_bonus_map.txt  ./maps_bonus/guide_bonus_map.txt
+#sp   0,0,0    2.0    M,0.5  255,255,255
+#sp   0,0,0    2.0    G      none
+
+#pl   0,0,0    0,1,0    L      105,95,160
+#pl   0,0,0    0,1,0    C      255,255,255
+#pl   0,0,0    0,1,0    T      255,255,255  ./maps_bonus/guide_bonus_map.txt
+#pl   0,0,0    0,1,0    I      ./maps_bonus/guide_bonus_map.txt
+#pl   0,0,0    0,1,0    D      ./maps_bonus/guide_bonus_map.txt  ./maps_bonus/guide_bonus_map.txt
+#pl   0,0,0    0,1,0    M,0.5  255,255,255
+#pl   0,0,0    0,1,0    G      none
+
+#cy   0,0,0    0,1,0     2.0     2.0     L      105,95,160
+#cy   0,0,0    0,1,0     2.0     2.0     C      255,255,255
+#cy   0,0,0    0,1,0     2.0     2.0     T      255,255,255  ./maps_bonus/guide_bonus_map.txt
+#cy   0,0,0    0,1,0     2.0     2.0     I      ./maps_bonus/guide_bonus_map.txt
+#cy   0,0,0    0,1,0     2.0     2.0     D      ./maps_bonus/guide_bonus_map.txt  ./maps_bonus/guide_bonus_map.txt
+#cy   0,0,0    0,1,0     2.0     2.0     M,0.5  255,255,255
+#cy   0,0,0    0,1,0     2.0     2.0     G      none
+
+#co   0,0,0    0,1,0     2.0     2.0     L      105,95,160
+#co   0,0,0    0,1,0     2.0     2.0     C      255,255,255
+#co   0,0,0    0,1,0     2.0     2.0     T      255,255,255  ./maps_bonus/guide_bonus_map.txt
+#co   0,0,0    0,1,0     2.0     2.0     I      ./maps_bonus/guide_bonus_map.txt
+#co   0,0,0    0,1,0     2.0     2.0     D      ./maps_bonus/guide_bonus_map.txt  ./maps_bonus/guide_bonus_map.txt
+#co   0,0,0    0,1,0     2.0     2.0     M,0.5  255,255,255
+#co   0,0,0    0,1,0     2.0     2.0     G      none

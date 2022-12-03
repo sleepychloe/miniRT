@@ -6,45 +6,45 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:56:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/02 00:06:44 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 06:03:36 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs_bonus/miniRT_bonus.h"
 
-int	parse_co_diameter(t_scene *scene, int i, char ***s)
+int	check_value_co_xyz_pos(t_scene *scene, int i, char **xyz_pos)
 {
-	if (ft_atod(s[0][3]) == ERR_ATOD)
+	if (ft_atod(xyz_pos[0]) == ERR_ATOD || ft_atod(xyz_pos[1]) == ERR_ATOD
+		|| ft_atod(xyz_pos[2]) == ERR_ATOD)
 	{
-		scene->cone[i]->err = ERR_DIAMETER_VALUE;
-		ft_free_3d(s);
+		scene->cone[i]->err = ERR_XYZ_POS_VALUE;
 		return (1);
 	}
-	if (ft_atod(s[0][3]) <= 0)
-	{
-		scene->cone[i]->err = ERR_DIAMETER_VALUE;
-		ft_free_3d(s);
-		return (1);
-	}
-	scene->cone[i]->diameter = ft_atod(s[0][3]);
 	return (0);
 }
 
-int	parse_co_height(t_scene *scene, int i, char ***s)
+int	parse_co_xyz_pos(t_scene *scene, int i, char ***s)
 {
-	if (ft_atod(s[0][4]) == ERR_ATOD)
+	if (!s[1])
 	{
-		scene->cone[i]->err = ERR_HEIGHT_VALUE;
+		scene->cone[i]->err = ERR_LINE_TOKEN;
 		ft_free_3d(s);
 		return (1);
 	}
-	if (ft_atod(s[0][4]) <= 0)
+	if (token_count(s[1], 3) || check_comma(s[0][1]))
 	{
-		scene->cone[i]->err = ERR_HEIGHT_VALUE;
+		scene->cone[i]->err = ERR_XYZ_POS_TOKEN;
 		ft_free_3d(s);
 		return (1);
 	}
-	scene->cone[i]->height = ft_atod(s[0][4]);
+	if (check_value_co_xyz_pos(scene, i, s[1]))
+	{
+		ft_free_3d(s);
+		return (1);
+	}
+	scene->cone[i]->xyz_pos.x = ft_atod(s[1][0]);
+	scene->cone[i]->xyz_pos.y = ft_atod(s[1][1]);
+	scene->cone[i]->xyz_pos.z = ft_atod(s[1][2]);
 	return (0);
 }
 
@@ -70,7 +70,7 @@ int	parse_co_xyz_vec(t_scene *scene, int i, char ***s)
 {
 	if (!s[2])
 	{
-		scene->cone[i]->err = ERR_MALLOC;
+		scene->cone[i]->err = ERR_LINE_TOKEN;
 		ft_free_3d(s);
 		return (1);
 	}

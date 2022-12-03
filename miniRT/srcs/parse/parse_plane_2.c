@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:30 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/25 21:38:38 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 03:42:34 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	parse_pl_xyz_vec(t_scene *scene, int i, char ***s)
 {
 	if (!s[2])
 	{
-		scene->plane[i]->err = ERR_MALLOC;
+		scene->plane[i]->err = ERR_LINE_TOKEN;
 		ft_free_3d(s);
 		return (1);
 	}
@@ -77,7 +77,7 @@ int	parse_pl_rgb(t_scene *scene, int i, char ***s)
 {
 	if (!s[3])
 	{
-		scene->plane[i]->err = ERR_MALLOC;
+		scene->plane[i]->err = ERR_LINE_TOKEN;
 		ft_free_3d(s);
 		return (1);
 	}

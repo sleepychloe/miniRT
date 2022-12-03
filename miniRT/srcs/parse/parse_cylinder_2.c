@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:56 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/25 21:41:02 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 03:43:17 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	parse_cy_xyz_vec(t_scene *scene, int i, char ***s)
 {
 	if (!s[2])
 	{
-		scene->cylinder[i]->err = ERR_MALLOC;
+		scene->cylinder[i]->err = ERR_LINE_TOKEN;
 		ft_free_3d(s);
 		return (1);
 	}

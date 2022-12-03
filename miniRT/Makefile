@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/12/02 02:24:14 by yhwang           ###   ########.fr        #
+#    Updated: 2022/12/03 07:27:29 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,28 +115,38 @@ FILES_B = $(SRCS_B_DIR)main_bonus \
 		$(SRCS_B_PARSE_DIR)parse_light_2_bonus \
 		$(SRCS_B_PARSE_DIR)parse_sphere_1_bonus \
 		$(SRCS_B_PARSE_DIR)parse_sphere_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_sphere_3_bonus \
+		$(SRCS_B_PARSE_DIR)parse_sphere_4_bonus \
 		$(SRCS_B_PARSE_DIR)parse_plane_1_bonus \
 		$(SRCS_B_PARSE_DIR)parse_plane_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_plane_3_bonus \
+		$(SRCS_B_PARSE_DIR)parse_plane_4_bonus \
 		$(SRCS_B_PARSE_DIR)parse_cylinder_1_bonus \
 		$(SRCS_B_PARSE_DIR)parse_cylinder_2_bonus \
 		$(SRCS_B_PARSE_DIR)parse_cylinder_3_bonus \
+		$(SRCS_B_PARSE_DIR)parse_cylinder_4_bonus \
+		$(SRCS_B_PARSE_DIR)parse_cylinder_5_bonus \
 		$(SRCS_B_PARSE_DIR)parse_cone_1_bonus \
 		$(SRCS_B_PARSE_DIR)parse_cone_2_bonus \
 		$(SRCS_B_PARSE_DIR)parse_cone_3_bonus \
+		$(SRCS_B_PARSE_DIR)parse_cone_4_bonus \
+		$(SRCS_B_PARSE_DIR)parse_cone_5_bonus \
 		$(SRCS_B_PARSE_DIR)parse_err_1_bonus \
 		$(SRCS_B_PARSE_DIR)parse_err_2_bonus \
+		$(SRCS_B_PARSE_DIR)parse_err_3_bonus \
 		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_1_bonus \
 		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_2_bonus \
 		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_3_bonus \
 		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_4_bonus \
 		$(SRCS_B_PARSE_DIR)parse_utils_bonus \
 		$(SRCS_B_RT_DIR)raytracing_main_bonus \
-		$(SRCS_B_RT_DIR)raytracing_trace_bonus \
 		$(SRCS_B_RT_DIR)raytracing_set_camera_1_bonus \
 		$(SRCS_B_RT_DIR)raytracing_set_camera_2_bonus \
 		$(SRCS_B_RT_DIR)raytracing_init_struct_obj_1_bonus \
 		$(SRCS_B_RT_DIR)raytracing_init_struct_obj_2_bonus \
 		$(SRCS_B_RT_DIR)raytracing_init_struct_rt_bonus \
+		$(SRCS_B_RT_DIR)raytracing_trace_bonus \
+		$(SRCS_B_RT_DIR)raytracing_surface_bonus \
 		$(SRCS_B_RT_DIR)raytracing_ray_bonus \
 		$(SRCS_B_RT_DIR)raytracing_light_bonus \
 		$(SRCS_B_RT_DIR)raytracing_sphere_bonus \

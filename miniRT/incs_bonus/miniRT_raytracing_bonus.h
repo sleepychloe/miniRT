@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/02 06:12:57 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 07:28:24 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,6 @@ void	init_struct_data(t_data *data, t_scene *scene,
 			t_scene *keep_scene, t_mlx *mlx);
 void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx);
 
-/* raytracing_trace_bonus */  //////
-int		hittable(t_data *data, t_hit *hit);
-t_rgb3	calc_ambient(t_data *data, t_hit *hit);
-t_rgb3	calc_diffuse(t_data *data, t_hit *hit, int *depth);
-t_vec3	calc_perfect_reflected_direc(t_hit *hit, t_vec3 reflecting_ray_direc);
-t_rgb3	trace(t_data *data, t_ray ray, int depth);
-
 /* raytracing_set_camera_1_bonus */
 void	camera_vec_zero_zero_plusone(t_data *data);
 void	camera_vec_minusone_zero_zero(t_data *data);
@@ -74,6 +67,16 @@ void	put_value_obj_co(t_scene *scene, t_obj **obj);
 
 /* raytracing_init_struct_rt_bonus */
 void	init_rt(t_scene *scene, t_rt *rt);
+
+/* raytracing_trace_bonus */
+int		hittable(t_data *data, t_hit *hit);
+t_rgb3	calc_ambient(t_data *data, t_hit *hit);
+t_rgb3	trace(t_data *data, t_ray ray, int depth);
+
+/* raytracing_surface_bonus */
+t_rgb3	surface_lambertian(t_data *data, t_hit *hit, int *depth);
+t_vec3	calc_perfect_reflected_direc(t_hit *hit, t_vec3 reflecting_ray_direc);
+t_rgb3	surface_metal(t_data *data, t_hit *hit, int *depth);
 
 /* raytracing_ray_bonus */
 t_ray	ray(t_vec3 point, t_vec3 direc);

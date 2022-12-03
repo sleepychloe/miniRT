@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:29 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/29 07:34:52 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 03:41:49 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	parse_sp_token(t_scene *scene, int i, char ***s)
 {
 	if (!s[0])
 	{
-		scene->sphere[i]->err = ERR_MALLOC;
+		scene->sphere[i]->err = ERR_LINE_TOKEN;
+		ft_free_3d(s);
 		return (1);
 	}
 	if (ft_strlen(s[0][0]) != 2)
@@ -49,7 +50,7 @@ int	parse_sp_xyz_pos(t_scene *scene, int i, char ***s)
 {
 	if (!s[1])
 	{
-		scene->sphere[i]->err = ERR_MALLOC;
+		scene->sphere[i]->err = ERR_LINE_TOKEN;
 		ft_free_3d(s);
 		return (1);
 	}

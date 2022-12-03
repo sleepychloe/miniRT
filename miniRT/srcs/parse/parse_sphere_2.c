@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/25 21:34:27 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 03:41:57 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	parse_sp_rgb(t_scene *scene, int i, char ***s)
 {
 	if (!s[2])
 	{
-		scene->sphere[i]->err = ERR_MALLOC;
+		scene->sphere[i]->err = ERR_LINE_TOKEN;
 		ft_free_3d(s);
 		return (1);
 	}

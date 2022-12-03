@@ -6,51 +6,120 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 01:34:14 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:42:34 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 05:47:15 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs_bonus/miniRT_bonus.h"
 
-int	check_value_cy_rgb(t_scene *scene, int i, char **rgb)
+int	parse_cy_diameter(t_scene *scene, int i, char ***s)
 {
-	if (ft_atoi(rgb[0]) == ERR_ATOI || ft_atoi(rgb[1]) == ERR_ATOI
-		|| ft_atoi(rgb[2]) == ERR_ATOI)
+	if (ft_atod(s[0][3]) == ERR_ATOD)
 	{
-		scene->cylinder[i]->err = ERR_RGB_VALUE;
+		scene->cylinder[i]->err = ERR_DIAMETER_VALUE;
+		ft_free_3d(s);
 		return (1);
 	}
-	if (!(0 <= ft_atoi(rgb[0]) && ft_atoi(rgb[0]) <= 255)
-		|| !(0 <= ft_atoi(rgb[1]) && ft_atoi(rgb[1]) <= 255)
-		|| !(0 <= ft_atoi(rgb[2]) && ft_atoi(rgb[2]) <= 255))
+	if (ft_atod(s[0][3]) <= 0)
 	{
-		scene->cylinder[i]->err = ERR_RGB_VALUE;
+		scene->cylinder[i]->err = ERR_DIAMETER_VALUE;
+		ft_free_3d(s);
 		return (1);
 	}
+	scene->cylinder[i]->diameter = ft_atod(s[0][3]);
 	return (0);
 }
 
-int	parse_cy_rgb(t_scene *scene, int i, char ***s)
+int	parse_cy_height(t_scene *scene, int i, char ***s)
 {
-	if (!s[3])
+	if (ft_atod(s[0][4]) == ERR_ATOD)
 	{
-		scene->cylinder[i]->err = ERR_MALLOC;
+		scene->cylinder[i]->err = ERR_HEIGHT_VALUE;
 		ft_free_3d(s);
 		return (1);
 	}
-	if (token_count(s[3], 3) || check_comma(s[0][5]))
+	if (ft_atod(s[0][4]) <= 0)
 	{
-		scene->cylinder[i]->err = ERR_RGB_TOKEN;
+		scene->cylinder[i]->err = ERR_HEIGHT_VALUE;
 		ft_free_3d(s);
 		return (1);
 	}
-	if (check_value_cy_rgb(scene, i, s[3]))
+	scene->cylinder[i]->height = ft_atod(s[0][4]);
+	return (0);
+}
+
+int	parse_cy_surface_metal_fuzz(t_scene *scene, int i, char ***s)
+{
+	if (ft_strlen(s[4][0]) != 1)
 	{
+		return (1);
+	}
+	if (ft_atod(s[4][1]) == ERR_ATOD)
+	{
+		return (1);
+	}
+	if (!(0.0 <= ft_atod(s[4][1]) && ft_atod(s[4][1]) <= 1.0))
+	{
+		return (1);
+	}
+	scene->cylinder[i]->surface = SURFACE_M;
+	scene->cylinder[i]->fuzz = ft_atod(s[4][1]);
+	return (0);
+}
+
+int	parse_cy_surface_1(t_scene *scene, int i, char ***s)
+{
+	if (!((ft_strncmp(s[0][5], "L", 1) == 0 && ft_strlen(s[0][5]) == 1)
+		|| (ft_strncmp(s[0][5], "C", 1) == 0 && ft_strlen(s[0][5]) == 1)
+		|| (ft_strncmp(s[0][5], "T", 1) == 0 && ft_strlen(s[0][5]) == 1)
+		|| (ft_strncmp(s[0][5], "I", 1) == 0 && ft_strlen(s[0][5]) == 1)
+		|| (ft_strncmp(s[0][5], "D", 1) == 0 && ft_strlen(s[0][5]) == 1)
+		|| (ft_strncmp(s[0][5], "M,", 2) == 0)
+		|| (ft_strncmp(s[0][5], "G", 2) == 0 && ft_strlen(s[0][5]) == 1)))
+	{
+		scene->cylinder[i]->err = ERR_SURFACE_FLAG;
 		ft_free_3d(s);
 		return (1);
 	}
-	scene->cylinder[i]->rgb.r = ft_atoi(s[3][0]);
-	scene->cylinder[i]->rgb.g = ft_atoi(s[3][1]);
-	scene->cylinder[i]->rgb.b = ft_atoi(s[3][2]);
+	if (ft_strncmp(s[0][5], "L", 1) == 0)
+	{
+		scene->cylinder[i]->surface = SRUFACE_L;
+	}
+	else if (ft_strncmp(s[0][5], "C", 1) == 0)
+		scene->cylinder[i]->surface = SURFACE_C;
+	else if (ft_strncmp(s[0][5], "T", 1) == 0)
+		scene->cylinder[i]->surface = SURFACE_T;
+	else if (ft_strncmp(s[0][5], "I", 1) == 0)
+		scene->cylinder[i]->surface = SURFACE_I;
+	else if (ft_strncmp(s[0][5], "D", 1) == 0)
+		scene->cylinder[i]->surface = SURFACE_D;
+	return (0);
+}
+
+int	parse_cy_surface_2(t_scene *scene, int i, char ***s)
+{
+	if (ft_strncmp(s[0][5], "M,", 2) == 0)
+	{
+		if (!s[4] || !s[4][0] || !s[4][1])
+		{
+			scene->cylinder[i]->err = ERR_LINE_TOKEN;
+			ft_free_3d(s);
+			return (1);
+		}
+		if (token_count(s[4], 2) || check_comma_surface_flag(s[0][5]))
+		{
+			scene->cylinder[i]->err = ERR_SURFACE_FLAG;
+			ft_free_3d(s);
+			return (1);
+		}
+		if (parse_cy_surface_metal_fuzz(scene, i, s))
+		{
+			scene->cylinder[i]->err = ERR_FUZZ_VALUE;
+			ft_free_3d(s);
+			return (1);
+		}
+	}
+	else if (ft_strncmp(s[0][5], "G", 2) == 0)
+		scene->cylinder[i]->surface = SURFACE_G;
 	return (0);
 }

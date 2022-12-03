@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 23:40:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 03:07:01 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 06:57:50 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ int	hit_plane(t_data *data, t_hit *hit, int pl_i, double distance)
 		return (1);
 	set_hit_point(data, hit, t);
 	hit->normal_vec = data->obj[pl_i]->xyz_vec;
-	hit->color = data->obj[pl_i]->rgb;
+	hit->surface = data->obj[pl_i]->surface;
+	hit->fuzz = data->obj[pl_i]->fuzz;
+	hit->color = data->obj[pl_i]->rgb1;
 	return (0);
 }
 
