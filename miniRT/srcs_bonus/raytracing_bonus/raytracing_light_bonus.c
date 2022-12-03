@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:04:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/02 01:03:39 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 17:15:40 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ double	calc_specular(double *light_intensity)
 				{
 					*light_intensity *= 1.01;
 					if (*light_intensity > 0.999999)
-						*light_intensity *= 1.01;
+						*light_intensity *= 1.02;
 				}
 			}
 		}
