@@ -118,3 +118,25 @@
 
 
 i'm still working bonus part !
+
+
+## Ray Tracing
+
+![image](https://user-images.githubusercontent.com/78352910/205492433-0e9b5e5e-786b-43f2-936a-dcbde939f1a2.png)
+![image](https://user-images.githubusercontent.com/78352910/205492447-c298daa3-7a34-4ba9-a8b4-af4167c01667.png)
+![image](https://user-images.githubusercontent.com/78352910/205492462-973b1282-41f9-4a98-896e-b25ab35d5930.png)
+![image](https://user-images.githubusercontent.com/78352910/205492468-c3431ce7-88c0-4f6b-82a6-5897ac0c55a0.png)
+![image](https://user-images.githubusercontent.com/78352910/205492478-cd2472d8-a1f7-4c77-9389-1dc8742e3eec.png)
+![image](https://user-images.githubusercontent.com/78352910/205492486-01af5126-831e-415b-9177-85235cf2b6ab.png)
+![image](https://user-images.githubusercontent.com/78352910/205492491-eb0a8cf5-5391-485d-b72e-36e8bf355a47.png)
+![image](https://user-images.githubusercontent.com/78352910/205492495-85f5e9ee-21a6-4a66-bb13-66250f09cd72.png)
+![image](https://user-images.githubusercontent.com/78352910/205492502-32536023-0783-4195-adf3-71f7fae28f25.png)
+![image](https://user-images.githubusercontent.com/78352910/205492506-38255ca3-c9f4-45ad-98b3-543a8f5970a3.png)
+![image](https://user-images.githubusercontent.com/78352910/205492514-d57e0fde-12ad-41ec-a4ca-8c1443f3d5a4.png)
+![image](https://user-images.githubusercontent.com/78352910/205492524-fa83f588-d783-411a-aa01-76c606634919.png)
+![image](https://user-images.githubusercontent.com/78352910/205492527-af597978-2ea5-4746-8b9b-75d74803d1ec.png)
+![image](https://user-images.githubusercontent.com/78352910/205492536-251b4ca0-50e2-4c36-8d22-8a5d1538a337.png)
+![image](https://user-images.githubusercontent.com/78352910/205492540-4beecb1d-1ecd-4521-9eba-9b315c142ed8.png)
+![image](https://user-images.githubusercontent.com/78352910/205492544-6bf020bc-6032-4ca7-af83-179e2676e690.png)
+![image](https://user-images.githubusercontent.com/78352910/205492549-6828da5d-b9b2-4c71-9c69-250b1a194835.png)
+
