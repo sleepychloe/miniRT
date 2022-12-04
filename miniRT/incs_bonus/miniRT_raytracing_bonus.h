@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/04 02:31:10 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/04 07:24:49 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,9 @@ int		check_cy_circle_radius(t_data *data,
 double	check_cylinder_circle(t_data *data, int cy_i, double distance);
 
 /* raytracing_cone_1_bonus */
-t_vec3	calc_normal_vec_cone_body(t_data *data, int co_i);
+t_vec3	calc_normal_vec_cone_body(t_data *data, int co_i, double t_body);
 int		hit_cone(t_data *data, t_hit *hit, int co_i, double distance);
-int		light_hit_co(t_data *data, int cy_i, double distance);
+int		light_hit_co(t_data *data, int co_i, double distance);
 
 /* raytracing_cone_2_bonus */
 void	norminette_check_cone_body(t_data *data,

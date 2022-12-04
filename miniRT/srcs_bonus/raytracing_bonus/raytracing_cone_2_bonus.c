@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:54:32 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/04 02:30:39 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/04 07:23:17 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ double	check_cone_body(t_data *data, int co_i, double distance)
 	norminette_check_cone_body(data, co_i, d, &top_center);
 	if (d[1] * d[1] - d[0] * d[2] < 0)
 		return (INFINITY);
-	t_body = (-1 * d[1] - sqrt(d[1] * d[1] - d[0] * d[2])) / d[0];
+	t_body = (-1 * d[1] + sqrt(d[1] * d[1] - d[0] * d[2])) / d[0];
 	if (t_body < 0.00001 || distance < t_body)
 	{
-		t_body = (-1 * d[1] + sqrt(d[1] * d[1] - d[0] * d[2])) / d[0];
+		t_body = (-1 * d[1] - sqrt(d[1] * d[1] - d[0] * d[2])) / d[0];
 		if (t_body < 0.00001 || distance < t_body)
 			return (INFINITY);
 	}

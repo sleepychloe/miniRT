@@ -6,35 +6,39 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:54:17 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/04 02:33:35 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/04 07:22:22 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs_bonus/miniRT_bonus.h"
 
-t_vec3	calc_normal_vec_cone_body(t_data *data, int co_i)
+t_vec3	calc_normal_vec_cone_body(t_data *data, int co_i, double t_body)
 {
-	t_vec3	hit_normal;
-	double	val_cos;
-	double	val_sin;
+	double	delta;
+	double	cos_theta;
+	t_vec3	top_center;
+	t_vec3	hit_p;
+	double	k;
 
-	val_cos = data->obj[co_i]->height
-		/ sqrt(((data->obj[co_i]->diameter) / 2)
-			* ((data->obj[co_i]->diameter) / 2)
-			+ data->obj[co_i]->height
-			* data->obj[co_i]->height);
-	val_sin = sqrt(1 - val_cos * val_cos);
-	hit_normal
-		= vec3(val_cos * data->obj[co_i]->xyz_vec.x
-			+ -1 * val_sin * data->obj[co_i]->xyz_vec.y
-			+ 0 * data->obj[co_i]->xyz_vec.z,
-			val_sin * data->obj[co_i]->xyz_vec.x
-			+ val_cos * data->obj[co_i]->xyz_vec.y
-			+ 0 * data->obj[co_i]->xyz_vec.z,
-			0 * data->obj[co_i]->xyz_vec.x
-			+ 0 * data->obj[co_i]->xyz_vec.y
-			+ 1 * data->obj[co_i]->xyz_vec.z);
-	return (hit_normal);
+	delta = data->obj[co_i]->height / 2
+		* sqrt(1 / (data->obj[co_i]->xyz_vec.x * data->obj[co_i]->xyz_vec.x
+				+ data->obj[co_i]->xyz_vec.y * data->obj[co_i]->xyz_vec.y
+				+ data->obj[co_i]->xyz_vec.z * data->obj[co_i]->xyz_vec.z));
+	top_center
+		= vec3(data->obj[co_i]->xyz_pos.x + delta * data->obj[co_i]->xyz_vec.x,
+			data->obj[co_i]->xyz_pos.y + delta * data->obj[co_i]->xyz_vec.y,
+			data->obj[co_i]->xyz_pos.z + delta * data->obj[co_i]->xyz_vec.z);
+	cos_theta = data->obj[co_i]->height / sqrt((data->obj[co_i]->diameter / 2)
+			* (data->obj[co_i]->diameter / 2)
+			+ data->obj[co_i]->height * data->obj[co_i]->height);
+	hit_p = vec3_add_vec3(data->ray->point,
+			vec3_mul_rn(data->ray->direc, t_body));
+	k = sqrt((hit_p.x - top_center.x) * (hit_p.x - top_center.x)
+			+ (hit_p.y - top_center.y) * (hit_p.y - top_center.y)
+			+ (hit_p.z - top_center.z) * (hit_p.z - top_center.z)) / cos_theta;
+	return (vec3_unit(vec3_sub_vec3(hit_p,
+				vec3_sub_vec3(top_center,
+					vec3_mul_rn(data->obj[co_i]->xyz_vec, k)))));
 }
 
 int	hit_cone(t_data *data, t_hit *hit, int co_i, double distance)
@@ -51,13 +55,13 @@ int	hit_cone(t_data *data, t_hit *hit, int co_i, double distance)
 	if (t_body < t_circle)
 	{
 		set_hit_point(data, hit, t_body);
-		hit->normal_vec = calc_normal_vec_cone_body(data, co_i);
+		hit->normal_vec = calc_normal_vec_cone_body(data, co_i, t_body);
 		set_hit_normal_direc(data, hit);
 	}
 	else
 	{
 		set_hit_point(data, hit, t_circle);
-		hit->normal_vec = data->obj[co_i]->xyz_vec;
+		hit->normal_vec = vec3_mul_rn(data->obj[co_i]->xyz_vec, -1);
 		set_hit_normal_direc(data, hit);
 	}
 	hit->surface = data->obj[co_i]->surface;
@@ -66,15 +70,15 @@ int	hit_cone(t_data *data, t_hit *hit, int co_i, double distance)
 	return (0);
 }
 
-int	light_hit_co(t_data *data, int cy_i, double distance)
+int	light_hit_co(t_data *data, int co_i, double distance)
 {
 	double	t_body;
 	double	t_circle;
 
-	if (data->obj[cy_i]->obj_type != CONE)
+	if (data->obj[co_i]->obj_type != CONE)
 		return (1);
-	t_body = check_cone_body(data, cy_i, distance);
-	t_circle = check_cone_circle(data, cy_i, distance);
+	t_body = check_cone_body(data, co_i, distance);
+	t_circle = check_cone_circle(data, co_i, distance);
 	if (t_body == INFINITY && t_circle == INFINITY)
 		return (1);
 	return (0);
