@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:56:41 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 06:04:13 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/04 13:14:36 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	parse_co_surface_1(t_scene *scene, int i, char ***s)
 	}
 	if (ft_strncmp(s[0][5], "L", 1) == 0)
 	{
-		scene->cone[i]->surface = SRUFACE_L;
+		scene->cone[i]->surface = SURFACE_L;
 	}
 	else if (ft_strncmp(s[0][5], "C", 1) == 0)
 		scene->cone[i]->surface = SURFACE_C;

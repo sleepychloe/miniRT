@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:04:42 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 07:24:56 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/04 13:07:11 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINIRT_PARSE_BONUS_H
 
 /* object surface */
-# define SRUFACE_L			1
+# define SURFACE_L			1
 # define SURFACE_C			2
 # define SURFACE_T			3
 # define SURFACE_I			4

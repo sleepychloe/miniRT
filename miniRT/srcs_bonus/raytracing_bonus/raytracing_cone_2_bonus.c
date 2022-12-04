@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:54:32 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/04 07:23:17 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/04 11:34:52 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	norminette_check_cone_body(t_data *data,
 	val_cos = data->obj[co_i]->height / sqrt((data->obj[co_i]->diameter / 2)
 			* (data->obj[co_i]->diameter / 2)
 			+ data->obj[co_i]->height * data->obj[co_i]->height);
-	d[0] = vec3_dot_vec3(data->obj[co_i]->xyz_vec, data->ray->direc)
+	d[0] = vec3_dot_vec3(data->ray->direc, data->obj[co_i]->xyz_vec)
 		* vec3_dot_vec3(data->ray->direc, data->obj[co_i]->xyz_vec)
 		- vec3_dot_vec3(data->ray->direc, data->ray->direc) * val_cos * val_cos;
 	d[1] = -1 * (dot_rq_n * vec3_dot_vec3(data->ray->direc,

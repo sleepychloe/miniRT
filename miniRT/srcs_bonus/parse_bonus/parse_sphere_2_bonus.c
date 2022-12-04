@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:45 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 03:58:35 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/04 13:10:28 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	parse_sp_surface_1(t_scene *scene, int i, char ***s)
 	}
 	if (ft_strncmp(s[0][3], "L", 1) == 0)
 	{
-		scene->sphere[i]->surface = SRUFACE_L;
+		scene->sphere[i]->surface = SURFACE_L;
 	}
 	else if (ft_strncmp(s[0][3], "C", 1) == 0)
 		scene->sphere[i]->surface = SURFACE_C;

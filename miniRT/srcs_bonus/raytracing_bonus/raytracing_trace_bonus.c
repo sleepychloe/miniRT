@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 07:26:44 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 21:53:21 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/04 13:32:50 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
 	{
 		ambient = calc_ambient(data, &hit);
 		light = apply_light(data, &hit);
-		if (!(hit.surface == SURFACE_M || hit.surface == SURFACE_G))
+		if (hit.surface == SURFACE_L || hit.surface == SURFACE_C
+			|| hit.surface == SURFACE_T || hit.surface == SURFACE_I
+			|| hit.surface == SURFACE_D)
 			surface = surface_lambertian(data, &hit, &depth);
 		else
 			surface = surface_metal(data, &hit, &depth);
