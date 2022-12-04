@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:27:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:46:41 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/03 18:18:16 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	norminette_check_cylinder_circle_3(t_data *data,
 			vec3_mul_rn(data->ray->direc, t_circle[BOTTOM]));
 }
 
-int	check_circle_radius(t_data *data,
+int	check_cy_circle_radius(t_data *data,
 				int cy_i, t_vec3 hit_point, t_vec3 cy_center)
 {
 	double	res;
@@ -82,9 +82,9 @@ double	check_cylinder_circle(t_data *data, int cy_i, double distance)
 	if (t_circle[BOTTOM] < 0.00001 || distance < t_circle[BOTTOM])
 		t_circle[BOTTOM] = INFINITY;
 	norminette_check_cylinder_circle_3(data, t_circle, hit_p);
-	if (check_circle_radius(data, cy_i, hit_p[TOP], cy_center[TOP]))
+	if (check_cy_circle_radius(data, cy_i, hit_p[TOP], cy_center[TOP]))
 		t_circle[TOP] = INFINITY;
-	if (check_circle_radius(data, cy_i, hit_p[BOTTOM], cy_center[BOTTOM]))
+	if (check_cy_circle_radius(data, cy_i, hit_p[BOTTOM], cy_center[BOTTOM]))
 		t_circle[BOTTOM] = INFINITY;
 	if (t_circle[TOP] < t_circle[BOTTOM])
 		return (t_circle[TOP]);
