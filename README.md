@@ -75,4 +75,30 @@
 
 ## Bonus part
 
+### light
 
+![image](https://user-images.githubusercontent.com/78352910/205451544-d8ccd21e-7b66-4078-acd9-942786571df7.png)
+###### ↳colored light(red)
+
+
+![image](https://user-images.githubusercontent.com/78352910/205451584-97acc4c7-8a35-496e-be01-0497c71b302d.png)
+###### ↳colored light(green)
+
+
+![image](https://user-images.githubusercontent.com/78352910/205451598-9a5c62b3-ec1f-4c21-8618-441c57190961.png)
+###### ↳colored light(blue)
+
+
+![image](https://user-images.githubusercontent.com/78352910/205451611-f8d546c8-fe83-47ec-a00c-23277e0e9099.png)
+###### ↳multiple light(white)
+
+
+![image](https://user-images.githubusercontent.com/78352910/205451639-6329ecd6-4c7a-41b2-a63f-e83bce959911.png)
+###### ↳multiple colored light(rgb)
+
+
+![image](https://user-images.githubusercontent.com/78352910/205451666-35fdef08-d065-4d71-a69b-71e88ad219af.png)
+###### ↳multiple colored light(rgb)
+
+
+i'm still working bonus part !
