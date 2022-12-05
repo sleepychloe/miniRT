@@ -80,7 +80,7 @@
 ## Bonus part
 
 
-### phong reflection model(adding specular reflection
+### phong reflection model(adding specular reflection)
 
 
 ![image](https://user-images.githubusercontent.com/78352910/205585681-45ead586-48f1-4da1-b6fb-1fa7d4a0cd67.png)
