@@ -2,12 +2,15 @@
 
 ## Mandatory part
 
+
 ### scene
+
 
 ![image](https://user-images.githubusercontent.com/78352910/205449470-53def130-63f5-41b5-a1d4-324c8844bf36.png)
 
 
 ### camera
+
 
 ![image](https://user-images.githubusercontent.com/78352910/205449484-4abe5dfd-e7df-4b5a-a869-ef4f113f782f.png)
 ###### ↳ camera position(0,0,10), normal vector(0,0,-1)
@@ -37,6 +40,7 @@
 
 
 ### light
+
 
 ![image](https://user-images.githubusercontent.com/78352910/205449669-d830318b-ffc8-49ca-9442-33c8139a1ae9.png)
 ###### ↳ light position(-5,0,1)
@@ -75,29 +79,38 @@
 
 ## Bonus part
 
+
+### phong reflection model(adding specular reflection)
+
+
+![image](https://user-images.githubusercontent.com/78352910/205585681-45ead586-48f1-4da1-b6fb-1fa7d4a0cd67.png)
+###### ↳ specular reflection
+
+
 ### light
 
-![image](https://user-images.githubusercontent.com/78352910/205478823-d8cdb456-2823-4e35-b3d1-8741d1c14a89.png)
+
+![image](https://user-images.githubusercontent.com/78352910/205585825-62bb36f5-14f3-4b09-918f-600add0b20ec.png)
 ###### ↳ colored light(red)
 
 
-![image](https://user-images.githubusercontent.com/78352910/205478831-868c8b3d-c182-4618-9e19-e1292f896fa2.png)
+![image](https://user-images.githubusercontent.com/78352910/205585900-d95f0d58-9073-4ff4-aef9-01069912ac4c.png)
 ###### ↳ colored light(green)
 
 
-![image](https://user-images.githubusercontent.com/78352910/205478837-e0d95149-cda2-4be0-aad0-ce7fb9711a12.png)
+![image](https://user-images.githubusercontent.com/78352910/205585936-1062bbda-f45f-4435-bf71-4e1a63503a6a.png)
 ###### ↳ colored light(blue)
 
 
-![image](https://user-images.githubusercontent.com/78352910/205478841-98a2bc39-8b2c-4427-9631-6c0a377e285e.png)
+![image](https://user-images.githubusercontent.com/78352910/205585980-3d35826c-69d9-40cc-95d1-5640181d44a6.png)
 ###### ↳ multiple light(white)
 
 
-![image](https://user-images.githubusercontent.com/78352910/205478846-2b3b7e6b-3c99-4217-803e-b70d29114a6b.png)
+![image](https://user-images.githubusercontent.com/78352910/205586047-4b1b430f-abe3-4acf-a4cb-85ef44c889c2.png)
 ###### ↳ multiple colored light(rgb)
 
 
-![image](https://user-images.githubusercontent.com/78352910/205478855-cede8c6c-df21-44b9-8cfc-05885ed33a26.png)
+![image](https://user-images.githubusercontent.com/78352910/205586087-591a778c-80c2-42bf-8b30-699840ef1a55.png)
 ###### ↳ multiple colored light(rgb)
 
 
@@ -105,15 +118,15 @@
 ### surface
 
 
-![image](https://user-images.githubusercontent.com/78352910/205478860-7c4d65b1-fed0-467c-a3b6-837b0360ef58.png)
+![image](https://user-images.githubusercontent.com/78352910/205586122-66e3df69-196a-4cef-b6ed-4c25622873d0.png)
 ###### ↳ surface lambertian
 
 
-![image](https://user-images.githubusercontent.com/78352910/205478868-8ee4f4ff-2f8d-493f-a524-ded0da0d74e1.png)
+![image](https://user-images.githubusercontent.com/78352910/205586161-72db160a-c557-4c92-af0e-fd93cd68677c.png)
 ###### ↳ surface metal(fuzz 0)
 
 
-![image](https://user-images.githubusercontent.com/78352910/205478877-e87eb66f-7080-483d-be7d-ae761f5e9fc8.png)
+![image](https://user-images.githubusercontent.com/78352910/205586194-fa8203e6-95fc-4264-b362-4bda7fd95bbd.png)
 ###### ↳ surface metal(fuzz 1)
 
 
@@ -124,7 +137,8 @@ i'm still working bonus part !
 
 ![image](https://user-images.githubusercontent.com/78352910/205492433-0e9b5e5e-786b-43f2-936a-dcbde939f1a2.png)
 ![image](https://user-images.githubusercontent.com/78352910/205492447-c298daa3-7a34-4ba9-a8b4-af4167c01667.png)
-![image](https://user-images.githubusercontent.com/78352910/205492462-973b1282-41f9-4a98-896e-b25ab35d5930.png)
+![image](https://user-images.githubusercontent.com/78352910/205585327-e63a49f7-7169-4f9c-a750-0f800db16019.png)
+![image](https://user-images.githubusercontent.com/78352910/205585349-adc8759e-69cb-46d3-b1ea-f7ce6efdb490.png)
 ![image](https://user-images.githubusercontent.com/78352910/205492468-c3431ce7-88c0-4f6b-82a6-5897ac0c55a0.png)
 ![image](https://user-images.githubusercontent.com/78352910/205492478-cd2472d8-a1f7-4c77-9389-1dc8742e3eec.png)
 ![image](https://user-images.githubusercontent.com/78352910/205492486-01af5126-831e-415b-9177-85235cf2b6ab.png)
