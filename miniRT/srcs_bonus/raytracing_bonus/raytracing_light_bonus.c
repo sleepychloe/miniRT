@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:04:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/04 06:52:16 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/05 07:50:31 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,6 @@ int	light_hit_obj(t_data *data, t_hit *hit, int i)
 	return (check_light_hit);
 }
 
-double	calc_specular(double *light_intensity)
-{
-	if (*light_intensity > 0.93)
-	{
-		*light_intensity *= 1.001;
-		if (*light_intensity > 0.95)
-		{
-			*light_intensity *= 1.01;
-			if (*light_intensity > 0.97)
-			{
-				*light_intensity *= 1.01;
-				if (*light_intensity > 0.98)
-				{
-					*light_intensity *= 1.01;
-					if (*light_intensity > 0.999999)
-						*light_intensity *= 1.02;
-				}
-			}
-		}
-	}
-	return (*light_intensity);
-}
-
 t_rgb3	calc_light_color(t_data *data, t_hit *hit, t_vec3 light_direc, int i)
 {
 	t_rgb3	light_color;
@@ -93,7 +70,6 @@ t_rgb3	calc_light_color(t_data *data, t_hit *hit, t_vec3 light_direc, int i)
 			vec3_mul_rn(light_direc, -1));
 	if (light_intensity < 0)
 		light_intensity = 0;
-	calc_specular(&light_intensity);
 	return (color_mul_rn(light_color, light_intensity));
 }
 
@@ -124,4 +100,33 @@ t_rgb3	apply_light(t_data *data, t_hit *hit)
 			* calc_light_color(data, hit, light_direc, i).b * 10;
 	}
 	return (color_applied_light);
+}
+
+t_rgb3	apply_specular(t_data *data, t_hit *hit)
+{
+	t_rgb3	color_applied_specular;
+	t_vec3	reflected_direc;
+	t_vec3	specular;
+	int		i;
+	double	k;
+
+	i = -1;
+	color_applied_specular = rgb3(0, 0, 0);
+	while (++i < data->scene->n_light)
+	{
+		reflected_direc = calc_perfect_reflected_direc(hit,
+				vec3_sub_vec3(hit->hit_point, data->scene->light[i]->xyz_pos));
+		specular = vec3_add_vec3(reflected_direc,
+				vec3_mul_rn(random_double_xyz(), 6));
+		if (vec3_dot_vec3(reflected_direc, specular) < 0)
+			specular = vec3_mul_rn(specular, -1);
+		k = vec3_dot_vec3(vec3_unit(reflected_direc), vec3_unit(specular));
+		color_applied_specular.r += light_hit_obj(data, hit, i)
+			* calc_light_color(data, hit, specular, i).r * (1 - k) * 10000;
+		color_applied_specular.g += light_hit_obj(data, hit, i)
+			* calc_light_color(data, hit, specular, i).g * (1 - k) * 10000;
+		color_applied_specular.b += light_hit_obj(data, hit, i)
+			* calc_light_color(data, hit, specular, i).b * (1 - k) * 10000;
+	}
+	return (color_applied_specular);
 }

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 07:26:44 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/04 13:32:50 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/05 07:20:45 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
 	if (hittable(data, &hit))
 	{
 		ambient = calc_ambient(data, &hit);
-		light = apply_light(data, &hit);
+		light = color_add(apply_light(data, &hit),
+				color_mul_rn(apply_specular(data, &hit), 0.01));
 		if (hit.surface == SURFACE_L || hit.surface == SURFACE_C
 			|| hit.surface == SURFACE_T || hit.surface == SURFACE_I
 			|| hit.surface == SURFACE_D)
