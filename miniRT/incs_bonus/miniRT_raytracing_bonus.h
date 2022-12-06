@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/05 09:19:30 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/06 14:14:02 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 /* repeating time for ray tracing */
 # define NUM_SAMPLE			2
-# define NUM_DEPTH			2
+# define NUM_DEPTH			3
 
 /* checking direction of normal vector */
 # define FRONT				1

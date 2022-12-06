@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:04:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/05 07:50:31 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/06 14:15:54 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,35 +73,6 @@ t_rgb3	calc_light_color(t_data *data, t_hit *hit, t_vec3 light_direc, int i)
 	return (color_mul_rn(light_color, light_intensity));
 }
 
-t_rgb3	apply_light(t_data *data, t_hit *hit)
-{
-	t_rgb3	color_applied_light;
-	t_vec3	light_direc;
-	int		light_hit;
-	int		i;
-
-	i = -1;
-	color_applied_light = rgb3(0, 0, 0);
-	while (++i < data->scene->n_light)
-	{
-		light_hit = light_hit_obj(data, hit, i);
-		if (light_hit == 0)
-			color_add(color_applied_light, rgb3(0, 0, 0));
-		light_direc = vec3_sub_vec3(hit->hit_point,
-				data->scene->light[i]->xyz_pos);
-		color_applied_light.r
-			+= light_hit * hit->color.r
-			* calc_light_color(data, hit, light_direc, i).r * 10;
-		color_applied_light.g
-			+= light_hit * hit->color.g
-			* calc_light_color(data, hit, light_direc, i).g * 10;
-		color_applied_light.b
-			+= light_hit * hit->color.b
-			* calc_light_color(data, hit, light_direc, i).b * 10;
-	}
-	return (color_applied_light);
-}
-
 t_rgb3	apply_specular(t_data *data, t_hit *hit)
 {
 	t_rgb3	color_applied_specular;
@@ -129,4 +100,33 @@ t_rgb3	apply_specular(t_data *data, t_hit *hit)
 			* calc_light_color(data, hit, specular, i).b * (1 - k) * 10000;
 	}
 	return (color_applied_specular);
+}
+
+t_rgb3	apply_light(t_data *data, t_hit *hit)
+{
+	t_rgb3	color_applied_light;
+	t_vec3	light_direc;
+	int		light_hit;
+	int		i;
+
+	i = -1;
+	color_applied_light = rgb3(0, 0, 0);
+	while (++i < data->scene->n_light)
+	{
+		light_hit = light_hit_obj(data, hit, i);
+		if (light_hit == 0)
+			color_add(color_applied_light, rgb3(0, 0, 0));
+		light_direc = vec3_sub_vec3(hit->hit_point,
+				data->scene->light[i]->xyz_pos);
+		color_applied_light.r
+			+= light_hit * hit->color.r
+			* calc_light_color(data, hit, light_direc, i).r * 10;
+		color_applied_light.g
+			+= light_hit * hit->color.g
+			* calc_light_color(data, hit, light_direc, i).g * 10;
+		color_applied_light.b
+			+= light_hit * hit->color.b
+			* calc_light_color(data, hit, light_direc, i).b * 10;
+	}
+	return (color_applied_light);
 }
