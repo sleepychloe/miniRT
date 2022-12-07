@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/06 14:14:02 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/07 23:09:13 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define PI				3.14159265359
 
 /* repeating time for ray tracing */
-# define NUM_SAMPLE			2
-# define NUM_DEPTH			3
+# define NUM_SAMPLE			1
+# define NUM_DEPTH			2
 
 /* checking direction of normal vector */
 # define FRONT				1
@@ -94,20 +94,36 @@ int		check_sphere(t_data *data, double *t, int sp_i, double distance);
 int		hit_sphere(t_data *data, t_hit *hit, int sp_i, double distance);
 int		light_hit_sp(t_data *data, int sp_i, double distance);
 
+/* raytracing_sphere_checkerboard_bonus */
+void	sphere_checkerboard(t_data *data, t_hit *hit, int sp_i);
+
 /* raytracing_plane_bonus */
 int		check_plane(t_data *data, double *t, int pl_i, double distance);
 int		hit_plane(t_data *data, t_hit *hit, int pl_i, double distance);
 int		light_hit_pl(t_data *data, int pl_i, double distance);
 
+/* raytracing_plane_checkerboard_1_bonus*/
+void	plane_checkerboard_norminette_1(t_data *data, t_hit *hit, int pl_i);
+void	plane_checkerboard_norminette_2(t_data *data, t_hit *hit, int pl_i);
+void	plane_checkerboard(t_data *data, t_hit *hit, int pl_i);
+
+/* raytracing_plane_checkerboard_2_bonus*/
+void	plane_checkerboard_xy(t_data *data, t_hit *hit, int pl_i);
+void	plane_checkerboard_xz(t_data *data, t_hit *hit, int pl_i);
+void	plane_checkerboard_zy(t_data *data, t_hit *hit, int pl_i);
+
 /* raytracing_cylinder_1_bonus */
-void	norminette_check_cylinder_body(t_data *data,
-			int cy_i, double *d, t_vec3 *cy_center);
-double	check_cylinder_body(t_data *data, int cy_i, double distance);
 t_vec3	calc_normal_vec_cylinder_body(t_data *data, t_hit *hit, int cy_i);
+void	cy_put_value_hit_struct(t_data *data, t_hit *hit, int cy_i);
 int		hit_cylinder(t_data *data, t_hit *hit, int cy_i, double distance);
 int		light_hit_cy(t_data *data, int cy_i, double distance);
 
 /* raytracing_cylinder_2_bonus */
+void	norminette_check_cylinder_body(t_data *data,
+			int cy_i, double *d, t_vec3 *cy_center);
+double	check_cylinder_body(t_data *data, int cy_i, double distance);
+
+/* raytracing_cylinder_3_bonus */
 void	norminette_check_cylinder_circle_1(t_data *data,
 			int cy_i, t_vec3 *cy_center, t_vec3 *tc);
 void	norminette_check_cylinder_circle_2(double *dot, double *t_circle);
@@ -117,8 +133,12 @@ int		check_cy_circle_radius(t_data *data,
 			int cy_i, t_vec3 hit_point, t_vec3 cy_center);
 double	check_cylinder_circle(t_data *data, int cy_i, double distance);
 
+/* raytracing_cylinder_checkerboard_bonus */
+void	cylinder_checkerboard(t_data *data, t_hit *hit, int cy_i);
+
 /* raytracing_cone_1_bonus */
 t_vec3	calc_normal_vec_cone_body(t_data *data, int co_i, double t_body);
+void	co_put_value_hit_struct(t_data *data, t_hit *hit, int co_i);
 int		hit_cone(t_data *data, t_hit *hit, int co_i, double distance);
 int		light_hit_co(t_data *data, int co_i, double distance);
 

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 07:25:13 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/06 14:12:32 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/07 21:48:04 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_rgb3	surface_lambertian(t_data *data, t_hit *hit, int *depth)
 	t_rgb3	diffuse;
 
 	target = vec3_add_vec3(hit->hit_point,
-				vec3_add_vec3(vec3_mul_rn(hit->normal_vec, 1e-10),
-			random_double_xyz()));
+			vec3_add_vec3(vec3_mul_rn(hit->normal_vec, 1e-10),
+				random_double_xyz()));
 	if (vec3_dot_vec3(target, hit->normal_vec) < 0)
 		target = vec3_mul_rn(target, -1);
 	ray_diffuse = ray(hit->hit_point, vec3_sub_vec3(target, hit->hit_point));

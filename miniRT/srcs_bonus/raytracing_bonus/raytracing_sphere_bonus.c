@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:56:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/06 20:47:23 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/07 21:43:34 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,6 @@ int	check_sphere(t_data *data, double *t, int sp_i, double distance)
 			return (1);
 	}
 	return (0);
-}
-
-void	sphere_checkerboard(t_data *data, t_hit *hit, int sp_i)
-{
-	int	u2;
-	int	v2;
-
-	double	u = atan(-1 * (hit->normal_vec.z / hit->normal_vec.x)) + PI;
-	double	v = acos(-1 * (hit->normal_vec.y));
-	u2 = u * PI;
-	v2 = v * PI;
-	if ((u2 + v2) % 2 == 0)
-		hit->color = data->obj[sp_i]->rgb1;
-	else
-		hit->color = data->obj[sp_i]->rgb2;
 }
 
 int	hit_sphere(t_data *data, t_hit *hit, int sp_i, double distance)

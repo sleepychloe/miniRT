@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:54:17 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/06 13:59:43 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/07 22:56:11 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_vec3	calc_normal_vec_cone_body(t_data *data, int co_i, double t_body)
 		= vec3(data->obj[co_i]->xyz_pos.x + delta * data->obj[co_i]->xyz_vec.x,
 			data->obj[co_i]->xyz_pos.y + delta * data->obj[co_i]->xyz_vec.y,
 			data->obj[co_i]->xyz_pos.z + delta * data->obj[co_i]->xyz_vec.z);
-	cos_theta = ((data->obj[co_i]->height)) / sqrt((data->obj[co_i]->diameter / 2)
+	cos_theta = (data->obj[co_i]->height) / sqrt((data->obj[co_i]->diameter / 2)
 			* (data->obj[co_i]->diameter / 2)
 			+ data->obj[co_i]->height * data->obj[co_i]->height);
 	hit_p = vec3_add_vec3(data->ray->point,
@@ -39,6 +39,13 @@ t_vec3	calc_normal_vec_cone_body(t_data *data, int co_i, double t_body)
 	return (vec3_unit(vec3_sub_vec3(hit_p,
 				vec3_sub_vec3(top_center,
 					vec3_mul_rn(data->obj[co_i]->xyz_vec, k)))));
+}
+
+void	co_put_value_hit_struct(t_data *data, t_hit *hit, int co_i)
+{
+	hit->surface = data->obj[co_i]->surface;
+	hit->fuzz = data->obj[co_i]->fuzz;
+	hit->color = data->obj[co_i]->rgb1;
 }
 
 int	hit_cone(t_data *data, t_hit *hit, int co_i, double distance)
@@ -64,9 +71,7 @@ int	hit_cone(t_data *data, t_hit *hit, int co_i, double distance)
 		hit->normal_vec = vec3_mul_rn(data->obj[co_i]->xyz_vec, -1);
 		set_hit_normal_direc(data, hit);
 	}
-	hit->surface = data->obj[co_i]->surface;
-	hit->fuzz = data->obj[co_i]->fuzz;
-	hit->color = data->obj[co_i]->rgb1;
+	co_put_value_hit_struct(data, hit, co_i);
 	return (0);
 }
 
