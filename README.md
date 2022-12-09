@@ -83,8 +83,12 @@
 ### phong reflection model(adding specular reflection)
 
 
-![image](https://user-images.githubusercontent.com/78352910/205585681-45ead586-48f1-4da1-b6fb-1fa7d4a0cd67.png)
+![image](https://user-images.githubusercontent.com/78352910/206645196-2f8d2c89-6767-40fe-8088-dc4ad1b5a81e.png)
 ###### ↳ specular reflection
+
+
+![image](https://user-images.githubusercontent.com/78352910/206645258-ec284892-f7b4-4788-8d1e-a60bea319b79.png)
+###### ↳ compare with mandatory part(before adding specular reflection)
 
 
 ### light
@@ -130,7 +134,11 @@
 ###### ↳ surface metal(fuzz 1)
 
 
-i'm still working bonus part !
+![image](https://user-images.githubusercontent.com/78352910/206645375-b1e96dd7-448e-47f3-80cf-ffbce3e22ffa.png)
+###### ↳ checkerboard
+
+
+i'm still working on bonus part(checkerboard) !
 
 
 ## Ray Tracing
