@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 07:26:44 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/06 16:26:10 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/09 03:20:07 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
 	t_hit	hit;
 	t_rgb3	ambient;
 	t_rgb3	light;
-	t_rgb3	surface;
 
 	if (depth <= 0)
 		return (rgb3(0, 0, 0));
@@ -62,15 +61,15 @@ t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
 	if (hittable(data, &hit))
 	{
 		ambient = calc_ambient(data, &hit);
-		light = color_add(color_mul_rn(apply_specular(data, &hit), 0.1),
+		light = color_add(color_mul_rn(apply_specular(data, &hit), 0.05),
 				apply_light(data, &hit));
-		if (hit.surface == SURFACE_L || hit.surface == SURFACE_C
-			|| hit.surface == SURFACE_T || hit.surface == SURFACE_I
-			|| hit.surface == SURFACE_D)
-			surface = surface_lambertian(data, &hit, &depth);
+		if (!(hit.surface == SURFACE_M))
+			return (color_add(color_add(ambient, light),
+					color_mul_rn(surface_lambertian(data,
+							&hit, &depth), 0.2)));
 		else
-			surface = surface_metal(data, &hit, &depth);
-		return (color_add(color_add(ambient, light), surface));
+			return (color_add(color_add(ambient, light), 
+					surface_metal(data, &hit, &depth)));
 	}
 	return (rgb3(0, 0, 0));
 }
