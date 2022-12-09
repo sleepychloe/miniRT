@@ -42,5 +42,3 @@ co   -3,3.6,0      0,1,0         2.0     3.0     L       160,70,80
 #co   0,0,0    0,1,0     2.0     2.0     D      ./maps_bonus/guide_bonus_map.txt  ./maps_bonus/guide_bonus_map.txt
 #co   0,0,0    0,1,0     2.0     2.0     M,0.5  255,255,255
 #co   0,0,0    0,1,0     2.0     2.0     G      none
-
-#ok3, 7, 33, 0, 2,77

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:42:48 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/09 04:17:04 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:45:04 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sphere_checkerboard(t_data *data, t_hit *hit, int sp_i)
 
 	theta = atan(hit->normal_vec.z / hit->normal_vec.x) + PI / 2;
 	pi = acos((hit->normal_vec.y));
-	u  = theta * PI;
+	u = theta * PI;
 	v = pi * PI;
 	if ((u + v) % 2 == 0)
 		hit->color = data->obj[sp_i]->rgb1;

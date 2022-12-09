@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 07:26:44 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/09 03:20:07 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/09 14:44:14 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_rgb3	trace(t_data *data, t_ray ray_set, int depth)
 					color_mul_rn(surface_lambertian(data,
 							&hit, &depth), 0.2)));
 		else
-			return (color_add(color_add(ambient, light), 
+			return (color_add(color_add(ambient, light),
 					surface_metal(data, &hit, &depth)));
 	}
 	return (rgb3(0, 0, 0));
