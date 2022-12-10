@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:42:48 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/09 14:45:04 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/10 20:06:21 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sphere_checkerboard(t_data *data, t_hit *hit, int sp_i)
 	int		u;
 	int		v;
 
-	theta = atan(hit->normal_vec.z / hit->normal_vec.x) + PI / 2;
+	theta = atan2(hit->normal_vec.x, hit->normal_vec.z) + PI / 2;
 	pi = acos((hit->normal_vec.y));
 	u = theta * PI;
 	v = pi * PI;

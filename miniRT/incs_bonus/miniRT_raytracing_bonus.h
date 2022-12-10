@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/09 14:43:25 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/10 20:32:18 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,10 +133,16 @@ int		check_cy_circle_radius(t_data *data,
 			int cy_i, t_vec3 hit_point, t_vec3 cy_center);
 double	check_cylinder_circle(t_data *data, int cy_i, double distance);
 
-/* raytracing_cylinder_checkerboard_bonus */
+/* raytracing_cylinder_checkerboard_1_bonus */
+void	cylinder_checkerboard_xy(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_checkerboard_zx(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_checkerboard_zy(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_checkerboard(t_data *data, t_hit *hit, int cy_i);
+
+/* raytracing_cylinder_checkerboard_2_bonus */
+void	cylinder_circle_checkerboard_xy(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_circle_checkerboard_zx(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_circle_checkerboard_zy(t_data *data, t_hit *hit, int cy_i);
 
 /* raytracing_cone_1_bonus */
 t_vec3	calc_normal_vec_cone_body(t_data *data, int co_i, double t_body);
