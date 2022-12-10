@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/10 20:32:18 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/10 22:58:53 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ double	check_cylinder_circle(t_data *data, int cy_i, double distance);
 void	cylinder_checkerboard_xy(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_checkerboard_zx(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_checkerboard_zy(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_checkerboard_norminette(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_checkerboard(t_data *data, t_hit *hit, int cy_i);
 
 /* raytracing_cylinder_checkerboard_2_bonus */
@@ -156,6 +157,23 @@ void	norminette_check_cone_body(t_data *data,
 int		check_cone_body_range(t_data *data,
 			int co_i, t_vec3 top_center, t_vec3 hit_p);
 double	check_cone_body(t_data *data, int co_i, double distance);
+
+/* raytracing_cone_checkerboard_1_bonus */
+void	cone_checkerboard_norminette(t_data *data, t_hit *hit, int co_i);
+void	cone_checkerboard(t_data *data, t_hit *hit, int co_i);
+
+/* raytracing_cone_checkerboard_2_bonus */
+void	cone_find_k(t_data *data, t_hit *hit, int co_i, double *k);
+void	cone_checkerboard_xy_zx_zy_norminette(t_data *data,
+			t_hit *hit, int co_i, double *height);
+void	cone_checkerboard_xy(t_data *data, t_hit *hit, int co_i);
+void	cone_checkerboard_zx(t_data *data, t_hit *hit, int co_i);
+void	cone_checkerboard_zy(t_data *data, t_hit *hit, int co_i);
+
+/* raytracing_cone_checkerboard_3_bonus */
+void	cone_circle_checkerboard_xy(t_data *data, t_hit *hit, int co_i);
+void	cone_circle_checkerboard_zx(t_data *data, t_hit *hit, int co_i);
+void	cone_circle_checkerboard_zy(t_data *data, t_hit *hit, int co_i);
 
 /* raytracing_cone_3_bonus */
 void	norminette_check_cone_circle(t_data *data,

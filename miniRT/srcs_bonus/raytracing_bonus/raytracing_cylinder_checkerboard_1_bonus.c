@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 22:57:21 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/10 20:33:42 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/10 22:44:02 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,22 @@ void	cylinder_checkerboard_zy(t_data *data, t_hit *hit, int cy_i)
 		cylinder_circle_checkerboard_zy(data, hit, cy_i);
 }
 
+void	cylinder_checkerboard_norminette(t_data *data, t_hit *hit, int cy_i)
+{
+	if (fabs(data->obj[cy_i]->xyz_vec.y) > 0.7
+		|| (fabs(data->obj[cy_i]->xyz_vec.x) != 0
+			&& fabs(data->obj[cy_i]->xyz_vec.y) > 0.5
+			&& fabs(data->obj[cy_i]->xyz_vec.z) > 0.7))
+		cylinder_checkerboard_zx(data, hit, cy_i);
+	else if (fabs(data->obj[cy_i]->xyz_vec.z) == 1
+		|| fabs(data->obj[cy_i]->xyz_vec.z) > 0.7
+		|| (fabs(data->obj[cy_i]->xyz_vec.y) > 0.6
+			&& fabs(data->obj[cy_i]->xyz_vec.z) > 0.6))
+		cylinder_checkerboard_xy(data, hit, cy_i);
+	else
+		cylinder_checkerboard_zy(data, hit, cy_i);
+}
+
 void	cylinder_checkerboard(t_data *data, t_hit *hit, int cy_i)
 {
 	if ((data->obj[cy_i]->xyz_vec.x != 1 && data->obj[cy_i]->xyz_vec.x != -1
@@ -103,21 +119,11 @@ void	cylinder_checkerboard(t_data *data, t_hit *hit, int cy_i)
 	{
 		if (fabs(data->obj[cy_i]->xyz_vec.z) == 0)
 			cylinder_checkerboard_zx(data, hit, cy_i);
+		else if (fabs(data->obj[cy_i]->xyz_vec.x) == 0
+			&& fabs(data->obj[cy_i]->xyz_vec.z) == 1)
+			cylinder_checkerboard_xy(data, hit, cy_i);
 		else if (fabs(data->obj[cy_i]->xyz_vec.x) != 0)
-		{
-			if (fabs(data->obj[cy_i]->xyz_vec.y) > 0.7
-				|| (fabs(data->obj[cy_i]->xyz_vec.x) != 0
-					&& fabs(data->obj[cy_i]->xyz_vec.y) > 0.5
-					&& fabs(data->obj[cy_i]->xyz_vec.z) > 0.7))
-				cylinder_checkerboard_zx(data, hit, cy_i);
-			else if (fabs(data->obj[cy_i]->xyz_vec.z) == 1
-				|| fabs(data->obj[cy_i]->xyz_vec.z) > 0.7
-				|| (fabs(data->obj[cy_i]->xyz_vec.y) > 0.6
-					&& fabs(data->obj[cy_i]->xyz_vec.z) > 0.6))
-				cylinder_checkerboard_xy(data, hit, cy_i);
-			else
-				cylinder_checkerboard_zy(data, hit, cy_i);
-		}
+			cylinder_checkerboard_norminette(data, hit, cy_i);
 		else
 			cylinder_checkerboard_zx(data, hit, cy_i);
 	}
