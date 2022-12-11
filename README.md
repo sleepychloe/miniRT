@@ -134,18 +134,18 @@
 ###### ↳ surface metal(fuzz 1)
 
 
-![image](https://user-images.githubusercontent.com/78352910/206645375-b1e96dd7-448e-47f3-80cf-ffbce3e22ffa.png)
+![image](https://user-images.githubusercontent.com/78352910/206876906-5cbf5b8a-0840-4686-b4e1-37159735af80.png)
 ###### ↳ checkerboard
 
 
-i'm still working on bonus part(checkerboard) !
+i'm still working on bonus part !
 
 
 ## Ray Tracing
 
 ![image](https://user-images.githubusercontent.com/78352910/205492433-0e9b5e5e-786b-43f2-936a-dcbde939f1a2.png)
 ![image](https://user-images.githubusercontent.com/78352910/205492447-c298daa3-7a34-4ba9-a8b4-af4167c01667.png)
-![image](https://user-images.githubusercontent.com/78352910/205585327-e63a49f7-7169-4f9c-a750-0f800db16019.png)
+![image](https://user-images.githubusercontent.com/78352910/206876898-0d6a47fa-60a6-4339-993e-7b7d7f225dc9.png)
 ![image](https://user-images.githubusercontent.com/78352910/205585349-adc8759e-69cb-46d3-b1ea-f7ce6efdb490.png)
 ![image](https://user-images.githubusercontent.com/78352910/205492468-c3431ce7-88c0-4f6b-82a6-5897ac0c55a0.png)
 ![image](https://user-images.githubusercontent.com/78352910/205492478-cd2472d8-a1f7-4c77-9389-1dc8742e3eec.png)
