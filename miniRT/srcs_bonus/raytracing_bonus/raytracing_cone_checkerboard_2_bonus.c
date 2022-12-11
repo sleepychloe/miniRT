@@ -6,17 +6,20 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 22:12:53 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/10 22:59:14 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/11 01:16:46 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs_bonus/miniRT_bonus.h"
 
-void	cone_find_k(t_data *data, t_hit *hit, int co_i, double *k)
+void	cone_checkerboard_xy_zx_zy_norminette(t_data *data,
+				t_hit *hit, int co_i, double *height)
 {
 	double	delta;
 	t_vec3	top_center;
-	double	tan_theta;
+	double	cos_theta;
+	t_vec3	pq;
+	double	length_pq;
 
 	delta = data->obj[co_i]->height / 2
 		* sqrt(1 / (data->obj[co_i]->xyz_vec.x * data->obj[co_i]->xyz_vec.x
@@ -26,29 +29,14 @@ void	cone_find_k(t_data *data, t_hit *hit, int co_i, double *k)
 		= vec3(data->obj[co_i]->xyz_pos.x + delta * data->obj[co_i]->xyz_vec.x,
 			data->obj[co_i]->xyz_pos.y + delta * data->obj[co_i]->xyz_vec.y,
 			data->obj[co_i]->xyz_pos.z + delta * data->obj[co_i]->xyz_vec.z);
-	tan_theta = (data->obj[co_i]->diameter / 2) / data->obj[co_i]->height;
-	*k = sqrt((hit->hit_point.x - top_center.x)
-			* (hit->hit_point.x - top_center.x)
-			+ (hit->hit_point.y - top_center.y)
-			* (hit->hit_point.y - top_center.y)
-			+ (hit->hit_point.z - top_center.z)
-			* (hit->hit_point.z - top_center.z))
-		* tan_theta;
-}
-
-void	cone_checkerboard_xy_zx_zy_norminette(t_data *data,
-				t_hit *hit, int co_i, double *height)
-{
-	t_vec3	pc;
-	double	pc_length;
-	double	k;
-
-	cone_find_k(data, hit, co_i, &k);
-	pc = vec3_sub_vec3(data->obj[co_i]->xyz_pos, hit->hit_point);
-	pc_length = sqrt(pc.x * pc.x + pc.y * pc.y + pc.z * pc.z);
-	*height = 1.5 + sqrt(pc_length * pc_length + k * k);
-	if (data->obj[co_i]->diameter >= data->obj[co_i]->height)
-		*height = sqrt(pc_length * pc_length + k * k);
+	cos_theta = data->obj[co_i]->height
+		/ sqrt(data->obj[co_i]->height * data->obj[co_i]->height
+			+ (data->obj[co_i]->diameter / 2)
+			* (data->obj[co_i]->diameter / 2));
+	pq = vec3_sub_vec3(hit->hit_point, top_center);
+	length_pq = sqrt(pq.x * pq.x + pq.y * pq.y + pq.z * pq.z);
+	*height = (length_pq * cos_theta / data->obj[co_i]->height) * 2
+		* (data->obj[co_i]->height / (data->obj[co_i]->diameter));
 }
 
 void	cone_checkerboard_xy(t_data *data, t_hit *hit, int co_i)

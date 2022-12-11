@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 22:57:21 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/10 22:44:02 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/11 01:17:09 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	cylinder_checkerboard_xy(t_data *data, t_hit *hit, int cy_i)
 {
-	t_vec3	pc;
-	double	pc_length;
+	t_vec3	cp;
+	double	length_cp;
 	double	theta;
 	double	height;
 
-	pc = vec3_sub_vec3(data->obj[cy_i]->xyz_pos, hit->hit_point);
-	pc_length = sqrt(pc.x * pc.x + pc.y * pc.y + pc.z * pc.z);
 	theta = atan2(hit->normal_vec.y, hit->normal_vec.x) + PI / 2;
-	height = 10 + (sqrt(pc_length * pc_length - (data->obj[cy_i]->diameter / 2)
-				* ((data->obj[cy_i]->diameter) / 2)));
+	cp = vec3_sub_vec3(hit->hit_point, data->obj[cy_i]->xyz_pos);
+	length_cp = vec3_dot_vec3(cp, data->obj[cy_i]->xyz_vec);
+	height = PI + (length_cp / data->obj[cy_i]->height) * 2
+		* (data->obj[cy_i]->height / (data->obj[cy_i]->diameter));
 	if (!(hit->normal_vec.x == data->obj[cy_i]->xyz_vec.x
 			&& hit->normal_vec.y == data->obj[cy_i]->xyz_vec.y
 			&& hit->normal_vec.z == data->obj[cy_i]->xyz_vec.z)
@@ -42,16 +42,16 @@ void	cylinder_checkerboard_xy(t_data *data, t_hit *hit, int cy_i)
 
 void	cylinder_checkerboard_zx(t_data *data, t_hit *hit, int cy_i)
 {
-	t_vec3	pc;
-	double	pc_length;
+	t_vec3	cp;
+	double	length_cp;
 	double	theta;
 	double	height;
 
-	pc = vec3_sub_vec3(data->obj[cy_i]->xyz_pos, hit->hit_point);
-	pc_length = sqrt(pc.x * pc.x + pc.y * pc.y + pc.z * pc.z);
 	theta = atan2(hit->normal_vec.x, hit->normal_vec.z) + PI / 2;
-	height = 10 + (sqrt(pc_length * pc_length - (data->obj[cy_i]->diameter / 2)
-				* ((data->obj[cy_i]->diameter) / 2)));
+	cp = vec3_sub_vec3(hit->hit_point, data->obj[cy_i]->xyz_pos);
+	length_cp = vec3_dot_vec3(cp, data->obj[cy_i]->xyz_vec);
+	height = PI + (length_cp / data->obj[cy_i]->height) * 2
+		* (data->obj[cy_i]->height / (data->obj[cy_i]->diameter));
 	if (!(hit->normal_vec.x == data->obj[cy_i]->xyz_vec.x
 			&& hit->normal_vec.y == data->obj[cy_i]->xyz_vec.y
 			&& hit->normal_vec.z == data->obj[cy_i]->xyz_vec.z)
@@ -70,16 +70,16 @@ void	cylinder_checkerboard_zx(t_data *data, t_hit *hit, int cy_i)
 
 void	cylinder_checkerboard_zy(t_data *data, t_hit *hit, int cy_i)
 {
-	t_vec3	pc;
-	double	pc_length;
+	t_vec3	cp;
+	double	length_cp;
 	double	theta;
 	double	height;
 
-	pc = vec3_sub_vec3(data->obj[cy_i]->xyz_pos, hit->hit_point);
-	pc_length = sqrt(pc.x * pc.x + pc.y * pc.y + pc.z * pc.z);
 	theta = atan2(hit->normal_vec.y, hit->normal_vec.z) + PI / 2;
-	height = 10 + (sqrt(pc_length * pc_length - (data->obj[cy_i]->diameter / 2)
-				* ((data->obj[cy_i]->diameter) / 2)));
+	cp = vec3_sub_vec3(hit->hit_point, data->obj[cy_i]->xyz_pos);
+	length_cp = vec3_dot_vec3(cp, data->obj[cy_i]->xyz_vec);
+	height = PI + (length_cp / data->obj[cy_i]->height) * 2
+		* (data->obj[cy_i]->height / (data->obj[cy_i]->diameter));
 	if (!(hit->normal_vec.x == data->obj[cy_i]->xyz_vec.x
 			&& hit->normal_vec.y == data->obj[cy_i]->xyz_vec.y
 			&& hit->normal_vec.z == data->obj[cy_i]->xyz_vec.z)

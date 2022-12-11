@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/10 22:58:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/11 00:56:10 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,6 @@ void	cone_checkerboard_norminette(t_data *data, t_hit *hit, int co_i);
 void	cone_checkerboard(t_data *data, t_hit *hit, int co_i);
 
 /* raytracing_cone_checkerboard_2_bonus */
-void	cone_find_k(t_data *data, t_hit *hit, int co_i, double *k);
 void	cone_checkerboard_xy_zx_zy_norminette(t_data *data,
 			t_hit *hit, int co_i, double *height);
 void	cone_checkerboard_xy(t_data *data, t_hit *hit, int co_i);
