@@ -134,7 +134,7 @@
 ###### ↳ surface metal(fuzz 1)
 
 
-![image](https://user-images.githubusercontent.com/78352910/206876906-5cbf5b8a-0840-4686-b4e1-37159735af80.png)
+![image](https://user-images.githubusercontent.com/78352910/206880593-7f0b8904-852b-4557-b3b2-de7ca59e62fa.png)
 ###### ↳ checkerboard
 
 
