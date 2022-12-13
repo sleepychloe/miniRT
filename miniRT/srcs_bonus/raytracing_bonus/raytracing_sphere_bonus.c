@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:56:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/07 21:43:34 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/11 18:16:48 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,12 @@ int	hit_sphere(t_data *data, t_hit *hit, int sp_i, double distance)
 	set_hit_normal_direc(data, hit);
 	hit->surface = data->obj[sp_i]->surface;
 	hit->fuzz = data->obj[sp_i]->fuzz;
-	if (data->obj[sp_i]->surface != SURFACE_C)
-		hit->color = data->obj[sp_i]->rgb1;
-	else
+	if (data->obj[sp_i]->surface == SURFACE_C)
 		sphere_checkerboard(data, hit, sp_i);
+	else if (data->obj[sp_i]->surface == SURFACE_I)
+		sphere_img(data, hit, sp_i);
+	else
+		hit->color = data->obj[sp_i]->rgb1;
 	return (0);
 }
 

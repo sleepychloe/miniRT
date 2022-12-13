@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/11 00:56:10 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/11 18:18:44 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,9 @@ int		light_hit_sp(t_data *data, int sp_i, double distance);
 
 /* raytracing_sphere_checkerboard_bonus */
 void	sphere_checkerboard(t_data *data, t_hit *hit, int sp_i);
+
+/* raytracing_sphere_img_bonus */
+void	sphere_img(t_data *data, t_hit *hit, int sp_i);
 
 /* raytracing_plane_bonus */
 int		check_plane(t_data *data, double *t, int pl_i, double distance);
