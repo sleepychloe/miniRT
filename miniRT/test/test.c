@@ -15,62 +15,42 @@ typedef struct s_mlx
 	int	endian;
 
 }	t_mlx;
-/*
-int	main(void)
-{	
-	char	*relative_path = "./north.xpm";
-	int	row;
-	int	col;
-	int	color;
-	int	*result;
-	t_mlx	mlx;
 
-	mlx.mlx = mlx_init();
-	mlx.mlx_win = mlx_new_window(mlx.mlx, 500, 500, "Hello, world!");  
-	mlx.img = mlx_xpm_file_to_image(mlx.mlx, relative_path, &mlx.img_width, &mlx.img_height);
-	mlx.data = (int *)mlx_get_data_addr(mlx.mlx, &mlx.bpp, &mlx.line, &mlx.endian);
-	result = (int *)malloc(sizeof(int) * (mlx.img_width * mlx.img_height));
-	row = -1;
-	while (++row < mlx.img_height)
-	{
-		col = -1;
-		while (++col < mlx.img_width)
-		{
-			result[mlx.img_width * row + col] = mlx.data[mlx.img_width * row + col];
-		}
-	}
-	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, mlx.img, 0, 0);
-	mlx_destroy_image(mlx.mlx, mlx.img);
-	mlx_loop(mlx.mlx);
-}
-*/
-
-int	*load_image(t_mlx *mlx, char *relative_path)
+int	*load_image(char *relative_path)
 {
 	int	row;
 	int	col;
 	int	*result;
+	t_mlx	img;
 
-	if (!(mlx->img = mlx_xpm_file_to_image(mlx->mlx, relative_path, &mlx->img_width, &mlx->img_height)))
+	if (!(img.img = mlx_xpm_file_to_image(img.mlx, relative_path, &img.img_width, &img.img_height)))
 		return (0);
-	mlx->data = (int *)mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->line, &mlx->endian);
-	result = (int *)malloc(sizeof(int) * (mlx->img_width * mlx->img_height));
+	img.data = (int *)mlx_get_data_addr(img.img, &img.bpp, &img.line, &img.endian);
+	result = malloc(sizeof(int) * (img.img_width * img.img_height));
 	row = -1;
-	while (++row < mlx->img_height)
+	while (++row < img.img_height)
 	{
 		col = -1;
-		while (++col < mlx->img_width)
+		while (++col < img.img_width)
 		{
-			result[mlx->img_width * row + col] = mlx->data[mlx->img_width * row + col];
+			result[img.img_width * row + col] = (int)img.data[img.img_width * row + col];
 		}
 	}
-	//mlx_destroy_image(mlx->mlx, mlx->img);
+	mlx_destroy_image(img.mlx, img.img);
 	return (result);
+}
+
+void	my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color)
+{
+	int	*dst;
+
+	dst = mlx->data + (x * mlx->bpp / 8) + (y * mlx->line);
+	*(unsigned int *)dst = color;
 }
 
 int	main(void)
 {	
-	char	*relative_path = "./north.xpm";
+	char	*relative_path = "./test.xpm";
 	int	*result;
 	t_mlx	mlx;
 	int	row;
@@ -81,18 +61,21 @@ int	main(void)
 	mlx.mlx_win = mlx_new_window(mlx.mlx, 500, 500, "Hello, world!");
 	mlx.img = mlx_new_image(mlx.mlx, 500, 500);
 	mlx.data = (int *)mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.line, &mlx.endian);
-	
-	result = load_image(&mlx, relative_path);
-	row = -1;
-	while (++row < mlx.img_height)
+	result = load_image(relative_path);
+	row = 0;
+	col = 0;
+	while (row < 500)
 	{
-		col = -1;
-		while (++col < mlx.img_width)
+		while (col < 500)
 		{
-			mlx.data[mlx.img_width * row + col] = result[mlx.img_width * row + col];
-			printf("%d\n", mlx.data[mlx.img_width * row + col]);
+			mlx.data[500 * row + col] = result[64 * ((64 * row/500)) + (64 * col/500)];
+			printf("%d\n", mlx.data[500 * row + col]);
+			col++;
 		}
+		col = 0;
+		row++;
 	}
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, mlx.img, 0, 0);
+	free(result);
 	mlx_loop(mlx.mlx);
 }

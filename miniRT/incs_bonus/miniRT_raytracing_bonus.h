@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/11 18:18:44 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/14 17:14:21 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,9 @@ void	plane_checkerboard(t_data *data, t_hit *hit, int pl_i);
 void	plane_checkerboard_xy(t_data *data, t_hit *hit, int pl_i);
 void	plane_checkerboard_xz(t_data *data, t_hit *hit, int pl_i);
 void	plane_checkerboard_zy(t_data *data, t_hit *hit, int pl_i);
+
+/* raytracing_plane_img_bonus */
+void	plane_img(t_data *data, t_hit *hit, int pl_i);
 
 /* raytracing_cylinder_1_bonus */
 t_vec3	calc_normal_vec_cylinder_body(t_data *data, t_hit *hit, int cy_i);

@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/12/11 18:17:57 by yhwang           ###   ########.fr        #
+#    Updated: 2022/12/14 17:12:14 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,6 +155,7 @@ FILES_B = $(SRCS_B_DIR)main_bonus \
 		$(SRCS_B_RT_DIR)raytracing_plane_bonus \
 		$(SRCS_B_RT_DIR)raytracing_plane_checkerboard_1_bonus \
 		$(SRCS_B_RT_DIR)raytracing_plane_checkerboard_2_bonus \
+		$(SRCS_B_RT_DIR)raytracing_plane_img_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cylinder_1_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cylinder_2_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cylinder_3_bonus \

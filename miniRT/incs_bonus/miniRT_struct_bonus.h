@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:00:17 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/11 20:07:02 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/14 13:57:08 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,18 @@ typedef struct s_mlx
 	int			bits_per_pixel;
 	int			endian;
 }	t_mlx;
+
+typedef struct s_mlx_img
+{
+	void		*mlx_ptr;
+	void		*img_ptr;
+	int		*addr;
+	int			line_length;
+	int			bits_per_pixel;
+	int			endian;
+	int			img_width;
+	int			img_height;
+}	t_mlx_img;
 
 typedef struct s_rt
 {
