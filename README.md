@@ -135,7 +135,7 @@
 
 
 ![image](https://user-images.githubusercontent.com/78352910/206880593-7f0b8904-852b-4557-b3b2-de7ca59e62fa.png)
-###### ↳ uv mappint(checkerboard)
+###### ↳ uv mapping(checkerboard)
 
 
 ![image](https://user-images.githubusercontent.com/78352910/207798333-1225ed52-7c5c-4371-83f4-7c4e2deadbd5.png)
