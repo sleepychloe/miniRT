@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 22:12:53 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/11 01:16:46 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/15 08:18:50 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	cone_checkerboard_xy(t_data *data, t_hit *hit, int co_i)
 			&& hit->normal_vec.y == data->obj[co_i]->xyz_vec.y * -1
 			&& hit->normal_vec.z == data->obj[co_i]->xyz_vec.z * -1))
 	{
-		if (((int)(theta * PI) + (int)(height * PI)) % 2 == 0)
+		if (((int)(theta / PI * 10) + (int)(height / PI * 10)) % 2 == 0)
 			hit->color = data->obj[co_i]->rgb1;
 		else
 			hit->color = data->obj[co_i]->rgb2;
@@ -76,7 +76,7 @@ void	cone_checkerboard_zx(t_data *data, t_hit *hit, int co_i)
 			&& hit->normal_vec.y == data->obj[co_i]->xyz_vec.y * -1
 			&& hit->normal_vec.z == data->obj[co_i]->xyz_vec.z * -1))
 	{
-		if (((int)(theta * PI) + (int)(height * PI)) % 2 == 0)
+		if (((int)(theta / PI * 10) + (int)(height / PI * 10)) % 2 == 0)
 			hit->color = data->obj[co_i]->rgb1;
 		else
 			hit->color = data->obj[co_i]->rgb2;
@@ -99,7 +99,7 @@ void	cone_checkerboard_zy(t_data *data, t_hit *hit, int co_i)
 			&& hit->normal_vec.y == data->obj[co_i]->xyz_vec.y * -1
 			&& hit->normal_vec.z == data->obj[co_i]->xyz_vec.z * -1))
 	{
-		if (((int)(theta * PI) + (int)(height * PI)) % 2 == 0)
+		if (((int)(theta / PI * 10) + (int)(height / PI * 10)) % 2 == 0)
 			hit->color = data->obj[co_i]->rgb1;
 		else
 			hit->color = data->obj[co_i]->rgb2;

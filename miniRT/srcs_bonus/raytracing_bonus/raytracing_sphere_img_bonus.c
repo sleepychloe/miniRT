@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:17:14 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/14 17:50:52 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/15 08:21:38 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	*load_image(t_mlx_img *img, t_data *data)
 	int	col;
 	int	*result;
 
-	if (!(img->img_ptr = mlx_xpm_file_to_image(data->mlx->mlx_ptr, "./map_img/test.xpm", &img->img_width, &img->img_height)))
+	if (!(img->img_ptr = mlx_xpm_file_to_image(data->mlx->mlx_ptr, "./texture_img/earth.xpm", &img->img_width, &img->img_height)))
 		return (0);
 	img->addr = (int *)mlx_get_data_addr(img->img_ptr, &img->bits_per_pixel, &img->line_length, &img->endian);
 	result = malloc(sizeof(int) * (img->img_width * img->img_height));
@@ -49,7 +49,7 @@ int	*load_image(t_mlx_img *img, t_data *data)
 		col = -1;
 		while (++col < img->img_width)
 		{
-			result[img->img_width * row + col] = img->addr[img->img_height * row + col];
+			result[img->img_width * row + col] = img->addr[img->img_width * row + col];
 		}
 	}
 	mlx_destroy_image(data->mlx->mlx_ptr, img->img_ptr);
@@ -68,7 +68,8 @@ unsigned int	xpm_pixel_get(int *result, int x, int y, t_mlx_img *img)
 		x = img->img_width - 1;
 	if (y > img->img_height - 1)
 		y = img->img_height - 1;
-	dst = result + (x * img->bits_per_pixel / 8) + (y * img->line_length);
+	dst = result + ((x / 2) * img->bits_per_pixel / 8) + ((y / 4) * img->line_length + (x / 2));
+	//dst = result + ((x / 2) * img->bits_per_pixel / 8) + ((y / 2) * img->line_length + (x / 2));
 	return (*(unsigned int *)dst);
 }
 
@@ -79,9 +80,8 @@ t_rgb3	image_mapping(double u, double v, int *result, t_mlx_img *img)
 	int		mlx_color;
 
 	u_int = (int)((u) * (img->img_width));
-	v_int = (int)((1 - v) * (img->img_height));
+	v_int = (int)((1.0 - v) * (img->img_height));
 	//printf("img_w: %d, img_h: %d\n", img->img_width, img->img_width);
-	printf("u_int: %d, v_int: %d\n", u_int, v_int);
 	mlx_color = xpm_pixel_get(result, u_int, v_int, img);
 	return (pixel_to_rgb(mlx_color));
 }
@@ -94,18 +94,13 @@ void	sphere_img(t_data *data, t_hit *hit, int sp_i)
 	double	pi;
 	double		u;
 	double		v;
-
 	(void)sp_i;
 	(void)data;
 	theta = acos(-1 * (hit->normal_vec.y));
-	pi = (atan2(-1 * (hit->normal_vec.z), hit->normal_vec.x) + PI) + PI;
-	u = pi * PI * 0.5;
-	v = theta * PI;
-	//printf("u: %f, v : %f\n", u, v);
-
-
+	pi = atan2(hit->normal_vec.x, hit->normal_vec.z) + PI / 2;
+	u = pi / PI * 0.5;
+	v = theta / PI;
 	result = load_image(&img, data);
-
 	hit->color = image_mapping(u, v, result, &img);
 	free(result);
 }
