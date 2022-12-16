@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 22:50:12 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/04 13:18:31 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 02:58:49 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,12 @@ void	put_value_obj_sp(t_scene *scene, t_obj **obj)
 		obj[i]->fuzz = scene->sphere[i]->fuzz;
 		obj[i]->rgb1 = scene->sphere[i]->rgb1;
 		obj[i]->rgb2 = scene->sphere[i]->rgb2;
-		obj[i]->img_path = scene->sphere[i]->img_path;
-		obj[i]->texture_path = scene->sphere[i]->texture_path;
+		obj[i]->img_path
+			= realloc_img_texture_path(obj[i]->img_path,
+				scene->sphere[i]->img_path);
+		obj[i]->texture_path
+			= realloc_img_texture_path(obj[i]->texture_path,
+				scene->sphere[i]->texture_path);
 		i++;
 	}
 }
@@ -52,8 +56,12 @@ void	put_value_obj_pl(t_scene *scene, t_obj **obj)
 		obj[n + i]->fuzz = scene->plane[i]->fuzz;
 		obj[n + i]->rgb1 = scene->plane[i]->rgb1;
 		obj[n + i]->rgb2 = scene->plane[i]->rgb2;
-		obj[n + i]->img_path = scene->plane[i]->img_path;
-		obj[n + i]->texture_path = scene->plane[i]->texture_path;
+		obj[n + i]->img_path
+			= realloc_img_texture_path(obj[n + i]->img_path,
+				scene->plane[i]->img_path);
+		obj[n + i]->texture_path
+			= realloc_img_texture_path(obj[n + i]->texture_path,
+				scene->plane[i]->texture_path);
 		i++;
 	}
 }
@@ -76,8 +84,12 @@ void	put_value_obj_cy(t_scene *scene, t_obj **obj)
 		obj[n + i]->fuzz = scene->cylinder[i]->fuzz;
 		obj[n + i]->rgb1 = scene->cylinder[i]->rgb1;
 		obj[n + i]->rgb2 = scene->cylinder[i]->rgb2;
-		obj[n + i]->img_path = scene->cylinder[i]->img_path;
-		obj[n + i]->texture_path = scene->cylinder[i]->texture_path;
+		obj[n + i]->img_path
+			= realloc_img_texture_path(obj[n + i]->img_path,
+				scene->cylinder[i]->img_path);
+		obj[n + i]->texture_path
+			= realloc_img_texture_path(obj[n + i]->texture_path,
+				scene->cylinder[i]->texture_path);
 		i++;
 	}
 }
@@ -100,8 +112,12 @@ void	put_value_obj_co(t_scene *scene, t_obj **obj)
 		obj[n + i]->fuzz = scene->cone[i]->fuzz;
 		obj[n + i]->rgb1 = scene->cone[i]->rgb1;
 		obj[n + i]->rgb2 = scene->cone[i]->rgb2;
-		obj[n + i]->img_path = scene->cone[i]->img_path;
-		obj[n + i]->texture_path = scene->cone[i]->texture_path;
+		obj[n + i]->img_path
+			= realloc_img_texture_path(obj[n + i]->img_path,
+				scene->cone[i]->img_path);
+		obj[n + i]->texture_path
+			= realloc_img_texture_path(obj[n + i]->texture_path,
+				scene->cone[i]->texture_path);
 		i++;
 	}
 }

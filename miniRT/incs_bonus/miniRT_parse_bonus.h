@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:04:42 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/07 22:01:23 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 05:22:05 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,8 @@ int		parse_sp_rgb_1(t_scene *scene, int i, char ***s);
 int		parse_sp_rgb_2(t_scene *scene, int i, char ***s);
 
 /* parse_sphere_4_bonus */
-int		parse_sp_texture_path(t_scene *scene, int i, char ***s);
 int		parse_sp_img_path(t_scene *scene, int i, char ***s);
+int		parse_sp_texture_path(t_scene *scene, int i, char ***s);
 
 /* parse_plane_1_bonus */
 int		check_pl_token(t_scene *scene, int i, char ***s);
@@ -142,8 +142,8 @@ int		parse_pl_xyz_vec(t_scene *scene, int i, char ***s);
 int		parse_pl_surface_metal_fuzz(t_scene *scene, int i, char ***s);
 int		parse_pl_surface_1(t_scene *scene, int i, char ***s);
 int		parse_pl_surface_2(t_scene *scene, int i, char ***s);
-int		parse_pl_texture_path(t_scene *scene, int i, char ***s);
 int		parse_pl_img_path(t_scene *scene, int i, char ***s);
+int		parse_pl_texture_path(t_scene *scene, int i, char ***s);
 
 /* parse_plane_4_bonus */
 void	put_value_pl_rgb1_rgb2(t_scene *scene, int i, char ***s, char **rgb);
@@ -177,8 +177,9 @@ int		parse_cy_rgb_1(t_scene *scene, int i, char ***s);
 int		parse_cy_rgb_2(t_scene *scene, int i, char ***s);
 
 /* parse_cylinder_5_bonus */
-int		parse_cy_texture_path(t_scene *scene, int i, char ***s);
+int		parse_cy_texture_path_norminette(t_scene *scene, int i, char ***s);
 int		parse_cy_img_path(t_scene *scene, int i, char ***s);
+int		parse_cy_texture_path(t_scene *scene, int i, char ***s);
 
 /* parse_cone_1_bonus */
 int		check_co_token(t_scene *scene, int i, char ***s);
@@ -206,8 +207,8 @@ int		parse_co_rgb_1(t_scene *scene, int i, char ***s);
 int		parse_co_rgb_2(t_scene *scene, int i, char ***s);
 
 /* parse_cone_5_bonus */
-int		parse_co_texture_path(t_scene *scene, int i, char ***s);
 int		parse_co_img_path(t_scene *scene, int i, char ***s);
+int		parse_co_texture_path(t_scene *scene, int i, char ***s);
 
 /* parse_err_1_bonus */
 void	err_check_a(t_scene *scene);
@@ -252,11 +253,14 @@ void	init_struct_keep_scene_co_norminette(t_scene *keep_scene,
 			t_scene *scene);
 void	init_struct_keep_scene_co(t_scene *keep_scene, t_scene *scene);
 
-/* parse_utils_bonus */
+/* parse_utils_1_bonus */
 void	err_msg(char *str);
 void	map_err_i(int i, char *id, char *str);
+
+/* parse_utils_2_bonus */
 int		token_count(char **token, int cnt);
 int		check_comma(char *str);
 int		check_comma_surface_flag(char *str);
+int		check_texture_img_extention(char *str);
 
 #endif

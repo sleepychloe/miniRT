@@ -1,37 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils_bonus.c                                :+:      :+:    :+:   */
+/*   parse_utils_2_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 17:14:59 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/07 22:01:06 by yhwang           ###   ########.fr       */
+/*   Created: 2022/12/15 18:37:32 by yhwang            #+#    #+#             */
+/*   Updated: 2022/12/16 05:24:36 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs_bonus/miniRT_bonus.h"
-
-void	err_msg(char *str)
-{
-	printf("Error\n");
-	printf("%s\n", str);
-}
-
-void	map_err_i(int i, char *id, char *str)
-{
-	printf("Error\n");
-	printf("Map error: ");
-	if ((i % 10) == 1)
-		printf("%dst ", i);
-	else if ((i % 10) == 2)
-		printf("%dnd ", i);
-	else if ((i % 10) == 3)
-		printf("%drd ", i);
-	else
-		printf("%dth ", i);
-	printf("%s: %s\n", id, str);
-}
 
 int	token_count(char **token, int cnt)
 {
@@ -92,6 +71,19 @@ int	check_comma_surface_flag(char *str)
 		str++;
 	}
 	if (*str == ',')
+		return (1);
+	return (0);
+}
+
+int	check_texture_img_extention(char *str)
+{
+	int	len;
+
+	len = ft_strlen(str);
+	if (len <= 4)
+		return (1);
+	if (!(str[len - 4] == '.' && str[len - 3] == 'x'
+			&& str[len - 2] == 'p' && str[len - 1] == 'm'))
 		return (1);
 	return (0);
 }

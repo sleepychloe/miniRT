@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:09:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 10:23:16 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 02:38:50 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@
 
 # include "./miniRT_bonus.h"
 
-/* utils_free_bonus */
+/* utils_realloc_bonus */
 void	*ft_realloc(void *old_ptr, size_t old_len, size_t new_len);
+char	*realloc_img_texture_path(char *old_ptr, char *path);
+
+/* utils_free_bonus */
 void	ft_free_2d(char **str);
 void	ft_free_3d(char ***str);
+void	free_scene_norminette(t_scene *scene);
 void	free_scene(t_scene *scene);
 void	free_obj(t_obj **obj);
 

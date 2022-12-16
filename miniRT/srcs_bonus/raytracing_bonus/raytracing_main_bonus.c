@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:00:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/06 17:10:27 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 05:22:41 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	rt_start(t_data *data, int flag)
 	t_rt	rt;
 
 	data->obj = init_obj(data->scene);
+	init_obj_img_texture(data);
 	data->rt = &rt;
 	mlx_clear_window(data->mlx->mlx_ptr, data->mlx->win);
 	init_rt(data->scene, data->rt);
@@ -54,7 +55,6 @@ void	rt_start(t_data *data, int flag)
 		data->mlx->img_ptr, 0, 0);
 	show_guide();
 	print_scene_info(data, data->keep_scene, flag);
-	(void)flag;
 }
 
 void	init_struct_data(t_data *data, t_scene *scene,

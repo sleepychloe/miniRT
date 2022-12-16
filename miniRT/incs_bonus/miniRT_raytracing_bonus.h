@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/14 17:14:21 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 05:28:44 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ void	camera_vec_zero_minusone_zero(t_data *data);
 void	camera_vec_zero_plusone_zero(t_data *data);
 
 /* raytracing_init_struct_obj_1_bonus */
-void	put_value_obj_pl_dup_1(t_scene *scene, t_obj **obj, int n_obj);
-void	put_value_obj_pl_dup_2(t_scene *scene, t_obj **obj, int n_obj);
+void	put_value_obj_pl_dup_norminette(t_scene *scene,
+			t_obj **obj, int n_obj, int i);
+void	put_value_obj_pl_dup(t_scene *scene, t_obj **obj, int n_obj);
 void	norminette_init_obj(t_scene *scene, t_obj **obj, int n_obj);
 t_obj	**init_obj(t_scene *scene);
 
@@ -64,6 +65,13 @@ void	put_value_obj_sp(t_scene *scene, t_obj **obj);
 void	put_value_obj_pl(t_scene *scene, t_obj **obj);
 void	put_value_obj_cy(t_scene *scene, t_obj **obj);
 void	put_value_obj_co(t_scene *scene, t_obj **obj);
+
+/* raytracing_init_struct_obj_3_bonus */
+void	put_obj_img_value(t_data *data, t_mlx *img, int i);
+int		*load_image(t_data *data, int *old_ptr, t_mlx *img, int i);
+void	put_obj_texture_value(t_data *data, t_mlx *img, int i);
+int		*load_texture(t_data *data, int *old_ptr, t_mlx *img, int i);
+void	init_obj_img_texture(t_data *data);
 
 /* raytracing_init_struct_rt_bonus */
 void	init_rt(t_scene *scene, t_rt *rt);

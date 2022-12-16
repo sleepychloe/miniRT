@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 00:10:54 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 06:28:21 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 02:35:40 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,12 @@ void	put_value_keep_scene_co(t_scene *keep_scene, t_scene *scene)
 		keep_scene->cone[i]->fuzz = scene->cone[i]->fuzz;
 		keep_scene->cone[i]->rgb1 = scene->cone[i]->rgb1;
 		keep_scene->cone[i]->rgb2 = scene->cone[i]->rgb2;
-		keep_scene->cone[i]->img_path = scene->cone[i]->img_path;
-		keep_scene->cone[i]->texture_path = scene->cone[i]->texture_path;
+		keep_scene->cone[i]->img_path
+			= realloc_img_texture_path(keep_scene->cone[i]->img_path,
+				scene->cone[i]->img_path);
+		keep_scene->cone[i]->texture_path
+			= realloc_img_texture_path(keep_scene->cone[i]->texture_path,
+				scene->cone[i]->texture_path);
 		i++;
 	}
 }

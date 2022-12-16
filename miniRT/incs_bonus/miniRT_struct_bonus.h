@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:00:17 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/15 06:47:31 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 05:08:16 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,16 @@ typedef struct s_obj
 	t_rgb3		rgb2;
 	char		*img_path;
 	char		*texture_path;
+	int			*img_addr;
+	int			img_width;
+	int			img_height;
+	int			img_line_length;
+	int			img_bits_per_pixel;
+	int			*texture_addr;
+	int			texture_width;
+	int			texture_height;
+	int			texture_line_length;
+	int			texture_bits_per_pixel;
 }	t_obj;
 
 typedef struct s_mlx
@@ -147,22 +157,13 @@ typedef struct s_mlx
 	void		*win;
 	void		*img_ptr;
 	char		*addr;
+	int			*img_addr;
+	int			img_width;
+	int			img_height;
 	int			line_length;
 	int			bits_per_pixel;
 	int			endian;
 }	t_mlx;
-
-typedef struct s_mlx_img
-{
-	void		*mlx_ptr;
-	void		*img_ptr;
-	int		*addr;
-	int			line_length;
-	int			bits_per_pixel;
-	int			endian;
-	int			img_width;
-	int			img_height;
-}	t_mlx_img;
 
 typedef struct s_rt
 {

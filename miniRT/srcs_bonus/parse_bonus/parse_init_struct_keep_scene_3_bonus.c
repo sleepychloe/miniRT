@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 07:58:02 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 07:30:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 02:26:54 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@ void	put_value_keep_scene_cy(t_scene *keep_scene, t_scene *scene)
 		keep_scene->cylinder[i]->fuzz = scene->cylinder[i]->fuzz;
 		keep_scene->cylinder[i]->rgb1 = scene->cylinder[i]->rgb1;
 		keep_scene->cylinder[i]->rgb2 = scene->cylinder[i]->rgb2;
-		keep_scene->cylinder[i]->img_path = scene->cylinder[i]->img_path;
+		keep_scene->cylinder[i]->img_path
+			= realloc_img_texture_path(keep_scene->cylinder[i]->img_path,
+				scene->cylinder[i]->img_path);
 		keep_scene->cylinder[i]->texture_path
-			= scene->cylinder[i]->texture_path;
+			= realloc_img_texture_path(keep_scene->cylinder[i]->texture_path,
+				scene->cylinder[i]->texture_path);
 		i++;
 	}
 }

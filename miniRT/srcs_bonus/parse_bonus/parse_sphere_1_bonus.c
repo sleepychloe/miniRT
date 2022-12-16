@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 01:08:29 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 07:32:07 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 01:40:14 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	parse_sp_norminette(t_scene *scene, int i, char ***s)
 	if (parse_sp_xyz_pos(scene, i, s) || parse_sp_diameter(scene, i, s)
 		|| parse_sp_surface_1(scene, i, s) || parse_sp_surface_2(scene, i, s)
 		|| parse_sp_rgb_1(scene, i, s) || parse_sp_rgb_2(scene, i, s)
-		|| parse_sp_texture_path(scene, i, s) || parse_sp_img_path(scene, i, s))
+		|| parse_sp_img_path(scene, i, s) || parse_sp_texture_path(scene, i, s))
 	{
 		err_check_sp_1(scene, i);
 		err_check_sp_2(scene, i);

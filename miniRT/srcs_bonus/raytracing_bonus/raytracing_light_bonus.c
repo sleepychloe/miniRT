@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:04:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/09 03:09:21 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 04:31:29 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_light_hit_obj(t_data *data, double distance)
 	int	i;
 
 	i = 0;
-	while (i < data->n_obj + data->scene->n_plane + data->scene->n_plane)
+	while (i < data->n_obj + data->scene->n_plane)
 	{
 		if ((!light_hit_sp(data, i, distance)))
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 07:31:20 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 01:45:33 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	parse_cy_norminette(t_scene *scene, int i, char ***s)
 		|| parse_cy_diameter(scene, i, s) || parse_cy_height(scene, i, s)
 		|| parse_cy_surface_1(scene, i, s) || parse_cy_surface_2(scene, i, s)
 		|| parse_cy_rgb_1(scene, i, s) || parse_cy_rgb_2(scene, i, s)
-		|| parse_cy_texture_path(scene, i, s) || parse_cy_img_path(scene, i, s))
+		|| parse_cy_img_path(scene, i, s) || parse_cy_texture_path(scene, i, s))
 	{
 		err_check_cy_1(scene, i);
 		err_check_cy_2(scene, i);

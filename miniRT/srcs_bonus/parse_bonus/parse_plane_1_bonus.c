@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:08 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 07:31:56 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 01:44:40 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	parse_pl_norminette(t_scene *scene, int i, char ***s)
 	if (parse_pl_xyz_pos(scene, i, s) || parse_pl_xyz_vec(scene, i, s)
 		|| parse_pl_surface_1(scene, i, s) || parse_pl_surface_2(scene, i, s)
 		|| parse_pl_rgb_1(scene, i, s) || parse_pl_rgb_2(scene, i, s)
-		|| parse_pl_texture_path(scene, i, s) || parse_pl_img_path(scene, i, s))
+		|| parse_pl_img_path(scene, i, s) || parse_pl_texture_path(scene, i, s))
 	{
 		err_check_pl_1(scene, i);
 		err_check_pl_2(scene, i);

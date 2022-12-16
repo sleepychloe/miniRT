@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/12/14 17:12:14 by yhwang           ###   ########.fr        #
+#    Updated: 2022/12/16 05:00:36 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -138,12 +138,14 @@ FILES_B = $(SRCS_B_DIR)main_bonus \
 		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_2_bonus \
 		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_3_bonus \
 		$(SRCS_B_PARSE_DIR)parse_init_struct_keep_scene_4_bonus \
-		$(SRCS_B_PARSE_DIR)parse_utils_bonus \
+		$(SRCS_B_PARSE_DIR)parse_utils_1_bonus \
+		$(SRCS_B_PARSE_DIR)parse_utils_2_bonus \
 		$(SRCS_B_RT_DIR)raytracing_main_bonus \
 		$(SRCS_B_RT_DIR)raytracing_set_camera_1_bonus \
 		$(SRCS_B_RT_DIR)raytracing_set_camera_2_bonus \
 		$(SRCS_B_RT_DIR)raytracing_init_struct_obj_1_bonus \
 		$(SRCS_B_RT_DIR)raytracing_init_struct_obj_2_bonus \
+		$(SRCS_B_RT_DIR)raytracing_init_struct_obj_3_bonus \
 		$(SRCS_B_RT_DIR)raytracing_init_struct_rt_bonus \
 		$(SRCS_B_RT_DIR)raytracing_trace_bonus \
 		$(SRCS_B_RT_DIR)raytracing_surface_bonus \
@@ -190,6 +192,7 @@ FILES_B = $(SRCS_B_DIR)main_bonus \
 		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_move_cone_bonus \
 		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_cone_1_bonus \
 		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_rotate_cone_2_bonus \
+		$(SRCS_B_UTILS_DIR)utils_realloc_bonus \
 		$(SRCS_B_UTILS_DIR)utils_free_bonus \
 		$(SRCS_B_UTILS_DIR)utils_vec3_1_bonus \
 		$(SRCS_B_UTILS_DIR)utils_vec3_2_bonus \

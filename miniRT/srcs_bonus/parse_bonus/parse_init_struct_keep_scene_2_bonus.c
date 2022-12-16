@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 07:45:41 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 06:29:41 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 05:16:29 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ void	put_value_keep_scene_sp(t_scene *keep_scene, t_scene *scene)
 		keep_scene->sphere[i]->fuzz = scene->sphere[i]->fuzz;
 		keep_scene->sphere[i]->rgb1 = scene->sphere[i]->rgb1;
 		keep_scene->sphere[i]->rgb2 = scene->sphere[i]->rgb2;
-		keep_scene->sphere[i]->img_path = scene->sphere[i]->img_path;
-		keep_scene->sphere[i]->texture_path = scene->sphere[i]->texture_path;
+		keep_scene->sphere[i]->img_path
+			= realloc_img_texture_path(keep_scene->sphere[i]->img_path,
+				scene->sphere[i]->img_path);
+		keep_scene->sphere[i]->texture_path
+			= realloc_img_texture_path(keep_scene->sphere[i]->texture_path,
+				scene->sphere[i]->texture_path);
 		i++;
 	}
 }
@@ -75,8 +79,12 @@ void	put_value_keep_scene_pl(t_scene *keep_scene, t_scene *scene)
 		keep_scene->plane[i]->fuzz = scene->plane[i]->fuzz;
 		keep_scene->plane[i]->rgb1 = scene->plane[i]->rgb1;
 		keep_scene->plane[i]->rgb2 = scene->plane[i]->rgb2;
-		keep_scene->plane[i]->img_path = scene->plane[i]->img_path;
-		keep_scene->plane[i]->texture_path = scene->plane[i]->texture_path;
+		keep_scene->plane[i]->img_path
+			= realloc_img_texture_path(keep_scene->plane[i]->img_path,
+				scene->plane[i]->img_path);
+		keep_scene->plane[i]->texture_path
+			= realloc_img_texture_path(keep_scene->plane[i]->texture_path,
+				scene->plane[i]->texture_path);
 		i++;
 	}
 }

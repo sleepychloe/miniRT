@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:55:53 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 07:31:40 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 01:46:07 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	parse_co_norminette(t_scene *scene, int i, char ***s)
 		|| parse_co_diameter(scene, i, s) || parse_co_height(scene, i, s)
 		|| parse_co_surface_1(scene, i, s) || parse_co_surface_2(scene, i, s)
 		|| parse_co_rgb_1(scene, i, s) || parse_co_rgb_2(scene, i, s)
-		|| parse_co_texture_path(scene, i, s) || parse_co_img_path(scene, i, s))
+		|| parse_co_img_path(scene, i, s) || parse_co_texture_path(scene, i, s))
 	{
 		err_check_co_1(scene, i);
 		err_check_co_2(scene, i);

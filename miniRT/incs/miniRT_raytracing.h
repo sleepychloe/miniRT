@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:20:12 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 03:14:40 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/16 04:29:18 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ t_obj	**init_obj(t_scene *scene);
 void	put_value_obj_sp(t_scene *scene, t_obj **obj);
 void	put_value_obj_pl(t_scene *scene, t_obj **obj);
 void	put_value_obj_cy(t_scene *scene, t_obj **obj);
-void	put_value_obj_pl_dup_1(t_scene *scene, t_obj **obj, int n_obj);
-void	put_value_obj_pl_dup_2(t_scene *scene, t_obj **obj, int n_obj);
+void	put_value_obj_pl_dup(t_scene *scene, t_obj **obj, int n_obj);
 
 /* raytracing_init_struct_rt */
 void	init_rt(t_scene *scene, t_rt *rt);
