@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:17:14 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/17 02:34:09 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 00:09:53 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_rgb3	sphere_img_mapping(t_data *data, int sp_i, double u, double v)
 	int	color;
 
 	u += 0.22;
-	v += 0.1;
+	v += 0.17;
 	u_int = (int)(u * data->obj[sp_i]->img_width);
 	v_int = (int)((1.0 - v) * data->obj[sp_i]->img_height);
 	u_int /= 4;
