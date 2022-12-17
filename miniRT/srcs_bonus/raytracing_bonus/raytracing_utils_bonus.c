@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:13:16 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:48:10 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/17 01:51:01 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,23 @@ void	set_hit_normal_direc(t_data *data, t_hit *hit)
 		hit->normal_vec = vec3_mul_rn(hit->normal_vec, -1);
 	}
 	hit->front = FRONT;
+}
+
+int	xpm_img_pixel_get(t_data *data, int i, int x, int y)
+{
+	int	*dst;
+
+	if (x < 0)
+		x = 0;
+	if (y < 0)
+		y = 0;
+	if (x > data->obj[i]->img_width - 1)
+		x = data->obj[i]->img_width - 1;
+	if (y > data->obj[i]->img_height - 1)
+		y = data->obj[i]->img_height - 1;
+	
+	dst = data->obj[i]->img_addr
+		+ (x * data->obj[i]->img_bits_per_pixel / 8)
+		+ (y * data->obj[i]->img_line_length + x);
+	return (*(unsigned int *)dst);
 }

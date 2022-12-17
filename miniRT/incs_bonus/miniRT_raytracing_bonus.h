@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/16 05:28:44 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/17 01:55:45 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int		light_hit_sp(t_data *data, int sp_i, double distance);
 void	sphere_checkerboard(t_data *data, t_hit *hit, int sp_i);
 
 /* raytracing_sphere_img_bonus */
+t_rgb3	sphere_img_mapping(t_data *data, int sp_i, double u, double v);
 void	sphere_img(t_data *data, t_hit *hit, int sp_i);
 
 /* raytracing_plane_bonus */
@@ -198,5 +199,6 @@ double	check_cone_circle(t_data *data, int co_i, double distance);
 /* raytracing_utils_bonus */
 void	set_hit_point(t_data *data, t_hit *hit, double t);
 void	set_hit_normal_direc(t_data *data, t_hit *hit);
+int		xpm_img_pixel_get(t_data *data, int i, int x, int y);
 
 #endif

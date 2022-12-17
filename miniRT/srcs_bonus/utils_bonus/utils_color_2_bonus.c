@@ -6,11 +6,21 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:22:21 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 10:22:41 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/17 01:52:42 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs_bonus/miniRT_bonus.h"
+
+t_rgb3	pixel_to_rgb(int color)
+{
+	t_rgb3	res;
+
+	res.r = (double)((color >> 16) & 0xFF);
+	res.g = (double)((color >> 8) & 0xFF);
+	res.b = (double)((color >> 0) & 0xFF);
+	return (res);
+}
 
 double	color_clamp(double c)
 {

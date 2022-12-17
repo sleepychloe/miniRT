@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:09:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/16 02:38:50 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/17 01:52:39 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_rgb3	color_add(t_rgb3 c1, t_rgb3 c2);
 t_rgb3	color_mul_rn(t_rgb3 c, double rn);
 
 /* utils_color_bonus_2 */
+t_rgb3	pixel_to_rgb(int color);
 double	color_clamp(double c);
 t_rgb3	color_average(t_rgb3 c);
 int		color_convert_to_int(t_rgb3 rgb);
