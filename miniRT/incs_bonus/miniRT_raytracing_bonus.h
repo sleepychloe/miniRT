@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/17 01:55:45 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/17 22:31:27 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,26 @@ void	plane_checkerboard_xy(t_data *data, t_hit *hit, int pl_i);
 void	plane_checkerboard_xz(t_data *data, t_hit *hit, int pl_i);
 void	plane_checkerboard_zy(t_data *data, t_hit *hit, int pl_i);
 
-/* raytracing_plane_img_bonus */
+/* raytracing_plane_img_1_bonus */
+t_rgb3	plane_img_mapping(t_data *data, int pl_i, double u, double v);
+void	plane_img_norminette_1(t_data *data, t_hit *hit, int pl_i);
+void	plane_img_norminette_2(t_data *data, t_hit *hit, int pl_i);
 void	plane_img(t_data *data, t_hit *hit, int pl_i);
+
+/* raytracing_plane_img_2_bonus */
+void	plane_img_xy(t_data *data, t_hit *hit, int pl_i);
+void	plane_img_xz(t_data *data, t_hit *hit, int pl_i);
+void	plane_img_zy(t_data *data, t_hit *hit, int pl_i);
+
+/* raytracing_plane_img_3_bonus */
+void	plane_img_first_quadrant(double *hit_point_x, double *hit_point_y,
+			double *u, double *v);
+void	plane_img_second_quadrant(double *hit_point_x, double *hit_point_y,
+			double *u, double *v);
+void	plane_img_third_quadrant(double *hit_point_x, double *hit_point_y,
+			double *u, double *v);
+void	plane_img_forth_quadrant(double *hit_point_x, double *hit_point_y,
+			double *u, double *v);
 
 /* raytracing_cylinder_1_bonus */
 t_vec3	calc_normal_vec_cylinder_body(t_data *data, t_hit *hit, int cy_i);

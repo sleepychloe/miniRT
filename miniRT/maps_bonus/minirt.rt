@@ -1,16 +1,12 @@
 A    1             255,255,255
 #C    0,1.5,20      0,0,-1        50
-C    0,0,10      0,0,-1        50
+C    0,3,30      0,0,-1        50
 L    0,3,10        1           255,255,255
 sp   3,-2,-10      2             C       255,255,255
-#sp   0,1,0         8             I       ./texture_img/earthmap1k.xpm
 #sp   0,1,-10       3             I       ./texture_img/earthmap1k.xpm
 #sp   0,4.5,-10     3             I       ./texture_img/moonmap1k.xpm
-#pl   -1,0,-3       0,0,1         I       ./texture_img/test.xpm
-pl   -1,0,-3       0,0,1         I       ./texture_img/universe.xpm
-#pl   -1,-3,0       0,1,0         C       255,255,255
-#pl   -7,0,0        1,0,0         C       170,170,170
-#pl   7,0,0         1,0,0         C       170,170,170
+pl   1,0,-1       0,0,1         I       ./texture_img/north.xpm
+pl   1,0,-1       0,1,0         I       ./texture_img/north.xpm
 cy   0,-2,-10      0,1,0         2.0     2.0     C       180,135,25
 co   -3,-2,-10     0,1,0         2.0     2.0     C       160,70,80
 
