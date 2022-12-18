@@ -146,11 +146,11 @@
 ###### ↳ uv mapping(checkerboard)
 
 
-![image](https://user-images.githubusercontent.com/78352910/207798333-1225ed52-7c5c-4371-83f4-7c4e2deadbd5.png)
+![image](https://user-images.githubusercontent.com/78352910/208285074-c47ffc1f-8bf2-4dec-91d0-ac3989db7f4f.png)
 ###### ↳ uv mapping(image)
 
 
-i'm still working on bonus part(uv mapping for putting image) !
+i'm still working on bonus part !
 
 
 ## Ray Tracing
