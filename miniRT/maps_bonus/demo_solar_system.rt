@@ -1,0 +1,19 @@
+A    0.1           255,255,255
+C    5,0,28        0,0,-1        50
+L    6,0,15        1             255,255,255
+L    0,0,15        0.7           255,255,255
+L    0.2,3,15      0.7           255,255,255
+sp   -25,12,5      40           I       ./texture_img/universe/sun.xpm
+sp   -6,1,0        2            I       ./texture_img/universe/mercury.xpm
+sp   -3,4,0        2.8          I       ./texture_img/universe/venus.xpm
+sp   0,1,0         3.5          I       ./texture_img/universe/earth_.xpm
+sp   2,2.2,0       0.6          I       ./texture_img/universe/moon.xpm
+sp   3.5,-3,0      3            I       ./texture_img/universe/mars.xpm
+sp   10.6,-4,0     10           I       ./texture_img/universe/jupiter.xpm
+sp   16,5,0        6            I       ./texture_img/universe/saturn.xpm
+sp   19,-4,3       4            I       ./texture_img/universe/uranus.xpm
+sp   24,2.3,0      3            I       ./texture_img/universe/neptune.xpm
+sp   25,8.2,0      1.4          I       ./texture_img/universe/pluto.xpm
+pl   0,0,-3        0,0,1         I       ./texture_img/universe/universe.xpm
+cy   0,-2,-100     0,1,0         2.0     2.0     C       180,135,25
+co   -3,-2,-100    0,1,0         2.0     2.0     C       160,70,80
