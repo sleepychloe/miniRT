@@ -1,5 +1,13 @@
 # miniRT
 
+
+## Demo
+
+
+![image](https://user-images.githubusercontent.com/78352910/208272303-181f3cbc-7722-4b40-a4c6-c45c40079852.png)
+###### ↳ the solar system
+
+
 ## Mandatory part
 
 
