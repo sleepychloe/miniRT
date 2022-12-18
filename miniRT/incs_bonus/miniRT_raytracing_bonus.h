@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/17 22:31:27 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 07:33:55 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,19 @@ void	cylinder_circle_checkerboard_xy(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_circle_checkerboard_zx(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_circle_checkerboard_zy(t_data *data, t_hit *hit, int cy_i);
 
+/* raytracing_cylinder_img_1_bonus */
+t_rgb3	cylinder_img_mapping(t_data *data,
+			int cy_i, double theta, double height);
+t_rgb3	cylinder_circle_img_mapping(t_data *data, int cy_i,
+			double hit_point_one, double hit_point_two);
+void	cylinder_img_norminette(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_img(t_data *data, t_hit *hit, int cy_i);
+
+/* raytracing_cylinder_img_2_bonus */
+void	cylinder_img_xy(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_img_zx(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_img_zy(t_data *data, t_hit *hit, int cy_i);
+
 /* raytracing_cone_1_bonus */
 t_vec3	calc_normal_vec_cone_body(t_data *data, int co_i, double t_body);
 void	co_put_value_hit_struct(t_data *data, t_hit *hit, int co_i);
@@ -190,6 +203,13 @@ void	norminette_check_cone_body(t_data *data,
 int		check_cone_body_range(t_data *data,
 			int co_i, t_vec3 top_center, t_vec3 hit_p);
 double	check_cone_body(t_data *data, int co_i, double distance);
+
+/* raytracing_cone_3_bonus */
+void	norminette_check_cone_circle(t_data *data,
+			int co_i, t_vec3 *bottom_center, t_vec3 *tc);
+int		check_co_circle_radius(t_data *data,
+			int co_i, t_vec3 hit_point, t_vec3 bottom_center);
+double	check_cone_circle(t_data *data, int co_i, double distance);
 
 /* raytracing_cone_checkerboard_1_bonus */
 void	cone_checkerboard_norminette(t_data *data, t_hit *hit, int co_i);
@@ -207,12 +227,19 @@ void	cone_circle_checkerboard_xy(t_data *data, t_hit *hit, int co_i);
 void	cone_circle_checkerboard_zx(t_data *data, t_hit *hit, int co_i);
 void	cone_circle_checkerboard_zy(t_data *data, t_hit *hit, int co_i);
 
-/* raytracing_cone_3_bonus */
-void	norminette_check_cone_circle(t_data *data,
-			int co_i, t_vec3 *bottom_center, t_vec3 *tc);
-int		check_co_circle_radius(t_data *data,
-			int co_i, t_vec3 hit_point, t_vec3 bottom_center);
-double	check_cone_circle(t_data *data, int co_i, double distance);
+/* raytracing_cone_cone_1_bonus */
+t_rgb3	cone_img_mapping(t_data *data, int co_i, double theta, double height);
+t_rgb3	cone_circle_img_mapping(t_data *data, int co_i,
+			double hit_point_one, double hit_point_two);
+void	cone_img_norminette(t_data *data, t_hit *hit, int co_i);
+void	cone_img(t_data *data, t_hit *hit, int co_i);
+
+/* raytracing_cone_cone_2_bonus */
+void	cone_img_xy_zx_zy_norminette(t_data *data,
+			t_hit *hit, int co_i, double *height);
+void	cone_img_xy(t_data *data, t_hit *hit, int co_i);
+void	cone_img_zx(t_data *data, t_hit *hit, int co_i);
+void	cone_img_zy(t_data *data, t_hit *hit, int co_i);
 
 /* raytracing_utils_bonus */
 void	set_hit_point(t_data *data, t_hit *hit, double t);

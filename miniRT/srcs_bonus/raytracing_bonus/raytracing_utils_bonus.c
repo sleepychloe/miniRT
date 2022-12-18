@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:13:16 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/17 01:51:01 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 07:36:21 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	xpm_img_pixel_get(t_data *data, int i, int x, int y)
 		x = data->obj[i]->img_width - 1;
 	if (y > data->obj[i]->img_height - 1)
 		y = data->obj[i]->img_height - 1;
-	
 	dst = data->obj[i]->img_addr
 		+ (x * data->obj[i]->img_bits_per_pixel / 8)
 		+ (y * data->obj[i]->img_line_length + x);

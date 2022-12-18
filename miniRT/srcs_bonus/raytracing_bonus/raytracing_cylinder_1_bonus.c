@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 02:31:10 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/09 03:38:00 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 03:51:45 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ void	cy_put_value_hit_struct(t_data *data, t_hit *hit, int cy_i)
 {
 	hit->surface = data->obj[cy_i]->surface;
 	hit->fuzz = data->obj[cy_i]->fuzz;
-	if (data->obj[cy_i]->surface != SURFACE_C)
-		hit->color = data->obj[cy_i]->rgb1;
-	else
+	if (data->obj[cy_i]->surface == SURFACE_C)
 		cylinder_checkerboard(data, hit, cy_i);
+	else if (data->obj[cy_i]->surface == SURFACE_I)
+		cylinder_img(data, hit, cy_i);
+	else
+		hit->color = data->obj[cy_i]->rgb1;
 }
 
 int	hit_cylinder(t_data *data, t_hit *hit, int cy_i, double distance)

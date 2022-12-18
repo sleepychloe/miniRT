@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raytracing_cone_checkerboard_2_bonus.c             :+:      :+:    :+:   */
+/*   raytracing_cone_img_2_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/10 22:12:53 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/18 06:54:20 by yhwang           ###   ########.fr       */
+/*   Created: 2022/12/18 06:39:44 by yhwang            #+#    #+#             */
+/*   Updated: 2022/12/18 07:35:30 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs_bonus/miniRT_bonus.h"
 
-void	cone_checkerboard_xy_zx_zy_norminette(t_data *data,
+void	cone_img_xy_zx_zy_norminette(t_data *data,
 				t_hit *hit, int co_i, double *height)
 {
 	double	delta;
@@ -39,71 +39,59 @@ void	cone_checkerboard_xy_zx_zy_norminette(t_data *data,
 		* (data->obj[co_i]->height / (data->obj[co_i]->diameter));
 }
 
-void	cone_checkerboard_xy(t_data *data, t_hit *hit, int co_i)
+void	cone_img_xy(t_data *data, t_hit *hit, int co_i)
 {
 	double	theta;
 	double	height;
 
 	theta = atan2(hit->normal_vec.y, hit->normal_vec.x) + PI / 2;
-	cone_checkerboard_xy_zx_zy_norminette(data, hit, co_i, &height);
+	cone_img_xy_zx_zy_norminette(data, hit, co_i, &height);
 	if (!(hit->normal_vec.x == data->obj[co_i]->xyz_vec.x
 			&& hit->normal_vec.y == data->obj[co_i]->xyz_vec.y
 			&& hit->normal_vec.z == data->obj[co_i]->xyz_vec.z)
 		&& !(hit->normal_vec.x == data->obj[co_i]->xyz_vec.x * -1
 			&& hit->normal_vec.y == data->obj[co_i]->xyz_vec.y * -1
 			&& hit->normal_vec.z == data->obj[co_i]->xyz_vec.z * -1))
-	{
-		if (((int)(theta / PI * 10) + (int)(height / PI * 10)) % 2 == 0)
-			hit->color = data->obj[co_i]->rgb1;
-		else
-			hit->color = data->obj[co_i]->rgb2;
-	}
+		hit->color = cone_img_mapping(data, co_i, theta, height);
 	else
-		cone_circle_checkerboard_xy(data, hit, co_i);
+		hit->color = cone_circle_img_mapping(data, co_i,
+				hit->hit_point.x, hit->hit_point.y);
 }
 
-void	cone_checkerboard_zx(t_data *data, t_hit *hit, int co_i)
+void	cone_img_zx(t_data *data, t_hit *hit, int co_i)
 {
 	double	theta;
 	double	height;
 
 	theta = atan2(hit->normal_vec.x, hit->normal_vec.z) + PI / 2;
-	cone_checkerboard_xy_zx_zy_norminette(data, hit, co_i, &height);
+	cone_img_xy_zx_zy_norminette(data, hit, co_i, &height);
 	if (!(hit->normal_vec.x == data->obj[co_i]->xyz_vec.x
 			&& hit->normal_vec.y == data->obj[co_i]->xyz_vec.y
 			&& hit->normal_vec.z == data->obj[co_i]->xyz_vec.z)
 		&& !(hit->normal_vec.x == data->obj[co_i]->xyz_vec.x * -1
 			&& hit->normal_vec.y == data->obj[co_i]->xyz_vec.y * -1
 			&& hit->normal_vec.z == data->obj[co_i]->xyz_vec.z * -1))
-	{
-		if (((int)(theta / PI * 10) + (int)(height / PI * 10)) % 2 == 0)
-			hit->color = data->obj[co_i]->rgb1;
-		else
-			hit->color = data->obj[co_i]->rgb2;
-	}
+		hit->color = cone_img_mapping(data, co_i, theta, height);
 	else
-		cone_circle_checkerboard_zx(data, hit, co_i);
+		hit->color = cone_circle_img_mapping(data, co_i,
+				hit->hit_point.x, -1 * (hit->hit_point.z));
 }
 
-void	cone_checkerboard_zy(t_data *data, t_hit *hit, int co_i)
+void	cone_img_zy(t_data *data, t_hit *hit, int co_i)
 {
 	double	theta;
 	double	height;
 
 	theta = atan2(hit->normal_vec.y, hit->normal_vec.z) + PI / 2;
-	cone_checkerboard_xy_zx_zy_norminette(data, hit, co_i, &height);
+	cone_img_xy_zx_zy_norminette(data, hit, co_i, &height);
 	if (!(hit->normal_vec.x == data->obj[co_i]->xyz_vec.x
 			&& hit->normal_vec.y == data->obj[co_i]->xyz_vec.y
 			&& hit->normal_vec.z == data->obj[co_i]->xyz_vec.z)
 		&& !(hit->normal_vec.x == data->obj[co_i]->xyz_vec.x * -1
 			&& hit->normal_vec.y == data->obj[co_i]->xyz_vec.y * -1
 			&& hit->normal_vec.z == data->obj[co_i]->xyz_vec.z * -1))
-	{
-		if (((int)(theta / PI * 10) + (int)(height / PI * 10)) % 2 == 0)
-			hit->color = data->obj[co_i]->rgb1;
-		else
-			hit->color = data->obj[co_i]->rgb2;
-	}
+		hit->color = cone_img_mapping(data, co_i, theta, height);
 	else
-		cone_circle_checkerboard_zy(data, hit, co_i);
+		hit->color = cone_circle_img_mapping(data, co_i,
+				hit->hit_point.z, hit->hit_point.y);
 }

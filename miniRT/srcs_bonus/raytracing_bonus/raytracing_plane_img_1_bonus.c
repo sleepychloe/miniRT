@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 17:12:30 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/17 22:46:50 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 07:35:04 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	plane_img_norminette_2(t_data *data, t_hit *hit, int pl_i)
 			plane_img_xy(data, hit, pl_i);
 	}
 }
-
 
 void	plane_img(t_data *data, t_hit *hit, int pl_i)
 {

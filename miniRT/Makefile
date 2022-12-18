@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/12/17 22:29:45 by yhwang           ###   ########.fr        #
+#    Updated: 2022/12/18 06:38:57 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -165,12 +165,16 @@ FILES_B = $(SRCS_B_DIR)main_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cylinder_3_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cylinder_checkerboard_1_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cylinder_checkerboard_2_bonus \
+		$(SRCS_B_RT_DIR)raytracing_cylinder_img_1_bonus \
+		$(SRCS_B_RT_DIR)raytracing_cylinder_img_2_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cone_1_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cone_2_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cone_3_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cone_checkerboard_1_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cone_checkerboard_2_bonus \
 		$(SRCS_B_RT_DIR)raytracing_cone_checkerboard_3_bonus \
+		$(SRCS_B_RT_DIR)raytracing_cone_img_1_bonus \
+		$(SRCS_B_RT_DIR)raytracing_cone_img_2_bonus \
 		$(SRCS_B_RT_DIR)raytracing_utils_bonus \
 		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_bonus \
 		$(SRCS_B_UTILS_MLX_DIR)utils_mlx_key_move_camera_bonus \

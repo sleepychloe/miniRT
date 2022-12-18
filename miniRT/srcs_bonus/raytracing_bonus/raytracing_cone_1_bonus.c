@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:54:17 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/10 20:52:48 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 06:42:24 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ void	co_put_value_hit_struct(t_data *data, t_hit *hit, int co_i)
 {
 	hit->surface = data->obj[co_i]->surface;
 	hit->fuzz = data->obj[co_i]->fuzz;
-	if (data->obj[co_i]->surface != SURFACE_C)
-		hit->color = data->obj[co_i]->rgb1;
-	else
+	if (data->obj[co_i]->surface == SURFACE_C)
 		cone_checkerboard(data, hit, co_i);
+	else if (data->obj[co_i]->surface == SURFACE_I)
+		cone_img(data, hit, co_i);
+	else
+		hit->color = data->obj[co_i]->rgb1;
 }
 
 int	hit_cone(t_data *data, t_hit *hit, int co_i, double distance)
