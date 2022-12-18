@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:13:16 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/18 07:36:21 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 22:11:41 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,23 @@ int	xpm_img_pixel_get(t_data *data, int i, int x, int y)
 	dst = data->obj[i]->img_addr
 		+ (x * data->obj[i]->img_bits_per_pixel / 8)
 		+ (y * data->obj[i]->img_line_length + x);
+	return (*(unsigned int *)dst);
+}
+
+int	xpm_texture_pixel_get(t_data *data, int i, int x, int y)
+{
+	int	*dst;
+
+	if (x < 0)
+		x = 0;
+	if (y < 0)
+		y = 0;
+	if (x > data->obj[i]->texture_width - 1)
+		x = data->obj[i]->texture_width - 1;
+	if (y > data->obj[i]->texture_height - 1)
+		y = data->obj[i]->texture_height - 1;
+	dst = data->obj[i]->texture_addr
+		+ (x * data->obj[i]->texture_bits_per_pixel / 8)
+		+ (y * data->obj[i]->texture_line_length + x);
 	return (*(unsigned int *)dst);
 }

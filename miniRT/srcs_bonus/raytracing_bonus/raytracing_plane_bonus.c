@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 23:40:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/17 01:57:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 22:09:22 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	hit_plane(t_data *data, t_hit *hit, int pl_i, double distance)
 		plane_checkerboard(data, hit, pl_i);
 	else if (data->obj[pl_i]->surface == SURFACE_I)
 		plane_img(data, hit, pl_i);
+	else if (data->obj[pl_i]->surface == SURFACE_T)
+		plane_texture(data, hit, pl_i);
 	else
 		hit->color = data->obj[pl_i]->rgb1;
 	return (0);

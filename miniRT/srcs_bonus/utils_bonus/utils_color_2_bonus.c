@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:22:21 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/17 01:52:42 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 20:00:42 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,15 @@ int	color_convert_to_int(t_rgb3 rgb)
 	rgb.g = color_clamp(rgb.g);
 	rgb.b = color_clamp(rgb.b);
 	res = (int)rgb.r * 256 * 256 + (int)rgb.g * 256 + (int)rgb.b;
+	return (res);
+}
+
+t_vec3	rgb_to_vec(t_rgb3 rgb)
+{
+	t_vec3	res;
+
+	res.x = rgb.r;
+	res.y = rgb.g;
+	res.z = rgb.b;
 	return (res);
 }

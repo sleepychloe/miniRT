@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/18 07:33:55 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 22:58:33 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,11 @@ void	sphere_checkerboard(t_data *data, t_hit *hit, int sp_i);
 t_rgb3	sphere_img_mapping(t_data *data, int sp_i, double u, double v);
 void	sphere_img(t_data *data, t_hit *hit, int sp_i);
 
+/* raytracing_sphere_texture_bonus */
+t_vec3	sp_convert_normal_from_tangent_space(t_vec3 hit_n, t_vec3 tangent_n);
+t_vec3	sphere_normal_mapping(t_data *data, t_hit *hit, int sp_i, double *uv);
+void	sphere_texture(t_data *data, t_hit *hit, int sp_i);
+
 /* raytracing_plane_bonus */
 int		check_plane(t_data *data, double *t, int pl_i, double distance);
 int		hit_plane(t_data *data, t_hit *hit, int pl_i, double distance);
@@ -144,6 +149,18 @@ void	plane_img_third_quadrant(double *hit_point_x, double *hit_point_y,
 			double *u, double *v);
 void	plane_img_forth_quadrant(double *hit_point_x, double *hit_point_y,
 			double *u, double *v);
+
+/* raytracing_plane_texture_1_bonus */
+t_vec3	pl_convert_normal_from_tangent_space(t_vec3 hit_n, t_vec3 tangent_n);
+t_vec3	plane_normal_mapping(t_data *data, t_hit *hit, int pl_i, double *uv);
+void	plane_texture_norminette_1(t_data *data, t_hit *hit, int pl_i);
+void	plane_texture_norminette_2(t_data *data, t_hit *hit, int pl_i);
+void	plane_texture(t_data *data, t_hit *hit, int pl_i);
+
+/* raytracing_plane_texture_2_bonus */
+void	plane_texture_xy(t_data *data, t_hit *hit, int pl_i);
+void	plane_texture_xz(t_data *data, t_hit *hit, int pl_i);
+void	plane_texture_zy(t_data *data, t_hit *hit, int pl_i);
 
 /* raytracing_cylinder_1_bonus */
 t_vec3	calc_normal_vec_cylinder_body(t_data *data, t_hit *hit, int cy_i);
@@ -191,6 +208,20 @@ void	cylinder_img_xy(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_img_zx(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_img_zy(t_data *data, t_hit *hit, int cy_i);
 
+/* raytracing_cylinder_texture_1_bonus */
+t_vec3	cy_convert_normal_from_tangent_space(t_vec3 hit_n, t_vec3 tangent_n);
+t_vec3	cylinder_texture_mapping(t_data *data,
+			t_hit *hit, int cy_i, double *theta_height);
+t_vec3	cylinder_circle_texture_mapping(t_data *data,
+			t_hit *hit, int cy_i, double *hit_point);
+void	cylinder_texture_norminette(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_texture(t_data *data, t_hit *hit, int cy_i);
+
+/* raytracing_cylinder_texture_2_bonus */
+void	cylinder_texture_xy(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_texture_zx(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_texture_zy(t_data *data, t_hit *hit, int cy_i);
+
 /* raytracing_cone_1_bonus */
 t_vec3	calc_normal_vec_cone_body(t_data *data, int co_i, double t_body);
 void	co_put_value_hit_struct(t_data *data, t_hit *hit, int co_i);
@@ -227,23 +258,38 @@ void	cone_circle_checkerboard_xy(t_data *data, t_hit *hit, int co_i);
 void	cone_circle_checkerboard_zx(t_data *data, t_hit *hit, int co_i);
 void	cone_circle_checkerboard_zy(t_data *data, t_hit *hit, int co_i);
 
-/* raytracing_cone_cone_1_bonus */
+/* raytracing_cone_img_1_bonus */
 t_rgb3	cone_img_mapping(t_data *data, int co_i, double theta, double height);
 t_rgb3	cone_circle_img_mapping(t_data *data, int co_i,
 			double hit_point_one, double hit_point_two);
 void	cone_img_norminette(t_data *data, t_hit *hit, int co_i);
 void	cone_img(t_data *data, t_hit *hit, int co_i);
 
-/* raytracing_cone_cone_2_bonus */
+/* raytracing_cone_img_2_bonus */
 void	cone_img_xy_zx_zy_norminette(t_data *data,
 			t_hit *hit, int co_i, double *height);
 void	cone_img_xy(t_data *data, t_hit *hit, int co_i);
 void	cone_img_zx(t_data *data, t_hit *hit, int co_i);
 void	cone_img_zy(t_data *data, t_hit *hit, int co_i);
 
+/* raytracing_cone_texture_1_bonus */
+t_vec3	co_convert_normal_from_tangent_space(t_vec3 hit_n, t_vec3 tangent_n);
+t_vec3	cone_texture_mapping(t_data *data,
+			t_hit *hit, int co_i, double *theta_height);
+t_vec3	cone_circle_texture_mapping(t_data *data,
+			t_hit *hit, int co_i, double *hit_point);
+void	cone_texture_norminette(t_data *data, t_hit *hit, int co_i);
+void	cone_texture(t_data *data, t_hit *hit, int co_i);
+
+/* raytracing_cone_texture_2_bonus */
+void	cone_texture_xy(t_data *data, t_hit *hit, int co_i);
+void	cone_texture_zx(t_data *data, t_hit *hit, int co_i);
+void	cone_texture_zy(t_data *data, t_hit *hit, int co_i);
+
 /* raytracing_utils_bonus */
 void	set_hit_point(t_data *data, t_hit *hit, double t);
 void	set_hit_normal_direc(t_data *data, t_hit *hit);
 int		xpm_img_pixel_get(t_data *data, int i, int x, int y);
+int		xpm_texture_pixel_get(t_data *data, int i, int x, int y);
 
 #endif

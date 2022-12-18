@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:09:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/17 01:52:39 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 21:27:55 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_vec3	vec3_mul_rn(t_vec3 v, double rn);
 double	vec3_dot_vec3(t_vec3 v1, t_vec3 v2);
 
 /* utils_vec3_2_bonus */
+t_vec3	vec3_cross_vec3(t_vec3 v1, t_vec3 v2);
 double	vec3_length(t_vec3 v);
 t_vec3	vec3_unit(t_vec3 v);
 
@@ -53,6 +54,7 @@ t_rgb3	pixel_to_rgb(int color);
 double	color_clamp(double c);
 t_rgb3	color_average(t_rgb3 c);
 int		color_convert_to_int(t_rgb3 rgb);
+t_vec3	rgb_to_vec(t_rgb3 rgb);
 
 /* utils_random_bonus */
 double	random_double(void);
