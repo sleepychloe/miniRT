@@ -2,13 +2,13 @@ A    1             255,255,255
 C    0,2,20        0,0,-1        50
 L    0,5,10        0.7             255,255,255
 #sp   9,-2,-6       8             I       ./texture_img/minions_bob.xpm
-sp   9,-2,-6       8             T       255,255,255  ./texture_img/bumpmap_1x1.xpm
-pl   0,0,-10       0,0,1         T       255,255,255  ./texture_img/bumpmap_1x1.xpm
-pl   0,-6,0        0,1,0         T       255,255,255  ./texture_img/bumpmap_1x1.xpm
+sp   9,-2,-6       8             D       ./texture_img/squidward.xpm  ./texture_img/normalmap_diamond.xpm
+pl   0,0,-10       0,0,1         D       ./texture_img/plankton.xpm  ./texture_img/normalmap_diamond.xpm
+pl   0,-6,0        0,1,0         D       ./texture_img/plankton.xpm  ./texture_img/normalmap_diamond.xpm
 #pl   0,0,-10       0,0,1         L       255,255,255
 #pl   0,-6,0        0,1,0         L       255,255,255
-cy   0,-2,-6       0,1,0         8.0     8.0     T     255,255,255  ./texture_img/bumpmap_1x1.xpm
-co   -9,-2,-6      0,1,0         8.0     8.0     T     255,255,255  ./texture_img/bumpmap_1x1.xpm
+cy   0,-2,-6       0,1,0         8.0     8.0     D     ./texture_img/spongebob.xpm  ./texture_img/normalmap_diamond.xpm
+co   -9,-2,-6      0,1,0         8.0     8.0     D     ./texture_img/patrick.xpm  ./texture_img/normalmap_diamond.xpm
 
 #sp   0,0,0    2.0    L      105,95,160
 #sp   0,0,0    2.0    C      255,255,255

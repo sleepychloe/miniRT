@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 22:14:18 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/18 22:41:06 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/19 02:35:23 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_vec3	cylinder_texture_mapping(t_data *data,
 	normal = rgb_to_vec(pixel_to_rgb(color));
 	normal = vec3_sub_vec3(vec3_mul_rn(normal, 2), vec3(1, 1, 1));
 	return (vec3_add_vec3(vec3_mul_rn(hit->normal_vec, 0.5),
-		cy_convert_normal_from_tangent_space(hit->normal_vec, normal)));
+			cy_convert_normal_from_tangent_space(hit->normal_vec, normal)));
 }
 
 t_vec3	cylinder_circle_texture_mapping(t_data *data,
@@ -65,15 +65,15 @@ t_vec3	cylinder_circle_texture_mapping(t_data *data,
 	uv[0] = hit_point[0];
 	uv[1] = hit_point[1];
 	uv[1] *= -1;
-	u_int = (int)((uv[0] + 20) * data->obj[cy_i]->texture_width);
-	v_int = (int)((uv[1] + 20) * data->obj[cy_i]->texture_height);
+	u_int = (int)((uv[0] + 10) * data->obj[cy_i]->texture_width);
+	v_int = (int)((uv[1] + 10) * data->obj[cy_i]->texture_height);
 	u_int /= 70;
 	v_int /= 70;
 	color = xpm_texture_pixel_get(data, cy_i, u_int, v_int);
 	normal = rgb_to_vec(pixel_to_rgb(color));
 	normal = vec3_sub_vec3(vec3_mul_rn(normal, 2), vec3(1, 1, 1));
 	return (vec3_add_vec3(vec3_mul_rn(hit->normal_vec, 0.5),
-		pl_convert_normal_from_tangent_space(hit->normal_vec, normal)));
+			pl_convert_normal_from_tangent_space(hit->normal_vec, normal)));
 }
 
 void	cylinder_texture_norminette(t_data *data, t_hit *hit, int cy_i)

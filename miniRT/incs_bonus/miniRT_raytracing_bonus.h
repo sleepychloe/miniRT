@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/18 22:58:33 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/19 02:54:12 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,9 @@ t_vec3	sp_convert_normal_from_tangent_space(t_vec3 hit_n, t_vec3 tangent_n);
 t_vec3	sphere_normal_mapping(t_data *data, t_hit *hit, int sp_i, double *uv);
 void	sphere_texture(t_data *data, t_hit *hit, int sp_i);
 
+/* raytracing_sphere_img_texture_bonus */
+void	sphere_img_texture(t_data *data, t_hit *hit, int sp_i);
+
 /* raytracing_plane_bonus */
 int		check_plane(t_data *data, double *t, int pl_i, double distance);
 int		hit_plane(t_data *data, t_hit *hit, int pl_i, double distance);
@@ -161,6 +164,16 @@ void	plane_texture(t_data *data, t_hit *hit, int pl_i);
 void	plane_texture_xy(t_data *data, t_hit *hit, int pl_i);
 void	plane_texture_xz(t_data *data, t_hit *hit, int pl_i);
 void	plane_texture_zy(t_data *data, t_hit *hit, int pl_i);
+
+/* raytracing_plane_img_texture_1_bonus */
+void	plane_img_texture_norminette_1(t_data *data, t_hit *hit, int pl_i);
+void	plane_img_texture_norminette_2(t_data *data, t_hit *hit, int pl_i);
+void	plane_img_texture(t_data *data, t_hit *hit, int pl_i);
+
+/* raytracing_plane_img_texture_1_bonus */
+void	plane_img_texture_xy(t_data *data, t_hit *hit, int pl_i);
+void	plane_img_texture_xz(t_data *data, t_hit *hit, int pl_i);
+void	plane_img_texture_zy(t_data *data, t_hit *hit, int pl_i);
 
 /* raytracing_cylinder_1_bonus */
 t_vec3	calc_normal_vec_cylinder_body(t_data *data, t_hit *hit, int cy_i);
@@ -221,6 +234,17 @@ void	cylinder_texture(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_texture_xy(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_texture_zx(t_data *data, t_hit *hit, int cy_i);
 void	cylinder_texture_zy(t_data *data, t_hit *hit, int cy_i);
+
+/* raytracing_cylinder_img_texture_1_bonus */
+void	cylinder_img_texture_norminette(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_img_texture(t_data *data, t_hit *hit, int cy_i);
+
+/* raytracing_cylinder_img_texture_2_bonus */
+void	cylinder_img_texture_xy_zx_zy_norminette(t_data *data,
+			t_hit *hit, int cy_i, double *height);
+void	cylinder_img_texture_xy(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_img_texture_zx(t_data *data, t_hit *hit, int cy_i);
+void	cylinder_img_texture_zy(t_data *data, t_hit *hit, int cy_i);
 
 /* raytracing_cone_1_bonus */
 t_vec3	calc_normal_vec_cone_body(t_data *data, int co_i, double t_body);
@@ -285,6 +309,15 @@ void	cone_texture(t_data *data, t_hit *hit, int co_i);
 void	cone_texture_xy(t_data *data, t_hit *hit, int co_i);
 void	cone_texture_zx(t_data *data, t_hit *hit, int co_i);
 void	cone_texture_zy(t_data *data, t_hit *hit, int co_i);
+
+/* raytracing_cone_img_texture_1_bonus */
+void	cone_img_texture_norminette(t_data *data, t_hit *hit, int co_i);
+void	cone_img_texture(t_data *data, t_hit *hit, int co_i);
+
+/* raytracing_cone_img_texture_2_bonus */
+void	cone_img_texture_xy(t_data *data, t_hit *hit, int co_i);
+void	cone_img_texture_zx(t_data *data, t_hit *hit, int co_i);
+void	cone_img_texture_zy(t_data *data, t_hit *hit, int co_i);
 
 /* raytracing_utils_bonus */
 void	set_hit_point(t_data *data, t_hit *hit, double t);

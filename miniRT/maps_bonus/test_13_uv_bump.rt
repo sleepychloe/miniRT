@@ -1,0 +1,8 @@
+A    1             255,255,255
+C    0,4,20        0,0,-1        50
+L    0,10,5        0.7           255,255,255
+sp   9,2,-6        8             T       50,125,80       ./texture_img/normalmap.xpm
+pl   0,0,-10       0,0,1         T       150,150,150     ./texture_img/normalmap.xpm
+pl   0,-2,0        0,1,0         T       50,50,50        ./texture_img/normalmap.xpm
+cy   0,2,-6        0,1,0         8.0     8.0     T       105,95,160   ./texture_img/normalmap.xpm
+co   -9,2,-6       0,1,0         8.0     8.0     T       160,70,80    ./texture_img/normalmap.xpm

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:56:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/18 19:11:29 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/18 23:35:01 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	hit_sphere(t_data *data, t_hit *hit, int sp_i, double distance)
 		sphere_img(data, hit, sp_i);
 	else if (data->obj[sp_i]->surface == SURFACE_T)
 		sphere_texture(data, hit, sp_i);
+	else if (data->obj[sp_i]->surface == SURFACE_D)
+		sphere_img_texture(data, hit, sp_i);
 	else
 		hit->color = data->obj[sp_i]->rgb1;
 	return (0);

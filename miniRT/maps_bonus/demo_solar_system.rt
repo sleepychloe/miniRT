@@ -6,7 +6,7 @@ L    0.2,3,15      0.7           255,255,255
 sp   -25,12,5      40           I       ./texture_img/universe/sun.xpm
 sp   -6,1,0        2            I       ./texture_img/universe/mercury.xpm
 sp   -3,4,0        2.8          I       ./texture_img/universe/venus.xpm
-sp   0,1,0         3.5          I       ./texture_img/universe/earth_.xpm
+sp   0,1,0         3.5          I       ./texture_img/universe/earth.xpm
 sp   2,2.2,0       0.6          I       ./texture_img/universe/moon.xpm
 sp   3.5,-3,0      3            I       ./texture_img/universe/mars.xpm
 sp   10.6,-4,0     10           I       ./texture_img/universe/jupiter.xpm

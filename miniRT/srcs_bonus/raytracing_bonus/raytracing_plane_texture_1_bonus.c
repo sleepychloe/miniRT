@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:36:30 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/18 22:11:37 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/19 02:44:48 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ t_vec3	pl_convert_normal_from_tangent_space(t_vec3 hit_n, t_vec3 tangent_n)
 
 t_vec3	plane_normal_mapping(t_data *data, t_hit *hit, int pl_i, double *uv)
 {
-	int	u_int;
-	int	v_int;
-	int	color;
+	int		u_int;
+	int		v_int;
+	int		color;
 	t_vec3	normal;
 
 	uv[1] *= -1;
@@ -45,7 +45,7 @@ t_vec3	plane_normal_mapping(t_data *data, t_hit *hit, int pl_i, double *uv)
 	normal = rgb_to_vec(pixel_to_rgb(color));
 	normal = vec3_sub_vec3(vec3_mul_rn(normal, 2), vec3(1, 1, 1));
 	return (vec3_add_vec3(vec3_mul_rn(hit->normal_vec, 0.5),
-		pl_convert_normal_from_tangent_space(hit->normal_vec, normal)));
+			pl_convert_normal_from_tangent_space(hit->normal_vec, normal)));
 }
 
 void	plane_texture_norminette_1(t_data *data, t_hit *hit, int pl_i)
