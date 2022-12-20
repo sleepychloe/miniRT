@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 20:44:26 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/20 09:07:26 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/21 00:41:22 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ int	check_value_c_xyz_vec(t_scene *scene, char **xyz_vec)
 	if (!(ft_atod(xyz_vec[0]) * ft_atod(xyz_vec[0])
 			+ ft_atod(xyz_vec[1]) * ft_atod(xyz_vec[1])
 			+ ft_atod(xyz_vec[2]) * ft_atod(xyz_vec[2]) == 1))
+	{
+		if (!(ft_atod(xyz_vec[0]) * ft_atod(xyz_vec[0])
+				+ ft_atod(xyz_vec[1]) * ft_atod(xyz_vec[1])
+				+ ft_atod(xyz_vec[2]) * ft_atod(xyz_vec[2]) > 1 - EPSILON))
+		{
+			scene->camera->err = ERR_XYZ_VEC_VALUE;
+			return (1);
+		}
+	}
+	if (ft_atod(xyz_vec[0]) != 0
+		&& ft_atod(xyz_vec[1]) != 0 && ft_atod(xyz_vec[2]) != 0)
 	{
 		scene->camera->err = ERR_XYZ_VEC_VALUE;
 		return (1);

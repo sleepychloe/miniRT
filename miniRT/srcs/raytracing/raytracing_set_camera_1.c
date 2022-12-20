@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:10:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/20 09:26:20 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/21 00:11:28 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,18 @@ void	camera_vec_plusone_zero_zero(t_data *data)
 			+ val_cos * data->scene->camera->xyz_pos.z);
 }
 
+void	norminette_raytracing_set_camera(t_data *data)
+{
+	if (data->keep_scene->camera->xyz_vec.x == 0
+		&& data->keep_scene->camera->xyz_vec.y != 0
+		&& data->keep_scene->camera->xyz_vec.z != 0)
+		camera_vec_zero_y_z(data);
+	if (data->keep_scene->camera->xyz_vec.x != 0
+		&& data->keep_scene->camera->xyz_vec.y == 0
+		&& data->keep_scene->camera->xyz_vec.z != 0)
+		camera_vec_x_zero_z(data);
+}
+
 void	raytracing_set_camera(t_data *data)
 {
 	if (data->keep_scene->camera->xyz_vec.x == 0
@@ -106,6 +118,8 @@ void	raytracing_set_camera(t_data *data)
 		&& data->keep_scene->camera->xyz_vec.y == 1
 		&& data->keep_scene->camera->xyz_vec.z == 0)
 		camera_vec_zero_plusone_zero(data);
+	else
+		norminette_raytracing_set_camera(data);
 	data->scene->camera->xyz_pos
 		= vec3_add_vec3(data->scene->camera->xyz_pos,
 			vec3_mul_rn(data->scene->camera->xyz_vec, DELTA));

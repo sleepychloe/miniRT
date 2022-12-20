@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:20:12 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/20 09:41:18 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/21 00:35:26 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,20 @@ void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx);
 void	camera_vec_zero_zero_plusone(t_data *data);
 void	camera_vec_minusone_zero_zero(t_data *data);
 void	camera_vec_plusone_zero_zero(t_data *data);
+void	norminette_raytracing_set_camera(t_data *data);
 void	raytracing_set_camera(t_data *data);
 
 /* raytracing_set_camera_2 */
 void	camera_vec_zero_minusone_zero(t_data *data);
 void	camera_vec_zero_plusone_zero(t_data *data);
+
+/* raytracing_set_camera_3 */
+void	norminette_camera_vec_zeor_y_z(t_data *data,
+			double val_cos, double val_sin);
+void	camera_vec_zero_y_z(t_data *data);
+void	norminette_camera_vec_x_zero_z(t_data *data,
+			double val_cos, double val_sin);
+void	camera_vec_x_zero_z(t_data *data);
 
 /* raytracing_init_struct_obj_1 */
 void	norminette_init_obj(t_scene *scene, t_obj **obj, int n_obj);

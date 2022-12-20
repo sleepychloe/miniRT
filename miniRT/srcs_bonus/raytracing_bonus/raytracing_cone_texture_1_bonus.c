@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 22:42:02 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/19 02:48:24 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/20 10:03:05 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ t_vec3	cone_circle_texture_mapping(t_data *data,
 	uv[0] = hit_point[0];
 	uv[1] = hit_point[1];
 	uv[1] *= -1;
-	u_int = (int)((uv[0] + 20) * data->obj[co_i]->texture_width);
-	v_int = (int)((uv[1] + 20) * data->obj[co_i]->texture_height);
+	u_int = (int)((uv[0] + 10) * data->obj[co_i]->texture_width);
+	v_int = (int)((uv[1] + 10) * data->obj[co_i]->texture_height);
 	u_int /= 70;
 	v_int /= 70;
 	color = xpm_texture_pixel_get(data, co_i, u_int, v_int);

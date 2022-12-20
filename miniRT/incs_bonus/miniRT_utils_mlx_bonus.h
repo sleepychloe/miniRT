@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:07:49 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/18 03:11:53 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/21 00:34:51 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define WIN_W				800
 
 /* translating rotating */
-# define ROTATE_ANGLE			45
+# define ROTATE_ANGLE			30
 # define CAMERA_MOVE			1
 # define LIGHT_MOVE			1
 # define OBJECT_MOVE			0.5

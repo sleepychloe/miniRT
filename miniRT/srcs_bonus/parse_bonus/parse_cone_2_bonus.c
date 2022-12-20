@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:56:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/20 09:20:07 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/21 00:40:04 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ int	check_value_co_xyz_vec(t_scene *scene, int i, char **xyz_vec)
 			+ ft_atod(xyz_vec[2]) * ft_atod(xyz_vec[2]) == 1))
 	{
 		if (!(ft_atod(xyz_vec[0]) * ft_atod(xyz_vec[0])
-			+ ft_atod(xyz_vec[1]) * ft_atod(xyz_vec[1])
-			+ ft_atod(xyz_vec[2]) * ft_atod(xyz_vec[2]) > 1 - EPSILON))
+				+ ft_atod(xyz_vec[1]) * ft_atod(xyz_vec[1])
+				+ ft_atod(xyz_vec[2]) * ft_atod(xyz_vec[2])
+				> 1 - EPSILON))
 		{
 			scene->cone[i]->err = ERR_XYZ_VEC_VALUE;
 			return (1);

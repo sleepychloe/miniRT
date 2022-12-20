@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 22:06:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/20 09:41:51 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/21 00:44:38 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define PI				3.14159265359
 
 /* repeating time for ray tracing */
-# define NUM_SAMPLE			1
-# define NUM_DEPTH			2
+# define NUM_SAMPLE			2
+# define NUM_DEPTH			3
 
 /* checking direction of normal vector */
 # define FRONT				1
@@ -47,11 +47,20 @@ void	raytracing_main(t_scene *scene, t_scene *keep_scene, t_mlx *mlx);
 void	camera_vec_zero_zero_plusone(t_data *data);
 void	camera_vec_minusone_zero_zero(t_data *data);
 void	camera_vec_plusone_zero_zero(t_data *data);
+void	norminette_raytracing_set_camera(t_data *data);
 void	raytracing_set_camera(t_data *data);
 
 /* raytracing_set_camera_2_bonus */
 void	camera_vec_zero_minusone_zero(t_data *data);
 void	camera_vec_zero_plusone_zero(t_data *data);
+
+/* raytracing_set_camera_3_bonus */
+void	norminette_camera_vec_zeor_y_z(t_data *data,
+			double val_cos, double val_sin);
+void	camera_vec_zero_y_z(t_data *data);
+void	norminette_camera_vec_x_zero_z(t_data *data,
+			double val_cos, double val_sin);
+void	camera_vec_x_zero_z(t_data *data);
 
 /* raytracing_init_struct_obj_1_bonus */
 void	put_value_obj_pl_dup_norminette(t_scene *scene,
