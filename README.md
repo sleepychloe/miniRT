@@ -146,8 +146,16 @@
 ###### ↳ uv mapping(checkerboard)
 
 
-![image](https://user-images.githubusercontent.com/78352910/208285074-c47ffc1f-8bf2-4dec-91d0-ac3989db7f4f.png)
+![image](https://user-images.githubusercontent.com/78352910/208338099-a9840d2d-a844-4a24-a786-590d48631b71.png)
 ###### ↳ uv mapping(image)
+
+
+![image](https://user-images.githubusercontent.com/78352910/208338134-15109627-d892-461a-818b-c6ea983316c6.png)
+###### ↳ uv mapping(bump map texture)
+
+
+![image](https://user-images.githubusercontent.com/78352910/208338192-8bf06db1-58fe-4d6a-86b3-1d2dcf5a3fc0.png)
+###### ↳ uv mapping(image with bump map texture)
 
 
 i'm still working on bonus part !
