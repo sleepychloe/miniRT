@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 04:08:59 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:51:35 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/20 09:34:21 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	mlx_rotate_cylinder_x_axis(t_data *data, int flag, int i)
 			+ val_cos * data->scene->cylinder[i]->xyz_vec.z);
 	data->scene->cylinder[i]->xyz_pos
 		= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1e-10));
+			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, DELTA));
 	mlx_rotate_cylinder_x_axis_set_keep_scene(data, i, val_cos, val_sin);
 	rt_start(data, flag);
 }
@@ -59,7 +59,7 @@ void	mlx_rotate_cylinder_y_axis(t_data *data, int flag, int i)
 			+ val_cos * data->scene->cylinder[i]->xyz_vec.z);
 	data->scene->cylinder[i]->xyz_pos
 		= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1e-10));
+			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, DELTA));
 	mlx_rotate_cylinder_y_axis_set_keep_scene(data, i, val_cos, val_sin);
 	rt_start(data, flag);
 }
@@ -85,7 +85,7 @@ void	mlx_rotate_cylinder_z_axis(t_data *data, int flag, int i)
 			+ 1 * data->scene->cylinder[i]->xyz_vec.z);
 	data->scene->cylinder[i]->xyz_pos
 		= vec3_add_vec3(data->scene->cylinder[i]->xyz_pos,
-			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, 1e-10));
+			vec3_mul_rn(data->scene->cylinder[i]->xyz_vec, DELTA));
 	mlx_rotate_cylinder_z_axis_set_keep_scene(data, i, val_cos, val_sin);
 	rt_start(data, flag);
 }

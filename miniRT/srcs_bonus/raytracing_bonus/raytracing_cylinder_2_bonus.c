@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:27:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/07 22:52:34 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/20 09:36:12 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ double	check_cylinder_body(t_data *data, int cy_i, double distance)
 	if (d[1] * d[1] - d[0] * d[2] < 0)
 		return (INFINITY);
 	t_body = (-1 * d[1] - sqrt(d[1] * d[1] - d[0] * d[2])) / d[0];
-	if (t_body < 0.00001 || distance < t_body)
+	if (t_body < EPSILON || distance < t_body)
 	{
 		t_body = (-1 * d[1] + sqrt(d[1] * d[1] - d[0] * d[2])) / d[0];
-		if (t_body < 0.00001 || distance < t_body)
+		if (t_body < EPSILON || distance < t_body)
 			return (INFINITY);
 	}
 	if (vec3_dot_vec3(vec3_sub_vec3(vec3_add_vec3(data->ray->point,

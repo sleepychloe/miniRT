@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 01:47:03 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/30 21:51:00 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/20 09:33:06 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	mlx_rotate_camera_y_axis_set_pl(t_data *data,
 		mlx_rotate_camera_y_axis_set_pl_vec(data, val_cos, val_sin, i);
 		data->scene->plane[i]->xyz_pos
 			= vec3_add_vec3(data->scene->plane[i]->xyz_pos,
-				vec3_mul_rn(data->scene->plane[i]->xyz_vec, 1e-10));
+				vec3_mul_rn(data->scene->plane[i]->xyz_vec, DELTA));
 		i++;
 	}
 }

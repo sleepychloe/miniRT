@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:30 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 03:42:34 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/20 09:19:43 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ int	check_value_pl_xyz_vec(t_scene *scene, int i, char **xyz_vec)
 			+ ft_atod(xyz_vec[1]) * ft_atod(xyz_vec[1])
 			+ ft_atod(xyz_vec[2]) * ft_atod(xyz_vec[2]) == 1))
 	{
-		scene->plane[i]->err = ERR_XYZ_VEC_VALUE;
-		return (1);
+		if (!(ft_atod(xyz_vec[0]) * ft_atod(xyz_vec[0])
+			+ ft_atod(xyz_vec[1]) * ft_atod(xyz_vec[1])
+			+ ft_atod(xyz_vec[2]) * ft_atod(xyz_vec[2]) > 1 - EPSILON))
+		{
+			scene->plane[i]->err = ERR_XYZ_VEC_VALUE;
+			return (1);
+		}
 	}
 	return (0);
 }
@@ -49,9 +54,9 @@ int	parse_pl_xyz_vec(t_scene *scene, int i, char ***s)
 		ft_free_3d(s);
 		return (1);
 	}
-	scene->plane[i]->xyz_vec.x = ft_atoi(s[2][0]);
-	scene->plane[i]->xyz_vec.y = ft_atoi(s[2][1]);
-	scene->plane[i]->xyz_vec.z = ft_atoi(s[2][2]);
+	scene->plane[i]->xyz_vec.x = ft_atod(s[2][0]);
+	scene->plane[i]->xyz_vec.y = ft_atod(s[2][1]);
+	scene->plane[i]->xyz_vec.z = ft_atod(s[2][2]);
 	return (0);
 }
 

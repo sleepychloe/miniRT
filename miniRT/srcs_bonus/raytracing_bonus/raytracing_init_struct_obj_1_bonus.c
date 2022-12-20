@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 07:42:51 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/16 05:28:24 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/20 09:36:40 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	put_value_obj_pl_dup(t_scene *scene, t_obj **obj, int n_obj)
 		obj[n_obj + i]->xyz_pos = scene->plane[i]->xyz_pos;
 		obj[n_obj + i]->xyz_vec = scene->plane[i]->xyz_vec;
 		obj[n_obj + i]->xyz_pos = vec3_sub_vec3(scene->plane[i]->xyz_pos,
-				vec3_mul_rn(scene->plane[i]->xyz_vec, 1e-10));
+				vec3_mul_rn(scene->plane[i]->xyz_vec, DELTA));
 		obj[n_obj + i]->xyz_vec.x *= -1;
 		obj[n_obj + i]->xyz_vec.y *= -1;
 		obj[n_obj + i]->xyz_vec.z *= -1;

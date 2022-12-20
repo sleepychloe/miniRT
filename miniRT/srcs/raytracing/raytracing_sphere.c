@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 21:56:04 by yhwang            #+#    #+#             */
-/*   Updated: 2022/11/28 02:08:30 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/20 09:26:44 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	check_sphere(t_data *data, double *t, int sp_i, double distance)
 	if (b * b - a * c < 0)
 		return (1);
 	*t = (-1 * b - sqrt(b * b - a * c)) / a;
-	if (*t < 0.00001 || distance < *t)
+	if (*t < EPSILON || distance < *t)
 	{
 		*t = (-1 * b + sqrt(b * b - a * c)) / a;
-		if (*t < 0.00001 || distance < *t)
+		if (*t < EPSILON || distance < *t)
 			return (1);
 	}
 	return (0);

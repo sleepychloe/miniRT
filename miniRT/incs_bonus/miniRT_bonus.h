@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 16:15:19 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/02 00:37:51 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/20 09:42:07 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
+
+/* epsilon, delta */
+# define EPSILON			1e-4
+# define DELTA				1e-10
 
 /* main_bonus */
 void	minirt_main_norminette(t_scene *scene, t_scene *keep_scene);

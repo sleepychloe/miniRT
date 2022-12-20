@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:04:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/16 04:31:29 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/20 09:36:29 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_rgb3	calc_light_color(t_data *data, t_hit *hit, t_vec3 light_direc, int i)
 	light_color.r = light_color.r / (4 * PI * distance * distance);
 	light_color.g = light_color.g / (4 * PI * distance * distance);
 	light_color.b = light_color.b / (4 * PI * distance * distance);
-	light_intensity = vec3_dot_vec3(vec3_mul_rn(hit->normal_vec, 1 + 1e-10),
+	light_intensity = vec3_dot_vec3(vec3_mul_rn(hit->normal_vec, 1 + DELTA),
 			vec3_mul_rn(light_direc, -1));
 	if (light_intensity < 0)
 		light_intensity = 0;

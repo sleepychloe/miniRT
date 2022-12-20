@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 23:40:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/01 03:07:29 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/20 09:25:51 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_plane(t_data *data, double *t, int pl_i, double distance)
 		return (1);
 	dot_n_rc = vec3_dot_vec3(data->obj[pl_i]->xyz_vec, rc);
 	*t = dot_n_rc / dot_n_d;
-	if (*t < 0.00001 || distance < *t)
+	if (*t < EPSILON || distance < *t)
 		return (1);
 	return (0);
 }

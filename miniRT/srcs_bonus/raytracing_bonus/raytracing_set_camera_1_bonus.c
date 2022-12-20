@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:10:52 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/02 01:14:25 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/20 09:37:17 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,5 @@ void	raytracing_set_camera(t_data *data)
 		camera_vec_zero_plusone_zero(data);
 	data->scene->camera->xyz_pos
 		= vec3_add_vec3(data->scene->camera->xyz_pos,
-			vec3_mul_rn(data->scene->camera->xyz_vec, 1e-10));
+			vec3_mul_rn(data->scene->camera->xyz_vec, DELTA));
 }
