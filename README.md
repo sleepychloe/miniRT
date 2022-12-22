@@ -158,8 +158,6 @@
 ###### ↳ uv mapping(image with bump map texture)
 
 
-i'm still working on bonus part !
-
 
 ## Ray Tracing
 
