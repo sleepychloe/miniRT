@@ -181,4 +181,12 @@ i'm still working on bonus part !
 ![image](https://user-images.githubusercontent.com/78352910/205492540-4beecb1d-1ecd-4521-9eba-9b315c142ed8.png)
 ![image](https://user-images.githubusercontent.com/78352910/205492957-1a556acf-a0b8-4d65-ad7f-a65a759d3006.png)
 ![image](https://user-images.githubusercontent.com/78352910/205492549-6828da5d-b9b2-4c71-9c69-250b1a194835.png)
+![image](https://user-images.githubusercontent.com/78352910/209028864-2fa6acfb-df9a-4564-9f04-e8bcd5e02d98.png)
+![image](https://user-images.githubusercontent.com/78352910/209028878-3ad1b389-2ed1-4032-8c30-fca30b4589af.png)
+![image](https://user-images.githubusercontent.com/78352910/209028899-b773c722-6b49-4fbb-968a-a6514b925b60.png)
+![image](https://user-images.githubusercontent.com/78352910/209028918-4681571a-1c70-41a8-aa9c-7f84ae4be490.png)
+![image](https://user-images.githubusercontent.com/78352910/209028932-a1c5ccee-dd08-4514-89da-ace481639469.png)
+![image](https://user-images.githubusercontent.com/78352910/209028938-cba54599-d2d3-4125-9685-d0a87438e3fe.png)
+![image](https://user-images.githubusercontent.com/78352910/209028952-074d65ea-40fb-434f-8c80-695cca0713a5.png)
+
 
