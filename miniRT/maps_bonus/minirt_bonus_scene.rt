@@ -1,8 +1,0 @@
-A    1             255,255,255
-C    0,2,30        0,0,-1        50
-L    0,10,10       1             255,255,255
-sp   8,2,0         4             M,1     0,0,0
-pl   0,0,-10       0,0,1         T       255,255,255  ./texture_img/normalmap.xpm
-pl   0,0,0         0,1,0         C       255,255,255
-cy   0,2,0         0,1,0         6.0     6.0     T       255,170,193  ./texture_img/normalmap_diamond.xpm
-co   0,8,0         0,1,0         6.0     6.0     D       ./texture_img/patrick.xpm  ./texture_img/normalmap_diamond.xpm

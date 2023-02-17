@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 01:34:14 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/04 13:10:13 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/22 01:52:19 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,7 @@ int	parse_cy_surface_1(t_scene *scene, int i, char ***s)
 		|| (ft_strncmp(s[0][5], "T", 1) == 0 && ft_strlen(s[0][5]) == 1)
 		|| (ft_strncmp(s[0][5], "I", 1) == 0 && ft_strlen(s[0][5]) == 1)
 		|| (ft_strncmp(s[0][5], "D", 1) == 0 && ft_strlen(s[0][5]) == 1)
-		|| (ft_strncmp(s[0][5], "M,", 2) == 0)
-		|| (ft_strncmp(s[0][5], "G", 2) == 0 && ft_strlen(s[0][5]) == 1)))
+		|| (ft_strncmp(s[0][5], "M,", 2) == 0)))
 	{
 		scene->cylinder[i]->err = ERR_SURFACE_FLAG;
 		ft_free_3d(s);
@@ -119,7 +118,5 @@ int	parse_cy_surface_2(t_scene *scene, int i, char ***s)
 			return (1);
 		}
 	}
-	else if (ft_strncmp(s[0][5], "G", 2) == 0)
-		scene->cylinder[i]->surface = SURFACE_G;
 	return (0);
 }

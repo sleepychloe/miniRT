@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 04:20:37 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/16 02:23:35 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/22 01:50:29 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ int	parse_pl_surface_1(t_scene *scene, int i, char ***s)
 		|| (ft_strncmp(s[0][3], "T", 1) == 0 && ft_strlen(s[0][3]) == 1)
 		|| (ft_strncmp(s[0][3], "I", 1) == 0 && ft_strlen(s[0][3]) == 1)
 		|| (ft_strncmp(s[0][3], "D", 1) == 0 && ft_strlen(s[0][3]) == 1)
-		|| (ft_strncmp(s[0][3], "M,", 2) == 0)
-		|| (ft_strncmp(s[0][3], "G", 2) == 0 && ft_strlen(s[0][3]) == 1)))
+		|| (ft_strncmp(s[0][3], "M,", 2) == 0)))
 	{
 		scene->plane[i]->err = ERR_SURFACE_FLAG;
 		ft_free_3d(s);
@@ -83,8 +82,6 @@ int	parse_pl_surface_2(t_scene *scene, int i, char ***s)
 			return (1);
 		}
 	}
-	else if (ft_strncmp(s[0][3], "G", 2) == 0)
-		scene->plane[i]->surface = SURFACE_G;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 07:17:43 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/16 01:45:33 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/22 02:34:11 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int	check_cy_token(t_scene *scene, int i, char ***s)
 	if (ft_strncmp(s[0][5], "L", 1) == 0
 		|| ft_strncmp(s[0][5], "C", 1) == 0
 		|| ft_strncmp(s[0][5], "I", 1) == 0
-		|| ft_strncmp(s[0][5], "M,", 2) == 0
-		|| ft_strncmp(s[0][5], "G", 1) == 0)
+		|| ft_strncmp(s[0][5], "M,", 2) == 0)
 	{
 		if (token_count(s[0], 7))
 		{
@@ -54,8 +53,8 @@ int	parse_cy_token(t_scene *scene, int i, char ***s)
 	}
 	if (ft_strncmp(s[0][5], "L", 1) == 0 || ft_strncmp(s[0][5], "C", 1) == 0
 		|| ft_strncmp(s[0][5], "T", 1) == 0 || ft_strncmp(s[0][5], "I", 1) == 0
-		|| ft_strncmp(s[0][5], "D", 1) == 0 || ft_strncmp(s[0][5], "M,", 2) == 0
-		|| ft_strncmp(s[0][5], "G", 1) == 0)
+		|| ft_strncmp(s[0][5], "D", 1) == 0
+		|| ft_strncmp(s[0][5], "M,", 2) == 0)
 	{
 		if (check_cy_token(scene, i, s))
 		{

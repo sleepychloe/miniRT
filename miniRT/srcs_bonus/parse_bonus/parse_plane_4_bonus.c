@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 04:21:01 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 07:34:49 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/22 01:50:54 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,6 @@ int	parse_pl_rgb_2(t_scene *scene, int i, char ***s)
 		|| ft_strncmp(s[0][3], "T", 1) == 0)
 	{
 		if (check_value_pl_rgb(scene, i, s, s[3]))
-		{
-			scene->plane[i]->err = ERR_RGB_VALUE;
-			ft_free_3d(s);
-			return (1);
-		}
-	}
-	if (ft_strncmp(s[0][3], "G", 1) == 0)
-	{
-		if (!(ft_strncmp(s[0][4], "none", 4) == 0
-			&& ft_strlen(s[0][4]) == 4))
 		{
 			scene->plane[i]->err = ERR_RGB_VALUE;
 			ft_free_3d(s);

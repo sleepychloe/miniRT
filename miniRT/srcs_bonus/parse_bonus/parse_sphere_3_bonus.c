@@ -6,7 +6,7 @@
 /*   By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:53:28 by yhwang            #+#    #+#             */
-/*   Updated: 2022/12/03 07:34:41 by yhwang           ###   ########.fr       */
+/*   Updated: 2022/12/22 01:49:00 by yhwang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,16 +100,6 @@ int	parse_sp_rgb_2(t_scene *scene, int i, char ***s)
 		|| ft_strncmp(s[0][3], "T", 1) == 0)
 	{
 		if (check_value_sp_rgb(scene, i, s, s[2]))
-		{
-			scene->sphere[i]->err = ERR_RGB_VALUE;
-			ft_free_3d(s);
-			return (1);
-		}
-	}
-	if (ft_strncmp(s[0][3], "G", 1) == 0)
-	{
-		if (!(ft_strncmp(s[0][4], "none", 4) == 0
-			&& ft_strlen(s[0][4]) == 4))
 		{
 			scene->sphere[i]->err = ERR_RGB_VALUE;
 			ft_free_3d(s);
