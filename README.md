@@ -1,6 +1,6 @@
 # miniRT
 
-Mandatory part + every Bonus part\
+Mandatory part + every Bonus part
 
 Tested on Linux
 
