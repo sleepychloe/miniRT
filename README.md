@@ -6,6 +6,101 @@ Tested on Linux
 
 Success 125/100
 
+## Installation
+
+```bash
+  git clone https://github.com/sleepychloe/miniRT.git
+  cd miniRT
+  make
+  make bonus
+```
+
+
+## Usage
+
+```bash
+  ./miniRT [maps]
+  ./miniRT_bonus [maps]
+```
+
+example
+```bash
+  ./miniRT maps/minirt_scene.rt
+  ./miniRT_bonus [maps]
+```
+
+
+## keys for mandatory part
+```
+╔═══════════════════════════════╦═══════════════════════════════╗
+║             camera            ║             light             ║
+╠══════╦════════════════════════╬══════╦════════════════════════╣
+║ 1    ║ translate: -x position ║ .    ║ translate: -x position ║
+║ 2    ║ translate: +x position ║ /    ║ translate: +x position ║
+║ 3    ║ translate: -y position ║ ;    ║ translate: -y position ║
+║ 4    ║ translate: +y position ║ '    ║ translate: +y position ║
+║ 5    ║ translate: -z position ║ [    ║ translate: -z position ║
+║ 6    ║ translate: +z position ║ ]    ║ translate: +z position ║
+╠══════╬════════════════════════╬══════╩════════════════════════╣
+║      ║                        ║             utils             ║
+║ 7    ║ rotate: x axis, -30°   ╠══════╦════════════════════════╣
+║ 8    ║ rotate: y axis, -30°   ║ ESC  ║ exit                   ║
+║ 9    ║ rotate: z axis, -30°   ║ UP   ║ zoom in                ║
+║      ║                        ║ DOWN ║ zoom out               ║
+╚══════╩════════════════════════╩══════╩════════════════════════╝
+╔═══════════════════════════════╦═══════════════════════════════╦═══════════════════════════════╗
+║             sphere            ║             plane             ║           cylinder            ║
+╠══════╦════════════════════════╬══════╦════════════════════════╬══════╦════════════════════════╣
+║ Z    ║ translate: -x position ║ A    ║ translate: -x position ║ Q    ║ translate: -x position ║
+║ X    ║ translate: +x position ║ S    ║ translate: +x position ║ W    ║ translate: +x position ║
+║ C    ║ translate: -y position ║ D    ║ translate: -y position ║ E    ║ translate: -y position ║
+║ V    ║ translate: +y position ║ F    ║ translate: +y position ║ R    ║ translate: +y position ║
+║ B    ║ translate: -z position ║ G    ║ translate: -z position ║ T    ║ translate: -z position ║
+║ N    ║ translate: +z position ║ H    ║ translate: +z position ║ Y    ║ translate: +z position ║
+╠══════╩════════════════════════╣══════╬════════════════════════╬══════╬════════════════════════╣
+║             object            ║      ║                        ║      ║                        ║
+╠══════╦════════════════════════╣ J    ║ rotate: x axis, -30°   ║ U    ║ rotate: x axis, -30°   ║
+║ F1   ║ show info: sphere +1   ║ K    ║ rotate: y axis, -30°   ║ I    ║ rotate: y axis, -30°   ║
+║ F2   ║ show info: plane +1    ║ L    ║ rotate: z axis, -30°   ║ O    ║ rotate: z axis, -30°   ║
+║ F3   ║ show info: cylinder +1 ║      ║                        ║      ║                        ║
+╚══════╩════════════════════════╩══════╩════════════════════════╩══════╩════════════════════════╝
+```
+
+## keys for bonus part
+```
+╔═════════════════════════════════════╦═════════════════════════════════════╦═════════════════════════════════════╗
+║                camera               ║                light                ║                sphere               ║
+╠══════════╦══════════════════════════╬══════════╦══════════════════════════╬══════════╦══════════════════════════╣
+║ F1       ║ translate: -x position   ║ .        ║ translate: -x position   ║ Z        ║ translate: -x position   ║
+║ F2       ║ translate: +x position   ║ /        ║ translate: +x position   ║ X        ║ translate: +x position   ║
+║ F3       ║ translate: -y position   ║ ;        ║ translate: -y position   ║ C        ║ translate: -y position   ║
+║ F4       ║ translate: +y position   ║ '        ║ translate: +y position   ║ V        ║ translate: +y position   ║
+║ F5       ║ translate: -z position   ║ [        ║ translate: -z position   ║ B        ║ translate: -z position   ║
+║ F6       ║ translate: +z position   ║ ]        ║ translate: +z position   ║ N        ║ translate: +z position   ║
+║ F7       ║ rotate: x axis, -30°     ║ CTRL(L)  ║ show info: light +1      ║ SHIFT(L) ║ show info: sphere +1     ║
+║ F8       ║ rotate: y axis, -30°     ║══════════╩══════════════════════════╣══════════╩══════════════════════════╣
+║ F9       ║ rotate: z axis, -30°     ║                utils                ║                 zoom                ║
+║          ║                          ║══════════╦══════════════════════════╣══════════╦══════════════════════════╣
+║          ║                          ║ ESC      ║ exit                     ║ UP       ║ zoom in                  ║
+║          ║                          ║          ║                          ║ DOWN     ║ zoom out                 ║
+╚══════════╩══════════════════════════╩══════════╩══════════════════════════╩══════════╩══════════════════════════╝
+╔═════════════════════════════════════╦═════════════════════════════════════╦═════════════════════════════════════╗
+║                plane                ║              cylinder               ║                cone                 ║
+╠══════════╦══════════════════════════╬══════════╦══════════════════════════╬══════════╦══════════════════════════╣
+║ A        ║ translate: -x position   ║ Q        ║ translate: -x position   ║ 1        ║ translate: -x position   ║
+║ S        ║ translate: +x position   ║ W        ║ translate: +x position   ║ 2        ║ translate: +x position   ║
+║ D        ║ translate: -y position   ║ E        ║ translate: -y position   ║ 3        ║ translate: -y position   ║
+║ F        ║ translate: +y position   ║ R        ║ translate: +y position   ║ 4        ║ translate: +y position   ║
+║ G        ║ translate: -z position   ║ T        ║ translate: -z position   ║ 5        ║ translate: -z position   ║
+║ H        ║ translate: +z position   ║ Y        ║ translate: +z position   ║ 6        ║ translate: +z position   ║
+║ J        ║ rotate: x axis, -30°     ║ U        ║ rotate: x axis, -30°     ║ 7        ║ rotate: x axis, -30°     ║
+║ K        ║ rotate: y axis, -30°     ║ I        ║ rotate: y axis, -30°     ║ 8        ║ rotate: y axis, -30°     ║
+║ L        ║ rotate: z axis, -30°     ║ O        ║ rotate: z axis, -30°     ║ 9        ║ rotate: z axis, -30°     ║
+║ CAPSLOCK ║ show info: plane +1      ║ TAB      ║ show info: cylinder +1   ║ `        ║ show info: cone +1       ║
+╚══════════╩══════════════════════════╩══════════╩══════════════════════════╩══════════╩══════════════════════════╝
+```
+
+## Screenshots
 ## Demo
 
 
