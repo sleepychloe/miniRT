@@ -26,7 +26,7 @@ Success 125/100
 example
 ```bash
   ./miniRT maps/minirt_scene.rt
-  ./miniRT_bonus [maps]
+  ./miniRT_bonus maps_bonus/test_14_uv_img_bump.rt
 ```
 
 
