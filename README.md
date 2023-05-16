@@ -15,6 +15,13 @@ Success 125/100
   make bonus
 ```
 
+if comfile fails with message "can't find a suitable X11 include directory",
+install it via
+
+```bash
+  sudo apt-get install gcc make xorg libxext-dev libbsd-dev
+```
+
 
 ## Usage
 
