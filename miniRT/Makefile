@@ -6,7 +6,7 @@
 #    By: yhwang <yhwang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/19 15:13:25 by yhwang            #+#    #+#              #
-#    Updated: 2022/12/21 00:43:04 by yhwang           ###   ########.fr        #
+#    Updated: 2023/11/24 13:16:32 by yhwang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -246,6 +246,7 @@ $(NAME): $(MLX) $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $^ -o $@ -I$(INCS_DIR) -L$(MLX_DIR) -lmlx $(MLX_FLAGS)
 
 $(MLX):
+	chmod 775 $(MLX_DIR)/configure
 	make -C $(MLX_DIR)
 
 bonus: $(LIBFT_NAME) $(NAME_B)
