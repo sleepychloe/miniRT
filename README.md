@@ -224,6 +224,7 @@ example
 <img src="https://user-images.githubusercontent.com/78352910/205449470-53def130-63f5-41b5-a1d4-324c8844bf36.png" width="600" height="338">
 
 <br>
+<br>
 
 #### camera
 
@@ -231,31 +232,43 @@ example
 
 ###### ↳ camera position(0,0,10), normal vector(0,0,-1)
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/205449548-d80a9c67-f740-44ec-b665-e71a42792353.png" width="600" height="338">
 
 ###### ↳ camera position(0,0,-10), normal vector(0,0,1)
+
+<br>
 
 <img src="https://user-images.githubusercontent.com/78352910/205449565-5f47a7f3-b1ed-4928-b5fd-b91db2f2d610.png" width="600" height="338">
 
 ###### ↳ camera position(-10,0,0), normal vector(1,0,0)
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/205449574-2c4e2209-4a53-4337-8051-24aae4abf5fc.png" width="600" height="338">
 
 ###### ↳ camera position(10,0,0), normal vector(-1,0,0)
+
+<br>
 
 <img src="https://user-images.githubusercontent.com/78352910/205449584-67aab7d8-1a1f-40ec-9f69-5a20e66fd9bf.png" width="600" height="338">
 
 ###### ↳ camera position(0,10,0), normal vector(0,-1,0)
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/205449605-5b8bd92e-5d92-4d38-8beb-80d2afe9f492.png" width="600" height="338">
 
 ###### ↳ camera position(0,-10,0), normal vector(0,1,0)
+
+<br>
 
 <img src="https://user-images.githubusercontent.com/78352910/205449620-b83fdb93-3c3e-4091-8123-3e1479260f02.png" width="600" height="338">
 
 ###### ↳ camera position(1.46,8.5,5), normal vector(-0.15,-0.85,-0.5)
 
-<br>
+<br><br>
 
 #### light
 
@@ -263,27 +276,37 @@ example
 
 ###### ↳ light position(-5,0,1)
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/205449691-e0a6f1b4-95a2-433a-980a-b9f98e92711c.png" width="600" height="338">
 
 ###### ↳ light position(5,0,1)
+
+<br>
 
 <img src="https://user-images.githubusercontent.com/78352910/205449710-4c4d7da3-b005-498d-ae2e-044b9b91423b.png" width="600" height="338">
 
 ###### ↳ light position(0,-5,1)
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/205449726-72cb4e65-1947-464a-8c53-22b7a98c7df2.png" width="600" height="338">
 
 ###### ↳ light position(0,5,1)
+
+<br>
 
 <img src="https://user-images.githubusercontent.com/78352910/205449741-e99cdc92-568b-435e-928c-556508ac12b5.png" width="600" height="338">
 
 ###### ↳ light position(0,1,-5)
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/205449758-57ba33cc-ecf5-4d4c-865f-b88d4e935637.png" width="600" height="338">
 
 ###### ↳ light position(0,1,5)
 
-<br>
+<br><br>
 
 #### object
 
@@ -291,12 +314,14 @@ example
 
 ###### ↳ object
 
+<br><br>
+
 <img src="https://user-images.githubusercontent.com/78352910/205449797-378e2180-af9a-434a-ae44-8ea7a99a909c.png" width="600" height="338">
 
 ###### ↳ object(plane, cylinder) rotation
 
 
-<br>
+<br><br>
 
 ### Bonus part
 #### phong reflection model(adding specular reflection)
@@ -305,11 +330,13 @@ example
 
 ###### ↳ specular reflection
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/206645258-ec284892-f7b4-4788-8d1e-a60bea319b79.png" width="600" height="338">
 
 ###### ↳ compare with mandatory part(before adding specular reflection)
 
-<br>
+<br><br>
 
 #### light
 
@@ -317,28 +344,37 @@ example
 
 ###### ↳ colored light(red)
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/205585900-d95f0d58-9073-4ff4-aef9-01069912ac4c.png" width="600" height="338">
 
 ###### ↳ colored light(green)
+
+<br>
 
 <img src="https://user-images.githubusercontent.com/78352910/205585936-1062bbda-f45f-4435-bf71-4e1a63503a6a.png" width="600" height="338">
 
 ###### ↳ colored light(blue)
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/205585980-3d35826c-69d9-40cc-95d1-5640181d44a6.png" width="600" height="338">
 
 ###### ↳ multiple light(white)
+
+<br>
 
 <img src="https://user-images.githubusercontent.com/78352910/205586047-4b1b430f-abe3-4acf-a4cb-85ef44c889c2.png" width="600" height="338">
 
 ###### ↳ multiple colored light(rgb)
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/205586087-591a778c-80c2-42bf-8b30-699840ef1a55.png" width="600" height="338">
 
 ###### ↳ multiple colored light(rgb)
 
-
-<br>
+<br><br>
 
 #### surface
 
@@ -346,32 +382,44 @@ example
 
 ###### ↳ surface lambertian
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/205586161-72db160a-c557-4c92-af0e-fd93cd68677c.png" width="600" height="338">
 
 ###### ↳ surface metal(fuzz 0)
+
+<br>
 
 <img src="https://user-images.githubusercontent.com/78352910/205586194-fa8203e6-95fc-4264-b362-4bda7fd95bbd.png" width="600" height="338">
 
 ###### ↳ surface metal(fuzz 1)
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/206880593-7f0b8904-852b-4557-b3b2-de7ca59e62fa.png" width="600" height="338">
 
 ###### ↳ uv mapping(checkerboard)
+
+<br>
 
 <img src="https://user-images.githubusercontent.com/78352910/208338099-a9840d2d-a844-4a24-a786-590d48631b71.png" width="600" height="338">
 
 ###### ↳ uv mapping(image)
 
+<br>
+
 <img src="https://user-images.githubusercontent.com/78352910/208338134-15109627-d892-461a-818b-c6ea983316c6.png" width="600" height="338">
 
 ###### ↳ uv mapping(bump map texture)
+
+<br>
 
 <img src="https://user-images.githubusercontent.com/78352910/208338192-8bf06db1-58fe-4d6a-86b3-1d2dcf5a3fc0.png" width="600" height="338">
 
 ###### ↳ uv mapping(image with bump map texture)
 
 
-<br>
+<br><br>
 
 ## Ray Tracing
 
