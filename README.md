@@ -5,6 +5,7 @@ Mandatory part + every Bonus part
 Tested on Linux
 
 Success 125/100
+
 <br>
 
 ## Project Description
